@@ -17,8 +17,8 @@ const usersSchema=new mongoose.Schema(//הגדרת הסכמה
     },imageUrl:{
         type:String
     },
-    },//פרמטר ראשון אוביקט של שדות 
-    {timestamps:true}//פרמטר שני מאפיינים נוספים
+    },
+    {timestamps:true}
 )
 
 //ייצוא
