@@ -1,7 +1,12 @@
 const mongoose=require('mongoose')//יבוא הספרייה
 
 const usersSchema=new mongoose.Schema(//הגדרת הסכמה
-    {firstname:{
+    {username:{
+        type:String,
+        required:true,
+        unique:true
+    },
+        firstname:{
         type:String,
         required:true
     },
@@ -16,10 +21,14 @@ const usersSchema=new mongoose.Schema(//הגדרת הסכמה
         required:true
     },imageUrl:{
         type:String
-    },
+    },userType:{
+        type: String,
+        enum: ['User', 'Manager'],
+        default: 'User',
+    }
     },
     {timestamps:true}
 )
 
 //ייצוא
-module.exports=mongoose.model('Users',usersSchema)
+module.exports=mongoose.model('User',usersSchema)
