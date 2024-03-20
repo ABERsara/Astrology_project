@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')//יבוא הספרייה
 const Users = require('./User')
 
-const GroupDiagnosisSchema = new mongoose.Schema(//הגדרת הסכמה
+const groupDiagnosisSchema = new mongoose.Schema(//הגדרת הסכמה
     {
         orderer: {
             type: mongoose.Schema.Types.ObjectId,
@@ -40,4 +40,4 @@ const GroupDiagnosisSchema = new mongoose.Schema(//הגדרת הסכמה
 )
 
 //ייצוא
-module.exports = mongoose.model('GroupDiagnosis', GroupDiagnosisSchema)
+module.exports = mongoose.model('GroupDiagnosis', groupDiagnosisSchema)

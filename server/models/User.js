@@ -21,10 +21,15 @@ const usersSchema=new mongoose.Schema(//הגדרת הסכמה
         required:true
     },imageUrl:{
         type:String
-    },userType:{
+    },permission:{
         type: String,
-        enum: ['User', 'Manager'],
+        enum: ['User', 'Manager','Group'],
+        required:true,
         default: 'User',
+    },active:{
+        type:Boolean,
+        required:true,
+        default:true,
     }
     },
     {timestamps:true}

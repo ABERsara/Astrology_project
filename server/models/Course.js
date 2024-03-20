@@ -45,4 +45,4 @@ default:[]
 )
 
 //ייצוא
-module.exports = mongoose.model('Diagnosis', diagnosisSchema)
+module.exports = mongoose.model('Course', courseSchema)

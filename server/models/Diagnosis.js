@@ -17,7 +17,8 @@ const diagnosisSchema = new mongoose.Schema(//הגדרת הסכמה
             required: true
         }, birthTime: {
             type: String,
-            default: "00:00"
+            default: "00:00",
+            required:true
         }, utc: {
             city: {
                 type: String,
