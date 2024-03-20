@@ -31,6 +31,7 @@ const diagnosisSchema = new mongoose.Schema(//הגדרת הסכמה
             type: Boolean, 
             required:true,
         }, 
+        //האבחון עצמו
      diagnosis: {
             type: String
         }

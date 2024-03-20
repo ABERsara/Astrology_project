@@ -13,7 +13,7 @@ const responsesSchema=new mongoose.Schema(//הגדרת הסכמה
     },
     responseFor:{type:String,
         required:true
-    },workshopName:{
+    },courseName:{
         type:String
     },title:{
                 type: String,
@@ -21,11 +21,10 @@ const responsesSchema=new mongoose.Schema(//הגדרת הסכמה
 apearName:{
         type:Boolean,
         require:true
-    },userType:{
+    },content:{
         type: String,
-        enum: ['User', 'Manager'],
-        default: 'User',
-    },diagnosis:{
+        require:true,
+    },enjoyService:{
 type:String
     }
     },
