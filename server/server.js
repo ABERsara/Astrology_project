@@ -12,9 +12,10 @@ app.use(cors(corsOptions))
 app.use(express.json())
 app.use(express.static("public"))
 app.get("/",(req,res)=>{
-res.send("homePage")
+res.send("HomePage")
 })
-
+app.use("/api/users",require("./routes/userRoutes"))
+app.use("/api/responses",require("./routes/responseRouter"))
 mongoose.connection.once("open",()=>{
     console.log("Connected to DB success")
     app.listen(PORT,()=>{

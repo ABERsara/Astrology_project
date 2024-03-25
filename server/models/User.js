@@ -28,7 +28,6 @@ const usersSchema=new mongoose.Schema(//הגדרת הסכמה
         default: 'User',
     },active:{
         type:Boolean,
-        required:true,
         default:true,
     }
     },
