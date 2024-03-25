@@ -1,6 +1,7 @@
 require("dotenv").config()
 const express=require("express")
 const cors=require("cors")
+const cookieParser=require("cookie-parser")
 const mongoose=require("mongoose")
 const corsOptions=require("./config/corsOptions")
 const connectDB=require("./config/connectDB")
@@ -9,6 +10,7 @@ const PORT=process.env.PORT || 2024
 connectDB()
 //middlware
 app.use(cors(corsOptions))
+app.use(cookieParser())
 app.use(express.json())
 app.use(express.static("public"))
 app.get("/",(req,res)=>{
