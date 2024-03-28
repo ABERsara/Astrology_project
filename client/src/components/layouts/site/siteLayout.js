@@ -1,8 +1,9 @@
 import {Outlet}from "react-router-dom"
-const siteLayout = () => {
+//תוכן האתר עצמו
+const SiteLayout = () => {
   return (
     <Outlet/>
   )
 }
 
-export default siteLayout
+export default SiteLayout
