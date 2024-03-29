@@ -19,16 +19,16 @@ const responsesSchema = new mongoose.Schema(//הגדרת הסכמה
         apearName: {
             type: Boolean,
             require: true,
-            default:true
+            default: true
         }, content: {
             type: String,
             require: true,
         }, enjoyService: {
             type: String
-        },allowed:{
+        }, allowed: {
             //האם מורשה לפרסם את התגובה
-            type:Boolean,
-            default:false
+            type: Boolean,
+            default: false
         }
     },
     { timestamps: true }

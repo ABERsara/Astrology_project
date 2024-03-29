@@ -26,8 +26,6 @@ const groupDiagnosisSchema = new mongoose.Schema(//הגדרת הסכמה
         {
             type:
                 [{
-                    name:
-                        { type: String },
                     diagnosis:
                     {
                         type: mongoose.Schema.Types.ObjectId,

@@ -14,11 +14,11 @@ const courseSchema = new mongoose.Schema(//הגדרת הסכמה
                 name: {
                     type: String,
                     required: true
-                }, recommendation: 
-                { 
-                    type: String, 
+                }, recommendation:
+                {
+                    type: String,
                     required: true
-                 }
+                }
             }
             ],
             default: []
@@ -32,8 +32,6 @@ const courseSchema = new mongoose.Schema(//הגדרת הסכמה
         }, participants: {
             type:
                 [{
-                    name:
-                        { type: String },
                     user:
                     {
                         type: mongoose.Schema.Types.ObjectId,
