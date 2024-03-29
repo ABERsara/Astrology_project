@@ -1,0 +1,35 @@
+.navbar{
+padding :20px;
+border-radius: 10px;
+background-color: var(--mainLight);
+display:flex;
+align-items: center;
+justify-content: space-between;
+}
+ /* .nav-title{
+font-weight: bold;
+} */
+.nav-menu{
+display: flex;
+gap:20px;
+align-items: center;
+}
+.nav-search{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background-color: var(--text);
+    padding: 10px;
+    border-radius: 10px;
+    color:var(--main)
+}
+.nav-input{
+background-color: transparent;
+border:none;
+color: var(--text);
+}
+.nav-icons{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}

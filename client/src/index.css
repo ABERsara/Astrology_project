@@ -1,6 +1,7 @@
 :root{
   /* משתנים שנשתמש באתר */
 --main:black;
+--mainLight:rgba(140, 135, 135, 0.517);
 --text:white;
 }
 *{

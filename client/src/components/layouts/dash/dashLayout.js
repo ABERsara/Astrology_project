@@ -2,7 +2,7 @@ import { Outlet } from "react-router-dom"
 import Navbar from "../../navbar/Navbar"
 import Sitebar from "../../sitebar/Sitebar"
 import Footer from "../../footer/Footer"
-
+import "./dash-layout.css"
 //ממשק מנהל
 const DashLayout = () => {
   return (
