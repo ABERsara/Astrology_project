@@ -9,6 +9,7 @@ const groupDiagnosisSchema = new mongoose.Schema(//הגדרת הסכמה
             required: true,
         }, numParticipants: {
             type: Number,
+            //min:10,?? איך כותבים את זה
             required: true,
         },
         adress: {

@@ -2,11 +2,11 @@ const express=require("express")
 const controller=require("../controllers/courseController")
 const router=express.Router();
 
-router.get("/",);
-router.get("/:id",);
-router.post("/",);
-router.put("/",userController.updateUser);
-router.delete("/",userController.deleteUser);
+router.get("/",controller.getCourses);
+router.get("/:id",controller.getCourse);
+router.post("/",controller.addCourse);
+router.put("/",controller.updateCourse);
+router.delete("/",controller.deleteCourse);
 
 
 

@@ -70,7 +70,7 @@ const addUser = async (req, res) => {
     }
 }
 const updateUser = async (req, res) => {
-    const { id, username, firstname, lastname, phone, email, password, imageUrl, active } = req.body
+    const { id, firstname, lastname, phone, email, password, imageUrl, active } = req.body
     //confirm data!
     if (!id || !firstname || !username || !email) {
         return res.status(400).json({
@@ -93,7 +93,7 @@ const updateUser = async (req, res) => {
         const hashPwd = await bcrypt.hash(password, 10)
         user.password = hashPwd
     }
-    user.username = username
+  
     user.firstname = firstname
     user.lastName = lastname
     user.phone = phone
