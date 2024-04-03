@@ -1,9 +1,12 @@
-//תפריט עליון של מנהל
+//תפריט עליון של מנהל/משתמש
 import "./navbar.css"
 import { MdDensityMedium, MdEmojiPeople, MdFace, MdOutlinePermIdentity, MdOutlineSearch } from "react-icons/md";
 const Navbar = () => {
   return (
     <div className="navbar">
+     <img className="logo" src="">
+
+      </img>
       <div className="nav-title">
       ראשי
       </div>

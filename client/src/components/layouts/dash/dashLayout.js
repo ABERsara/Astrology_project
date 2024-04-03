@@ -1,24 +1,27 @@
 import { Outlet } from "react-router-dom"
 import Navbar from "../../navbar/Navbar"
-import Sitebar from "../../sitebar/Sitebar"
+import Sidebar from "../../sidebar/Sidebar"
 import Footer from "../../footer/Footer"
 import "./dash-layout.css"
 //ממשק מנהל
 const DashLayout = () => {
   return (
     <div className="container">
+       {/* התפריט העליון */}
+       <Navbar/>
+      
+       <div className="content">
        <div className="menu"> 
        {/* התפריט בצד */}
-       <Sitebar/> 
+       <Sidebar/> 
        </div>
-       <div className="content">
-        {/* התפריט העליון */}
-        <Navbar/>
+       <div className="display">
         {/* תוכן האתר */}
         <Outlet/>
-        {/* תפריט תחתון */}
-        <Footer/>
+        </div>
         </div> 
+         {/* תפריט תחתון */}
+         <Footer/>
     </div>
   )
 }

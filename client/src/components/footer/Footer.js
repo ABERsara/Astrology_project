@@ -1,8 +1,11 @@
+import "./footer.css"
 //תפריט תחתון
 
 const Footer = () => {
   return (
-    <div>Footer</div>
+    <div className="footer">
+      <div className="footer-text">@all rights reserved</div>
+      </div>
   )
 }
 

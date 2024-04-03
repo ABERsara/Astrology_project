@@ -1,13 +1,18 @@
 .container{
 display: flex;
+flex-direction: column;
 }
 .menu{
-flex: 1;
 background-color:var(--mainLight) ;
+padding: 20px;
+flex:1;
+}
+.content{
+display: flex;
 padding: 20px;
 min-height: 100vh;
 }
-.content{
-flex: 4;
+.display{
+flex:4;
 padding: 20px;
 }
