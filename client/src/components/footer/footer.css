@@ -5,8 +5,6 @@
     margin-top: 5px;
     color:var(--text);
     padding: 10px;
-}
-.footer-text{
-    direction: ltr;
-    font-size: 15px;
+    height: 20vh;
+    
 }
