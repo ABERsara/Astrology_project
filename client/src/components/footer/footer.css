@@ -8,3 +8,6 @@
     height: 20vh;
     
 }
+ul{
+    list-style-type: none;
+}

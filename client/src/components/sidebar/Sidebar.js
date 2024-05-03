@@ -1,14 +1,45 @@
 import "./sidebar.css"
+import MenuLink from "../sidebar/MenuLink"
 //תפריט צד לאתר כולו
-
+import { MdAccountTree,MdEdit, MdHandyman,MdOutlineCurrencyExchange } from "react-icons/md";
 const Sidebar = () => {
   const menu=[
-    
-  ]
+{
+  title:"סקירה כללית על החשבון",
+  path:"/dash",
+  icon:<MdAccountTree />
+},{
+  title:"הסטוריית חיובים",
+  path:"/dash",
+  icon:<MdOutlineCurrencyExchange/>
+},{
+  title:"עריכת פרופיל",
+  path:"/dash",
+  icon:< MdHandyman/>
+},{
+  title:"שינוי סיסמה",
+  path:"/dash",
+  icon:<MdEdit/>
+}
 
+  ]
+const user={
+
+}
   
   return (
-    <div>Sidebar</div>
+    <div className="side-bar">
+      {/* <div className="user-side-bar"></div> */}
+   <ul className="menu-list">
+  
+    {menu.map(cat=>(
+
+   <MenuLink item={cat} key={cat.title}/> 
+  
+    ))}
+   
+   </ul>
+    </div>
   )
 }
 

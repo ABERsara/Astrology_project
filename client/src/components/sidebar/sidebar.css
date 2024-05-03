@@ -1,0 +1,19 @@
+.side-bar{
+    color:var(--mainText);
+    font-weight: bold;
+    font-size: 13px;
+    margin: 10px 0px;
+    
+}
+
+.menu-list{
+    
+flex-direction: column;
+    padding: 20px;
+    display: flex;
+    align-items: right;
+    gap: 10px;
+    margin: 5px 0px;
+    border-radius: 10px;
+
+}

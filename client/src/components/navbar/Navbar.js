@@ -9,7 +9,7 @@ const Navbar = () => {
 
         </img>
         <div className="nav-title">
-          האזור האישי
+          <a>אודות | אסטרולוגיה בתנ"ך | אבחון קבוצתי | קורסים | בלוג |יצירת קשר </a>
         </div>
         <div className="nav-menu">
           <div className="nav-search">
