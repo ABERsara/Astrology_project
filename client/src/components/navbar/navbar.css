@@ -44,7 +44,20 @@
     gap: 20px;
     align-items: center;
 }
-
+.logout-button{
+    padding: 20px;
+    margin: 5px 0px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 100%;
+    border-radius: 10px;
+    color: var(--text);
+}
+/* 
 .nav-search {
     display: flex;
     align-items: center;
@@ -59,7 +72,7 @@
     background-color: transparent;
     border: none;
     color: var(--text);
-}
+} */
 
 .nav-icons {
     display: flex;

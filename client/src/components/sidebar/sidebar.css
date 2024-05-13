@@ -1,19 +1,21 @@
-.side-bar{
-    color:var(--mainText);
+.side-bar {
+    color: var(--mainText);
     font-weight: bold;
     font-size: 13px;
     margin: 10px 0px;
-    
+
 }
 
-.menu-list{
-    
-flex-direction: column;
-    padding: 20px;
+
+.menu-link{
+    padding: 10px;
     display: flex;
-    align-items: right;
-    gap: 10px;
+    align-items: center;
+    gap: 20px;
     margin: 5px 0px;
     border-radius: 10px;
-
+}
+.menu-link:hover, .menu-link:active{
+    color: red;
+    background-color:var(--mainLight) ;
 }

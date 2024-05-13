@@ -1,0 +1,15 @@
+.search-button {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background-color: var(--text);
+    padding: 10px;
+    border-radius: 10px;
+    color: var(--main)
+}
+
+.search-input {
+    background-color: transparent;
+    border: none;
+    color: var(--text);
+}

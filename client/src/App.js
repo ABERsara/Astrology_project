@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route,Outlet } from "react-router-dom";
 import SiteLayout from "./components/layouts/site/SiteLayout"
 import DashLayout from "./components/layouts/dash/DashLayout"
 function App() {
@@ -11,8 +11,11 @@ function App() {
           <Route index element={<h1>site</h1>} />
           {/* בתוך הראוט של האתר  */}
           <Route path="/dash" element={<DashLayout />}>
-            {/*  ועודnavbar, sitebar האינדקס שלו שמכיל את כל ה*/}
+            {/*  ועודnavbar, sidebar האינדקס שלו שמכיל את כל ה*/}
             <Route index element={<h1>DashBoard</h1>} />
+            <Route path="users" element={<Outlet/>}>
+              {/* <Route index element={<UsersList/>}/> */}
+            </Route>
           </Route>
         </Route>
       </Routes>

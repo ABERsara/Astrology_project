@@ -1,6 +1,7 @@
 //תפריט עליון של מנהל/משתמש
+import Search from "../search/Search";
 import "./navbar.css"
-import { MdDensityMedium, MdEmojiPeople, MdFace, MdOutlinePermIdentity, MdOutlineSearch } from "react-icons/md";
+import { MdLogout,MdDensityMedium, MdEmojiPeople, MdFace, MdOutlinePermIdentity, MdOutlineSearch } from "react-icons/md";
 const Navbar = () => {
   return (
     <div className="navbarBox">
@@ -12,10 +13,15 @@ const Navbar = () => {
           <a>אודות | אסטרולוגיה בתנ"ך | אבחון קבוצתי | קורסים | בלוג |יצירת קשר </a>
         </div>
         <div className="nav-menu">
-          <div className="nav-search">
+          {/* <div className="nav-search">
             <MdOutlineSearch />
             <input type="text" placeholder="Search..." className="nav-input" />
-          </div>
+          </div> */}
+          <button className="logout-button">
+            <MdLogout />
+            יציאה
+          </button>
+          <Search placeholder="...Search" />
           <div className="nav-icons">
             <MdDensityMedium />
             <MdOutlinePermIdentity />

@@ -2,7 +2,7 @@ import React from 'react'
 import {NavLink}from "react-router-dom"
 const MenuLink = ({item}) => {
   return (
-    <NavLink to={item.path} classname="menu-link">
+    <NavLink to={item.path} className="menu-link">
       {item.icon}
       {item.title}
     </NavLink>
