@@ -6,19 +6,19 @@ const Sidebar = () => {
   const menu=[
 {
   title:"סקירה כללית על החשבון",
-  path:"/dash",
+  path:"/dash/user/accountOverview",
   icon:<MdAccountTree />
 },{
   title:"הסטוריית חיובים",
-  path:"/dash",
+  path:"/dash/user/chargeHistory",
   icon:<MdOutlineCurrencyExchange/>
 },{
   title:"עריכת פרופיל",
-  path:"/dash",
+  path:"/dash/user/editProfile",
   icon:< MdHandyman/>
 },{
   title:"שינוי סיסמה",
-  path:"/dash",
+  path:"/dash/user/changePassword",
   icon:<MdEdit/>
 }
 

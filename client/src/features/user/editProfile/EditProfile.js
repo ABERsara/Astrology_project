@@ -1,0 +1,9 @@
+import "./edit-Profile.css"
+
+const EditProfile = () => {
+  return (
+    <div>EditProfile</div>
+  )
+}
+
+export default EditProfile

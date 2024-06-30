@@ -1,4 +1,4 @@
-import React from 'react'
+
 import "./account-overview.css"
 const AccountOverview = () => {
   return (
