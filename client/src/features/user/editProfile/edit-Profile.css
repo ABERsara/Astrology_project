@@ -1,0 +1,28 @@
+.edit-profile{
+    background-color:var(--mainLight);
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+.edit-profile-form{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.edit-profile-form input{
+    padding: 30px;
+    background-color:var(--main);
+    color: var(--text);
+    border-radius: 5px;
+    margin-bottom: 30px;
+    width: 45%;
+}
+.edit-profile-form button{
+width: 100%;
+margin: 30px;
+background-color: var(--main);
+color: var(--text);
+border: none;
+border-radius: 5px;
+cursor: pointer;
+}
