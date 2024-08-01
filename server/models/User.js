@@ -31,6 +31,9 @@ const usersSchema = new mongoose.Schema(//הגדרת הסכמה
         }, active: {
             type: Boolean,
             default: true,
+        },diagnosis:{
+            type:mongoose.Schema.Types.ObjectId,
+            ref:'Diagnosis'
         }
     },
     { timestamps: true }

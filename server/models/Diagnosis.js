@@ -7,10 +7,6 @@ const diagnosisSchema = new mongoose.Schema(//הגדרת הסכמה
             type: Number,
             required: true,
             unique: true
-        }, registerUser: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'User',
-            required: true,
         },
         birthdate: {
             type: Date,

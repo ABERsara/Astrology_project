@@ -32,9 +32,9 @@ const getDiagnosis=async(req,res)=>{
 }
 }
 const addDiagnosis=async(req,res)=>{
-    const {IdentificationNum,registerUser,birthdate,birthTime,utc,diagnosisType,diagnosis}=req.body
+    const {IdentificationNum,birthdate,birthTime,utc,diagnosisType,diagnosis}=req.body
  //confirm data!
- if (!IdentificationNum || !registerUser || !birthdate || !utc ||!diagnosisType) {
+ if (!IdentificationNum || !birthdate || !utc ||!diagnosisType) {
     return res.status(400).json({
         error:true,
          message: 'IdentificationNum, registerUser,birthdate and utc are required',

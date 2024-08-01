@@ -16,6 +16,7 @@ app.use(express.static("public"))
 app.get("/",(req,res)=>{
 res.send("HomePage")
 })
+app.use("/api/auth",require("./routes/authRouter"))
 app.use("/api/users",require("./routes/userRoutes"))
 app.use("/api/responses",require("./routes/responseRouter"))
 mongoose.connection.once("open",()=>{
