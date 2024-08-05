@@ -1,6 +1,6 @@
 import "./sidebar.css"
 import MenuLink from "../sidebar/MenuLink"
-//תפריט צד לאתר כולו
+//תפריט צד לאזור האישי כולו
 import { MdAccountTree,MdEdit, MdHandyman,MdOutlineCurrencyExchange } from "react-icons/md";
 const Sidebar = () => {
   const menu=[
