@@ -5,7 +5,13 @@ import EditProfile from "./features/user/editProfile/EditProfile";
 import AccountOverview from "./features/user/accountOverview/AccountOverview";
 import ChargeHistory from "./features/user/chargeHistory/ChargeHistory";
 import ChangePassword from "./features/user/changePassword/ChangePassword";
-import ViewUsers from "./features/manager/viewUsers/ViewUsers";
+import UploadDiagnosis from "./features/manager/uploadDiagnosis/UploadDiagnosis";
+import ViewUsers from "./features/manager/viewUsers/ViewUsers"
+import ViewBlogs from "./features/blogs/viewBlogs/ViewBlogs";
+import ViewSingleBlog from "./features/blogs/viewSingleBlog/ViewSingleBlog";
+import AddBlog from "./features/blogs/addBlog/AddBlog";
+import EditBlog from "./features/blogs/editBlog/EditBlog";
+import DeleteBlog from "./features/blogs/deleteBlog/DeleteBlog";
 function App() {
   return (
     <Router>
@@ -20,7 +26,13 @@ function App() {
             <Route index element={<h1>DashBoard</h1>} />
             <Route path="manager" element={<Outlet />}>
                <Route index element={<ViewUsers/>}/> 
+               <Route  path="uploadDiagnosis" element={<UploadDiagnosis/>}/>
                <Route path="viewUsers" element={<ViewUsers/>} />
+               <Route path="viewBlogs" element={<ViewBlogs/>}/>
+               <Route path="viewSingleBlogs" element={<ViewSingleBlog/>}/>
+               <Route path="addBlog" element={<AddBlog/>}/>
+               <Route path="editBlog" element={<EditBlog/>}/>
+               <Route path="deleteBlog" element={<DeleteBlog/>}/>
             </Route>
             <Route path="user" element={<Outlet />}>
             <Route index element={<h1>user</h1>}/>
@@ -28,6 +40,8 @@ function App() {
               <Route path="chargeHistory" element={<ChargeHistory />} />
               <Route path="accountOverview" element={<AccountOverview />} />
               <Route path="changePassword" element={<ChangePassword />} />
+              <Route path="viewBlogs" element={<ViewBlogs/>}/>
+              <Route path="viewSingleBlogs" element={<ViewSingleBlog/>}/>
             </Route>
           </Route>
         </Route>

@@ -1,4 +1,4 @@
-import "./viewUsers.css"
+import "./view-users.css"
 
 import Search from "../../../components/search/Search"
 import { Link } from "react-router-dom"
