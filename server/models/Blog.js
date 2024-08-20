@@ -1,0 +1,21 @@
+const mongoose = require('mongoose')//יבוא הספרייה
+
+const blogSchema = new mongoose.Schema(//הגדרת הסכמה
+    {
+        timestampsitle: {
+            type: String,
+            required: true,
+            unique: true
+        }, blogUrl: {
+            type: String,
+        },
+        //הבלוג עצמו
+        blogContent: {
+            type: String
+        }
+    },
+    { timestamps: true }
+)
+
+//ייצוא
+module.exports = mongoose.model('Blog', blogSchema)

@@ -32,7 +32,7 @@ const getUser = async (req, res) => {
     }
 }
 const addUser = async (req, res) => {
-    const { username, firstname, lastname, phone, email, password, imageUrl, active } = req.body
+    const { username, firstname, lastname, phone, email, password, imageUrl, active,diagnosis } = req.body
     //confirm data!
     if (!firstname || !username || !email) {
         return res.status(400).json({
@@ -54,7 +54,7 @@ const addUser = async (req, res) => {
     const hashPwd = await bcrypt.hash(password, 10)
     try {
         // Create and store the new user
-        const user = await User.create({ username, firstname, lastname, phone, email, password: hashPwd, imageUrl, active });
+        const user = await User.create({ username, firstname, lastname, phone, email, password: hashPwd, imageUrl, active,diagnosis });
         res.status(201).json({
             error: false,
             message: 'New user created',
@@ -70,7 +70,7 @@ const addUser = async (req, res) => {
     }
 }
 const updateUser = async (req, res) => {
-    const { id, firstname, lastname, phone, email, password, imageUrl, active } = req.body
+    const { id, firstname, lastname, phone, email, password, imageUrl, active,diagnosis } = req.body
     //confirm data!
     if (!id || !firstname || !username || !email) {
         return res.status(400).json({
@@ -100,6 +100,7 @@ const updateUser = async (req, res) => {
     user.email = email
     user.imageUrl = imageUrl
     user.active = active
+    user.diagnosis=diagnosis
     //save the changes
     const updatedUser = await user.save()
     res.json({
