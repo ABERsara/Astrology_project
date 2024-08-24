@@ -24,24 +24,27 @@ function App() {
           <Route path="/dash" element={<DashLayout />}>
             {/*  ועודnavbar, sidebar האינדקס שלו שמכיל את כל ה*/}
             <Route index element={<h1>DashBoard</h1>} />
+            <Route path="api/blogs" element={<Outlet />}>
+              <Route path="view" element={<ViewBlogs />} />
+              <Route path="add" element={<AddBlog />} />
+              <Route path="edit" element={<EditBlog />} />
+              <Route path="delete" element={<DeleteBlog />} />
+              <Route path=":blogId" element={<ViewSingleBlog />} />
+            </Route>
             <Route path="manager" element={<Outlet />}>
-               <Route index element={<ViewUsers/>}/> 
-               <Route  path="uploadDiagnosis" element={<UploadDiagnosis/>}/>
-               <Route path="viewUsers" element={<ViewUsers/>} />
-               <Route path="viewBlogs" element={<ViewBlogs/>}/>
-               <Route path="viewSingleBlogs" element={<ViewSingleBlog/>}/>
-               <Route path="addBlog" element={<AddBlog/>}/>
-               <Route path="editBlog" element={<EditBlog/>}/>
-               <Route path="deleteBlog" element={<DeleteBlog/>}/>
+              <Route index element={<ViewUsers />} />
+              <Route path="uploadDiagnosis" element={<UploadDiagnosis />} />
+              <Route path="viewUsers" element={<ViewUsers />} />
+              <Route path="viewSingleBlogs" element={<ViewSingleBlog />} />
+              <Route path="deleteBlog" element={<DeleteBlog />} />
             </Route>
             <Route path="user" element={<Outlet />}>
-            <Route index element={<h1>user</h1>}/>
+              <Route index element={<h1>user</h1>} />
               <Route path="editProfile" element={<EditProfile />} />
               <Route path="chargeHistory" element={<ChargeHistory />} />
               <Route path="accountOverview" element={<AccountOverview />} />
               <Route path="changePassword" element={<ChangePassword />} />
-              <Route path="viewBlogs" element={<ViewBlogs/>}/>
-              <Route path="viewSingleBlogs" element={<ViewSingleBlog/>}/>
+              <Route path="viewSingleBlogs" element={<ViewSingleBlog />} />
             </Route>
           </Route>
         </Route>

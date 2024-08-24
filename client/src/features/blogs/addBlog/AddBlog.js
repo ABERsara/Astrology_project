@@ -8,25 +8,33 @@ const AddBlog = () => {
   const navigate = useNavigate()
   useEffect(()=>{
     if(isSuccess){
-      navigate("/dash/blogs")
+      navigate("/dash/api/blogs/view")
     }
 
   }, [isSuccess])
-  const formSubmit = (e) =>{
-    e.preventDefault()
-      const data = new FormData(e.target)
-      const blogObject =Object.fromEntries(data.entries())
-      addBlog(blogObject)
-  }
+  const formSubmit = (e) => {
+    e.preventDefault();
+    const data = new FormData(e.target);
+    const blogObject = Object.fromEntries(data.entries());
+
+    // בדיקה אם קובץ נבחר בשדה blogUrl
+    if (!blogObject.blogUrl || typeof blogObject.blogUrl === 'object') {
+        blogObject.blogUrl = ''; // הגדר כמחרוזת ריקה אם לא נבחר קובץ
+    }
+
+    console.log("Data to be sent:", blogObject); // הדפס את הנתונים כדי לוודא שהם נכונים
+    addBlog(blogObject);
+}
+
   return (
     <div className="add-blog-container">
         <form onSubmit={formSubmit} className="add-blog-form">
-            <input type="text" required name="title" placeholder="כותרת" />
-            <input type="text" required name="content" placeholder="תוכן" />
-            <input type="file"  name="blog"/>
+        <input type="text" required name="title" placeholder="כותרת" />
+<input type="text" required name="blogContent" placeholder="תוכן" />
+<input type="file"  name="blogUrl"/>
+
             <button  type="submit">שלח</button>
         </form>
-
     </div>
   )
 }
