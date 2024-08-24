@@ -31,34 +31,63 @@ const getBlog=async(req,res)=>{
     return res.status(500).json({message:err})
 }
 }
-const addBlog=async(req,res)=>{
-    const {title,blogUrl,blogContent}=req.body
- //confirm data!
- if (!title || !blogUrl ) {
-    return res.status(400).json({
-        error:true,
-         message: 'title and blogUrl are required',
-        data:null })
+// const addBlog=async(req,res)=>{
+//     const {title,blogUrl,blogContent}=req.body
+//  //confirm data!
+//  if (!title || !blogUrl ) {
+//     return res.status(400).json({
+//         error:true,
+//          message: 'title and blogUrl are required',
+//         data:null })
+// }
+// try {
+//     // Create and store the new blog
+//     const blog = await Blog.create({title,blogUrl,blogContent});
+//     res.status(201).json({ 
+//         error:false,
+//         message: 'New blog created',
+//         data: blog });
+// } catch (error) {
+//     console.error('Error creating blog:', error);
+//     res.status(400).json({ 
+//         error:true,
+//         message: error,
+//     data:null});
+// }
+// }
+const addBlog = async (req, res) => {
+    console.log("Request received:", req.body); // הדפס את הנתונים המתקבלים בשרת
+    const { title, blogUrl, blogContent } = req.body;
+
+    if (!title ) {
+        return res.status(400).json({
+            error: true,
+            message: 'title and blogUrl are required',
+            data: null
+        });
+    }
+
+    try {
+        const blog = await Blog.create({ title, blogUrl, blogContent });
+        res.status(201).json({
+            error: false,
+            message: 'New blog created',
+            data: blog
+        });
+    } catch (error) {
+        console.error('Error creating blog:', error);
+        res.status(400).json({
+            error: true,
+            message: error.message,
+            data: null
+        });
+    }
 }
-try {
-    // Create and store the new blog
-    const blog = await Blog.create({title,blogUrl,blogContent});
-    res.status(201).json({ 
-        error:false,
-        message: 'New blog created',
-        data: blog });
-} catch (error) {
-    console.error('Error creating blog:', error);
-    res.status(400).json({ 
-        error:true,
-        message: error,
-    data:null});
-}
-}
+
 const updateBlog=async(req,res)=>{
     const {id,title,blogUrl,blogContent}=req.body
     //confirm data!
-    if (!id||!title|| !blogUrl  ) {
+    if (!id||!title  ) {
        return res.status(400).json({
            error:true,
             message: 'id,blogUrl and title are required',

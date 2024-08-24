@@ -2,7 +2,7 @@ const mongoose = require('mongoose')//יבוא הספרייה
 
 const blogSchema = new mongoose.Schema(//הגדרת הסכמה
     {
-        timestampsitle: {
+        title: {
             type: String,
             required: true,
             unique: true
