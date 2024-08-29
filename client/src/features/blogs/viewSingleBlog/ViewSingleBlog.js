@@ -20,7 +20,6 @@ const ViewSingleBlog = () => {
   }
   const formSubmit =async (e) =>{
     e.preventDefault()
-    console.log("Form submitted"); 
     const data = new FormData(e.target)
     const blogObject =Object.fromEntries(data.entries())
     console.log("Blog object:", blogObject);
