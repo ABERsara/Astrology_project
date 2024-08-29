@@ -111,28 +111,29 @@ const updateBlog=async(req,res)=>{
     massage:`${updatedBlog.title} updated`,
 data:updateBlog})
 }
-const deleteBlog=async(req,res)=>{
-    const { id } = req.body;
-    if(!id){
+const deleteBlog = async (req, res) => {
+    const { id } = req.params; // Retrieve id from params instead of body
+    if(!id) {
         return res.status(400).json({
-            error:true,
-            massage:"Id is required",
-            data:null
-        })
+            error: true,
+            message: "Id is required",
+            data: null
+        });
     }
-    const blog=await Blog.findById(id).exec()
-    if(!blog){
+    const blog = await Blog.findById(id).exec();
+    if (!blog) {
         return res.status(400).json({
-         error:true,
-         message:"Blog not found",
-     data:null})
+            error: true,
+            message: "Blog not found",
+            data: null
+        });
     }
-    const deletedBlog=await blog.deleteOne()
+    const deletedBlog = await blog.deleteOne();
     res.status(200).json({
-        error:false,
-        massage:"",
-        data:deletedBlog
-    })
+        error: false,
+        message: "",
+        data: deletedBlog
+    });
 }
 module.exports={
     getBlog,
