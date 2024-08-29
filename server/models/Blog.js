@@ -10,7 +10,7 @@ const blogSchema = new mongoose.Schema(//הגדרת הסכמה
             type: String,
         },
         //הבלוג עצמו
-        blogContent: {
+   content: {
             type: String
         }
     },

@@ -32,7 +32,7 @@ const getBlog=async(req,res)=>{
 }
 }
 // const addBlog=async(req,res)=>{
-//     const {title,blogUrl,blogContent}=req.body
+//     const {title,blogUrl,content}=req.body
 //  //confirm data!
 //  if (!title || !blogUrl ) {
 //     return res.status(400).json({
@@ -42,7 +42,7 @@ const getBlog=async(req,res)=>{
 // }
 // try {
 //     // Create and store the new blog
-//     const blog = await Blog.create({title,blogUrl,blogContent});
+//     const blog = await Blog.create({title,blogUrl,content});
 //     res.status(201).json({ 
 //         error:false,
 //         message: 'New blog created',
@@ -57,7 +57,7 @@ const getBlog=async(req,res)=>{
 // }
 const addBlog = async (req, res) => {
     console.log("Request received:", req.body); // הדפס את הנתונים המתקבלים בשרת
-    const { title, blogUrl, blogContent } = req.body;
+    const { title, blogUrl, content } = req.body;
 
     if (!title ) {
         return res.status(400).json({
@@ -68,7 +68,7 @@ const addBlog = async (req, res) => {
     }
 
     try {
-        const blog = await Blog.create({ title, blogUrl, blogContent });
+        const blog = await Blog.create({ title, blogUrl, content });
         res.status(201).json({
             error: false,
             message: 'New blog created',
@@ -85,7 +85,7 @@ const addBlog = async (req, res) => {
 }
 
 const updateBlog=async(req,res)=>{
-    const {id,title,blogUrl,blogContent}=req.body
+    const {id,title,blogUrl,content}=req.body
     //confirm data!
     if (!id||!title  ) {
        return res.status(400).json({
@@ -103,7 +103,7 @@ const updateBlog=async(req,res)=>{
    }
    blog.title=title
    blog.blogUrl=blogUrl
-   blog.blogContent=blogContent
+   blog.content=content
    //save the changes
    const updatedBlog=await blog.save()
    res.json({
