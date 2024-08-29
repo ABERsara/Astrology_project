@@ -1,45 +1,45 @@
 import apiSlice from "../../app/apiSlice";
 
 const blogsApiSlice = apiSlice.injectEndpoints({
-    endpoints: (build) =>({
-        getAllBlogs:build.query({
-            query:()=>({
+    endpoints: (build) => ({
+        getAllBlogs: build.query({
+            query: () => ({
                 url: "/api/blogs"
             }),
-            providesTags:["Blogs"]
+            providesTags: ["Blogs"]
 
         }),
-        addBlog:build.mutation({
-            query:(blog) =>({
+        addBlog: build.mutation({
+            query: (blog) => ({
                 url: "/api/blogs",
                 method: "POST",
                 body: blog
             }),
             invalidatesTags: ["Blogs"]
         }),
-        updateBlog:build.mutation({
-            query:(blog) =>({
+        updateBlog: build.mutation({
+            query: (blog) => ({
                 url: "/api/blogs",
                 method: "PUT",
                 body: blog
             }),
             invalidatesTags: ["Blogs"]
         }),
-        deleteBlog:build.mutation({
-            query:({_id}) =>({
+        deleteBlog: build.mutation({
+            query: ({ _id }) => ({
                 url: "/api/blogs",
                 method: "Delete",
-                body: {_id}
+                body: { _id }
             }),
             invalidatesTags: ["Blogs"]
         })
     })
-    
+
 })
 
 export const { useGetAllBlogsQuery,
-     useAddBlogMutation ,
-      useUpdateBlogMutation,
-      useDeleteBlogMutation
+    useAddBlogMutation,
+    useUpdateBlogMutation,
+    useDeleteBlogMutation
 
-    }  = blogsApiSlice
+} = blogsApiSlice

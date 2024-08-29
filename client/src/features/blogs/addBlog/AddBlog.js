@@ -30,7 +30,7 @@ const AddBlog = () => {
     <div className="add-blog-container">
         <form onSubmit={formSubmit} className="add-blog-form">
         <input type="text" required name="title" placeholder="כותרת" />
-<input type="text" required name="blogContent" placeholder="תוכן" />
+<input type="text" required name="content" placeholder="תוכן" />
 <input type="file"  name="blogUrl"/>
 
             <button  type="submit">שלח</button>
