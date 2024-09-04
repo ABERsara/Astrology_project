@@ -11,7 +11,7 @@ const usersSchema = new mongoose.Schema(//הגדרת הסכמה
             type: String,
             required: true
         },
-        lastName: {
+        lastname: {
             type: String,
         }, phone: {
             type: String,
@@ -21,7 +21,7 @@ const usersSchema = new mongoose.Schema(//הגדרת הסכמה
         }, password: {
             type: String,
             required: true
-        }, imageUrl: {
+        }, image: {
             type: String
         }, permission: {
             type: String,

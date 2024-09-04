@@ -32,7 +32,7 @@ const getUser = async (req, res) => {
     }
 }
 const addUser = async (req, res) => {
-    const { username, firstname, lastname, phone, email, password, imageUrl, active,diagnosis } = req.body
+    const { username, firstname, lastname, phone, email, password, image, active,diagnosis } = req.body
     //confirm data!
     if (!firstname || !username || !email) {
         return res.status(400).json({
@@ -54,11 +54,11 @@ const addUser = async (req, res) => {
     const hashPwd = await bcrypt.hash(password, 10)
     try {
         // Create and store the new user
-        const user = await User.create({ username, firstname, lastname, phone, email, password: hashPwd, imageUrl, active,diagnosis });
+        const user = await User.create({ username, firstname, lastname, phone, email, password: hashPwd, image, active,diagnosis });
         res.status(201).json({
             error: false,
             message: 'New user created',
-            data: { _id: user._id, firstname: user.firstname, lastname: user.lastName }
+            data: { _id: user._id, firstname: user.firstname, lastname: user.lastname }
         });
     } catch (error) {
         console.error('Error creating user:', error);
@@ -70,7 +70,7 @@ const addUser = async (req, res) => {
     }
 }
 const updateUser = async (req, res) => {
-    const { id, firstname, lastname, phone, email, password, imageUrl, active,diagnosis } = req.body
+    const { id,username, firstname, lastname, phone, email, password, image, active,diagnosis } = req.body
     //confirm data!
     if (!id || !firstname || !username || !email) {
         return res.status(400).json({
@@ -95,10 +95,10 @@ const updateUser = async (req, res) => {
     }
   
     user.firstname = firstname
-    user.lastName = lastname
+    user.lastname = lastname
     user.phone = phone
     user.email = email
-    user.imageUrl = imageUrl
+    user.image = image
     user.active = active
     user.diagnosis=diagnosis
     //save the changes
@@ -106,7 +106,7 @@ const updateUser = async (req, res) => {
     res.json({
         error: false,
         massage: `${updatedUser.firstname} updated`,
-        data: { _id: user._id, firstname: user.firstname, lastname: user.lastName }
+        data: { _id: user._id, firstname: user.firstname, lastname: user.lastname }
     });
 
 }
@@ -133,7 +133,7 @@ const deleteUser = async (req, res) => {
         res.status(200).json({
             error: false,
             massage: "",
-            data: { _id: user._id, firstname: user.firstname, lastname: user.lastName }
+            data: { _id: user._id, firstname: user.firstname, lastname: user.lastname }
         })
     }
     else {

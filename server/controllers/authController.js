@@ -35,13 +35,16 @@ const login = async (req, res) => {
             data: null
         }) 
     }
-    require('crypto').randomBytes(64).toString('hex')
+    //ע"מ לקודד סיסמה מורכבת
+    // require('crypto').randomBytes(64).toString('hex')
     //Give the token to the user
     const userInfo={
         username:foundUser.username,
         firstname:foundUser.firstname,
-        lastName: foundUser.lastName,
-        imageUrl:foundUser.imageUrl,
+        lastname: foundUser.lastname,
+        //is admin or uder?
+        permission:foundUser.permission,
+        image:foundUser.image,
         diagnosis:foundUser.diagnosis
     }
 
@@ -50,7 +53,9 @@ const login = async (req, res) => {
     const refreshToken=jwt.sign({username:foundUser.username},process.env.REFRESH_TOKEN,{expiresIn:"7d"})
 
     res.cookie("jwt",refreshToken,{
+        //האם רק אותו דומיין
         httpOnly:true,
+        //7 ימים
         maxAge:7*24*60*60*1000
     })
 
@@ -70,7 +75,7 @@ const refresh=async (req,res)=>{
     const refreshToken = cookies.jwt
 
     jwt.verify(refreshToken,
-        process.env.REFRESH_TOKEN_SECRET, 
+        process.env.REFRESH_TOKEN, 
         async (err,decode) =>{
             if(err){
                 return res.status(403).json({
@@ -82,13 +87,15 @@ const refresh=async (req,res)=>{
             const foundUser = await User.findOne({username: decode.username,active:true}).populate("diagnosis", {diagnosis:1}).lean()
             const userInfo  = {
                 _id: foundUser._id,
-                username: foundUser.username,
-                firstname: foundUser.firstname,
-                imageUrl:foundUser.imageUrl,
-        diagnosis:foundUser.diagnosis
+                username:foundUser.username,
+                firstname:foundUser.firstname,
+                lastName: foundUser.lastname,
+                permission:foundUser.permission,
+                image:foundUser.image,
+                diagnosis:foundUser.diagnosis
             }
         
-            const accessToken = jwt.sign(userInfo, process.env.ACCESS_TOKEN_SECRET, {expiresIn: '15m'})
+            const accessToken = jwt.sign(userInfo, process.env.ACCESS_TOKEN, {expiresIn: '15m'})
         
             res.json({accessToken})
         })
