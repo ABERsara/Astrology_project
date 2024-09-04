@@ -1,0 +1,40 @@
+/* עיצוב למכולה הראשית */
+.home-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+}
+
+/* עיצוב לכותרת */
+.home-title {
+    font-size: 3em;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* עיצוב לקישורים */
+.home-links {
+    display: flex;
+    gap: 20px; /* מרווח בין הקישורים */
+}
+
+.home-link {
+    padding: 10px 20px;
+    font-size: 1.2em;
+    color: white;
+    background-color: #007BFF; /* צבע רקע כחול */
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.home-link:hover {
+    background-color: #0056b3; /* צבע רקע כהה יותר */
+}
+
+.home-link:active {
+    background-color: #004085; /* צבע רקע כהה יותר בלחיצה */
+}

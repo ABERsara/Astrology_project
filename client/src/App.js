@@ -12,6 +12,9 @@ import ViewSingleBlog from "./features/blogs/viewSingleBlog/ViewSingleBlog";
 import AddBlog from "./features/blogs/addBlog/AddBlog";
 import EditBlog from "./features/blogs/editBlog/EditBlog";
 import DeleteBlog from "./features/blogs/deleteBlog/DeleteBlog";
+import HomePage from "./features/homePage/HomePage";
+import RegisterUser from "./features/user/registration/RegisterUser";
+import PrivateZone from "./features/user/privateZone/PrivateZone";
 function App() {
   return (
     <Router>
@@ -19,7 +22,8 @@ function App() {
         {/*ראשי למערכת route */}
         <Route path="/" element={<SiteLayout />}>
           {/*האינדקס שלו*/}
-          <Route index element={<h1>site</h1>} />
+          <Route index element={<HomePage/>} />
+          <Route path="register" element={<RegisterUser/>}/>
           {/* בתוך הראוט של האתר  */}
           <Route path="/dash" element={<DashLayout />}>
             {/*  ועודnavbar, sidebar האינדקס שלו שמכיל את כל ה*/}
@@ -39,7 +43,7 @@ function App() {
               <Route path="deleteBlog" element={<DeleteBlog />} />
             </Route>
             <Route path="user" element={<Outlet />}>
-              <Route index element={<h1>user</h1>} />
+              <Route index element={<PrivateZone/>} />
               <Route path="editProfile" element={<EditProfile />} />
               <Route path="chargeHistory" element={<ChargeHistory />} />
               <Route path="accountOverview" element={<AccountOverview />} />
