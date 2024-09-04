@@ -31,7 +31,7 @@ const userApiSlice = apiSlice.injectEndpoints(
                 query: (user) => ({
                     url: "api/users",
                     method:"DELETE",
-                    body:{_id}
+                    body:user
                 }),
                 invalidatesTags:["users"]
             }),

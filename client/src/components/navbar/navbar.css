@@ -26,10 +26,10 @@
 .nav-logo {
     border-radius: 5px;
     background-color: var(--text);
-    min-height: 70px;
-    min-width: 70px;
+    height: 70px;
+    width: 70px;
     margin-top: 30px;
-    padding-top: 30px;
+    padding-top: 10px;
     z-index: 100;
     position: fixed;
 }

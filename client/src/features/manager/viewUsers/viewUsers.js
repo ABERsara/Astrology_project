@@ -1,33 +1,27 @@
 import "./view-users.css"
-
+import { useGetAllUsersQuery } from "../../user/userApiSlice"
 import Search from "../../../components/search/Search"
-import { Link } from "react-router-dom"
-import React from 'react'
+import { Link,useNavigate } from "react-router-dom"
+import { useEffect } from 'react'
+import { useState } from 'react';
+import { format } from 'date-fns';
 
 const ViewUsers = () => {
 
+const {data: usersObject,isError,error,isLoading,isSuccess}= useGetAllUsersQuery()
+const navigate=useNavigate()
 
-
-  const users = [{
-    _id: 1,
-    username: "Plony123",
-    firstname: "פלוני",
-    lastName: "אלמוני"
-    , phone: "123"
-    , email: "Plony123@gmail.com"
-,    imageUrl: "",
-    permission: 'User',
-    active: true
-  }]
-
+if (isLoading) return <h1>Loading ...</h1>
+  if (isError) return <h1>{JSON.stringify(error)}</h1>
 
   return (
 
     <div className="users-list">
       <div className="users-list-search">
         <Search placeholder={"חיפוש לפי שם משתמש"} />
-        {/* <Link/> */}
+       
         <table className="users-table" >
+          
           <thead>
             <tr>
               <td>שם מלא</td>
@@ -36,15 +30,16 @@ const ViewUsers = () => {
               <td>אימייל</td>
               <td>הרשאה</td>
               <td>פעיל?</td>
+              <td >נרשם לאתר בתאריך?</td>
               <td>פעולות</td>
             </tr>
           </thead>
           <tbody>
-            {users.map(user => (
+            {usersObject.data?.map(user => (
               <tr key={user._id}>
                 <td>
                   <div className="users-details">
-                    <img src={user.imageUrl || ""} alt="" width={40} height={40} className="users-details-img" />
+                    <img src={user.imageUrl || "noavatar.png"} alt="" width={40} height={40} className="users-details-img" />
                     {user.firstname + " " + user.lastName}
                   </div>
                 </td>
@@ -61,6 +56,7 @@ const ViewUsers = () => {
                 <td>
                   {user.active ? "פעיל" : "לא פעיל"}
                 </td>
+                <td>{format(user.createdAt.slice(0,10), 'dd-MM-yyyy')}</td>
                 <td>
                   <Link to={`dash/users/${user._id}`}>
                     צפיה

@@ -6,13 +6,14 @@ const blogSchema = new mongoose.Schema(//הגדרת הסכמה
             type: String,
             required: true,
             unique: true
-        }, blogUrl: {
+        },//הבלוג עצמו
+        content: {
+            type: String
+        },
+        file: {
             type: String,
         },
-        //הבלוג עצמו
-   content: {
-            type: String
-        }
+
     },
     { timestamps: true }
 )

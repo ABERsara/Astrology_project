@@ -18,8 +18,8 @@ const AddBlog = () => {
     const blogObject = Object.fromEntries(data.entries());
 
     // בדיקה אם קובץ נבחר בשדה blogUrl
-    if (!blogObject.blogUrl || typeof blogObject.blogUrl === 'object') {
-        blogObject.blogUrl = ''; // הגדר כמחרוזת ריקה אם לא נבחר קובץ
+    if (!blogObject.file || typeof blogObject.file === 'object') {
+        blogObject.file = ''; // הגדר כמחרוזת ריקה אם לא נבחר קובץ
     }
 
     console.log("Data to be sent:", blogObject); // הדפס את הנתונים כדי לוודא שהם נכונים
@@ -31,7 +31,7 @@ const AddBlog = () => {
         <form onSubmit={formSubmit} className="add-blog-form">
         <input type="text" required name="title" placeholder="כותרת" />
 <input type="text" required name="content" placeholder="תוכן" />
-<input type="file"  name="blogUrl"/>
+<input type="file"  name="file"/>
 
             <button  type="submit">שלח</button>
         </form>

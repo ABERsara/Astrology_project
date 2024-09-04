@@ -2,34 +2,36 @@ import "./view-blogs.css"
 import Search from "../../../components/search/Search"
 import { useGetAllBlogsQuery, useDeleteBlogMutation } from "../blogsApiSlice"
 import { Link, useNavigate } from "react-router-dom"
-import { useEffect } from 'react'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import EditBlogButton from "../editBlog/EditBlogButton"
 
 const ViewBlogs = () => {
-  const { data: blogsObject, isError, error, isLoading, isSuccess } = useGetAllBlogsQuery()
-  const navigate = useNavigate()
+  const { data: blogsObject, isError, error, isLoading } = useGetAllBlogsQuery();
+  const navigate = useNavigate();
   const [isDeleteClicked, setIsDeleteClicked] = useState(false);
-  const [deleteBlog, { isSuccess: isDeleteSuccess }] = useDeleteBlogMutation()
+  const [deleteBlog, { isSuccess: isDeleteSuccess }] = useDeleteBlogMutation();
 
-  const deleteClick = (blog) => {
-    if (!isDeleteClicked && window.confirm("בטוח שברצונך למחוק את הבלוג ?")) {
+//לחצן למעבר מהיר לבלוג הרצוי
+  const handleBlogClick = (blogId) => {
+    console.log(blogId)
+    navigate(`/dash/api/blogs/${blogId}`)
+  }
+  const deleteClick = (event,blog) => {
+    event.stopPropagation(); // מונע את הפעלת ה-`onClick` על הבלוג
+    if (!isDeleteClicked && window.confirm("בטוח שברצונך למחוק את הבלוג?")) {
       setIsDeleteClicked(true);
       deleteBlog({ id: blog._id }).then(() => {
         navigate("/dash/api/blogs/view");
       });
     }
   }
+
   useEffect(() => {
     if (isDeleteSuccess) {
       navigate("/dash/api/blogs/view");
     }
   }, [isDeleteSuccess, navigate]);
 
-  const handleBlogClick = (blogId) => {
-    console.log(blogId)
-    navigate(`/dash/api/blogs/${blogId}`)
-  }
-  
   if (isLoading) return <h1>Loading ...</h1>
   if (isError) return <h1>{JSON.stringify(error)}</h1>
 
@@ -47,7 +49,7 @@ const ViewBlogs = () => {
             key={blog._id}
             className="blog-item"
             onClick={() => handleBlogClick(blog._id)} /* כאן מבוצע ניתוב בלחיצה */
-            style={{ cursor: 'pointer' }} /* להפוך את הבלוג לקליקבילי */
+            style={{ cursor: 'pointer' }}
           >
             <h2 className="blog-title">{blog.title}</h2>
             <p className="blog-content">{blog.content}</p>
@@ -60,13 +62,10 @@ const ViewBlogs = () => {
               <Link to={`/dash/api/blogs/${blog._id}`} className="blogs-list-button blogs-list-view">
                 צפייה
               </Link>
-              <Link to={'/dash/api/blogs/edit'} >
-              עדכון
-              </Link>
+              <EditBlogButton blog={blog} /> {/* הכפתור להצגת עמוד העדכון */}
               <button
-                onClick={() => deleteClick(blog)}
+                onClick={(event) => deleteClick(event,blog)}
                 className="blogs-list-button blogs-list-delete"
-                disabled={isDeleteClicked}
               >
                 מחיקה
               </button>
@@ -78,4 +77,4 @@ const ViewBlogs = () => {
   )
 }
 
-export default ViewBlogs
+export default ViewBlogs;

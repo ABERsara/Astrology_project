@@ -1,7 +1,7 @@
 const User = require("../models/User")
 const bcrypt = require("bcrypt")
 const getUsers = async (req, res) => {
-    const users = await User.find({}, { password: 0 }).lean()
+    const users = await User.find({active:true}, { password: 0 }).populate("diagnosis").lean()
     if (!users.length) {
         return res.status(400).json({
             error: true,
