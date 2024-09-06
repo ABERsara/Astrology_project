@@ -3,20 +3,22 @@ import Search from "../../../components/search/Search"
 import { useGetAllBlogsQuery, useDeleteBlogMutation } from "../blogsApiSlice"
 import { Link, useNavigate } from "react-router-dom"
 import { useEffect, useState } from 'react';
-import EditBlogButton from "../editBlog/EditBlogButton"
-
+import EditBlogButton from "../editBlog/EditBlogButton";
+import {
+  MdAddToDrive, MdFileDownload, MdOutlineLibraryAdd
+} from "react-icons/md"
 const ViewBlogs = () => {
   const { data: blogsObject, isError, error, isLoading } = useGetAllBlogsQuery();
   const navigate = useNavigate();
   const [isDeleteClicked, setIsDeleteClicked] = useState(false);
   const [deleteBlog, { isSuccess: isDeleteSuccess }] = useDeleteBlogMutation();
 
-//לחצן למעבר מהיר לבלוג הרצוי
+  //לחצן למעבר מהיר לבלוג הרצוי
   const handleBlogClick = (blogId) => {
     console.log(blogId)
     navigate(`/dash/api/blogs/${blogId}`)
   }
-  const deleteClick = (event,blog) => {
+  const deleteClick = (event, blog) => {
     event.stopPropagation(); // מונע את הפעלת ה-`onClick` על הבלוג
     if (!isDeleteClicked && window.confirm("בטוח שברצונך למחוק את הבלוג?")) {
       setIsDeleteClicked(true);
@@ -25,7 +27,32 @@ const ViewBlogs = () => {
       });
     }
   }
+  //פונקצייה להורדת קובץ
+  const handleFileDownload = async (event, fileUrl, fileName) => {
+    event.stopPropagation(); // מונע פתיחת הבלוג
+    event.preventDefault();
 
+    try {
+      const response = await fetch(fileUrl);
+      //המרת הקובץ לקובץ מתאים להורדה: Binary Large Object
+      const blob = await response.blob();
+      //כתובת זמנית עבור הקובץ להורדה
+      const url = window.URL.createObjectURL(blob);
+      //אלמנט זמני כנ"ל
+      const link = document.createElement("a");
+      //קישור לקובץ ההורדה
+      link.href = url;
+      link.setAttribute("download", fileName);
+      //הוספת הקישור לדף כדי שנוכל להוריד אותו
+      document.body.appendChild(link);
+      //מדמה פעולת קליק כדי להוריד את הקובץ
+      link.click();
+      link.parentNode.removeChild(link); // מנקה את ה-<a> שנוצר
+      window.URL.revokeObjectURL(url); // משחרר את ה-URL מהזיכרון
+    } catch (error) {
+      console.error("Error downloading the file", error);
+    }
+  };
   useEffect(() => {
     if (isDeleteSuccess) {
       navigate("/dash/api/blogs/view");
@@ -55,8 +82,23 @@ const ViewBlogs = () => {
             <p className="blog-content">{blog.content}</p>
             {blog.file && (
               <div className="blog-file">
-                <a href={blog.file.url} download>הורדת קובץ</a>
+                <img src={blog.file ? `http://localhost:2024/uploads/${blog.file}` : "/noavatar.png"}
+                  alt=""
+                  width={60}
+                  height={40}
+                  className="blog-list-blog-file" />
+                <a
+                  href={`http://localhost:2024/uploads/${blog.file}`}
+                  onClick={(event) => handleFileDownload(event, `http://localhost:2024/uploads/${blog.file}`, blog.file)}>
+                  <MdFileDownload />
+                </a>
+                <div >
+                  <MdAddToDrive />
+                </div>
+                <div><MdOutlineLibraryAdd />
+                </div>
               </div>
+
             )}
             <div className="blog-actions">
               <Link to={`/dash/api/blogs/${blog._id}`} className="blogs-list-button blogs-list-view">
@@ -64,7 +106,7 @@ const ViewBlogs = () => {
               </Link>
               <EditBlogButton blog={blog} /> {/* הכפתור להצגת עמוד העדכון */}
               <button
-                onClick={(event) => deleteClick(event,blog)}
+                onClick={(event) => deleteClick(event, blog)}
                 className="blogs-list-button blogs-list-delete"
               >
                 מחיקה

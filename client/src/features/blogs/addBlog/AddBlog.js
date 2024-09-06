@@ -15,15 +15,15 @@ const AddBlog = () => {
   const formSubmit = (e) => {
     e.preventDefault();
     const data = new FormData(e.target);
-    const blogObject = Object.fromEntries(data.entries());
+   // const blogObject = Object.fromEntries(data.entries());
 
     // בדיקה אם קובץ נבחר בשדה blogUrl
-    if (!blogObject.file || typeof blogObject.file === 'object') {
-        blogObject.file = ''; // הגדר כמחרוזת ריקה אם לא נבחר קובץ
-    }
+    // if (!blogObject.file || typeof blogObject.file === 'object') {
+    //     blogObject.file = ''; // הגדר כמחרוזת ריקה אם לא נבחר קובץ
+    // }
 
-    console.log("Data to be sent:", blogObject); // הדפס את הנתונים כדי לוודא שהם נכונים
-    addBlog(blogObject);
+    console.log("Data to be sent:", data); // הדפס את הנתונים כדי לוודא שהם נכונים
+    addBlog(data);
 }
 
   return (

@@ -3,7 +3,22 @@ import Search from "../search/Search";
 import "./navbar.css"
 import { MdLogout,MdDensityMedium, MdEmojiPeople, MdFace, MdOutlinePermIdentity, MdOutlineSearch } from "react-icons/md";
 import {useGetAllUsersQuery}from "../../features/user/userApiSlice"
+import {useSendLogoutMutation} from "../../features/auth/authApiSlice"
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 const Navbar = () => {
+  const navigate=useNavigate()
+  const [logout,{isSuccess:isLogoutSuccess}]=useSendLogoutMutation()
+  const logoutClick=()=>{
+    console.log("logout")
+    logout()
+  }
+  useEffect(()=>{
+  if(isLogoutSuccess){
+    navigate("/")
+  }
+
+   },[isLogoutSuccess])
   return (
     <div className="navbarBox">
       <div className="navbar">
@@ -13,7 +28,7 @@ const Navbar = () => {
         </div>
         <div className="nav-menu">
          
-          <button className="logout-button">
+          <button className="logout-button" onClick={logoutClick} >
             <MdLogout />
             יציאה
           </button>

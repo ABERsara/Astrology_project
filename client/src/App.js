@@ -15,6 +15,7 @@ import DeleteBlog from "./features/blogs/deleteBlog/DeleteBlog";
 import HomePage from "./features/homePage/HomePage";
 import RegisterUser from "./features/user/registration/RegisterUser";
 import PrivateZone from "./features/user/privateZone/PrivateZone";
+import LoginPage from "./features/auth/login/LoginPage";
 function App() {
   return (
     <Router>
@@ -24,6 +25,7 @@ function App() {
           {/*האינדקס שלו*/}
           <Route index element={<HomePage/>} />
           <Route path="register" element={<RegisterUser/>}/>
+          <Route path="login" element={<LoginPage/>}/>
           {/* בתוך הראוט של האתר  */}
           <Route path="/dash" element={<DashLayout />}>
             {/*  ועודnavbar, sidebar האינדקס שלו שמכיל את כל ה*/}

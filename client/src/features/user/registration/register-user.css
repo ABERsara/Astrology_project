@@ -1,6 +1,6 @@
 /* register-user.css */
 
-body {
+.user-register-body{
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
     margin: 0;
@@ -48,4 +48,7 @@ body {
 
 .add-user-form button:hover {
     background-color: #0056b3;
+}
+.username-unique{
+    color: red;
 }
