@@ -57,8 +57,8 @@ const getBlog=async(req,res)=>{
 // }
 const addBlog = async (req, res) => {
     console.log("Request received:", req.body); // הדפס את הנתונים המתקבלים בשרת
-    const { title,content, file } = req.body;
-
+    const file=(req.file?.filename? req.file.filename:"")
+    const { title,content} = req.body;
     if (!title ) {
         return res.status(400).json({
             error: true,
@@ -102,8 +102,8 @@ const updateBlog=async(req,res)=>{
     data:null})
    }
    blog.title=title
-   blog.file=file
    blog.content=content
+   blog.file=file
    //save the changes
    const updatedBlog=await blog.save()
    res.json({
