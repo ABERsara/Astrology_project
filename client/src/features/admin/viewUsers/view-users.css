@@ -1,0 +1,53 @@
+.users-list{
+    background-color: var(--bgSoft);
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+.users-list-top{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.users-table{
+    width: 100%;
+}
+
+.users-table td{
+    padding: 10px;
+}
+.users-list-createdAt{
+    width:150px;
+}
+.users-list-company{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.users-list-image{
+    border-radius: 50%;
+    object-fit: cover;
+}
+.users-list-buttons{
+    display: flex;
+    gap:10px    
+}
+.users-list-button{
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: var(--text);
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.users-list-view{
+    background-color: teal;
+}
+
+.users-list-delete{
+    background-color: crimson;
+}

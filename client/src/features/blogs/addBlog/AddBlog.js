@@ -8,7 +8,7 @@ const AddBlog = () => {
   const navigate = useNavigate()
   useEffect(()=>{
     if(isSuccess){
-      navigate("/dash/api/blogs/view")
+      navigate("/dash/blogs")
     }
 
   }, [isSuccess])

@@ -32,7 +32,9 @@ const RegisterUser = () => {
     setUsername(username);
     checkUsernameUnique(username);
   };
-
+  const handleEntrance=()=>{
+    navigate("/login")
+  }
   const formSubmit = async (e) => {
     e.preventDefault();
     if (!isUsernameUnique) {
@@ -76,6 +78,7 @@ const RegisterUser = () => {
         <button type="submit" disabled={!isUsernameUnique}>שלח</button>
       </form>
     </div>
+    <button className="button-to-login" onClick={handleEntrance}>רוצה להירשם מאוחר יותר?</button>
     </div>
   );
 };

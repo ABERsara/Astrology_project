@@ -8,11 +8,14 @@ const LoginPage = () => {
 
 useEffect(()=>{
   if(isSuccess){
+    console.log(data)
     navigate("/dash/user")
   }
 
 },[isSuccess])
-
+const handleRegistration=()=>{
+  navigate("/register")
+}
   const handleSubmit = async(e) =>{
     e.preventDefault()
     const data = new FormData(e.target)
@@ -29,6 +32,7 @@ useEffect(()=>{
             <button type="submit"> כניסה</button>
             {error && error.data?.message}
         </form>
+        <button className="button-to-register"onClick={handleRegistration}>עוד לא רשום?</button>
     </div>
   )
 }

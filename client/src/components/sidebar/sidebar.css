@@ -3,19 +3,39 @@
     font-weight: bold;
     font-size: 13px;
     margin: 10px 0px;
-
 }
 
+.menu-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
 
-.menu-link{
+.menu-link {
     padding: 10px;
-    display: flex;
-    align-items: center;
-    gap: 20px;
+    display: block; /* כל לינק יקבל שורה נפרדת */
     margin: 5px 0px;
     border-radius: 10px;
 }
-.menu-link:hover, .menu-link:active{
+
+.menu-link:hover, .menu-link:active {
     color: red;
-    background-color:var(--mainLight) ;
+    background-color: var(--mainLight);
+}
+.menu-link {
+    padding: 10px;
+    display: block;
+    margin: 5px 0px;
+    border-radius: 10px;
+    color: var(--mainText);
+}
+
+.menu-link.active {
+    background-color: var(--highlightColor); /* הדגשת נתיב פעיל */
+    color: white;
+}
+
+.menu-link:hover, .menu-link:active {
+    color: red;
+    background-color: var(--mainLight);
 }

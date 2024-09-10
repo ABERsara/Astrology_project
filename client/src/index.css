@@ -3,6 +3,7 @@
 --main:black;
 --mainLight:rgba(140, 135, 135, 0.517);
 --text:white;
+--highlightColor:rgb(67, 97, 134);
 }
 *{
   margin: 0;

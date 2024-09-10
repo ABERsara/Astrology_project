@@ -1,5 +1,5 @@
 import "./view-single-blog.css"
-import {useGetAllBlogsQuery,useUpdateBlogMutation} from "../blogsApiSlice"
+import {useGetAllBlogsQuery} from "../blogsApiSlice"
 import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom"
 
@@ -9,7 +9,7 @@ const ViewSingleBlog = () => {
  const navigate=useNavigate()
   // פונקציה לחזרה לדף הראשי
   const handleBackClick = () => {
-      navigate('/dash/api/blogs/view')
+      navigate('/dash/blogs')
   }
   
   if(isLoading) return <h1> Loading ...</h1>
@@ -29,7 +29,7 @@ const ViewSingleBlog = () => {
             <h1 className="title">{blog.title}</h1>
             <p className="content">{blog.content}</p>
         </div>
-        <button onClick={handleBackClick}>חזרה לכל הבלוגים</button>
+        <button onClick={handleBackClick} className="button-view-single-blog">חזרה לכל הבלוגים</button>
     </div>
   )
 }

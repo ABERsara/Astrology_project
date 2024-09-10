@@ -16,14 +16,14 @@ const ViewBlogs = () => {
   //לחצן למעבר מהיר לבלוג הרצוי
   const handleBlogClick = (blogId) => {
     console.log(blogId)
-    navigate(`/dash/api/blogs/${blogId}`)
+    navigate(`/dash/blogs/${blogId}`)
   }
   const deleteClick = (event, blog) => {
     event.stopPropagation(); // מונע את הפעלת ה-`onClick` על הבלוג
     if (!isDeleteClicked && window.confirm("בטוח שברצונך למחוק את הבלוג?")) {
       setIsDeleteClicked(true);
       deleteBlog({ id: blog._id }).then(() => {
-        navigate("/dash/api/blogs/view");
+        navigate("/dash/blogs");
       });
     }
   }
@@ -55,7 +55,7 @@ const ViewBlogs = () => {
   };
   useEffect(() => {
     if (isDeleteSuccess) {
-      navigate("/dash/api/blogs/view");
+      navigate("/dash/blogs");
     }
   }, [isDeleteSuccess, navigate]);
 
@@ -66,7 +66,7 @@ const ViewBlogs = () => {
     <div className="blogs-list">
       <div className="blogs-list-top">
         <Search placeholder="חיפוש לפי שם חברה" />
-        <Link to="/dash/api/blogs/add" className="blogs-list-add-button">
+        <Link to="/dash/blogs/add" className="blogs-list-add-button">
           הוספת בלוג
         </Link>
       </div>
@@ -101,7 +101,7 @@ const ViewBlogs = () => {
 
             )}
             <div className="blog-actions">
-              <Link to={`/dash/api/blogs/${blog._id}`} className="blogs-list-button blogs-list-view">
+              <Link to={`/dash/blogs/${blog._id}`} className="blogs-list-button blogs-list-view">
                 צפייה
               </Link>
               <EditBlogButton blog={blog} /> {/* הכפתור להצגת עמוד העדכון */}

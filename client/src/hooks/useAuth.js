@@ -13,7 +13,7 @@ const {_id,username,
     permission,
     imageUrl,
     diagnosis}=userDecoded
-isAdmin=permission==="Manager"
+isAdmin=permission==="Admin"
 isUser=permission==="User" || permission==="Group"
 if(_id)
 return {username,

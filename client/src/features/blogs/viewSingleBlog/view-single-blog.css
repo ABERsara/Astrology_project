@@ -30,7 +30,7 @@
   color: #666;
 }
 
-button {
+.button-view-single-blog {
   padding: 10px 20px;
   background-color: #007bff;
   color: white;
@@ -39,6 +39,6 @@ button {
   cursor: pointer;
 }
 
-button:hover {
+.button-view-single-blog:hover {
   background-color: #0056b3;
 }
