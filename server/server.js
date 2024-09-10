@@ -17,7 +17,7 @@ app.get("/",(req,res)=>{
 res.send("HomePage")
 })
 app.use("/api/auth",require("./routes/authRouter"))
-app.use("/api/users",require("./routes/userRoutes"))
+app.use("/api/users",require("./routes/userRouter"))
 app.use("/api/responses",require("./routes/responseRouter"))
 app.use("/api/blogs",require("./routes/blogRouter"))
 mongoose.connection.once("open",()=>{

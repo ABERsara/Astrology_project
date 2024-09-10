@@ -84,33 +84,39 @@ const addBlog = async (req, res) => {
     }
 }
 
-const updateBlog=async(req,res)=>{
-    const {id,title,content, file}=req.body
-    //confirm data!
-    if (!id||!title  ) {
+const updateBlog = async (req, res) => {
+    const { id, title, content, existingFile } = req.body;
+    const file = req.file ? req.file.filename : existingFile; // אם לא נבחר קובץ חדש, נשתמש בקובץ הקיים
+    
+    if (!id || !title) {
        return res.status(400).json({
-           error:true,
-            message: 'id,blogUrl and title are required',
-           data:null })
-   }
-   //confirm blog existed to update 
-   const blog=await Blog.findById(id).exec()
-   if(!blog){
-       return res.status(400).json({
-        error:true,
-        message:"Blog not found",
-    data:null})
-   }
-   blog.title=title
-   blog.content=content
-   blog.file=file
-   //save the changes
-   const updatedBlog=await blog.save()
-   res.json({
-    error:false,
-    massage:`${updatedBlog.title} updated`,
-data:updateBlog})
-}
+           error: true,
+           message: 'id וכותרת נדרשים',
+           data: null
+       });
+    }
+    
+    const blog = await Blog.findById(id).exec();
+    if (!blog) {
+        return res.status(400).json({
+            error: true,
+            message: "בלוג לא נמצא",
+            data: null
+        });
+    }
+    
+    blog.title = title;
+    blog.content = content;
+    blog.file = file; // שמירת הקובץ החדש או הקיים
+    
+    const updatedBlog = await blog.save();
+    res.json({
+        error: false,
+        message: `${updatedBlog.title} עודכן בהצלחה`,
+        data: updatedBlog
+    });
+};
+
 const deleteBlog = async (req, res) => {
     const { id } = req.params; // Retrieve id from params instead of body
     if(!id) {

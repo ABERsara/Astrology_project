@@ -1,7 +1,7 @@
 const User = require("../models/User")
 const bcrypt = require("bcrypt")
 const getUsers = async (req, res) => {
-    const users = await User.find({active:true,deleted:false}, { password: 0 }).populate("diagnosis").lean()
+    const users = await User.find({ active: true, deleted: false }, { password: 0 }).populate("diagnosis").lean()
     if (!users.length) {
         return res.status(400).json({
             error: true,
@@ -32,7 +32,7 @@ const getUser = async (req, res) => {
     }
 }
 const addUser = async (req, res) => {
-    const { username, firstname, lastname, phone, email, password, image, active,diagnosis } = req.body
+    const { username, firstname, lastname, phone, email, password, image, active, diagnosis } = req.body
     //confirm data!
     if (!firstname || !username || !email) {
         return res.status(400).json({
@@ -42,8 +42,8 @@ const addUser = async (req, res) => {
         })
     }
     //validate the adding user is unique
-    const existedUser=await User.findOne({username:username}).lean()
-    if(existedUser){
+    const existedUser = await User.findOne({ username: username }).lean()
+    if (existedUser) {
         return res.status(409).json({
             error: true,
             message: 'The user is already exist!',
@@ -54,7 +54,7 @@ const addUser = async (req, res) => {
     const hashPwd = await bcrypt.hash(password, 10)
     try {
         // Create and store the new user
-        const user = await User.create({ username, firstname, lastname, phone, email, password: hashPwd, image, active,diagnosis });
+        const user = await User.create({ username, firstname, lastname, phone, email, password: hashPwd, image, active, diagnosis });
         res.status(201).json({
             error: false,
             message: 'New user created',
@@ -70,47 +70,61 @@ const addUser = async (req, res) => {
     }
 }
 const updateUser = async (req, res) => {
-    const { id,username, firstname, lastname, phone, email, password, image,permission, active,diagnosis } = req.body
-    //confirm data!
-    if (!id || !firstname || !username || !email) {
-        return res.status(400).json({
-            error: true,
-            message: 'id,username,firstname and email are required',
-            data: null
-        })
-    }
-    //confirm user existed to update 
-    const user = await User.findById(id).exec()
-    if (!user) {
-        return res.status(400).json({
-            error: true,
-            message: "User not found",
-            data: null
-        })
-    }
-    if (password) {
-        //for password encryption:
-        const hashPwd = await bcrypt.hash(password, 10)
-        user.password = hashPwd
-    }
-  
-    user.firstname = firstname
-    user.lastname = lastname
-    user.phone = phone
-    user.email = email
-    user.image = image
-    user.permission=permission
-    user.active = active
-    user.diagnosis=diagnosis
-    //save the changes
-    const updatedUser = await user.save()
-    res.json({
-        error: false,
-        massage: `${updatedUser.firstname} updated`,
-        data: { _id: user._id, firstname: user.firstname, lastname: user.lastname }
-    });
+    try {
+        const userId = req.body.id;  // מקבלת מזהה מה-body
+        const userData = req.body;
 
-}
+        // בדיקה אם המשתמש הוא מנהל
+        const isAdmin = req.user.permission === "Admin";
+
+        // בדיקה אם יש תמונה להעלאה
+        let updatedImage;
+        if (req.file) {
+            updatedImage = `/uploads/${req.file.filename}`; // שמירת הנתיב של התמונה שהועלתה
+        }
+
+        if (isAdmin) {
+            // מנהל יכול לעדכן רק את ההרשאות ואת הסטטוס הפעיל
+            const adminUpdateFields = {
+                permission: userData.permission,
+                active: userData.active
+            };
+
+            await User.findByIdAndUpdate(userId, adminUpdateFields);
+            return res.status(200).json({
+                error: false,
+                message: "User permission or active status updated successfully",
+                data: userData
+            });
+        } else {
+            // משתמש רגיל יכול לעדכן את המידע האישי בלבד, כולל תמונה
+            const userUpdateFields = {
+                firstname: userData.firstname,
+                lastname: userData.lastname,
+                email: userData.email,
+                phone: userData.phone,
+                username: userData.username,
+                password: userData.password, // רק אם יש צורך
+                ...(updatedImage && { image: updatedImage }) // אם יש תמונה מעודכנת
+            };
+
+            await User.findByIdAndUpdate(userId, userUpdateFields);
+            return res.status(200).json({
+                error: false,
+                message: "User personal information updated successfully",
+                data: userData
+            });
+        }
+    } catch (error) {
+        res.status(500).json({
+            error: true,
+            message: "An error occurred",
+            data: error.message
+        });
+    }
+};
+
+
 const deleteUser = async (req, res) => {
     const { id } = req.params;
     if (!id) {

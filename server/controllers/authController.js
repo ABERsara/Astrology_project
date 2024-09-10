@@ -41,7 +41,7 @@ const login = async (req, res) => {
         username: foundUser.username,
         firstname: foundUser.firstname,
         lastname: foundUser.lastname,
-        //is admin or uder?
+        //is admin or user?
         permission: foundUser.permission,
         image: foundUser.image,
         diagnosis: foundUser.diagnosis

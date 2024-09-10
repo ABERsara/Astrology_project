@@ -25,15 +25,19 @@ const usersSchema = new mongoose.Schema(//הגדרת הסכמה
             type: String
         }, permission: {
             type: String,
-            enum: ['User', 'Manager', 'Group'],
+            enum: ['User', 'Admin', 'Group'],
             required: true,
             default: 'User',
         }, active: {
             type: Boolean,
             default: true,
-        },diagnosis:{
-            type:mongoose.Schema.Types.ObjectId,
-            ref:'Diagnosis'
+        }, deleted: {
+            type: Boolean,
+            default: false,
+        },
+        diagnosis: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Diagnosis'
         }
     },
     { timestamps: true }
