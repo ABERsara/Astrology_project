@@ -1,0 +1,88 @@
+/* zodiac-wheel.css */
+
+.wheel-container {
+    position: fixed;
+    width: 450px; 
+    height: 450px;
+    margin: 50px auto;
+    padding: 10px;
+    
+  }
+  
+  .zodiac-wheel {
+    position: relative;
+    width: 500px;
+    height: 500px;
+    background-image: url('../../../public/zwheel.png');
+    background-size: contain;
+    background-position: center; /* Center the background image */
+    padding: 10px; /* Add padding to ensure the entire image is visible within the container */
+    border: 0;
+    z-index: 1;
+    background-repeat: no-repeat;
+}
+
+  
+  .spinning {
+    animation: spin 30s linear infinite;
+  }
+  
+   @keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  } 
+  
+ 
+  .modal-overlay {
+    /* position: fixed; כדי שהמודאל יכסה את כל המסך */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 200; /* וודא שזה גבוה יותר מהשכבות האחרות */
+}
+
+.modal {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 400px;
+  width: 80%;
+  color: #333;
+  z-index: 300;
+}
+.zodiac-sign {
+  position: absolute;
+  width: 50%; /* חצי מרוחב הגלגל */
+  height: 50%; /* חצי מהגובה */
+  top: 0;
+  left: 50%;
+  transform-origin: 0% 100%;
+  cursor: pointer;
+  /* אזורים שקופים ללחיצה */
+  /* background-color: rgba(226, 51, 51, 0.1);  */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px; /* גודל הטקסט */
+  text-align: center;
+  transform: rotate(0deg) skewY(-30deg); /* נעדכן לפי כל פלח */
+}
+
+.sign-0 { transform: rotate(0deg) skewY(-30deg); }
+.sign-1 { transform: rotate(30deg) skewY(-30deg);}
+.sign-2 { transform: rotate(60deg) skewY(-30deg); }
+.sign-3 { transform: rotate(90deg) skewY(-30deg); }
+.sign-4 { transform: rotate(120deg) skewY(-30deg);}
+.sign-5 { transform: rotate(150deg) skewY(-30deg); }
+.sign-6 { transform: rotate(180deg) skewY(-30deg);}
+.sign-7 { transform: rotate(210deg) skewY(-30deg); }
+.sign-8 { transform: rotate(240deg) skewY(-30deg); }
+.sign-9 { transform: rotate(270deg) skewY(-30deg); ;}
+.sign-10 { transform: rotate(300deg) skewY(-30deg); }
+.sign-11 { transform: rotate(330deg) skewY(-30deg); }

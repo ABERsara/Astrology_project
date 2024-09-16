@@ -13,7 +13,7 @@ const RegisterUser = () => {
 
   useEffect(() => {
     if (isSuccess) {
-      navigate("/dash/user");
+      navigate("/login");
     }
   }, [isSuccess, navigate]);
 
@@ -33,7 +33,7 @@ const RegisterUser = () => {
     checkUsernameUnique(username);
   };
   const handleEntrance=()=>{
-    navigate("/login")
+    navigate("/dash/user")
   }
   const formSubmit = async (e) => {
     e.preventDefault();
@@ -77,8 +77,8 @@ const RegisterUser = () => {
         <input type="password" name="password" required placeholder="הכנס סיסמה" />
         <button type="submit" disabled={!isUsernameUnique}>שלח</button>
       </form>
+      <button className="button-to-login" onClick={handleEntrance}>רוצה להירשם מאוחר יותר?</button>
     </div>
-    <button className="button-to-login" onClick={handleEntrance}>רוצה להירשם מאוחר יותר?</button>
     </div>
   );
 };

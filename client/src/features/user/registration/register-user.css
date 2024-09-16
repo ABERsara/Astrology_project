@@ -1,5 +1,3 @@
-/* register-user.css */
-
 .user-register-body{
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
@@ -16,10 +14,15 @@
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 300px;
+    width: 320px; /* הגדר רוחב מעט רחב יותר */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
 }
 
 .add-user-form {
+    width: 100%;
     display: flex;
     flex-direction: column;
 }
@@ -36,7 +39,8 @@
     padding: 0;
 }
 
-.add-user-form button {
+.add-user-form button, .button-to-login {
+    width: 100%;
     padding: 10px;
     background-color: #007bff;
     color: white;
@@ -44,11 +48,14 @@
     border-radius: 4px;
     cursor: pointer;
     font-size: 16px;
+    margin-top: 10px;
 }
 
-.add-user-form button:hover {
+.add-user-form button:hover, .button-to-login:hover {
     background-color: #0056b3;
 }
-.username-unique{
+
+.username-unique {
     color: red;
+    font-size: 14px;
 }

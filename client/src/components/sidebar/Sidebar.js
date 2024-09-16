@@ -9,7 +9,11 @@ const getMenuForPath = (path) => {
       { title: "סקירה כללית על החשבון", path: "/dash/user/accountOverview", icon: <MdAccountTree /> },
       { title: "הסטוריית חיובים", path: "/dash/user/chargeHistory", icon: <MdOutlineCurrencyExchange /> },
       { title: "עריכת פרופיל", path: "/dash/user/editProfile", icon: <MdHandyman /> },
-      { title: "שינוי סיסמה", path: "/dash/user/changePassword", icon: <MdEdit /> }
+      { title: "שינוי סיסמה", path: "/dash/user/changePassword", icon: <MdEdit /> },     
+       { title: "צפייה במשתמשים", path: "/dash/manage/users", icon: <MdHandyman /> },
+       { title: "צפייה בבלוגים", path: "/dash/blogs", icon: <MdAccountTree /> },
+
+
     ],
     "/dash/blogs": [
       { title: "צפייה בבלוגים", path: "/dash/blogs", icon: <MdAccountTree /> },

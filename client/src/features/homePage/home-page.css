@@ -1,40 +1,131 @@
 /* עיצוב למכולה הראשית */
 .home-container {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     height: 100vh;
-    background-color: #f0f0f0;
+    /* background-color: #292a44; */
+    padding: 20px;
+    background: radial-gradient(circle, #191923 0%, #1d1e3d 40%, #5b5d6e 100%); /* מעבר צבע משמיים כהים במרכז לשמיים בהירים בקצוות */
+    position: relative;
 }
-
-/* עיצוב לכותרת */
-.home-title {
-    font-size: 3em;
-    color: #333;
-    margin-bottom: 20px;
-}
+.zwheel{
+    position: fixed;
+    /* margin-top: 10px;
+    margin-bottom: 10px; */
+    width: 50%;
+    height :100%;
+    /* /* left: 10px; */
+    left:20px ; 
+    display: flex;
+    justify-content: center;
+    }
 
 /* עיצוב לקישורים */
 .home-links {
     display: flex;
     gap: 20px; /* מרווח בין הקישורים */
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    height: auto;
+    position: absolute;
+    bottom: 20vh; /* ממקם את הכפתורים 20px מהתחתית */
+    right: 20px; /* ממקם את הכפתורים 20px מהצד השמאלי */
 }
 
 .home-link {
     padding: 10px 20px;
     font-size: 1.2em;
     color: white;
-    background-color: #007BFF; /* צבע רקע כחול */
+    background-color:#E49928; /* צבע רקע כחול */
     border-radius: 5px;
     text-decoration: none;
     transition: background-color 0.3s ease;
+    left:30px;
+    right:100px;
+    text-align: center;
+    display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 23px 0px 30px 2px;
+gap: 6px;
+width: 200px;
+height: 56px;
+/* left: 1537px; */
+bottom:5vw;
+border-radius: 56px;
+
 }
 
 .home-link:hover {
-    background-color: #0056b3; /* צבע רקע כהה יותר */
-}
+    color:#E49928;
+    background-color: white;}
+
 
 .home-link:active {
-    background-color: #004085; /* צבע רקע כהה יותר בלחיצה */
+    background-color: #e3a74c; /* צבע רקע כהה יותר בלחיצה */
+}
+.sentence-on-astro{
+position: absolute;
+width: 400px;
+height: 314px;
+/* left: 673px;
+top: 234px; */
+
+font-family: 'Ploni Round AAA';
+font-style: normal;
+font-weight: 600;
+font-size: 70px;
+line-height: 123%;
+/* or 157px */
+text-align: right;
+
+color: #FFFFFF;
+right:12.5vw;
+text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+}
+.sentence1{
+    color: #FFFFFF;
+}
+.sentence2{
+    color: #E49928;
+}
+.info-homepage{
+    font-size:20px;
+    line-height: 100%;
+
+}
+.navbar-top-homepage{
+display: flex;
+flex-direction: row;
+justify-content: flex-end;
+align-items: center;
+padding: 20px;
+gap: 48px;
+position: absolute;
+width: 100vw;
+height: 40px;
+left: 0px;
+top: 30px;
+color: #fff;
+}
+.navbar-under-homepage{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 20px;
+    gap: 48px;
+    background-color: #fff;
+    position: absolute;
+    width: 100vw;
+    height: 40px;
+    left: 0px;
+    top: 30px;
+    color:#e3a74c;
 }
