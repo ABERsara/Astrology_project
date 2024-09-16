@@ -1,0 +1,29 @@
+[]part 1 user
+    [v]view single user
+    []edit profile
+    []change password
+    [v]delete user (deleted=true)
+    []upload files better
+    [v]update user is inactive and permission
+[]part 2 diagnosis
+    []request a diagnosis by a user (filling details)
+    []add a diagnosis for a user (recording? open on google meet? scedueled by google calander? upload a file with diagnosis?)
+    []fix a diagnosis
+    []view all diagnosis by manager
+    []view a single diagnosis
+[]part 3 auth
+    [v]add auth by client
+    []add auth hook
+[]part 4 questions
+    []add qeustion model, controller and router (server side)
+    []add a qeustion - send to confirm by manager
+    []confirm a qeustion -answer it (notify on it?)
+    []view all questions and answers
+    []delete a question
+    []fix a question (or an answer)
+[]part 5 layouts
+    []layout for site
+    []layout for admin zone
+    []layout for private zone
+    []design home page
+    []design site
