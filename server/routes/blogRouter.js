@@ -14,8 +14,8 @@ router.get("/:id", controller.getBlog);
 
 router.use(verifyAdmin)
 
-router.post("/", upload.single('image'), controller.addBlog);
-router.put("/", upload.single('image'), controller.updateBlog);
+router.post("/", upload.single('file'), controller.addBlog);
+router.put("/", upload.single('file'), controller.updateBlog);
 router.delete("/:id", controller.deleteBlog);
 
 module.exports = router;

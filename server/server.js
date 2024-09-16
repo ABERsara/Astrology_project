@@ -26,7 +26,6 @@ mongoose.connection.once("open",()=>{
         console.log(`Server is runing on port ${PORT} `)
     })
 })
-
 mongoose.connection.on("error",(err)=>{
     console.log("Connected to DB failed")
     console.log(err)

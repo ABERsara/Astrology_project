@@ -1,7 +1,7 @@
 const User = require("../models/User")
 const bcrypt = require("bcrypt")
 const getUsers = async (req, res) => {
-    const users = await User.find({active:true,deleted:false}, { password: 0 }).populate("diagnosis").lean()
+    const users = await User.find({deleted:false}, { password: 0 }).populate("diagnosis").lean()
     if (!users.length) {
         return res.status(400).json({
             error: true,
@@ -16,21 +16,18 @@ const getUsers = async (req, res) => {
     })
 }
 const getUser = async (req, res) => {
-    /////copied...
-    const { id } = req.params
-    //Get a single user from mongoDB by its id
-    //We don't need to make changes then we can receives the object lean
+    const { id } = req.params;
     try {
-        const user = await User.findById(id).lean()
-        res.json(user)
-        //if no user
+        const user = await User.findById(id).lean();
         if (!user) {
-            return res.status(400).json({ message: 'No user found' })
+            return res.status(404).json({ message: 'No user found' });
         }
+        res.json(user);
     } catch (err) {
-        return res.status(500).json({ message: err })
+        return res.status(500).json({ message: err.message });
     }
-}
+};
+
 const addUser = async (req, res) => {
     const { username, firstname, lastname, phone, email, password, image, active,diagnosis } = req.body
     //confirm data!
@@ -70,47 +67,56 @@ const addUser = async (req, res) => {
     }
 }
 const updateUser = async (req, res) => {
-    const { id,username, firstname, lastname, phone, email, password, image,permission, active,diagnosis } = req.body
-    //confirm data!
+    const {id, username, firstname, lastname, phone, email, password, image, permission, active, diagnosis } = req.body;
+
+    // confirm data!
     if (!id || !firstname || !username || !email) {
         return res.status(400).json({
             error: true,
-            message: 'id,username,firstname and email are required',
+            message: 'id, username, firstname, and email are required',
             data: null
-        })
+        });
     }
-    //confirm user existed to update 
-    const user = await User.findById(id).exec()
-    if (!user) {
-        return res.status(400).json({
-            error: true,
-            message: "User not found",
-            data: null
-        })
-    }
-    if (password) {
-        //for password encryption:
-        const hashPwd = await bcrypt.hash(password, 10)
-        user.password = hashPwd
-    }
-  
-    user.firstname = firstname
-    user.lastname = lastname
-    user.phone = phone
-    user.email = email
-    user.image = image
-    user.permission=permission
-    user.active = active
-    user.diagnosis=diagnosis
-    //save the changes
-    const updatedUser = await user.save()
-    res.json({
-        error: false,
-        massage: `${updatedUser.firstname} updated`,
-        data: { _id: user._id, firstname: user.firstname, lastname: user.lastname }
-    });
 
-}
+    try {
+        // confirm user existed to update 
+        const user = await User.findById(id).exec();
+        if (!user) {
+            return res.status(404).json({
+                error: true,
+                message: "User not found",
+                data: null
+            });
+        }
+
+        // update user fields
+        if (password) {
+            // for password encryption:
+            const hashPwd = await bcrypt.hash(password, 10);
+            user.password = hashPwd;
+        }
+        user.firstname = firstname;
+        user.lastname = lastname;
+        user.phone = phone;
+        user.email = email;
+        user.image = image;
+        user.permission = permission;
+        user.active = active;
+        user.diagnosis = diagnosis;
+
+        // save the changes
+        const updatedUser = await user.save();
+        res.json({
+            error: false,
+            message: `${updatedUser.firstname} updated`,
+            data: { _id: user._id, firstname: user.firstname, lastname: user.lastname }
+        });
+    } catch (err) {
+        res.status(500).json({ error: true, message: err.message });
+    }
+};
+
+
 const deleteUser = async (req, res) => {
     const { id } = req.params;
     if (!id) {
