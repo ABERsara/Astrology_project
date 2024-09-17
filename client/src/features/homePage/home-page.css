@@ -1,131 +1,345 @@
 /* עיצוב למכולה הראשית */
+.home-page-casing {
+    background: radial-gradient(circle, #191923 0%, #1d1e3d 40%, #5b5d6e 100%);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
 .home-container {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    /* שינוי הכיוון לעמודה */
+    justify-content: flex-start;
+    min-height: 100vh;
+    padding: 20px;
+    padding-top: 80px;
+    background: radial-gradient(circle, #191923 0%, #1d1e3d 40%, #5b5d6e 100%);
     align-items: center;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     height: 100vh;
     /* background-color: #292a44; */
     padding: 20px;
-    background: radial-gradient(circle, #191923 0%, #1d1e3d 40%, #5b5d6e 100%); /* מעבר צבע משמיים כהים במרכז לשמיים בהירים בקצוות */
+    background: radial-gradient(circle, #191923 0%, #1d1e3d 40%, #5b5d6e 100%);
+    /* מעבר צבע משמיים כהים במרכז לשמיים בהירים בקצוות */
     position: relative;
+    /* margin-top: 40px; */
 }
-.zwheel{
+
+.zwheel {
     position: fixed;
-    /* margin-top: 10px;
-    margin-bottom: 10px; */
+    left: 10vw;
+    transform: translateY(-50%);
     width: 50%;
-    height :100%;
-    /* /* left: 10px; */
-    left:20px ; 
+    margin-top: 10px;
+    margin-bottom: 20px;
+    width: 50%;
+    height: auto;
+    left: 20px;
     display: flex;
     justify-content: center;
-    }
+}
 
+
+/* .zwheel{
+    position: sticky;
+    top: 10px; 
+    left: 10vw;
+    transform: translateY(-50%);
+    width: 50%;
+    margin-top: 10px;
+} */
 /* עיצוב לקישורים */
 .home-links {
     display: flex;
-    gap: 20px; /* מרווח בין הקישורים */
+    gap: 20px;
+    /* מרווח בין הקישורים */
     flex-direction: row;
     align-items: center;
     justify-content: center;
     width: 50%;
     height: auto;
-    position: absolute;
-    bottom: 20vh; /* ממקם את הכפתורים 20px מהתחתית */
-    right: 20px; /* ממקם את הכפתורים 20px מהצד השמאלי */
+    /* position: absolute; */
+    bottom: 20vh;
+    /* ממקם את הכפתורים 20px מהתחתית */
+    /* right: 0px; 
+    left:50; */
 }
 
 .home-link {
+    position: relative;
     padding: 10px 20px;
     font-size: 1.2em;
     color: white;
-    background-color:#E49928; /* צבע רקע כחול */
+    background-color: #E49928;
     border-radius: 5px;
     text-decoration: none;
     transition: background-color 0.3s ease;
-    left:30px;
-    right:100px;
+    
+    left: 237px;
     text-align: center;
     display: flex;
-flex-direction: row;
-justify-content: center;
-align-items: center;
-padding: 23px 0px 30px 2px;
-gap: 6px;
-width: 200px;
-height: 56px;
-/* left: 1537px; */
-bottom:5vw;
-border-radius: 56px;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 23px 0px 30px 2px;
+    gap: 6px;
+    width: 200px;
+    height: 56px;
+    /* left: 1537px; */
+    bottom: 5vw;
+    border-radius: 56px;
 
 }
 
 .home-link:hover {
-    color:#E49928;
-    background-color: white;}
+    color: #E49928;
+    background-color: white;
+}
 
 
 .home-link:active {
-    background-color: #e3a74c; /* צבע רקע כהה יותר בלחיצה */
+    background-color: #E49928;
 }
-.sentence-on-astro{
-position: absolute;
-width: 400px;
-height: 314px;
-/* left: 673px;
+
+.sentence-on-astro {
+    /* position: absolute; */
+    width: 400px;
+    height: 314px;
+    /* left: 673px;
 top: 234px; */
+    font-family: 'Ploni Round AAA';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 70px;
+    line-height: 123%;
+    /* or 157px */
+    text-align: right;
+    margin-right: 0px;
+    margin-left: 50%;
+    color: #FFFFFF;
+    /* right:12.5vw; */
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    margin-top: 100px;
+}
+
+.sentence1 {
+    color: #FFFFFF;
+}
+
+.sentence2 {
+    color:var(--orange);
+}
+
+.info-homepage {
+    font-size: 20px;
+    line-height: 100%;
+
+}
+
+.navbar-top-homepage {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 20px;
+    gap: 20px;
+    position: fixed;
+    width: 100vw;
+    height: 40px;
+    top: 0;
+    color: #fff;
+    direction: rtl;
+    background-color:var(--main);
+    z-index: 10;
+}
+
+.login-from-home:hover {
+    color: rgb(25, 197, 213);
+}
+
+.navbar-under-homepage {
+    justify-content: flex-start;
+    display: flex;
+    flex-direction: row;
+    /* justify-content: flex-end; */
+    align-items: center;
+    padding: 10px;
+    gap: 20px;
+    background-color: #fff;
+    position: fixed;
+    width: 100vw;
+    height: 40px;
+    /* left: 0px; */
+    top: 40px;
+    color: #e3a74c;
+    direction: rtl;
+    font-family: 'Ploni Round AAA';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 15px;
+    z-index: 10;
+}
+
+.navbar-under-homepage button {
+    
+    left:200px;
+    background-color: transparent;
+    color: #e3a74c;
+    border: none;
+    font-family: 'Ploni Round AAA';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 15px;
+
+}
+
+.navbar-under-homepage button:hover,
+.navbar-under-homepage :hover {
+    color: var(--lightBlue);
+    cursor: pointer;
+}
+
+.logo-homepage {
+    display: flex;
+    align-items: center;
+    /* padding: 10px; */
+    gap: 10px;
+    position: relative;
+    width: 80px;
+    height: 80px;
+    margin-left: 20px;
+}
+
+/* אייקונים */
+.heart-home {
+    display: flex;
+    align-items: center;
+    /* padding: 10px; */
+    /* gap: 10px; */
+    width: 30px;
+    height: 30px;
+    /* left: 1196px; */
+    margin-top: 0px;
+}
+
+.shopping-cart-home {
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    /* padding: 10px; */
+    /* gap: 10px; */
+
+
+    width: 65px;
+    height: 60px;
+    /* left: 1180px; */
+
+    transform: matrix(-1, 0, 0, 1, 0, 0);
+}
+
+.heart-home,
+.shopping-cart-home {
+    position: relative;
+    /* שינוי ל-relative כדי לאפשר מיקום טבעי בתוך ה-navbar */
+    width: 30px;
+    /* התאמת גודל האייקונים */
+    height: 30px;
+    background-color: transparent;
+}
+
+.home-page-casing {
+    background: radial-gradient(circle, #191923 0%, #1d1e3d 40%, #5b5d6e 100%);
+    min-height: 200vh;
+    /* שינוי מ-100vh ל-200vh כדי לאפשר גלילה */
+    display: flex;
+    flex-direction: column;
+}
+
+
+.home-about-section {
+    padding: 50px;
+    color: #FFFFFF;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    /* width: 80vw; */
+    height: 100vh;
+    background-color: #fff;
+    color: #1d1e3d;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    display: flex;
+    /* margin:30px ; */
+    /* background: radial-gradient(circle, #191923 0%, #1d1e3d 40%, #5b5d6e 100%); */
+}
+
+.home-about-section p{
+width: 785px;
+height: auto;
 
 font-family: 'Ploni Round AAA';
 font-style: normal;
 font-weight: 600;
-font-size: 70px;
-line-height: 123%;
-/* or 157px */
+font-size: 18px;
+line-height: 31px;
 text-align: right;
 
-color: #FFFFFF;
-right:12.5vw;
-text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
 }
-.sentence1{
-    color: #FFFFFF;
+
+.horoscopes {
+    transition: transform 0.5s ease;
+    position: relative;
+    padding: 15px;
+    z-index: 1;
 }
-.sentence2{
-    color: #E49928;
+
+.Aquarius {
+   
+    top:11px;
+    left: 23px;
+width: 111px;
+height: 69px;
+color: var(--lightBlue);
+transform: rotate(-7.67deg);
 }
-.info-homepage{
-    font-size:20px;
-    line-height: 100%;
+.Aquarius:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+}
+.Taurus{
+    left:600px;
+    bottom: 270px;
+width: 79px;
+height: 82px;
 
 }
-.navbar-top-homepage{
-display: flex;
-flex-direction: row;
-justify-content: flex-end;
-align-items: center;
-padding: 20px;
-gap: 48px;
-position: absolute;
-width: 100vw;
-height: 40px;
-left: 0px;
-top: 30px;
-color: #fff;
+.Gemini{
+    left: 460px;
+    bottom: 85px;
+width: 67.28px;
+height: 75.77px;
+transform: rotate(15.67deg);
+
 }
-.navbar-under-homepage{
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    align-items: center;
-    padding: 20px;
-    gap: 48px;
-    background-color: #fff;
-    position: absolute;
-    width: 100vw;
-    height: 40px;
-    left: 0px;
-    top: 30px;
-    color:#e3a74c;
+.Cancer{
+    right: 470px;
+    bottom: 180px;
+  width: 84.31px;
+height: 74.42px;
+transform: rotate(20.29deg);
+
+}
+.Capricorn{
+    right: 479px;
+    bottom: 65px;
+width: 84px;
+height: 75px;
+}
+.contact-section {
+    width: 98.5vw;
+    background-color:#1d1e3d;
 }

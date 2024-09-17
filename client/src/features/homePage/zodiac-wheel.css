@@ -10,7 +10,7 @@
   }
   
   .zodiac-wheel {
-    position: relative;
+    position: absolute;
     width: 500px;
     height: 500px;
     background-image: url('../../../public/zwheel.png');
@@ -86,3 +86,5 @@
 .sign-9 { transform: rotate(270deg) skewY(-30deg); ;}
 .sign-10 { transform: rotate(300deg) skewY(-30deg); }
 .sign-11 { transform: rotate(330deg) skewY(-30deg); }
+
+

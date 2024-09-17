@@ -75,7 +75,7 @@ const ZodiacWheel = () => {
     <div className="wheel-container">
       <div className={`zodiac-wheel ${isSpinning ? 'spinning' : ''}`}>
         {zodiacSigns.map((sign, index) => (
-          <div טא
+          <div
             key={sign} 
             className={`zodiac-sign sign-${index}`} 
             onClick={() => handleSignClick(index)}
@@ -86,7 +86,7 @@ const ZodiacWheel = () => {
       </div>
       
       <Modal
-        isOpen={!!selectedSign}
+        isOpen={selectedSign}
         onRequestClose={closeModal}
         contentLabel="Zodiac Sign Information"
         className="modal"

@@ -1,13 +1,21 @@
 .login-page{
-    width:100%;
+    /* width:100%;
     min-height: 100vh;
     display: flex;
     align-items: center;
+    justify-content: center; */
+    background-color:var(--main);
+    margin: 0;
+    padding: 0;
+    display: flex;
     justify-content: center;
+    align-items: center;
+    height: 100vh;
+    
 }
 
 .login-page-form{
-    background-color: var(--bgSoft);
+    /* background-color: var(--bgSoft);
     padding: 50px;
     border-radius: 10px;
     width: 500px;
@@ -16,22 +24,38 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap:30px
-
+    gap:30px */
+    background-color: var(--text);
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 10px;
+gap: 10px;
+padding: 50px;
+height: 500px;
+width: 300px;
+    border-radius: 10px;
+/* position: relative; */
+/* width: 260px;
+height: 501px; */
+}
+.login-page-form h1{
+    color: var(--orange);
+    justify-content: center;
 }
 .login-page-form input{
     width: 100%;
-    padding: 30px;
-    border: solid 2px #2e374a;
+    padding: 10px;
+    border: solid 2px var(--orange);
     border-radius: 5px;
-    background-color: var(--bg);
-    color: var(--text)
+    background-color: var(--text);
+    color: var(--orange)
 }
 
 .login-page-form button{
     width: 100%;
-    padding: 30px;
-    background-color: teal;
+    padding: 10px;
+    background-color:var(--orange);
     color: var(--text);
     border: none;
     cursor: pointer;

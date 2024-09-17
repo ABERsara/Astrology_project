@@ -1,9 +1,13 @@
 :root{
   /* משתנים שנשתמש באתר */
---main:black;
---mainLight:rgba(140, 135, 135, 0.517);
---text:white;
+--main:#1d1e3d;
+--mainDark:#191923;
+--mainLight: #5b5d6e;
+--text:#FFFFFF;
 --highlightColor:rgb(67, 97, 134);
+--lightBlue:teal;
+--gradiant:radial-gradient(circle, #191923 0%, #1d1e3d 40%, #5b5d6e 100%);
+--orange: #E49928;
 }
 *{
   margin: 0;
