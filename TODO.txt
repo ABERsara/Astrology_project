@@ -25,5 +25,7 @@
     []layout for site
     []layout for admin zone
     []layout for private zone
-    []design home page
+    [v]design home page
     []design site
+    []design login and register
+    []login/ register with google
