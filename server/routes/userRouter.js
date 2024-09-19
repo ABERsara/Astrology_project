@@ -10,7 +10,7 @@ const upload = useMulterStorage();
 
 //הרשמה מהווה הוספת משתמש וזה לא מצריך אימות
 router.post("/",upload.single("file"),userController.addUser);
-
+  
 // כל הפעולות מצריכות אימות משתמש
 router.use(verifyJWT);
 

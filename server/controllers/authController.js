@@ -3,11 +3,95 @@ const jwt = require("jsonwebtoken")
 
 const User = require("../models/User")
 
-//
-const login = async (req, res) => {
-    const { username, password } = req.body
 
-    if (!username || !password) {
+const register = async (req, res) => {
+    const image = req.image?.filename || ""; // Handle file upload
+    const { firstname, lastname, phone, email, password, active, diagnosis } = req.body
+    if (!firstname || !email || !password) {
+        return res.status(401).json({
+            error: true,
+            message: "All fields ars required",
+            data: null
+        })
+    }
+    //Add the user to DB
+    //כרגע הצגתי מהאבחון את כל השדות מלבד המספר הסידורי, אולי בהמשך נשנה
+    //validate the adding user is unique
+    try {
+        const existedUser = await User.findOne({ email }).lean()
+        console.log(existedUser)
+        if (existedUser) {
+            return res.status(409).json({
+                error: true,
+                message: 'The user is already exist!',
+                data: null
+            })
+        }
+        //Validate the password
+        //for password encryption:
+        const hashPwd = await bcrypt.hash(password, 10)
+
+        // Create and store the new user
+        const user = await User.create({ firstname, lastname, phone, email, password: hashPwd, image, active, diagnosis });
+        if (user) {
+            await user.save();
+            // res.status(201).json({
+            //     error: false,
+            //     message: 'New user created',
+            //     data: { _id: user._id, firstname: user.firstname }
+            // });
+
+        } else {
+            console.error('Error creating user:', error);
+            return res.status(400).json({
+                error: true,
+                message: error,
+                data: null
+            });
+        }
+
+
+        //ע"מ לקודד סיסמה מורכבת
+        // require('crypto').randomBytes(64).toString('hex')
+        //Give the token to the user
+        const userInfo = {
+            _id: user._id,
+            firstname: user.firstname,
+            lastname: user.lastname,
+            email: user.email,
+            //is admin or user?
+            permission: user.permission,
+            image: user.image,
+            diagnosis: user.diagnosis
+        }
+
+        const accessToken = jwt.sign(userInfo, process.env.ACCESS_TOKEN, { expiresIn: "15m" })
+
+        const refreshToken = jwt.sign({ email: user.email }, process.env.REFRESH_TOKEN, { expiresIn: "7d" })
+
+        res.cookie("jwt", refreshToken, {
+            //האם רק אותו דומיין
+            httpOnly: true,
+            //7 ימים
+            maxAge: 7 * 24 * 60 * 60 * 1000
+        })
+
+        return res.json({ accessToken, user })
+
+    } catch (error) {
+        // Handle errors
+        console.error('Error during registration:', error);
+        return res.status(500).json({
+            error: true,
+            message: 'Internal server error',
+            data: null
+        });
+    }
+}
+const login = async (req, res) => {
+    const { firstname, email, password } = req.body
+    console.log(req.body)
+    if (!firstname || !email || !password) {
         return res.status(401).json({
             error: true,
             message: "All fields ars required",
@@ -16,7 +100,7 @@ const login = async (req, res) => {
     }
     //Get the user from DB
     //כרגע הצגתי מהאבחון את כל השדות מלבד המספר הסידורי, אולי בהמשך נשנה
-    const foundUser = await User.findOne({ username: username, active: true }).populate("diagnosis", { IdentificationNum: 0 }).lean()
+    const foundUser = await User.findOne({ email: email, active: true }).populate("diagnosis", { IdentificationNum: 0 }).lean()
     if (!foundUser) {
         return res.status(401).json({
             error: true,
@@ -38,9 +122,10 @@ const login = async (req, res) => {
     // require('crypto').randomBytes(64).toString('hex')
     //Give the token to the user
     const userInfo = {
-        username: foundUser.username,
+
         firstname: foundUser.firstname,
         lastname: foundUser.lastname,
+        email: foundUser.email,
         //is admin or user?
         permission: foundUser.permission,
         image: foundUser.image,
@@ -49,7 +134,7 @@ const login = async (req, res) => {
 
     const accessToken = jwt.sign(userInfo, process.env.ACCESS_TOKEN, { expiresIn: "15m" })
 
-    const refreshToken = jwt.sign({ username: foundUser.username }, process.env.REFRESH_TOKEN, { expiresIn: "7d" })
+    const refreshToken = jwt.sign({ email: foundUser.email }, process.env.REFRESH_TOKEN, { expiresIn: "7d" })
 
     res.cookie("jwt", refreshToken, {
         //האם רק אותו דומיין
@@ -84,15 +169,15 @@ const refresh = async (req, res) => {
                 })
             }
             const foundUser = await User.findOne({
-                username: decode.username,
+                email: decode.email,
                 active: true
             }).
                 populate("diagnosis", { diagnosis: 1 }).lean()
             const userInfo = {
                 _id: foundUser._id,
-                username: foundUser.username,
                 firstname: foundUser.firstname,
                 lastName: foundUser.lastname,
+                email: foundUser.email,
                 permission: foundUser.permission,
                 image: foundUser.image,
                 diagnosis: foundUser.diagnosis
@@ -123,4 +208,4 @@ const logout = async (req, res) => {
         data: null
     })
 }
-module.exports = { login, refresh, logout }
+module.exports = { register, login, refresh, logout }

@@ -29,17 +29,19 @@ const getUser = async (req, res) => {
 };
 
 const addUser = async (req, res) => {
-    const { username, firstname, lastname, phone, email, password, image, active,diagnosis } = req.body
+    const {  firstname, lastname, phone, email, password, image, active,diagnosis } = req.body
+    console.log(req.body)
     //confirm data!
-    if (!firstname || !username || !email) {
+    if (!firstname  || !email) {
         return res.status(400).json({
             error: true,
-            message: 'firstname,username and email are required',
+            message: 'firstname and email are required',
             data: null
         })
     }
     //validate the adding user is unique
-    const existedUser=await User.findOne({username:username}).lean()
+    const existedUser=await User.findOne({email:email}).lean()
+    console.log(existedUser)
     if(existedUser){
         return res.status(409).json({
             error: true,
@@ -51,11 +53,11 @@ const addUser = async (req, res) => {
     const hashPwd = await bcrypt.hash(password, 10)
     try {
         // Create and store the new user
-        const user = await User.create({ username, firstname, lastname, phone, email, password: hashPwd, image, active,diagnosis });
+        const user = await User.create({  firstname, lastname, phone, email, password: hashPwd, image, active,diagnosis });
         res.status(201).json({
             error: false,
             message: 'New user created',
-            data: { _id: user._id, firstname: user.firstname, lastname: user.lastname }
+            data: { _id: user._id, firstname: user.firstname }
         });
     } catch (error) {
         console.error('Error creating user:', error);
@@ -67,13 +69,13 @@ const addUser = async (req, res) => {
     }
 }
 const updateUser = async (req, res) => {
-    const {id, username, firstname, lastname, phone, email, password, image, permission, active, diagnosis } = req.body;
+    const {id,  firstname, lastname, phone, email, password, image, permission, active, diagnosis } = req.body;
 
     // confirm data!
-    if (!id || !firstname || !username || !email) {
+    if (!id || !firstname || !email) {
         return res.status(400).json({
             error: true,
-            message: 'id, username, firstname, and email are required',
+            message: 'id,  firstname, and email are required',
             data: null
         });
     }
@@ -142,7 +144,7 @@ const deleteUser = async (req, res) => {
         res.json({
             error: false,
             message: "",
-            data: { username: updateUser.username, _id: updateUser._id }
+            data: { firstname: updateUser.firstname, _id: updateUser._id }
         })
     }
     else {

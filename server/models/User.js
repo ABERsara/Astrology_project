@@ -2,11 +2,7 @@ const mongoose = require('mongoose')//יבוא הספרייה
 
 const usersSchema = new mongoose.Schema(//הגדרת הסכמה
     {
-        username: {
-            type: String,
-            required: true,
-            unique: true
-        },
+       
         firstname: {
             type: String,
             required: true
@@ -17,7 +13,8 @@ const usersSchema = new mongoose.Schema(//הגדרת הסכמה
             type: String,
         }, email: {
             type: String,
-            required: true
+            required: true,
+            unique: true
         }, password: {
             type: String,
             required: true
