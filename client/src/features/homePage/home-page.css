@@ -4,6 +4,7 @@
     height: 100vh;
     display: flex;
     flex-direction: column;
+    font-family:"Varela Round";
 }
 
 .home-container {
@@ -108,7 +109,7 @@
     height: 314px;
     /* left: 673px;
 top: 234px; */
-    font-family: 'Ploni Round AAA';
+font-family:"Varela Round";
     font-style: normal;
     font-weight: 600;
     font-size: 70px;
@@ -124,7 +125,7 @@ top: 234px; */
 }
 
 .sentence1 {
-    color: #FFFFFF;
+    color:var(--text);
 }
 
 .sentence2 {
@@ -153,9 +154,17 @@ top: 234px; */
     background-color:var(--main);
     z-index: 10;
 }
-
+.login-from-home {
+background-color:transparent;
+border: none;
+color: var(--text);
+cursor: pointer;
+font-family:"Varela Round";
+font-size: 1rem;
+}
 .login-from-home:hover {
     color: rgb(25, 197, 213);
+    background-color:transparent;
 }
 
 .navbar-under-homepage {
@@ -174,8 +183,8 @@ top: 234px; */
     top: 40px;
     color: #e3a74c;
     direction: rtl;
-    font-family: 'Ploni Round AAA';
-    font-style: normal;
+    font-family:"Varela Round";
+        font-style: normal;
     font-weight: 600;
     font-size: 15px;
     z-index: 10;
@@ -187,7 +196,7 @@ top: 234px; */
     background-color: transparent;
     color: #e3a74c;
     border: none;
-    font-family: 'Ploni Round AAA';
+    font-family:"Varela Round";
     font-style: normal;
     font-weight: 600;
     font-size: 15px;
@@ -280,7 +289,7 @@ top: 234px; */
 width: 785px;
 height: auto;
 
-font-family: 'Ploni Round AAA';
+font-family:"Varela Round";
 font-style: normal;
 font-weight: 600;
 font-size: 18px;
@@ -343,3 +352,27 @@ height: 75px;
     width: 98.5vw;
     background-color:#1d1e3d;
 }
+/* הוספת CSS למודאל */
+.modal-overlay-homepage {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.75); /* רקע שקוף מאחורי המודאל */
+    z-index: 9999;
+}
+
+.modal-content-homepage {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px;
+    border-radius: 10px;
+    width: 350px;
+    /* max-width: 90%; */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+  
+  

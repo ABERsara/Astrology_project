@@ -48,7 +48,6 @@ const ViewSingleUser = () => {
             {user.image}
           </div>
           <p>שם : {" "}{user.firstname } {user.lastname ? user.lastname : ""}</p>
-          <p>שם משתמש: {" "}{user.username}</p>
           <p>אימייל: {" "}{user.email}</p>
           <p>טלפון:{" "}{user.phone ? user.phone : ""}</p>
         </div>
@@ -56,7 +55,6 @@ const ViewSingleUser = () => {
         <form onSubmit={formSubmit} className="single-user-form">
           <input name="id" defaultValue={user._id} type="hidden" />
           <input name="firstname" defaultValue={user.firstname} type="hidden" />
-          <input name="username" defaultValue={user.username} type="hidden" />
           <input name="email" defaultValue={user.email} type="hidden" />
           <label>הרשאה</label>
           <select name="permission" id="permission">

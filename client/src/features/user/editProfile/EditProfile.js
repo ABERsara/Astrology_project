@@ -74,7 +74,6 @@ const EditProfile = () => {
     <div className="edit-profile">
       <form className="edit-profile-form" onSubmit={formSubmit}>
         <input name="id" defaultValue={user._id} type="hidden" />
-        <input type="text" name="username" required placeholder="הכנס שם משתמש" defaultValue={user.username} />
         <input type="text" name="firstname" required placeholder="הכנס שם פרטי" defaultValue={user.firstname} />
         <input type="text" name="lastname" placeholder="הכנס שם משפחה" defaultValue={user.lastname} />
         <input type="phone" name="phone" placeholder="הכנס מס' טלפון" defaultValue={user.phone} />
@@ -83,7 +82,7 @@ const EditProfile = () => {
         {/* <input type="file" name="image" placeholder="העלה תמונה" /> */}
         <input name="permission" defaultValue={user.permission} type="hidden" />
         <button type="submit">עדכן</button>
-        <button type="cancel">בטל</button>
+        <button type="cancel" >בטל</button>
       </form>
     </div>
   );

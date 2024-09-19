@@ -1,46 +1,53 @@
 import { Link, NavLink } from "react-router-dom";
 import ZodiacWheel from "./ZodiacWheel";
-import "./home-page.css"; // קובץ ה-CSS
+import "./home-page.css";
 import Footer from "../../components/footer/Footer";
 import { useEffect, useState } from "react";
+import LoginPage from "../auth/login/LoginPage";
+import Modal from 'react-modal';
+import useModal from '../../hooks/useModal'; 
+import RegisterUser from "../user/registration/RegisterUser";
+
+Modal.setAppElement('#root');
 
 const HomePage = () => {
     const [showWheel, setShowWheel] = useState(true);
+    const { isOpen: showLoginModal, openModal: handleLoginClick, closeModal:closeLoginModal } = useModal();
+    const { isOpen: showRegisterModal, openModal: handleRegisterClick, closeModal:closeRegisterModal } = useModal();
 
     useEffect(() => {
         const handleScroll = () => {
-            // Check scroll position and show/hide the wheel accordingly
             if (window.scrollY < 130) {
-                // Show wheel if close to the top (you can adjust 100 to a different value if needed)
                 setShowWheel(true);
             } else {
-                // Hide wheel when scrolled down
                 setShowWheel(false);
             }
         };
 
-        // מאזינים לאירוע הגלילה
         window.addEventListener('scroll', handleScroll);
 
-        // ננקה את המאזין לגלילה כשלא נזדקק בו יותר
         return () => {
             window.removeEventListener('scroll', handleScroll);
         };
     }, []);
+
     const scrollToSection = (sectionId) => {
         const section = document.getElementById(sectionId);
         if (section) {
             section.scrollIntoView({ behavior: "smooth" });
         }
     };
+
     return (
         <div className="home-page-casing">
             <div className="home-container">
                 <div className="navbar-top-homepage">
-                    <Link to={`/login`} className="login-from-home" >
-                        התחברות / </Link>
-                    <Link to={`/register`} className="login-from-home">
-                        הרשמה </Link>
+                    <button onClick={handleLoginClick} className="login-from-home">
+                        התחברות /
+                    </button>
+                    <button onClick={handleRegisterClick} className="login-from-home">
+                        הרשמה
+                    </button>
                     <img alt="" src="/shopping-cart.png" className="shopping-cart-home" />
                     <img alt="" src="/heart.png" className="heart-home" />
                 </div>
@@ -60,7 +67,7 @@ const HomePage = () => {
                     <div className="sentence1">משפט חזק על</div>
                     <div className="sentence2">האסטרולוגיה</div>
                     <div className="info-homepage">
-                        היא כלי עזר בחיינו. שמה מראה ומשקפת את המציאות, משפרת תודעה ע"י ניתוח האישיות שלנו ושל הזולת, וחוזה מגמות עתידיות ומאפשרת להתכונן
+                    היא כלי עזר בחיינו. שמה מראה ומשקפת את המציאות, משפרת תודעה ע"י ניתוח האישיות שלנו ושל הזולת, וחוזה מגמות עתידיות ומאפשרת להתכונן
                     </div>
                 </div>
                 <div className="home-links">
@@ -72,9 +79,8 @@ const HomePage = () => {
 
             <div className="home-about-section">
                 <div id="about-section" className="about-section">
-                <img  alt="דלי" src="/9.png" className="horoscopes Aquarius"/>
+                    <img alt="דלי" src="/9.png" className="horoscopes Aquarius"/>
                     <h2>אודות</h2>
-                    
                     <p>הרעיון של אסטרולוגיה הוא זיהוי כלים ויכולות של האדם.
                         רוחי  לוקחת את זה צעד קדימה- באופן שמהכלי הזה היא מנסה לסייע לאדם,
                         בגישור ע"פ  קונפליקטים (למה בעלי קם מאוחר כל יום?- יש לזה סיבה. בואי נמצא אותה,
@@ -90,16 +96,34 @@ const HomePage = () => {
                         (למרות שיש הרבה  שמתנגדים וטוענים שזה התעסקות בכוחות מיסטיים- גרמי השמיים...)
                         להתעסק עם  זה להבנת נפש האדם.
                         ואז זה בעצם רק כלי...</p>
-                        <img alt="גדי" src="/0.png" className="horoscopes Capricorn"/>
-                        <img alt="סרטן" src="/1.png" className="horoscopes Cancer"/>
-                        <img alt="תאומים" src="/5.png" className="horoscopes Gemini"/>
-                        <img alt="שור" src="/6.png" className="horoscopes Taurus"/>
+                    <img alt="גדי" src="/0.png" className="horoscopes Capricorn"/>
+                    <img alt="סרטן" src="/1.png" className="horoscopes Cancer"/>
+                    <img alt="תאומים" src="/5.png" className="horoscopes Gemini"/>
+                    <img alt="שור" src="/6.png" className="horoscopes Taurus"/>
                 </div>
 
                 <div id="contact-section" className="contact-section">
                     <Footer />
                 </div>
             </div>
+            <Modal
+                isOpen={showLoginModal}
+                onRequestClose={closeLoginModal}
+                contentLabel="Login Modal"
+                className="modal-content-homepage"
+                overlayClassName="modal-overlay-homepage"
+            >
+                <LoginPage closeModal={closeLoginModal} />
+            </Modal>
+            <Modal
+                isOpen={showRegisterModal}
+                onRequestClose={closeRegisterModal}
+                contentLabel="Register Modal"
+                className="modal-content-homepage"
+                overlayClassName="modal-overlay-homepage"
+            >
+                <RegisterUser closeModal={closeRegisterModal} />
+            </Modal>
         </div>
     );
 };

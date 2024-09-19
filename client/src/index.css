@@ -9,13 +9,14 @@
 --gradiant:radial-gradient(circle, #191923 0%, #1d1e3d 40%, #5b5d6e 100%);
 --orange: #E49928;
 }
+
 *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 html {
-  font-family: "Suez One", serif;
+  font-family:"Varela Round";
   font-weight: 400;
   font-style: normal;
   direction: rtl;

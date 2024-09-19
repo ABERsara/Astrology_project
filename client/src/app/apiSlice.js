@@ -1,7 +1,7 @@
-import {createApi,fetchBaseQuery} from "@reduxjs/toolkit/query/react"
-import {setCredentials}from "../features/auth/authSlice"
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react"
+import { setCredentials } from "../features/auth/authSlice"
 const baseQuery = fetchBaseQuery({
-    baseUrl:"http://localhost:2024",
+    baseUrl: "http://localhost:2024",
     credentials: 'include',
     prepareHeaders: (headers, { getState }) => {
         console.log()
@@ -26,7 +26,7 @@ const baseQueryWithReauth = async (args, api, extraOptions) => {
 
         // send refresh token to get new access token 
         const refreshResult = await baseQuery('/api/auth/refresh', api, extraOptions)
-console.log(refreshResult)
+        console.log(refreshResult)
         if (refreshResult?.data) {
 
             // store the new token 
@@ -45,9 +45,9 @@ console.log(refreshResult)
 
     return result
 }
-const apiSlice=createApi({
-    reducerPath:"api",
-    baseQuery:baseQueryWithReauth,
-    endpoints:()=>({})
+const apiSlice = createApi({
+    reducerPath: "api",
+    baseQuery: baseQueryWithReauth,
+    endpoints: () => ({})
 })
 export default apiSlice

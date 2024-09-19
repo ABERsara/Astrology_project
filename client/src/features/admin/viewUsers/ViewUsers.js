@@ -41,12 +41,11 @@ const ViewUsers = () => {
 
     <div className="users-list">
       <div className="users-list-search">
-        <Search placeholder={"חיפוש לפי שם משתמש"} />
+        <Search placeholder={"חיפוש לפי שם או מייל"} />
         <table className="users-table" >
           <thead>
             <tr>
               <td>שם מלא</td>
-              <td>שם משתמש</td>
               <td>טלפון</td>
               <td>אימייל</td>
               <td>הרשאה</td>
@@ -64,7 +63,6 @@ const ViewUsers = () => {
                     {`${user.firstname ? user.firstname : ""}  ${user.lastname ? user.lastname : ""} `}
                   </div>
                 </td>
-                <td>{user.username}</td>
                 <td>
                   {user.phone}
                 </td>

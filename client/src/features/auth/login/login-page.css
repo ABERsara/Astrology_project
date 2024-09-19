@@ -1,63 +1,112 @@
-.login-page{
-    /* width:100%;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center; */
-    background-color:var(--main);
+.login-page {
+    background-color: transparent;
     margin: 0;
     padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    
+    color: var(--orange);
+    position: relative; /* מאפשר למקם את ה-X בקצה השמאלי */
+    font-family:"Varela Round";
 }
 
-.login-page-form{
-    /* background-color: var(--bgSoft);
-    padding: 50px;
-    border-radius: 10px;
-    width: 500px;
-    height: 500px;
+.login-page-form {
+    background-color: var(--text);
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    gap:30px */
-    background-color: var(--text);
-display: flex;
-flex-direction: column;
-align-items: center;
-padding: 10px;
-gap: 10px;
-padding: 50px;
-height: 500px;
-width: 300px;
+    padding: 50px;
+    gap: 20px;
+    height: 550px;
+    width: 350px;
     border-radius: 10px;
-/* position: relative; */
-/* width: 260px;
-height: 501px; */
+    position: relative; 
 }
-.login-page-form h1{
+
+.login-page-form h1 {
     color: var(--orange);
-    justify-content: center;
+    text-align: center; /* ממרכז את הכותרת */
+    letter-spacing: 0.5px;
 }
-.login-page-form input{
+
+.login-page-form div {
+    display: flex;
+    flex-direction: column;
     width: 100%;
-    padding: 10px;
+    /* text-align: right; */
+}
+
+.login-page-form label {
+    margin-bottom: 5px;
+    letter-spacing: 0.5px;
+
+}
+
+.login-page-form input[type="text"],
+.login-page-form input[type="email"],
+.login-page-form input[type="password"] {
+    width: 100%;
+    padding: 5px;
     border: solid 2px var(--orange);
     border-radius: 5px;
     background-color: var(--text);
-    color: var(--orange)
+    color: var(--orange);
+}
+.checkbox {
+    display: flex;
+    justify-content: flex-end; /* מיישר את הכפתור והטקסט לימין */
+    align-items: flex-start;
+    width: 100%; /* מוודא שהתיבה תופסת את כל רוחב הקונטיינר */
+    text-align: right; /* מוסיף יישור לימין לטקסט */
+    gap: 10px; /* יוצר מרווח בין תיבת הסימון לטקסט */
+    letter-spacing: 0.5px;
 }
 
-.login-page-form button{
-    width: 100%;
-    padding: 10px;
-    background-color:var(--orange);
+
+
+.checkbox label {
+    margin-left: 10px;
+}
+
+.checkbox input {
+    margin-right: 5px;
+}
+
+.login-page-form button {
+    background-color: var(--orange);
     color: var(--text);
+    text-align: center;
+    border-radius: 10px;
+    padding: 10px;
     border: none;
+    width: 163px;
     cursor: pointer;
-    border-radius: 5px;
+    letter-spacing: 0.5px;
+    font-family:"Varela Round";
+}
+
+.img-back {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    position: absolute;
+    top: 10px;
+    right: 10px; 
+    cursor: pointer;
+}
+
+ .sign-with-google {
+    position:absolute;
+    width: 100%; 
+    padding: 20px;
+    border-radius: 30px; 
+    text-align: center;
+    cursor: pointer;
+    margin-top: auto;
+    font-family:"Varela Round";
+} 
+
+.login-h1 {
+    text-align: center; /* יישור לאמצע */
 }
