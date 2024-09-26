@@ -12,7 +12,7 @@ const getMenuForPath = (path) => {
       { title: "שינוי סיסמה", path: "/dash/user/changePassword", icon: <MdEdit /> },     
        { title: "צפייה במשתמשים", path: "/dash/manage/users", icon: <MdHandyman /> },
        { title: "צפייה בבלוגים", path: "/dash/blogs", icon: <MdAccountTree /> },
-
+{title:"בקשת אבחון",path:"/dash/user/requestDiagnosis",icon:<MdAccountTree/>}
 
     ],
     "/dash/blogs": [

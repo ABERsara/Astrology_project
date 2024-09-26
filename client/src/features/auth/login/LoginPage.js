@@ -15,7 +15,7 @@ const LoginPage = ({ closeModal }) => {
       if (rememberMe) {
         localStorage.setItem('user', JSON.stringify(data))
       }
-      navigate("/dash/user")
+      navigate( "/dash/user");
     }
   }, [isSuccess, rememberMe])
 
@@ -39,10 +39,13 @@ const LoginPage = ({ closeModal }) => {
   const handleGoogleLoginFailure = (response) => {
     console.error("Google login failed:", response)
   }
+  const handlecloseModal=()=>{
+    navigate("/")
+  }
   return (
     <div className="login-page">
       <form onSubmit={handleSubmit} className="login-page-form">
-        <img src="/xMark.png" alt="" className="img-back" onClick={closeModal} />
+        <img src="/xMark.png" alt="" className="img-back" onClick={handlecloseModal} />
         <h1 className="login-h1">איזה כיף שבאת אלינו!</h1>
         <div>
           <label className="login-item name">שם:</label>

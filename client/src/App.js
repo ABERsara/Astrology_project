@@ -13,10 +13,15 @@ import AddBlog from "./features/blogs/addBlog/AddBlog";
 import EditBlog from "./features/blogs/editBlog/EditBlog";
 import DeleteBlog from "./features/blogs/deleteBlog/DeleteBlog";
 import HomePage from "./features/homePage/HomePage";
-import RegisterUser from "./features/user/registration/RegisterUser";
+import RegisterUser from "./features/auth/registration/RegisterUser";
 import PrivateZone from "./features/user/privateZone/PrivateZone";
 import LoginPage from "./features/auth/login/LoginPage";
 import ViewSingleUser from "./features/admin/viewSingleUser/ViewSingleUser"
+import RequireAuth from "./features/auth/RequireAuth";
+import CheckLoginNotRequired from "./features/auth/CheckLoginNotRequired";
+import AboutSection from "./components/aboutSection/AboutSection";
+import PersistLogin from "./features/auth/PersistLogin";
+import RequestDiagnosis from "./features/user/RequestDiagnosis/RequestDiagnosis";
 function App() {
   return (
     <Router>
@@ -25,40 +30,49 @@ function App() {
         <Route path="/" element={<SiteLayout />}>
           {/* דף כניסה, דף ראשי */}
           <Route index element={<HomePage />} />
+          <Route path="about" element={<AboutSection />} />
           <Route path="register" element={<RegisterUser />} />
           <Route path="login" element={<LoginPage />} />
+          <Route element={<PersistLogin />}>
+              {/* נתיב ראשי של אזור ה-Dashboard */}
+              <Route path="dash" element={<DashLayout />}>
+                <Route index element={<h1>Dashboard</h1>} />
 
-          {/* נתיב ראשי של אזור ה-Dashboard */}
-          <Route path="dash" element={<DashLayout />}>
-            <Route index element={<h1>Dashboard</h1>} />
+                {/* בלוגים - מקוננים תחת dash */}
+                <Route path="blogs" element={<Outlet />}>
+                  <Route index element={<ViewBlogs />} />
+                  <Route path="add" element={<AddBlog />} />
+                  <Route path="edit" element={<EditBlog />} />
+                  <Route path="delete" element={<DeleteBlog />} />
+                  <Route path=":blogId" element={<ViewSingleBlog />} />
+                </Route>
+                <Route element={<RequireAuth allowPermission={["Admin", "User"]} />}>
 
-            {/* בלוגים - מקוננים תחת dash */}
-            <Route path="blogs" element={<Outlet />}>
-              <Route index element={<ViewBlogs />} />
-              <Route path="add" element={<AddBlog />} />
-              <Route path="edit" element={<EditBlog />} />
-              <Route path="delete" element={<DeleteBlog />} />
-              <Route path=":blogId" element={<ViewSingleBlog />} />
-            </Route>
+                {/* אזור אישי של המשתמש */}
+                <Route path="user" element={<Outlet />}>
+                  <Route index element={<PrivateZone />} />
+                  <Route path="editProfile" element={<EditProfile />} />
+                  <Route path="chargeHistory" element={<ChargeHistory />} />
+                  <Route path="accountOverview" element={<AccountOverview />} />
+                  <Route path="changePassword" element={<ChangePassword />} />
+                  <Route path="requestDiagnosis" element={<RequestDiagnosis/>}/>
+                </Route>
 
-            {/* אזור אישי של המשתמש */}
-            <Route path="user" element={<Outlet />}>
-              <Route index element={<PrivateZone />} />
-              <Route path="editProfile" element={<EditProfile />} />
-              <Route path="chargeHistory" element={<ChargeHistory />} />
-              <Route path="accountOverview" element={<AccountOverview />} />
-              <Route path="changePassword" element={<ChangePassword />} />
-            </Route>
+                <Route element={<RequireAuth allowPermission={["Admin"]} />}>
 
-            {/* ניהול משתמשים - גם תחת ה-dashboard */}
-            <Route path="manage/users" element={<Outlet />}>
-              <Route index element={<ViewUsers />} />
-              <Route path=":userId" element={<ViewSingleUser />} />
-            </Route>
-            {/* ניהול אבחונים */}
-            <Route path="diagnosis" element={<Outlet />}>
-              <Route index element={<h1>כרגע לא ברור לי מה לשים פה</h1>} />
-              <Route path="upload" element={<UploadDiagnosis />} />
+                {/* ניהול אבחונים */}
+                <Route path="diagnosis" element={<Outlet />}>
+                  <Route index element={<h1>כרגע לא ברור לי מה לשים פה</h1>} />
+                  <Route path="upload" element={<UploadDiagnosis />} />
+                </Route>
+
+                  {/* ניהול משתמשים - גם תחת ה-dashboard */}
+                  <Route path="manage/users" element={<Outlet />}>
+                    <Route index element={<ViewUsers />} />
+                    <Route path=":userId" element={<ViewSingleUser />} />
+                  </Route>
+                </Route>
+              </Route>
             </Route>
           </Route>
         </Route>

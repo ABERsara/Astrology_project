@@ -1,4 +1,4 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink,Navigate, useNavigate } from "react-router-dom";
 import ZodiacWheel from "./ZodiacWheel";
 import "./home-page.css";
 import Footer from "../../components/footer/Footer";
@@ -6,11 +6,12 @@ import { useEffect, useState } from "react";
 import LoginPage from "../auth/login/LoginPage";
 import Modal from 'react-modal';
 import useModal from '../../hooks/useModal'; 
-import RegisterUser from "../user/registration/RegisterUser";
+import RegisterUser from "../auth/registration/RegisterUser";
 
 Modal.setAppElement('#root');
 
 const HomePage = () => {
+    const navigate=useNavigate()
     const [showWheel, setShowWheel] = useState(true);
     const { isOpen: showLoginModal, openModal: handleLoginClick, closeModal:closeLoginModal } = useModal();
     const { isOpen: showRegisterModal, openModal: handleRegisterClick, closeModal:closeRegisterModal } = useModal();
@@ -37,15 +38,18 @@ const HomePage = () => {
             section.scrollIntoView({ behavior: "smooth" });
         }
     };
-
+    const handleLoginModalOpen = () => {
+        handleLoginClick();
+        navigate("/login");  // ניתוב ל-login
+    }
     return (
         <div className="home-page-casing">
             <div className="home-container">
                 <div className="navbar-top-homepage">
-                    <button onClick={handleLoginClick} className="login-from-home">
+                    <button onClick={handleLoginModalOpen} className="login-from-home">
                         התחברות /
                     </button>
-                    <button onClick={handleRegisterClick} className="login-from-home">
+                    <button onClick={handleRegisterClick}className="login-from-home">
                         הרשמה
                     </button>
                     <img alt="" src="/shopping-cart.png" className="shopping-cart-home" />

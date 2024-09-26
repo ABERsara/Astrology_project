@@ -7,14 +7,15 @@ const useAuth = ()=>{
     let isUser = false
     if(token){
         const userDecoded = jwtDecode(token)
-        const {_id, username, permission, firstname,lastname,image, diagnosis} = userDecoded
+        const {id,email, permission, firstname,lastname,image, diagnosis} = userDecoded
+        // console.log(`id: ${id} ,username: ${email}, permission: ${permission},firstname: ${firstname},lastname: ${lastname},${image},diagnosis:  ${diagnosis}`)
         isAdmin = permission ==="Admin"
         isUser = permission ==="User"
-        return {_id, username, isAdmin,isUser, firstname,lastname,image,permission, diagnosis}
+        return {id, email, isAdmin,isUser, firstname,lastname,image,permission, diagnosis}
 
     }
 
-    return {_id:"", username:'', isAdmin, isUser, firstname:'',lastname:"",image:null,diagnosis:null, permission:""}
+    return {id:"", email:'', isAdmin, isUser, firstname:'',lastname:"",image:null,diagnosis:null, permission:""}
 
 
 }

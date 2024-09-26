@@ -1,49 +1,64 @@
-import "./change-password.css"
-import { useUpdateUserMutation, useGetAllUsersQuery } from "../userApiSlice";
-import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
-import { jwtDecode } from "jwt-decode"; // Fix: Use named import
-import Cookies from "js-cookie"; // Import js-cookie
-import useAuth from "../../../hooks/useAuth";
+import React, { useEffect, useState } from 'react';
+import './change-password.css';
+import { useUpdateUserMutation, useGetUserQuery } from "../userApiSlice";
+import { useNavigate } from 'react-router-dom';
+import useAuth from '../../../hooks/useAuth';
+
 const ChangePassword = () => {
-  const navigate = useNavigate(); 
-  const {_id}=useAuth()
-  const { data: usersObject, isError, error, isLoading } = useGetAllUsersQuery();
+  const navigate = useNavigate();
+  const { id } = useAuth();
   const [updateUser, { isSuccess: isUpdateSuccess }] = useUpdateUserMutation();
+  const { data: user, isSuccess: isGetUserSuccess} = useGetUserQuery(id,{refetchOnMountOrArgChange:true}); // קריאה עם ה-ID
+  const [showPassword, setShowPassword] = useState(false); // State to toggle password visibility
+
   useEffect(() => {
     if (isUpdateSuccess) {
       navigate("/dash/user");
     }
   }, [isUpdateSuccess, navigate]);
-  
-  
-  
-  
+
   const formSubmit = (e) => {
     e.preventDefault();
     const data = new FormData(e.target);
-    updateUser(data); // Use FormData to send form data
+    updateUser(data);
   };
 
-  if (isLoading) return <h1>Loading ...</h1>;
-  if (isError) return <h1>{JSON.stringify(error)}</h1>;
-
-  const user = usersObject?.data.find((user) => user._id === _id);
-  if (!user) return <h1>{"Not found"}</h1>;
+  
+  if (!user) {
+    return (
+      <div>
+        <h1>User {id} not found</h1>
+      </div>
+    );
+  }
 
   return (
     <div className="edit-profile">
       <form className="edit-profile-form" onSubmit={formSubmit}>
-        <input name="id" defaultValue={user._id} type="hidden" />
+        <input name="id" defaultValue={user.id} type="hidden" />
         <input type="hidden" name="image" placeholder="העלה תמונה" />
-        <input type="hidden" name="firstName"  placeholder="הכנס שם פרטי" defaultValue={user.firstname} />
+        <input type="hidden" name="firstName" placeholder="הכנס שם פרטי" defaultValue={user.firstname} />
         <input type="hidden" name="lastName" placeholder="הכנס שם משפחה" defaultValue={user.lastname} />
-        <input type="username" name="username"placeholder="הכנס שם משתמש" defaultValue={user.username} />
         <input type="hidden" name="phone" placeholder="הכנס מס' טלפון" defaultValue={user.phone} />
-        <input type="hidden" name="email"  placeholder="הכנס כתובת מייל" defaultValue={user.email} />
-        <input type="hidden" name="password"  placeholder="הכנס סיסמה" defaultValue={user.email} />
+        <input type="hidden" name="email" placeholder="הכנס כתובת מייל" defaultValue={user.email} />
+
+        <div className="password-input">
+          <input
+            type={showPassword ? "text" : "password"} // Toggle password visibility
+            name="password"
+            placeholder="הכנס סיסמה"
+            defaultValue={user.password}
+          />
+          <span
+            className="toggle-password-visibility"
+            onMouseEnter={() => setShowPassword(true)} // Show password when mouse is over the icon
+            onMouseLeave={() => setShowPassword(false)} // Hide password when mouse leaves the icon
+          >
+            👁️
+          </span>
+        </div>
         <button type="submit">עדכן</button>
-        <button type="cancel">בטל</button>
+        <button type="button" onClick={() => navigate('/dash/user')}>בטל</button>
       </form>
     </div>
   );
