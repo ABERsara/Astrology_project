@@ -19,7 +19,6 @@ const register = async (req, res) => {
     //validate the adding user is unique
     try {
         const existedUser = await User.findOne({ email }).lean()
-        console.log(existedUser)
         if (existedUser) {
             return res.status(409).json({
                 error: true,
@@ -55,7 +54,7 @@ const register = async (req, res) => {
         // require('crypto').randomBytes(64).toString('hex')
         //Give the token to the user
         const userInfo = {
-            _id: user._id,
+            id: user._id,
             firstname: user.firstname,
             lastname: user.lastname,
             email: user.email,
@@ -90,7 +89,6 @@ const register = async (req, res) => {
 }
 const login = async (req, res) => {
     const { firstname, email, password } = req.body
-    console.log(req.body)
     if (!firstname || !email || !password) {
         return res.status(401).json({
             error: true,
@@ -122,7 +120,7 @@ const login = async (req, res) => {
     // require('crypto').randomBytes(64).toString('hex')
     //Give the token to the user
     const userInfo = {
-
+id:foundUser._id,
         firstname: foundUser.firstname,
         lastname: foundUser.lastname,
         email: foundUser.email,
@@ -174,7 +172,7 @@ const refresh = async (req, res) => {
             }).
                 populate("diagnosis", { diagnosis: 1 }).lean()
             const userInfo = {
-                _id: foundUser._id,
+                id: foundUser._id,
                 firstname: foundUser.firstname,
                 lastName: foundUser.lastname,
                 email: foundUser.email,

@@ -15,23 +15,24 @@ const diagnosisSchema = new mongoose.Schema(//הגדרת הסכמה
             hour: {
                 type: Number,
                 required: true,
-                default:0
+                default: 0
             }, minutes: {
                 type: Number,
                 required: true,
-                default:0
+                default: 0
             }
         }, utc: {
             city: {
                 type: String,
                 required: true,
-                default:"unknown",
+                default: "unknown",
             },
             country: {
                 type: String,
                 required: true,
             }
-        }, diagnosisType: {
+        }, //האם האבחון מדויק או לא
+        diagnosisType: {
             type: Boolean,
             required: true,
         },
