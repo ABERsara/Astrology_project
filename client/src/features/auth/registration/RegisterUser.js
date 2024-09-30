@@ -1,127 +1,99 @@
-import "./register-user.css"
-import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import Swal from 'sweetalert2';
 import { useRegisterMutation } from "../authApiSlice";
-import useModal from "../../../hooks/useModal"; // חיבור ה-hook
+import { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 
-const RegisterUser = ({closeModal}) => {
-  const [register, { isError, error, isLoading, isSuccess, data }] = useRegisterMutation();
-  const [email, setEmail] = useState("");
-  const [isUsernameUnique, setIsUsernameUnique] = useState(true);
-  const [errorMessage, setErrorMessage] = useState("");
+const RegisterPage = () => {
+  const [register] = useRegisterMutation();
+  const navigate = useNavigate();
   const [rememberMe, setRememberMe] = useState(false);
 
-  const navigate = useNavigate();
-  const successModal = useModal(); // שימוש ב-hook לניהול מודל ההצלחה
+  const handleRegisterClick = () => {
+    Swal.fire({
+      customClass: {
+        popup: 'custom-swal-modal',
+      },
+      html: `
+      <div class="login-page">
+        <form id="registerForm" class="login-page-form">
+          <img src="/xMark.png" alt="" class="img-back" id="closeModal" />
+          <h1 class="login-h1">איזה כיף שבאת אלינו!</h1>
+          <div>
+            <label class="login-item name">שם:</label>
+            <input type="text" required name="firstname" id="firstname" />
+          </div>
+          <div>
+            <label class="login-item email">אימייל:</label>
+            <input type="email" required name="email" id="email" />
+          </div>
+          <div class="login-item password">
+            <label>סיסמא:</label>
+            <input type="password" required name="password" id="password" />
+          </div>
+          <div class="login-item checkbox">
+            <label>
+              <input type="checkbox" id="rememberMeRegister" /> זכור אותי
+            </label>
+          </div>
+          <button type="submit"> אני רוצה להירשם!</button>
+        </form>
+      </div>
+    `,
+      didOpen: () => {
+        document.getElementById('closeModal').onclick = () => Swal.close();
 
-  useEffect(() => {
-    if (isSuccess) {
-      console.log(data);
-      if (rememberMe) {
-        localStorage.setItem('user', JSON.stringify(data));
-      }
-      
-      closeModal(); // סגירת מודל ההרשמה המקורי
-      successModal.openModal(); // פתיחת מודל ההצלחה
-      
-      setTimeout(() => {
-        successModal.closeModal(); // סגירת מודל ההצלחה אחרי 3 שניות
-        navigate("/dash/user"); // הפניה לנתיב לאחר סיום
-      }, 3000); // המתנה של 3 שניות
-    }
-  }, [isSuccess, navigate, rememberMe, closeModal, successModal]);
+        document.getElementById('registerForm').onsubmit = async (e) => {
+          e.preventDefault();
+          const firstname = document.getElementById('firstname').value;
+          const email = document.getElementById('email').value;
+          const password = document.getElementById('password').value;
+          const rememberMeRegister = document.getElementById('rememberMeRegister').checked;
 
-  const handleRememberMeChange = () => {
-    setRememberMe(!rememberMe);
-  };
+          if (!firstname || !email || !password) {
+            Swal.showValidationMessage('אנא מלא את כל השדות');
+            return false;
+          }
 
-  const checkUsernameUnique = async (email) => {
-    try {
-      const response = await fetch(`/api/users/check-username?username=${email}`);
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
-      const isUnique = await response.json();
-      setIsUsernameUnique(isUnique);
-    } catch (err) {
-      console.error("Failed to check email uniqueness:", err);
-    }
-  };
+          const userObject = { firstname, email, password };
 
-  const handleUsernameChange = (e) => {
-    const email = e.target.value;
-    setEmail(email);
-    checkUsernameUnique(email);
-  };
-
-  const formSubmit = async (e) => {
-    e.preventDefault();
-    if (!isUsernameUnique) {
-      setErrorMessage("כתובת המייל כבר קיימת, אנא הכנס כתובת מייל תקינה");
-      return;
-    }
-    const data = new FormData(e.target);
-    const userObject = Object.fromEntries(data.entries());
-    try {
-      await register(userObject).unwrap();
-    } catch (err) {
-      if (err.status === 409) {
-        setErrorMessage("כתובת המייל כבר קיימת, אנא הכנס כתובת מייל תקינה");
-      } else {
-        console.error("Error during registration:", err);
-        setErrorMessage("התרחשה שגיאה במהלך הרישום. נסה שוב מאוחר יותר.");
-      }
-    }
+          try {
+            const res = await register(userObject).unwrap();
+            if (res) {
+              if (rememberMeRegister) {
+                localStorage.setItem('user', JSON.stringify(res));
+              }
+              Swal.fire({
+                icon: 'success',
+                title: '<div class="custom-success-text">נרשמת בהצלחה</div>',
+                iconColor: '#E49928',
+                showConfirmButton: false,
+                customClass: {
+                  popup: 'custom-success-swal',
+                },
+                timer: 3000
+              }).then(() => {
+                // ניווט לאזור האישי לאחר הצגת ההודעה
+                navigate("/dash/user");
+              });
+            }
+          } catch (err) {
+            if (err.status === 409) {
+              Swal.fire('שגיאה', 'האימייל כבר קיים במערכת', 'error');
+            } else {
+              Swal.fire('שגיאה', 'התרחשה שגיאה במהלך הרישום, נסה שוב', 'error');
+            }
+          }
+        };
+      },
+      showConfirmButton: false,
+    });
   };
 
   return (
-    <div className="login-page">
-      <form onSubmit={formSubmit} className="login-page-form">
-        <img src="/xMark.png" alt="" className="img-back" onClick={closeModal} />
-        <h1 className="login-h1">איזה כיף שבאת אלינו!</h1>
-        <div>
-          <label className="login-item name">שם:</label>
-          <input type="text" required name="firstname" id="firstname" />
-        </div>
-        <div>
-          <label className="login-item email">אימייל:</label>
-          <input
-            type="email"
-            required
-            name="email"
-            placeholder="אימייל"
-            value={email}
-            onChange={handleUsernameChange}
-            id="email"
-          />
-        </div>
-        <div className="login-item password">
-          <label>סיסמא:</label>
-          <input type="password" required name="password" id="password" />
-        </div>
-        <div className="login-item checkbox">
-          <label>
-            <input
-              type="checkbox"
-              checked={rememberMe}
-              onChange={handleRememberMeChange}
-            />
-            זכור אותי
-          </label>
-        </div>
-        <button type="submit" disabled={!isUsernameUnique}>אני רוצה להיכנס!</button>
-        {!isUsernameUnique && <span className="username-unique">האימייל קיים כבר במערכת. אנא בחר כתובת אימייל אחרת.</span>}
-        {errorMessage && <span className="username-unique">{errorMessage}</span>}
-      </form>
-
-      {/* מודל ההצלחה */}
-      {successModal.isOpen && (
-        <div className="modal-success">
-          <img src="/registeredSuccess.png" alt="נרשמת בהצלחה , מייד תועבר " />
-        </div>
-      )}
-    </div>
+    <button className="login-from-home" onClick={handleRegisterClick}>
+      הרשמה
+    </button>
   );
 };
 
-export default RegisterUser;
+export default RegisterPage;

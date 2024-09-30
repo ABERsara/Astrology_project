@@ -79,3 +79,19 @@
     gap: 10px;
     align-items: center;
 }
+.nav-hello{
+    display: flex;
+    width: 170px;
+    font-size: 1.1rem;
+}
+.account-profile{
+    display: flex;
+    align-items: center;
+    color: var(--text);
+    /* padding: 10px; */
+    /* gap: 10px; */
+    width: 30px;
+    height: 30px;
+    /* left: 1196px; */
+    margin-top: 0px;
+}

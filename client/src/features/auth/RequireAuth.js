@@ -6,9 +6,7 @@ const RequireAuth = ({allowPermission}) => {
     console.log(`permission: ${permission}`)
     const userAllowed = allowPermission.includes(permission)
     if(userAllowed) return <Outlet />
-    return  <Navigate to="/login" replace />
-
- 
+    return  <Navigate to="/" replace />
 }
 
 export default RequireAuth

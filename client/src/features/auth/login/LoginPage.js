@@ -1,89 +1,76 @@
-import "./login-page.css"
-import { GoogleLogin } from '@react-oauth/google';
-import { useLoginMutation } from "../authApiSlice"
-import { useEffect, useState } from "react"
-import { useNavigate } from "react-router-dom"
-const LoginPage = ({ closeModal }) => {
-  const [login, { isError, error, isLoading, isSuccess, data }] = useLoginMutation()
-  const navigate = useNavigate()
-  const [rememberMe, setRememberMe] = useState(false) // ניהול מצב "זכור אותי"
+import Swal from 'sweetalert2';
+import { useLoginMutation } from "../authApiSlice";
+import { useNavigate, useLocation } from "react-router-dom";
+import { useState, useEffect } from "react";
 
-  useEffect(() => {
-    if (isSuccess) {
-      console.log(data)
-      // אם המשתמש רוצה לזכור את עצמו, נשמור את המידע ב-localStorage
-      if (rememberMe) {
-        localStorage.setItem('user', JSON.stringify(data))
-      }
-      navigate( "/dash/user");
-    }
-  }, [isSuccess, rememberMe])
+const LoginPage = () => {
+  const [login] = useLoginMutation();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [error, setError] = useState(null);
 
-  
-  const handleSubmit = async (e) => {
-    e.preventDefault()
-    const data = new FormData(e.target)
-    const userObject = Object.fromEntries(data.entries())
-    login(userObject)
-  }
-  
+  const handleLoginClick = () => {
+    Swal.fire({
+      customClass: {
+        popup: 'custom-swal-modal',
+      },
+      html: `
+        <div class="login-page">
+          <form id="loginForm" class="login-page-form">
+            <img src="/xMark.png" alt="" class="img-back" id="closeModal" />
+            <h1 class="login-h1">איזה כיף שבאת אלינו!</h1>
+            <div>
+              <label class="login-item name">שם:</label>
+              <input type="text" required name="firstname" id="firstname" />
+            </div>
+            <div>
+              <label class="login-item email">אימייל:</label>
+              <input type="email" required name="email" id="email" />
+            </div>
+            <div class="login-item password">
+              <label>סיסמא:</label>
+              <input type="password" required name="password" id="password" />
+            </div>
+            <button type="submit">אני רוצה להיכנס!</button>
+          </form>
+        </div>
+      `,
+      didOpen: () => {
+        document.getElementById('loginForm').onsubmit = async (e) => {
+          e.preventDefault();
+          const firstname = document.getElementById('firstname').value;
+          const email = document.getElementById('email').value;
+          const password = document.getElementById('password').value;
 
-  const handleRememberMeChange = () => {
-    setRememberMe(!rememberMe)
-  }
+          if (!firstname || !email || !password) {
+            Swal.showValidationMessage('אנא מלא את כל השדות');
+            return false;
+          }
 
-  const handleGoogleLoginSuccess = (response) => {
-    console.log('Login Success:', response);
-    // כאן תוכל להמשיך עם ההתחברות, לדוגמה שליחת הטוקן לשרת שלך
+          try {
+            const userObject = { firstname, email, password };
+            const res = await login(userObject).unwrap();
+
+            if (res) {
+              localStorage.setItem('user', JSON.stringify(res));
+              Swal.close();
+              navigate("/dash/user");
+            }
+          } catch (err) {
+            setError(err.data?.message || 'התחברות נכשלה');
+          }
+        };
+      },
+      showConfirmButton: false,
+    });
   };
-  const handleGoogleLoginFailure = (response) => {
-    console.error("Google login failed:", response)
-  }
-  const handlecloseModal=()=>{
-    navigate("/")
-  }
-  return (
-    <div className="login-page">
-      <form onSubmit={handleSubmit} className="login-page-form">
-        <img src="/xMark.png" alt="" className="img-back" onClick={handlecloseModal} />
-        <h1 className="login-h1">איזה כיף שבאת אלינו!</h1>
-        <div>
-          <label className="login-item name">שם:</label>
-          <input type="text" required name="firstname" id="firstname" />
-        </div>
-        <div>
-          <label className="login-item email">אימייל:</label>
-          <input type="email" required name="email" id="email" />
-        </div>
-        <div className="login-item password">
-          <label>סיסמא:</label>
-          <input type="password" required name="password" id="password" />
-        </div>
-        {/* תיבת בחירה "זכור אותי" */}
-        <div className="login-item checkbox">
-          <label>
-            <input
-              type="checkbox"
-              checked={rememberMe}
-              onChange={handleRememberMeChange}
-            />
-            זכור אותי
-          </label>
-        </div>
-        <button type="submit"> אני רוצה להיכנס!</button>
-        {error && error.data?.message}
-        {/* התחברות עם Google */}
-        <GoogleLogin className="sign-with-google"
-          // clientId="YOUR_GOOGLE_CLIENT_ID"
-          // buttonText="התחברות עם Google"
-          onSuccess={handleGoogleLoginSuccess}
-          onFailure={handleGoogleLoginFailure}
-        // cookiePolicy={'single_host_origin'}
-        />
-      </form>
-      
-    </div>
-  )
-}
 
-export default LoginPage
+  return (
+    <div>
+      <button className="login-from-home" onClick={handleLoginClick}>התחברות</button>
+      {error && <p>{error}</p>}
+    </div>
+  );
+};
+
+export default LoginPage;

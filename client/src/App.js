@@ -20,8 +20,7 @@ import ViewSingleUser from "./features/admin/viewSingleUser/ViewSingleUser"
 import RequireAuth from "./features/auth/RequireAuth";
 import CheckLoginNotRequired from "./features/auth/CheckLoginNotRequired";
 import AboutSection from "./components/aboutSection/AboutSection";
-import PersistLogin from "./features/auth/PersistLogin";
-import RequestDiagnosis from "./features/user/RequestDiagnosis/RequestDiagnosis";
+import Navbar from "./features/auth/login/swal";
 function App() {
   return (
     <Router>
@@ -33,10 +32,11 @@ function App() {
           <Route path="about" element={<AboutSection />} />
           <Route path="register" element={<RegisterUser />} />
           <Route path="login" element={<LoginPage />} />
-          <Route element={<PersistLogin />}>
+          <Route element={<CheckLoginNotRequired />}>
               {/* נתיב ראשי של אזור ה-Dashboard */}
               <Route path="dash" element={<DashLayout />}>
                 <Route index element={<h1>Dashboard</h1>} />
+                <Route element={<RequireAuth allowPermission={["Admin", "User"]} />}>
 
                 {/* בלוגים - מקוננים תחת dash */}
                 <Route path="blogs" element={<Outlet />}>
@@ -46,7 +46,6 @@ function App() {
                   <Route path="delete" element={<DeleteBlog />} />
                   <Route path=":blogId" element={<ViewSingleBlog />} />
                 </Route>
-                <Route element={<RequireAuth allowPermission={["Admin", "User"]} />}>
 
                 {/* אזור אישי של המשתמש */}
                 <Route path="user" element={<Outlet />}>
@@ -55,16 +54,15 @@ function App() {
                   <Route path="chargeHistory" element={<ChargeHistory />} />
                   <Route path="accountOverview" element={<AccountOverview />} />
                   <Route path="changePassword" element={<ChangePassword />} />
-                  <Route path="requestDiagnosis" element={<RequestDiagnosis/>}/>
                 </Route>
 
-                <Route element={<RequireAuth allowPermission={["Admin"]} />}>
 
                 {/* ניהול אבחונים */}
                 <Route path="diagnosis" element={<Outlet />}>
                   <Route index element={<h1>כרגע לא ברור לי מה לשים פה</h1>} />
                   <Route path="upload" element={<UploadDiagnosis />} />
                 </Route>
+                <Route element={<RequireAuth allowPermission={["Admin"]} />}>
 
                   {/* ניהול משתמשים - גם תחת ה-dashboard */}
                   <Route path="manage/users" element={<Outlet />}>

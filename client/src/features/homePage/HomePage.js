@@ -4,18 +4,13 @@ import "./home-page.css";
 import Footer from "../../components/footer/Footer";
 import { useEffect, useState } from "react";
 import LoginPage from "../auth/login/LoginPage";
-import Modal from 'react-modal';
-import useModal from '../../hooks/useModal'; 
 import RegisterUser from "../auth/registration/RegisterUser";
-
-Modal.setAppElement('#root');
+import Navbar from "../../components/navbar/Navbar"
 
 const HomePage = () => {
     const navigate=useNavigate()
     const [showWheel, setShowWheel] = useState(true);
-    const { isOpen: showLoginModal, openModal: handleLoginClick, closeModal:closeLoginModal } = useModal();
-    const { isOpen: showRegisterModal, openModal: handleRegisterClick, closeModal:closeRegisterModal } = useModal();
-
+   
     useEffect(() => {
         const handleScroll = () => {
             if (window.scrollY < 130) {
@@ -38,32 +33,11 @@ const HomePage = () => {
             section.scrollIntoView({ behavior: "smooth" });
         }
     };
-    const handleLoginModalOpen = () => {
-        handleLoginClick();
-        navigate("/login");  // ניתוב ל-login
-    }
+   
     return (
         <div className="home-page-casing">
+                            <Navbar/>
             <div className="home-container">
-                <div className="navbar-top-homepage">
-                    <button onClick={handleLoginModalOpen} className="login-from-home">
-                        התחברות /
-                    </button>
-                    <button onClick={handleRegisterClick}className="login-from-home">
-                        הרשמה
-                    </button>
-                    <img alt="" src="/shopping-cart.png" className="shopping-cart-home" />
-                    <img alt="" src="/heart.png" className="heart-home" />
-                </div>
-                <div className="navbar-under-homepage">
-                    <img className="logo-homepage" src="/logor.png" />
-                    <button onClick={() => scrollToSection("about-section")}>אודות</button>
-                    <NavLink to={"/dash/astro"}>אסטרולוגיה</NavLink>
-                    <NavLink to={"/dash/blogs"}>בלוג</NavLink>
-                    <NavLink to={"/dash/diagnosiss"}>אבחונים</NavLink>
-                    <NavLink to={"/dash/diagnosiss"}>מה אומרים עלינו?</NavLink>
-                    <button onClick={() => scrollToSection("contact-section")}>יצירת קשר</button>
-                </div>
                 <div className="zwheel">
                     {showWheel ? <ZodiacWheel /> : null}
                 </div>
@@ -110,24 +84,7 @@ const HomePage = () => {
                     <Footer />
                 </div>
             </div>
-            <Modal
-                isOpen={showLoginModal}
-                onRequestClose={closeLoginModal}
-                contentLabel="Login Modal"
-                className="modal-content-homepage"
-                overlayClassName="modal-overlay-homepage"
-            >
-                <LoginPage closeModal={closeLoginModal} />
-            </Modal>
-            <Modal
-                isOpen={showRegisterModal}
-                onRequestClose={closeRegisterModal}
-                contentLabel="Register Modal"
-                className="modal-content-homepage"
-                overlayClassName="modal-overlay-homepage"
-            >
-                <RegisterUser closeModal={closeRegisterModal} />
-            </Modal>
+           
         </div>
     );
 };
