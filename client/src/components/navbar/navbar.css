@@ -56,6 +56,8 @@
     width: 100%;
     border-radius: 10px;
     color: var(--text);
+    font-size: 1rem;
+    font-family:"Varela Round";
 }
 /* 
 .nav-search {
@@ -79,19 +81,24 @@
     gap: 10px;
     align-items: center;
 }
-.nav-hello{
+.nav-hello {
     display: flex;
-    width: 170px;
+    justify-content: center; 
+    align-items: center; 
+    width: 180px; 
     font-size: 1.1rem;
+    color: var(--text); 
 }
+
 .account-profile{
     display: flex;
     align-items: center;
     color: var(--text);
     /* padding: 10px; */
     /* gap: 10px; */
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
     /* left: 1196px; */
     margin-top: 0px;
+    padding: 5px;
 }

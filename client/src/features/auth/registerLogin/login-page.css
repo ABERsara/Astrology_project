@@ -15,8 +15,7 @@
     width: 100%; /* כל רוחב המודל */
     height: auto; /* אוטומטי לפי התוכן */
     max-height: 90vh; /* מגביל את הגובה ל-90% מגובה החלון */
-    overflow-y: auto; /* גלילה אם התוכן חורג מהגובה */
-    padding: 20px; /* פחות ריווח פנימי */
+    padding: 15px; /* פחות ריווח פנימי */
     box-sizing: border-box; /* מוודא שרוחב כולל padding */
 }
 
@@ -38,10 +37,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 50px;
+    /* padding: 50px; */
     gap: 20px;
     height: 550px;
-    width: 350px;
+    width: 250px;
     border-radius: 10px;
     position: relative; 
 }
@@ -104,17 +103,18 @@
     color: var(--text);
     text-align: center;
     border-radius: 10px;
-    padding: 10px;
-    width: 163px;
+    padding: 9px;
+    width: 150px;
     border: none;
     cursor: pointer;
     letter-spacing: 0.5px;
     font-family:"Varela Round";
+    margin: 0;
 }
 .login-page-form button:hover{
     background-color: var(--text);
 color:var(--orange);
-border: 1px var(--orange);
+border: 1px solid var(--orange);
 }
 
 .img-back {
@@ -123,23 +123,25 @@ border: 1px var(--orange);
     border-radius: 10px;
     position: absolute;
     top: 10px;
-    right: 10px; 
+    right: 0px; 
     cursor: pointer;
 }
 
- .sign-with-google {
-    position:absolute;
+.sign-with-google {
     width: 100%; 
-    padding: 20px;
     border-radius: 30px; 
     text-align: center;
     cursor: pointer;
-    margin-top: auto;
-    font-family:"Varela Round";
-} 
+    font-family: "Varela Round";
+    position: relative; /* שנה ל-relative */
+    padding: 0;
+}
+
 
 .login-h1 {
     text-align: center; /* יישור לאמצע */
+    font-size: 2rem;
+    padding: 10px;
 }
 .modal-overlay-homepage {
     position: fixed;

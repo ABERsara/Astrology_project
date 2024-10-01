@@ -1,12 +1,32 @@
 import Swal from 'sweetalert2';
 import { useRegisterMutation } from "../authApiSlice";
 import { useState } from 'react';
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import { GoogleLogin,GoogleOAuthProvider } from '@react-oauth/google'; // הוספת ייבוא GoogleLogin
+import ReactDOM from 'react-dom'; // ייבוא ReactDOM לרינדור דינמי
 
 const RegisterPage = () => {
   const [register] = useRegisterMutation();
   const navigate = useNavigate();
-  const [rememberMe, setRememberMe] = useState(false);
+  const location=useLocation();
+
+  
+  const handleGoogleLoginSuccess = (response) => {
+    console.log('Login Success:', response);
+    // כאן ניתן לשלוח את הטוקן לשרת או להמשיך בהתחברות
+    Swal.close(); // סגירת ה-Swal לאחר התחברות מוצלחת
+    // נווט למקום הרצוי אחרי התחברות מוצלחת עם Google
+    if (location.pathname === '/') {
+      navigate("/dash/user");
+    } else {
+      navigate(location.pathname);  // נווט לדף הנוכחי
+    }
+  };
+
+  const handleGoogleLoginFailure = (response) => {
+    console.error("Google login failed:", response);
+    Swal.showValidationMessage('ההתחברות דרך Google נכשלה');
+  };
 
   const handleRegisterClick = () => {
     Swal.fire({
@@ -36,11 +56,30 @@ const RegisterPage = () => {
             </label>
           </div>
           <button type="submit"> אני רוצה להירשם!</button>
-        </form>
+          <div id="error-message" class="error-message"></div> <!-- אזור השגיאות -->
+          <div id="googleLoginButton" class="sign-with-google"></div> <!-- מקום להוספת כפתור ההתחברות עם Google -->
+          </form>
       </div>
     `,
       didOpen: () => {
         document.getElementById('closeModal').onclick = () => Swal.close();
+
+         
+        const googleLoginButton = document.getElementById('googleLoginButton');
+        if (googleLoginButton) {
+          const loginElement = document.createElement('div');
+          googleLoginButton.appendChild(loginElement);
+          
+          ReactDOM.render(
+            <GoogleOAuthProvider clientId="YOUR_GOOGLE_CLIENT_ID">
+              <GoogleLogin
+                onSuccess={handleGoogleLoginSuccess}
+                onFailure={handleGoogleLoginFailure}
+              />
+            </GoogleOAuthProvider>,
+            loginElement
+          );
+        }
 
         document.getElementById('registerForm').onsubmit = async (e) => {
           e.preventDefault();
@@ -72,17 +111,19 @@ const RegisterPage = () => {
                 },
                 timer: 3000
               }).then(() => {
-                // ניווט לאזור האישי לאחר הצגת ההודעה
+                if (location.pathname === '/') {
                 navigate("/dash/user");
+              } else {
+                navigate(location.pathname);  // נווט לדף הנוכחי
+              }
               });
             }
           } catch (err) {
-            if (err.status === 409) {
-              Swal.fire('שגיאה', 'האימייל כבר קיים במערכת', 'error');
-            } else {
-              Swal.fire('שגיאה', 'התרחשה שגיאה במהלך הרישום, נסה שוב', 'error');
+              const errorMessage = err.data?.message || 'רישום נכשל';
+              document.getElementById('error-message').textContent =errorMessage  // הצגת השגיאה בטופס
+              document.getElementById('error-message').style.color = "red";
             }
-          }
+          
         };
       },
       showConfirmButton: false,

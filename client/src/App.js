@@ -12,15 +12,13 @@ import ViewSingleBlog from "./features/blogs/viewSingleBlog/ViewSingleBlog";
 import AddBlog from "./features/blogs/addBlog/AddBlog";
 import EditBlog from "./features/blogs/editBlog/EditBlog";
 import DeleteBlog from "./features/blogs/deleteBlog/DeleteBlog";
-import HomePage from "./features/homePage/HomePage";
-import RegisterUser from "./features/auth/registration/RegisterUser";
+import HomePage from "./components/homePage/HomePage"
 import PrivateZone from "./features/user/privateZone/PrivateZone";
-import LoginPage from "./features/auth/login/LoginPage";
 import ViewSingleUser from "./features/admin/viewSingleUser/ViewSingleUser"
 import RequireAuth from "./features/auth/RequireAuth";
 import CheckLoginNotRequired from "./features/auth/CheckLoginNotRequired";
 import AboutSection from "./components/aboutSection/AboutSection";
-import Navbar from "./features/auth/login/swal";
+import AboutAstro from "./components/aboutAstro/AboutAstro";
 function App() {
   return (
     <Router>
@@ -29,14 +27,14 @@ function App() {
         <Route path="/" element={<SiteLayout />}>
           {/* דף כניסה, דף ראשי */}
           <Route index element={<HomePage />} />
-          <Route path="about" element={<AboutSection />} />
-          <Route path="register" element={<RegisterUser />} />
-          <Route path="login" element={<LoginPage />} />
+          
           <Route element={<CheckLoginNotRequired />}>
-              {/* נתיב ראשי של אזור ה-Dashboard */}
-              <Route path="dash" element={<DashLayout />}>
-                <Route index element={<h1>Dashboard</h1>} />
-                <Route element={<RequireAuth allowPermission={["Admin", "User"]} />}>
+            {/* נתיב ראשי של אזור ה-Dashboard */}
+            <Route path="dash" element={<DashLayout />}>
+            <Route index element={<Outlet />} />
+            <Route path="about" element={<AboutSection />} />
+          <Route path="astro" element={<AboutAstro />} />
+              <Route element={<RequireAuth allowPermission={["Admin", "User"]} />}>
 
                 {/* בלוגים - מקוננים תחת dash */}
                 <Route path="blogs" element={<Outlet />}>

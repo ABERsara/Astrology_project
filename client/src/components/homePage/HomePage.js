@@ -3,8 +3,6 @@ import ZodiacWheel from "./ZodiacWheel";
 import "./home-page.css";
 import Footer from "../../components/footer/Footer";
 import { useEffect, useState } from "react";
-import LoginPage from "../auth/login/LoginPage";
-import RegisterUser from "../auth/registration/RegisterUser";
 import Navbar from "../../components/navbar/Navbar"
 
 const HomePage = () => {

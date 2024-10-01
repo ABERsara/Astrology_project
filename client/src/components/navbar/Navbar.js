@@ -1,14 +1,14 @@
 import Swal from 'sweetalert2';
 import { useNavigate, useLocation, NavLink } from "react-router-dom";
 import { useState, useEffect } from "react";
-import '../../features/auth/login/login-page.css';
+import '../../features/auth/registerLogin/login-page.css';
 import useAuth from "../../hooks/useAuth";
 import {  useSendLogoutMutation } from "../../features/auth/authApiSlice";
 import { MdLogout, MdDensityMedium, MdEmojiPeople, MdFace, MdOutlinePermIdentity, MdOutlineSearch } from "react-icons/md";
 import Search from "../search/Search";
 import "./navbar.css"
-import LoginPage from '../../features/auth/login/LoginPage';
-import RegisterPage from '../../features/auth/registration/RegisterUser';
+import LoginPage from '../../features/auth/registerLogin/LoginPage';
+import RegisterPage from '../../features/auth/registerLogin/RegisterUser';
 
 const Navbar = () => {
   const [logout, { isSuccess: isLogoutSuccess }] = useSendLogoutMutation()
@@ -46,16 +46,14 @@ const Navbar = () => {
   };
   
 
-  const handleCloseModal = () => {
-    Swal.close();
-  };
+ 
     const isHomePage = location.pathname === "/";
 
   return (
     <div className="navbarBox">
         <div className="navbar-top-homepage"> 
            {firstname ?             
-            <div className="nav-hello"><img className="account-profile" alt="" src="/account.png" />
+            <div className="nav-hello"><img className="account-profile" alt="" src="/account-white.png" />
           היי {firstname}{ } {lastname}! </div>
           : <><LoginPage/>
             <RegisterPage/></>}
@@ -68,9 +66,9 @@ const Navbar = () => {
             יציאה
           </button>
         )}
-          <Search placeholder="...Search" />
+          {!isHomePage && ( <Search placeholder="...Search" />)}
           <div className="nav-icons">
-            <MdDensityMedium />
+            {/* <MdDensityMedium /> */}
           </div>
 
         </div>
