@@ -38,7 +38,7 @@
     [v]end the login prompt from anywhere and on navbar, 
     navigate to current page if the user is inside site,
     and if not, navigate to dash/user.
-    []close login modal
-    []design the home navbar
-    []show errors on login form
-    []google login appear on page
+    [v]close login modal
+    [v]design the home navbar
+    [v]show errors on login form
+    [v]google login appear on page
