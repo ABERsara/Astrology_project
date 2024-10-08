@@ -35,7 +35,6 @@ function App() {
             <Route path="about" element={<AboutSection />} />
           <Route path="astro" element={<AboutAstro />} />
               <Route element={<RequireAuth allowPermission={["Admin", "User"]} />}>
-
                 {/* בלוגים - מקוננים תחת dash */}
                 <Route path="blogs" element={<Outlet />}>
                   <Route index element={<ViewBlogs />} />

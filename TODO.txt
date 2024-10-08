@@ -5,7 +5,7 @@
     [v]delete user (deleted=true)
     []upload files better
     [v]update user is inactive and permission
-[]part 2 diagnosis
+[]part 2 diagnosis-client 
     []request a diagnosis by a user (filling details)
     []add a diagnosis for a user (recording? open on google meet? scedueled by google calander? upload a file with diagnosis?)
     []fix a diagnosis
@@ -24,13 +24,15 @@
     []delete a question
     []fix a question (or an answer)
 []part 5 layouts and design
-    []layout for site
+    [v]layout for site
     []layout for admin zone
     []layout for private zone
     [v]design home page
-    []add move elements
+    [v]add move elements
     []design site
     [v]design login and register
+    [v]astro page
+    [v]about page
 []part 6 more things
     []login/ register with google
     []remember me

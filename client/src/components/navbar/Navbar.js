@@ -46,7 +46,8 @@ const Navbar = () => {
   };
   
 
- 
+// פונקציה שמחזירה className בהתאם לסטטוס של isActive
+const getNavLinkClass = (isActive) => isActive ? "active-navlink-nav" : "";
     const isHomePage = location.pathname === "/";
 
   return (
@@ -74,11 +75,11 @@ const Navbar = () => {
         </div>
         <div className="navbar-under-homepage">
           <img className="logo-homepage" src="/logor.png" />
-          <NavLink to={"/dash/about"}>אודות</NavLink>
-          <NavLink to={"/dash/astro"}>אסטרולוגיה</NavLink>
-          <NavLink to={"/dash/blogs"}>בלוג</NavLink>
-          <NavLink to={"/dash/diagnosiss"}>אבחונים</NavLink>
-          <NavLink to={"/dash/diagnosiss"}>מה אומרים עלינו?</NavLink>
+          <NavLink to="/dash/about" className={({ isActive }) => getNavLinkClass(isActive)}>אודות</NavLink>
+<NavLink to="/dash/astro" className={({ isActive }) => getNavLinkClass(isActive)}>אסטרולוגיה</NavLink>
+<NavLink to="/dash/blogs" className={({ isActive }) => getNavLinkClass(isActive)}>בלוג</NavLink>
+<NavLink to="/dash/diagnosiss" className={({ isActive }) => getNavLinkClass(isActive)}>אבחונים</NavLink>
+<NavLink to="/dash/reviews" className={({ isActive }) => getNavLinkClass(isActive)}>מה אומרים עלינו?</NavLink>
           <button onClick={() => scrollToSection("contact-section")}>יצירת קשר</button>
         </div>
         {/* <div className="nav-menu">

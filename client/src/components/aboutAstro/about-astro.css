@@ -1,4 +1,182 @@
-.astro-page{
-    text-align: center; 
+.astro-about {
+    background: radial-gradient(circle, #191923 0%, #1d1e3d 40%, #5b5d6e 100%);
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    font-family: "Varela Round";
+    padding-top: 80px;
+
+}
+
+.astro-container {
+
+    display: flex;
+    flex-direction: column;
+    /* שינוי הכיוון לעמודה */
+    justify-content: flex-start;
+    min-height: 100vh;
+    padding: 20px;
+    padding-top: 80px;
+    /* background: radial-gradient(circle, #191923 0%, #1d1e3d 40%, #5b5d6e 100%); */
+    align-items: center;
+    /* justify-content: space-between; */
+    height: 100vh;
+    /* background-color: #292a44; */
+    padding: 20px;
+    /* מעבר צבע משמיים כהים במרכז לשמיים בהירים בקצוות */
+    position: relative;
+}
+
+.astro-sentences {
+    width: 400px;
+    height: 100vh;
+
+    font-family: "Varela Round";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 70px;
+    line-height: 123%;
+    text-align: right;
+    margin-right: 0px;
+    margin-left: 50%;
+    /* right:12.5vw; */
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    margin-top: 100px;
+}
+
+.sentence1-astro {
+    /* תמיד רצית לדעת מה זה אסטרולוגיה? */
+
+    width: 1051px;
+    height: 125px;
+
+    font-style: normal;
+    font-weight: 600;
+    font-size: 72px;
+    line-height: 125px;
+    text-align: center;
+
+    color: #E49928;
+
+
+}
+
+.sentence2-astro {
+    /* כל המידע החסוי לפניך! */
+
+    width: 714px;
+    height: 125px;
+
+    font-family: 'Ploni Round AAA';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 72px;
+    line-height: 125px;
+    text-align: center;
+    letter-spacing: 0.05rem;
+
+    color: #0A9BB5;
+
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+}
+
+.horoscope {
+    position: absolute;
+    transition: transform 0.5s ease;
+}
+
+.Libra {
+    width: 101px;
+    height: 59px;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    transform: rotate(-32.27deg);
+    right: 848px;
+    bottom: 235px;
+}
+
+.Scorpio {
+    width: 121px;
+    height: 99px;
+    right: 20px;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    /* transform: rotate(32.27deg); */
+}
+
+.astro-Aquarius {
+    width: 93px;
+    height: 57px;
+    left: 2.5%;
+    right: 88.42%;
+    top: 10.87%;
+    bottom: 88.04vh;
+
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+
+}
+
+.Libra:hover,
+.Scorpio:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+/* הגדרה להורה שמכיל את התוכן */
+.astro-txt {
+    display: flex;
     justify-content: center;
+    /* יישור אופקי */
+    align-items: center;
+    /* יישור אנכי */
+    height: 100vh;
+    /* גורם לבלוק לתפוס את כל גובה העמוד */
+    text-align: center;
+    /* יישור הטקסט במרכז אופקי */
+    padding: 20px;
+    /* ריווח פנימי */
+
+    background-color: #fff;
+    color: var(--main);
+}
+
+.astro-txt p {
+    font-style: normal;
+    font-weight: 1000;
+    font-size: 1.4rem;
+    line-height: 42px;
+    text-align: right;
+    width: 778px;
+    height: auto;
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
+    text-align: right;
+    left: 50px;
+}
+
+
+.sentence1-astro,
+.sentence2-astro {
+    opacity: 0;
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+.sentence1-astro {
+    transform: translateY(-100px);
+    /* הזזה מלמעלה */
+}
+
+.sentence2-astro {
+    transform: translateY(100px);
+    /* הזזה מלמטה */
+}
+
+/* כשמופיעה המחלקה 'show' */
+.sentence1-astro.show,
+.sentence2-astro.show {
+    opacity: 1;
+    transform: translateY(0);
+    /* תחזור למקום המקורי */
+    transition: opacity 1.2s ease, transform 1.2s ease;
+    /* כניסה קצת יותר איטית */
 }

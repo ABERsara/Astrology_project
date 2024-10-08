@@ -1,18 +1,35 @@
 /* zodiac-wheel.css */
 
 .wheel-container {
-    position: fixed;
-    width: 450px; 
-    height: 450px;
-    margin: 50px auto;
-    padding: 10px;
-    font-family:"Varela Round";
-  }
-  
-  .zodiac-wheel {
     position: absolute;
-    width: 500px;
-    height: 500px;
+    width: 500px; 
+    height: 700px;
+    /* margin: 50px auto; */
+    padding: 5px;
+    margin-top: 30px !important;
+    margin-bottom: 30px !important;
+    font-family:"Varela Round";
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .zodiac-container{
+    width: 450px;
+    height: 450px;
+    position: relative; /* Keep wheel positioned relative to its container */
+    overflow: hidden;
+  }
+  .button-container{
+    /* position: relative; */
+    width: 450px;
+    display: flex;
+    justify-content: center; /* Center the button horizontally */
+    /* margin-top: 10px; */
+  }
+  .zodiac-wheel {
+    /* position: absolute; */
+    width: 400px;
+    height: 400px;
     background-image: url('../../../public/zwheel.png');
     background-size: contain;
     background-position: center; /* Center the background image */
@@ -87,4 +104,35 @@
 .sign-10 { transform: rotate(300deg) skewY(-30deg); }
 .sign-11 { transform: rotate(330deg) skewY(-30deg); }
 
+.spin-button {
+  position: relative;
+    padding: 5px 10px;
+    font-size: 1rem;
+    color: white;
+    background-color: #E49928;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 17px 0px 25px 2px;
+    gap: 6px;
+    width: 120px;
+    cursor: pointer;
+    height: 5px;
+    /* left: 1537px; */
+    /* bottom: 5vw; */
+    font-family: "Varela Round";
+    border-radius: 56px;
+}
+
+.spin-button:hover {
+  background-color:var(--text);
+  color: var(--orange);
+  cursor: pointer;
+
+}
 

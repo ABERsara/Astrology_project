@@ -6,7 +6,6 @@ import { useEffect, useState } from "react";
 import Navbar from "../../components/navbar/Navbar"
 
 const HomePage = () => {
-    const navigate=useNavigate()
     const [showWheel, setShowWheel] = useState(true);
    
     useEffect(() => {
@@ -25,12 +24,7 @@ const HomePage = () => {
         };
     }, []);
 
-    const scrollToSection = (sectionId) => {
-        const section = document.getElementById(sectionId);
-        if (section) {
-            section.scrollIntoView({ behavior: "smooth" });
-        }
-    };
+  
    
     return (
         <div className="home-page-casing">
@@ -47,7 +41,7 @@ const HomePage = () => {
                     </div>
                 </div>
                 <div className="home-links">
-                    <Link to={"/dash/blogs"} className="home-link">
+                    <Link to={"/dash/astro"} className="home-link">
                         לקרוא עוד
                     </Link>
                 </div>
@@ -72,17 +66,20 @@ const HomePage = () => {
                         (למרות שיש הרבה  שמתנגדים וטוענים שזה התעסקות בכוחות מיסטיים- גרמי השמיים...)
                         להתעסק עם  זה להבנת נפש האדם.
                         ואז זה בעצם רק כלי...</p>
-                    <img alt="גדי" src="/0.png" className="horoscopes Capricorn"/>
+                    <img alt="טלה" src="/7.png" className="horoscopes Aries"/>
                     <img alt="סרטן" src="/1.png" className="horoscopes Cancer"/>
                     <img alt="תאומים" src="/5.png" className="horoscopes Gemini"/>
                     <img alt="שור" src="/6.png" className="horoscopes Taurus"/>
+                    {/* <Link to={"/dash/about"} className="home-link-about">
+                        לקרוא עוד
+                    </Link> */}
                 </div>
 
-                <div id="contact-section" className="contact-section">
+               
+            </div>
+            <div id="contact-section" className="contact-section">
                     <Footer />
                 </div>
-            </div>
-           
         </div>
     );
 };

@@ -1,9 +1,15 @@
 import "./footer.css"
 //תפריט תחתון
+import { useLocation } from 'react-router-dom';
 
 const Footer = () => {
+  const location = useLocation();
+
+    // בדיקה אם המשתמש נמצא בדף about
+    const isAboutPage = location.pathname === '/dash/about';
+
   return (
-    <div className="footer">
+    <div className={`footer ${isAboutPage ? 'about-footer' : ''}`}>
       <img className="foot-img" src="" alt="">
 
       </img>

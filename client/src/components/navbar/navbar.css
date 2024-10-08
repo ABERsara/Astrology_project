@@ -102,3 +102,125 @@
     margin-top: 0px;
     padding: 5px;
 }
+
+  
+  /* צבע בעת ריחוף (hover) */
+  .navbar-under-homepage a:hover {
+    color:var(--lightBlue);
+    cursor: pointer;
+
+  }
+  
+  /* צבע כאשר הלינק פעיל (active) */
+  .navbar-under-homepage a.active-navlink-nav {
+    color: var(--lightBlue);
+  }
+  
+ 
+  
+  .contact-button:hover{
+    color: var(--lightBlue);
+    cursor: pointer;
+  }
+  
+.heart-home,
+.shopping-cart-home{
+    position: relative;
+    /* שינוי ל-relative כדי לאפשר מיקום טבעי בתוך ה-navbar */
+    width: 30px;
+    /* התאמת גודל האייקונים */
+    height: 30px;
+    background-color: transparent;
+}
+
+.navbar-under-homepage {
+    justify-content: flex-start;
+    display: flex;
+    flex-direction: row;
+    /* justify-content: flex-end; */
+    align-items: center;
+    padding: 10px;
+    gap: 20px;
+    background-color: #fff;
+    position: fixed;
+    width: 100vw;
+    height: 40px;
+    /* left: 0px; */
+    top: 40px;
+    color: #e3a74c;
+    direction: rtl;
+    font-family:"Varela Round";
+        font-style: normal;
+    font-weight: 600;
+    font-size: 15px;
+    z-index: 10;
+    border-bottom: 3px solid #00008b;
+}
+
+.navbar-under-homepage button {
+    
+    left:200px;
+    background-color: transparent;
+    color: #e3a74c;
+    border: none;
+    font-family:"Varela Round";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 15px;
+
+}
+
+.navbar-under-homepage button:hover,
+.navbar-under-homepage :hover {
+    color: var(--lightBlue);
+    cursor: pointer;
+}
+
+.logo-homepage {
+    display: flex;
+    align-items: center;
+    /* padding: 10px; */
+    gap: 10px;
+    position: relative;
+    width: 80px;
+    height: 80px;
+    margin-left: 20px;
+}
+
+/* אייקונים */
+.heart-home {
+    display: flex;
+    align-items: center;
+    /* padding: 10px; */
+    /* gap: 10px; */
+    width: 30px;
+    height: 30px;
+    /* left: 1196px; */
+    margin-top: 0px;
+}
+
+.shopping-cart-home{
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    /* padding: 10px; */
+    /* gap: 10px; */
+
+
+    width: 35px;
+    height: 32px;
+    /* left: 1180px; */
+
+    transform: matrix(-1, 0, 0, 1, 0, 0);
+}
+
+
+.home-page-casing {
+    background: radial-gradient(circle, #191923 0%, #1d1e3d 40%, #5b5d6e 100%);
+    min-height: 200vh;
+    /* שינוי מ-100vh ל-200vh כדי לאפשר גלילה */
+    display: flex;
+    flex-direction: column;
+}
+

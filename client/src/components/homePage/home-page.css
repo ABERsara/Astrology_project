@@ -1,7 +1,7 @@
 /* עיצוב למכולה הראשית */
 .home-page-casing {
     background: radial-gradient(circle, #191923 0%, #1d1e3d 40%, #5b5d6e 100%);
-    height: 100vh;
+    height: auto;
     display: flex;
     flex-direction: column;
     font-family:"Varela Round";
@@ -12,7 +12,7 @@
     flex-direction: column;
     /* שינוי הכיוון לעמודה */
     justify-content: flex-start;
-    min-height: 100vh;
+    min-height: 120vh;
     padding: 20px;
     padding-top: 80px;
     background: radial-gradient(circle, #191923 0%, #1d1e3d 40%, #5b5d6e 100%);
@@ -167,105 +167,6 @@ font-size: 1rem;
     background-color:transparent;
 }
 
-.navbar-under-homepage {
-    justify-content: flex-start;
-    display: flex;
-    flex-direction: row;
-    /* justify-content: flex-end; */
-    align-items: center;
-    padding: 10px;
-    gap: 20px;
-    background-color: #fff;
-    position: fixed;
-    width: 100vw;
-    height: 40px;
-    /* left: 0px; */
-    top: 40px;
-    color: #e3a74c;
-    direction: rtl;
-    font-family:"Varela Round";
-        font-style: normal;
-    font-weight: 600;
-    font-size: 15px;
-    z-index: 10;
-}
-
-.navbar-under-homepage button {
-    
-    left:200px;
-    background-color: transparent;
-    color: #e3a74c;
-    border: none;
-    font-family:"Varela Round";
-    font-style: normal;
-    font-weight: 600;
-    font-size: 15px;
-
-}
-
-.navbar-under-homepage button:hover,
-.navbar-under-homepage :hover {
-    color: var(--lightBlue);
-    cursor: pointer;
-}
-
-.logo-homepage {
-    display: flex;
-    align-items: center;
-    /* padding: 10px; */
-    gap: 10px;
-    position: relative;
-    width: 80px;
-    height: 80px;
-    margin-left: 20px;
-}
-
-/* אייקונים */
-.heart-home {
-    display: flex;
-    align-items: center;
-    /* padding: 10px; */
-    /* gap: 10px; */
-    width: 30px;
-    height: 30px;
-    /* left: 1196px; */
-    margin-top: 0px;
-}
-
-.shopping-cart-home {
-
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    /* padding: 10px; */
-    /* gap: 10px; */
-
-
-    width: 65px;
-    height: 60px;
-    /* left: 1180px; */
-
-    transform: matrix(-1, 0, 0, 1, 0, 0);
-}
-
-.heart-home,
-.shopping-cart-home {
-    position: relative;
-    /* שינוי ל-relative כדי לאפשר מיקום טבעי בתוך ה-navbar */
-    width: 30px;
-    /* התאמת גודל האייקונים */
-    height: 30px;
-    background-color: transparent;
-}
-
-.home-page-casing {
-    background: radial-gradient(circle, #191923 0%, #1d1e3d 40%, #5b5d6e 100%);
-    min-height: 200vh;
-    /* שינוי מ-100vh ל-200vh כדי לאפשר גלילה */
-    display: flex;
-    flex-direction: column;
-}
-
 
 .home-about-section {
     padding: 50px;
@@ -274,7 +175,7 @@ font-size: 1rem;
     display: flex;
     flex-direction: column;
     /* width: 80vw; */
-    height: 100vh;
+    height: 110vh;
     background-color: #fff;
     color: #1d1e3d;
     justify-content: center;
@@ -288,13 +189,15 @@ font-size: 1rem;
 .home-about-section p{
 width: 785px;
 height: auto;
-
 font-family:"Varela Round";
 font-style: normal;
 font-weight: 600;
 font-size: 18px;
 line-height: 31px;
 text-align: right;
+justify-content: center;
+align-items: center;
+
 
 
 }
@@ -303,37 +206,36 @@ text-align: right;
     transition: transform 0.5s ease;
     position: relative;
     padding: 15px;
-    z-index: 1;
+    /* z-index: 1; */
 }
 
 .Aquarius {
    
-    top:11px;
+    top:0px;
     left: 23px;
 width: 111px;
 height: 69px;
-color: var(--lightBlue);
 transform: rotate(-7.67deg);
 }
-.Aquarius:hover{
-    transform: scale(1.1);
-    cursor: pointer;
-}
+
 .Taurus{
     left:600px;
     bottom: 270px;
 width: 79px;
 height: 82px;
+transform: rotate(10.67deg);
 
 }
+
 .Gemini{
-    left: 460px;
-    bottom: 85px;
+    left: 470px;
+    bottom: 55px;
 width: 67.28px;
 height: 75.77px;
 transform: rotate(15.67deg);
 
 }
+
 .Cancer{
     right: 470px;
     bottom: 180px;
@@ -342,15 +244,20 @@ height: 74.42px;
 transform: rotate(20.29deg);
 
 }
-.Capricorn{
+.Aries{
     right: 479px;
-    bottom: 65px;
+    bottom: 45px;
 width: 84px;
 height: 75px;
+}
+.Aquarius:hover,.Taurus:hover,.Cancer:hover,.Gemini:hover,.Aries:hover{
+    transform: scale(1.1);
+    cursor: pointer;
 }
 .contact-section {
     width: 98.5vw;
     background-color:#1d1e3d;
+    padding: 0;
 }
 /* הוספת CSS למודאל */
 .modal-overlay-homepage {

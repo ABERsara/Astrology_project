@@ -1,0 +1,225 @@
+.about-container {
+    background: var(--gradient);
+    display: flex;
+    flex-direction: column;
+    font-family: "Varela Round";
+    padding-top: 80px;
+
+}
+
+.about-me-container {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    min-height: 70vh;
+    padding: 20px;
+    padding-top: 80px;
+    /* background: radial-gradient(circle, #191923 0%, #1d1e3d 40%, #5b5d6e 100%); */
+    align-items: center;
+    /* justify-content: space-between; */
+    height: 100vh;
+    /* background-color: #292a44; */
+    padding: 20px;
+    /* מעבר צבע משמיים כהים במרכז לשמיים בהירים בקצוות */
+    position: relative;
+}
+
+.about-me-sentences {
+    width: 400px;
+    height: 70vh;
+
+    font-family: "Varela Round";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 70px;
+    /* line-height: 123%; */
+    text-align: right;
+    /* margin-right: 0px;
+    margin-left: 50%; */
+    /* right:12.5vw; */
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    margin-top: 100px;
+}
+
+.sentence1-about {
+    /* 
+    width: 1051px;
+    height: 125px; */
+
+    font-style: normal;
+    font-weight: 600;
+    font-size: 72px;
+    line-height: 125px;
+    text-align: center;
+
+    color: var(--text);
+
+    margin: 40px;
+}
+
+.sentence2-about {
+
+    /* width: 714px;
+    height: 125px; */
+    margin-top: 40px;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 72px;
+    /* line-height: 125px; */
+    text-align: center;
+    letter-spacing: 0.05rem;
+    color: var(--orange);
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    display: flex;
+}
+
+.horo {
+    /* position: absolute; */
+    transition: transform 0.5s ease;
+    display: flex;
+    justify-content: flex-start; 
+}
+
+
+  
+.Aries {
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    width: 96.75px;
+    height: 74.86px;
+    transform: rotate(15.01deg);
+}
+
+
+.Taurus {
+
+    right: 20px;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    /* transform: rotate(32.27deg); */
+    /* אייקונים/Vector */
+
+    position: absolute;
+    width: 109.55px;
+    height: 113.62px;
+    /* left: 1097px; */
+    top: 1112.43px;
+
+    transform: rotate(-17.77deg);
+
+}
+
+
+.Aries:hover,
+.Taurus:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+/* הגדרה להורה שמכיל את התוכן */
+.about-txt {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+    text-align: center;
+    padding: 200px; /* ריווח פנימי מכל הצדדים */
+    background-color: #fff;
+    color: var(--logoBlue);
+}
+
+
+.about-txt p {
+    font-style: normal;
+    font-weight: 1000;
+    font-size: 1.4rem;
+    line-height: 42px;
+    text-align: right;
+    /* width: 778px; */
+    height: auto;
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
+    text-align: right;
+    left: 50px;
+}
+
+
+.sentence1-about,
+.sentence2-about {
+    opacity: 0;
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+.sentence1-about {
+    transform: translateY(-100px);
+    /* הזזה מלמעלה */
+}
+
+.sentence2-about {
+    transform: translateY(100px);
+    /* הזזה מלמטה */
+}
+
+/* כשמופיעה המחלקה 'show' */
+.sentence1-about,
+.sentence2-about {
+    opacity: 1;
+    transform: translateY(0);
+    /* תחזור למקום המקורי */
+    transition: opacity 1.2s ease, transform 1.2s ease;
+    /* כניסה קצת יותר איטית */
+}
+
+.about-question {
+    display: flex;
+    background-color: var(--gradiant);
+    height: 40vh;
+    color: var(--orange);
+    /* width: 400px; */
+    font-family: "Varela Round";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 50px;
+    /* line-height: 123%; */
+    text-align: center;
+    /* margin-right: 0px; */
+    /* margin-left: 50%; */
+    /* right:12.5vw; */
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    /* margin-top: 100px; */
+    justify-content: center;
+    align-items: center;
+}
+
+.more-txt {
+    background-color: var(--text);
+    color: var(--logoBlue);
+    min-height: 60vh;
+    font-style: normal;
+    font-weight: 1000;
+    font-size: 1.4rem;
+    line-height: 42px;
+    text-align: right;
+    padding: 200px;
+    /* width: 778px; */
+    height: auto;
+    justify-content: center;
+    align-items: center;
+    text-align: right;
+    left: 50px;
+    display: flex;
+}
+
+.to-contact {
+    background-color: var(--gradiant);
+    color: var(--text);
+    height: 20vh;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 52px;
+    line-height: 125px;
+    text-align: center;
+}

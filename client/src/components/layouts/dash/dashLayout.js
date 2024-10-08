@@ -13,7 +13,7 @@ const DashLayout = () => {
        <div className="content">
        <div className="menu"> 
        {/* התפריט בצד */}
-       <Sidebar/> 
+       {/* <Sidebar/>  */}
        </div>
        <div className="display">
         {/* תוכן האתר */}

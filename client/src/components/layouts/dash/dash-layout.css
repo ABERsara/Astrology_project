@@ -2,17 +2,16 @@
 display: flex;
 flex-direction: column;
 }
-.menu{
-/* background-color:var(--mainLight) ; */
-padding: 20px;
+/* .menu{
+
+    padding: 20px;
 flex:1;
-}
+} */
 .content{
 display: flex;
-padding: 20px;
+/* padding: 20px; */
 /* min-height: 100vh; */
 }
 .display{
 flex:4;
-padding: 20px;
 }
