@@ -81,12 +81,12 @@
     /* position: absolute; */
     transition: transform 0.5s ease;
     display: flex;
-    justify-content: flex-start; 
+    justify-content: flex-start;
 }
 
 
   
-.Aries {
+.Aries-horo {
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
     width: 96.75px;
     height: 74.86px;
@@ -94,26 +94,25 @@
 }
 
 
-.Taurus {
+.Taurus-horo {
 
-    right: 20px;
+    /* right: 20px; */
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
     /* transform: rotate(32.27deg); */
     /* אייקונים/Vector */
 
     position: absolute;
-    width: 109.55px;
-    height: 113.62px;
+    width: 99.55px;
+    height: 103.62px;
     /* left: 1097px; */
-    top: 1112.43px;
 
     transform: rotate(-17.77deg);
 
 }
 
 
-.Aries:hover,
-.Taurus:hover {
+.Aries-horo:hover,
+.Taurus-horo:hover {
     transform: scale(1.1);
     cursor: pointer;
 }
@@ -123,7 +122,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 70vh;
+    height: auto;
     text-align: center;
     padding: 200px; /* ריווח פנימי מכל הצדדים */
     background-color: #fff;
@@ -190,7 +189,7 @@
     /* right:12.5vw; */
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     /* margin-top: 100px; */
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
 }
 

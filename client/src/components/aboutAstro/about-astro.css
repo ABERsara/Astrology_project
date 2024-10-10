@@ -128,7 +128,7 @@
     /* יישור אופקי */
     align-items: center;
     /* יישור אנכי */
-    height: 100vh;
+    height: auto;
     /* גורם לבלוק לתפוס את כל גובה העמוד */
     text-align: center;
     /* יישור הטקסט במרכז אופקי */

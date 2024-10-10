@@ -1,17 +1,38 @@
 import Swal from 'sweetalert2';
 import { useLoginMutation } from "../authApiSlice";
 import { useNavigate, useLocation } from "react-router-dom";
-import React, { useState } from "react";
-import { GoogleLogin,GoogleOAuthProvider } from '@react-oauth/google'; // הוספת ייבוא GoogleLogin
+import React, { useEffect, useState } from "react";
+import { GoogleLogin, GoogleOAuthProvider } from '@react-oauth/google'; // הוספת ייבוא GoogleLogin
 import ReactDOM from 'react-dom'; // ייבוא ReactDOM לרינדור דינמי
+import { setCredentials } from '../authSlice';
+import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux'; // אם את גם משתמשת ב-useSelector
+import { selectedToken } from "../authSlice"
 
 const LoginPage = () => {
+  const dispatch = useDispatch();
   const [login] = useLoginMutation();
   const navigate = useNavigate();
-const location=useLocation();
+  const location = useLocation();
+  const token = useSelector(selectedToken);
+  console.log('Token:', token);
+  
+  // בדיקת הטוקן
+  useEffect(() => {
+   
+    console.log("Token from Redux:", token);
+    // כאן אפשר לבדוק אם הטוקן קיים ולטפל בהתאם
+  }, [token]); // להריץ כל פעם שהטוקן משתנה
 
   const handleGoogleLoginSuccess = (response) => {
     console.log('Login Success:', response);
+    const token = response.credential; // קבלת הטוקן מ-Google
+    console.log('Google Token:', token);  // הדפסה לבדיקה
+    // שליחת הטוקן לשרת
+    if (token) {
+      dispatch(setCredentials({ accessToken: token }));
+    }
+ 
     // כאן ניתן לשלוח את הטוקן לשרת או להמשיך בהתחברות
     Swal.close(); // סגירת ה-Swal לאחר התחברות מוצלחת
     // נווט למקום הרצוי אחרי התחברות מוצלחת עם Google
@@ -26,6 +47,7 @@ const location=useLocation();
     console.error("Google login failed:", response);
     Swal.showValidationMessage('ההתחברות דרך Google נכשלה');
   };
+
 
   const handleLoginClick = () => {
     Swal.fire({
@@ -62,12 +84,12 @@ const location=useLocation();
       `,
       didOpen: () => {
         document.getElementById('closeModal').onclick = () => Swal.close();
-        
+
         const googleLoginButton = document.getElementById('googleLoginButton');
         if (googleLoginButton) {
           const loginElement = document.createElement('div');
           googleLoginButton.appendChild(loginElement);
-          
+
           ReactDOM.render(
             <GoogleOAuthProvider clientId="YOUR_GOOGLE_CLIENT_ID">
               <GoogleLogin
@@ -92,37 +114,50 @@ const location=useLocation();
 
           try {
             const userObject = { firstname, email, password };
-            const res = await login(userObject).unwrap();
+            console.log("firstname: " + firstname, "email: " + email, "password: " + password)
+            try {
+              const res = await login(userObject).unwrap();
+              console.log("Response from login:", res);
+              if (res && res.accessToken) {
+                dispatch(setCredentials({ accessToken: res.accessToken }));
+                console.log("Token stored:", res.accessToken);
+                if (rememberMeLogin) {
+                  localStorage.setItem('user', JSON.stringify(res));
+                  console.log("remember " + firstname)
+                }
 
-            if (res) {
-              if (rememberMeLogin) {
-                localStorage.setItem('user', JSON.stringify(res));
+
               }
-              Swal.close()
+            } catch (err) {
+              console.log('Error during login:', err);
+            }
+
+
+            Swal.close()
               .then(() => {
                 if (location.pathname === '/') {
-                navigate("/dash/user");
-              } else {
-                navigate(location.pathname);  // נווט לדף הנוכחי
-              }
-            })
-            }
+                  navigate("/dash/user");
+                } else {
+                  navigate(location.pathname);  // נווט לדף הנוכחי
+                }
+              })
+          
           } catch (err) {
-            const errorMessage = err.data?.message || 'התחברות נכשלה';
-            document.getElementById('error-message').textContent = 'אולי אינך רשום עדיין?'  // הצגת השגיאה בטופס
-            document.getElementById('error-message').style.color = "red";
-          }
-        };
-      },
+          const errorMessage = err.data?.message || 'התחברות נכשלה';
+          document.getElementById('error-message').textContent = 'אולי אינך רשום עדיין?'  // הצגת השגיאה בטופס
+          document.getElementById('error-message').style.color = "red";
+        }
+      };
+    },
       showConfirmButton: false,
     });
-  };
+};
 
-  return (
-    <div>
-      <button className="login-from-home" onClick={handleLoginClick}>התחברות</button>
-    </div>
-  );
+return (
+  <div>
+    <button className="login-from-home" onClick={handleLoginClick}>התחברות</button>
+  </div>
+);
 };
 
 export default LoginPage;

@@ -16,9 +16,10 @@ import HomePage from "./components/homePage/HomePage"
 import PrivateZone from "./features/user/privateZone/PrivateZone";
 import ViewSingleUser from "./features/admin/viewSingleUser/ViewSingleUser"
 import RequireAuth from "./features/auth/RequireAuth";
-import CheckLoginNotRequired from "./features/auth/CheckLoginNotRequired";
+// import CheckLoginNotRequired from "./features/auth/CheckLoginNotRequired";
 import AboutSection from "./components/aboutSection/AboutSection";
 import AboutAstro from "./components/aboutAstro/AboutAstro";
+import PersistLogin from "./features/auth/PersistLogin"
 function App() {
   return (
     <Router>
@@ -27,13 +28,14 @@ function App() {
         <Route path="/" element={<SiteLayout />}>
           {/* דף כניסה, דף ראשי */}
           <Route index element={<HomePage />} />
-          
-          <Route element={<CheckLoginNotRequired />}>
-            {/* נתיב ראשי של אזור ה-Dashboard */}
-            <Route path="dash" element={<DashLayout />}>
+
+          {/* <Route element={<CheckLoginNotRequired />}> */}
+          {/* נתיב ראשי של אזור ה-Dashboard */}
+          <Route path="dash" element={<DashLayout />}>
             <Route index element={<Outlet />} />
             <Route path="about" element={<AboutSection />} />
-          <Route path="astro" element={<AboutAstro />} />
+            <Route path="astro" element={<AboutAstro />} />
+            <Route element={<PersistLogin />}>
               <Route element={<RequireAuth allowPermission={["Admin", "User"]} />}>
                 {/* בלוגים - מקוננים תחת dash */}
                 <Route path="blogs" element={<Outlet />}>
@@ -70,6 +72,7 @@ function App() {
               </Route>
             </Route>
           </Route>
+          {/* </Route> */}
         </Route>
       </Routes>
     </Router>
