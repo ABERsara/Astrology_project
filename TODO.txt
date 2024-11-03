@@ -44,3 +44,17 @@
     [v]design the home navbar
     [v]show errors on login form
     [v]google login appear on page
+    []work with yup to forms, validate change user firstname and email
+[]part 7 courses
+    [v]server
+    []client-for user (view only, later download?)
+    []client-admin (view,add,delete, update. )
+[]part 8 posts to about page
+    []an un register user will be able to server
+    []
+[]problems
+    []file upload
+    []login is too down
+    []buttons home page
+    []private section
+    []font family

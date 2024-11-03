@@ -32,17 +32,17 @@ const getCourse=async(req,res)=>{
 }
 }
 const addCourse=async(req,res)=>{
-    const {coursename,details,recommendations,phone,email,password,imageUrl,active}=req.body
+    const {coursename,details,recommendations,numParts,forImprssions}=req.body
  //confirm data!
- if (!coursename || !email ) {
+ if (!coursename || !details||!numParts ) {
     return res.status(400).json({
         error:true,
-         message: 'firstname,coursename and email are required',
+         message: 'coursename ,details and numParts are required',
         data:null })
 }
 try {
     // Create and store the new course
-    const course = await Course.create({coursename, firstname, lastname, phone, email, password, imageUrl, active});
+    const course = await Course.create({coursename,details,recommendations,numParts,forImprssions});
     res.status(201).json({ 
         error:false,
         message: 'New course created',
@@ -56,12 +56,12 @@ try {
 }
 }
 const updateCourse=async(req,res)=>{
-    const {id,coursename,firstname,lastname,phone,email,password,imageUrl,active}=req.body
+    const {id,coursename,details,recommendations,numParts,forImprssions}=req.body
     //confirm data!
-    if (!id||!firstname || !coursename || !email ) {
+    if (!id||! !coursename ||!details|| !numParts ) {
        return res.status(400).json({
            error:true,
-            message: 'id,coursename,firstname and email are required',
+            message: 'id,coursename,details and numParts are required',
            data:null })
    }
    //confirm course existed to update 
@@ -73,18 +73,16 @@ const updateCourse=async(req,res)=>{
     data:null})
    }
    course.coursename=coursename
-   course.firstname=firstname
-   course.lastName=lastname
-   course.phone=phone
-   course.email=email
-   course.password=password
-   course.imageUrl=imageUrl
-   course.active=active
+   course.details=details
+   course.recommendations=recommendations
+   course.numParts=numParts
+   course.forImpressions=forImprssions
+   
    //save the changes
    const updatedCourse=await course.save()
    res.json({
     error:false,
-    massage:`${updatedCourse.firstname} updated`,
+    massage:`${updatedCourse.coursename} updated`,
 data:updateCourse})
 }
 const deleteCourse=async(req,res)=>{

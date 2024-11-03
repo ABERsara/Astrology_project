@@ -33,6 +33,8 @@ const register = async (req, res) => {
         // Create and store the new user
         const user = await User.create({ firstname, lastname, phone, email, password: hashPwd, image, active, diagnosis });
         if (user) {
+            console.log("המשתמש נרשם בהצלחה " + firstname);
+
             await user.save();
             // res.status(201).json({
             //     error: false,
@@ -116,11 +118,13 @@ const login = async (req, res) => {
             data: null
         })
     }
+    console.log("המשתמש נכנס בהצלחה " + firstname);
+
     //ע"מ לקודד סיסמה מורכבת
     // require('crypto').randomBytes(64).toString('hex')
     //Give the token to the user
     const userInfo = {
-id:foundUser._id,
+        id: foundUser._id,
         firstname: foundUser.firstname,
         lastname: foundUser.lastname,
         email: foundUser.email,

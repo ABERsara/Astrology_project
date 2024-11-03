@@ -21,8 +21,8 @@
 
 .login-page {
     background-color: transparent;
-    margin: 0;
-    padding: 0;
+    margin: 0 !important;
+    padding: 0 !important;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -39,7 +39,7 @@
     align-items: center;
     /* padding: 50px; */
     gap: 20px;
-    height: 550px;
+    /* height: 550px; */
     width: 250px;
     border-radius: 10px;
     position: relative; 
@@ -63,7 +63,7 @@
     text-align: right; /* יישור הטקסט לימין */
     display: block; /* מוודא שהטקסט תופס את כל רוחב התיבה */
     direction: rtl; /* כיוון ימין לשמאל עבור עברית */
-    margin-bottom: 5px;
+    /* margin-bottom: 5px; */
     letter-spacing: 0.5px;
 }
 

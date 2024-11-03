@@ -1,17 +1,21 @@
 import "./view-blogs.css"
 import Search from "../../../components/search/Search"
 import { useGetAllBlogsQuery, useDeleteBlogMutation } from "../blogsApiSlice"
-import { Link, useNavigate } from "react-router-dom"
+import { Link, useLocation, useNavigate } from "react-router-dom"
 import { useEffect, useState } from 'react';
 import EditBlogButton from "../editBlog/EditBlogButton";
 import {
   MdAddToDrive, MdFileDownload, MdOutlineLibraryAdd
 } from "react-icons/md"
+import useAuth from "../../../hooks/useAuth";
 const ViewBlogs = () => {
   const { data: blogsObject, isError, error, isLoading } = useGetAllBlogsQuery();
   const navigate = useNavigate();
   const [isDeleteClicked, setIsDeleteClicked] = useState(false);
   const [deleteBlog, { isSuccess: isDeleteSuccess }] = useDeleteBlogMutation();
+const {permission}=useAuth()
+const location=useLocation()
+const isAstroPage = location.pathname === "/astro";
 
   //לחצן למעבר מהיר לבלוג הרצוי
   const handleBlogClick = (blogId) => {
@@ -53,6 +57,17 @@ const ViewBlogs = () => {
       console.error("Error downloading the file", error);
     }
   };
+ // מספר התווים הרצוי (לדוגמה 400 תווים)
+const MAX_CONTENT_LENGTH = 800;
+
+// פונקציה שחותכת את תוכן הפוסט לפי המספר שנקבע
+const getShortContent = (content) => {
+  if (content.length > MAX_CONTENT_LENGTH) {
+    return content.slice(0, MAX_CONTENT_LENGTH) + "…";
+  }
+  return content;
+};
+
   useEffect(() => {
     if (isDeleteSuccess) {
       navigate("/dash/blogs");
@@ -65,10 +80,10 @@ const ViewBlogs = () => {
   return (
     <div className="blogs-list">
       <div className="blogs-list-top">
-        <Search placeholder="חיפוש לפי שם חברה" />
-        <Link to="/dash/blogs/add" className="blogs-list-add-button">
+        {isAstroPage&&<Search placeholder="חיפוש לפי שם חברה" />}
+        {permission==='Admin' &&<Link to="/dash/blogs/add" className="blogs-list-add-button">
           הוספת בלוג
-        </Link>
+        </Link>}
       </div>
       <div className="blogs-container">
         {blogsObject.data?.map(blog => (
@@ -79,7 +94,7 @@ const ViewBlogs = () => {
             style={{ cursor: 'pointer' }}
           >
             <h2 className="blog-title">{blog.title}</h2>
-            <p className="blog-content">{blog.content}</p>
+            <p className="blog-content">{getShortContent(blog.content)}</p>
             {blog.file && (
               <div className="blog-file">
                 <img src={blog.file ? `http://localhost:2024/uploads/${blog.file}` : "/noavatar.png"}
@@ -101,16 +116,16 @@ const ViewBlogs = () => {
 
             )}
             <div className="blog-actions">
-              <Link to={`/dash/blogs/${blog._id}`} className="blogs-list-button blogs-list-view">
+             <Link to={`/dash/blogs/${blog._id}`} className="blogs-list-button blogs-list-view">
                 צפייה
               </Link>
-              <EditBlogButton blog={blog} /> {/* הכפתור להצגת עמוד העדכון */}
-              <button
+              {permission==='Admin'&&<EditBlogButton blog={blog} /> }{/* הכפתור להצגת עמוד העדכון */}
+              {permission==='Admin'&&<button
                 onClick={(event) => deleteClick(event, blog)}
                 className="blogs-list-button blogs-list-delete"
               >
                 מחיקה
-              </button>
+              </button>}
             </div>
           </div>
         ))}

@@ -18,6 +18,7 @@ res.send("HomePage")
 })
 app.use("/api/auth",require("./routes/authRouter"))
 app.use("/api/users",require("./routes/userRouter"))
+app.use("/api/contacts",require("./routes/contactRouter"))
 app.use("/api/responses",require("./routes/responseRouter"))
 app.use("/api/blogs",require("./routes/blogRouter"))
 mongoose.connection.once("open",()=>{

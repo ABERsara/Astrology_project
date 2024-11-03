@@ -10,9 +10,9 @@ import { useSelector } from 'react-redux'; // אם את גם משתמשת ב-use
 import { selectedToken } from "../authSlice"
 import SweetAlert from 'sweetalert2';
 
-const PopUp = ({ close, width,height, children }) => (
+const PopUp = ({ close, width, children }) => (
   <div className="popup">
-    <div className="popup-wrapper animated" style={{ width: width,height:height }}>
+    <div className="popup-wrapper animated" style={{ width: width }}>
       {close ? <div onClick={close} className="close-popup">
         <img loading="lazy" src={ 'cross-popup.svg'} alt="close" />
       </div> : null}
@@ -133,9 +133,9 @@ const LoginPage = () => {
   return (
     <div>
       <button className="login-from-home" onClick={()=>setSelectedlogin(true)}>התחברות</button>
-      {selectLogin ? <PopUp width={'350px'} height={'150vh'}>
+      {selectLogin ? <PopUp width={'350px'} >
         <div className="login-page">
-          <form id="loginForm" class="login-page-form" onSubmit={onsubmit}>
+          <form id="loginForm" className="login-page-form" onSubmit={onsubmit}>
             <img src="/xMark.png" alt="" className="img-back" />
             <h1 className="login-h1">איזה כיף שבאת אלינו!</h1>
             <div>

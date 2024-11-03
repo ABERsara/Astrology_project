@@ -6,7 +6,7 @@
 }
 
 .navbar {
-    padding: 20px;
+    /* padding: 20px; */
     border-bottom: 3px solid var(--text);
     display: flex;
     align-items: center;
@@ -85,7 +85,7 @@
     display: flex;
     justify-content: center; 
     align-items: center; 
-    width: 180px; 
+    width: 15rem ; 
     font-size: 1.1rem;
     color: var(--text); 
 }
@@ -223,4 +223,47 @@
     display: flex;
     flex-direction: column;
 }
-
+.private-zone-link{
+    position: relative;
+    right:40vw;
+ }
+ .personal-zone {
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+  }
+  
+  .dropdown-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    margin-right:40vw;
+    color: #e3a74c; /* צבע טקסט התפריט */
+  }
+  
+  .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    right: 40vw;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    min-width: 150px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+  }
+  
+  .dropdown-item {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: black;
+    font-size: 14px;
+  }
+  
+  .dropdown-item:hover {
+    background-color: #f1f1f1;
+    color: var(--lightBlue); /* צבע ריחוף */
+  }
+  

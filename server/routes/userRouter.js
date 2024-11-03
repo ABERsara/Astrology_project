@@ -8,15 +8,15 @@ const router=express.Router();
 //ייבוא הפונקציה להעלאת קבצים
 const upload = useMulterStorage();
 
-//הרשמה מהווה הוספת משתמש וזה לא מצריך אימות
-router.post("/",upload.single("file"),userController.addUser);
+// //הרשמה מהווה הוספת משתמש וזה לא מצריך אימות
+// router.post("/",userController.addUser);
   
 // כל הפעולות מצריכות אימות משתמש
 router.use(verifyJWT);
 
 router.get("/:id",userController.getUser);
 // עדכון חלקי למשתמשים רגילים ועדכון מיוחד למנהלים
-router.put("/",upload.single("file"),userController.updateUser);
+router.put("/",upload.single("image"),userController.updateUser);
 
 //רק מנהלים יכולים למחוק משתמש ולצפות בכל המשתמשים
 router.use(verifyAdmin)

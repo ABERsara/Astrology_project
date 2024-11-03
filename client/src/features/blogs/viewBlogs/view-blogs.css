@@ -3,15 +3,21 @@
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
   gap: 20px;
   padding: 20px;
-  background-color: #333;
+  background-color:var(--orange)
 }
 
 .blog-item {
-  background-color: #444;
+ 
+
+/* width: 1400px; */
+min-height: 411px;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+  background-color:var(--text);
+  color:var(--main);
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  border: 1px solid #555;
+  /* border: 1px solid #555; */
   cursor: pointer; /* מאפשר קליק על הבלוג */
 }
 
@@ -20,7 +26,7 @@
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 10px;
-  color: #fff;
+  color:var(--main);
 }
 
 /* תוכן הבלוג */
@@ -28,7 +34,8 @@
   font-size: 16px;
   line-height: 1.6;
   margin-bottom: 15px;
-  color: #ddd;
+  color:var(--main);
+ 
 }
 
 /* פעולות הבלוג (כפתורים) */
@@ -41,7 +48,7 @@
 .blogs-list-button {
   padding: 8px 12px;
   border: none;
-  background-color: #5cb85c;
+  background-color:var(--lightBlue);
   color: white;
   cursor: pointer;
   border-radius: 4px;
@@ -50,14 +57,26 @@
 }
 
 .blogs-list-delete {
-  background-color: #d9534f;
+  background-color: var(--orange);
 }
 
 .blogs-list-button:hover {
   opacity: 0.8;
 }
-
-/* עיצוב המודל */
+/* עיצוב לדף המכיל את כל הבלוגים */ */
+.blogs-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .blog-list {
+    width: 100%;
+    /* max-width: 800px; */
+    margin-bottom: 20px;
+  }
+ /* עיצוב המודל */
 .modal-overlay {
   position: fixed;
   z-index: 1000;

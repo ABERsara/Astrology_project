@@ -32,7 +32,7 @@ const addUser = async (req, res) => {
     const {  firstname, lastname, phone, email, password, image, active,diagnosis } = req.body
     console.log(req.body)
     //confirm data!
-    if (!firstname  || !email) {
+    if (!firstname  || !email|| !password) {
         return res.status(400).json({
             error: true,
             message: 'firstname and email are required',
@@ -69,7 +69,9 @@ const addUser = async (req, res) => {
     }
 }
 const updateUser = async (req, res) => {
-    const {id,  firstname, lastname, phone, email, password, image, permission, active, diagnosis } = req.body;
+    console.log(req.image);
+    const image=req.image?.filename? req.image.filename:"";
+    const {id,  firstname, lastname, phone, email, password,  permission, active, diagnosis } = req.body;
 
     // confirm data!
     if (!id || !firstname || !email) {

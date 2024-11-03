@@ -8,7 +8,9 @@ const courseSchema = new mongoose.Schema(//הגדרת הסכמה
             required: true,
             unique: true
         }, details: {
-            type: String
+            //Link to the course!!
+            type: String,
+            required:true
         }, recommendations: {
             type: [{
                 name: {
@@ -29,20 +31,6 @@ const courseSchema = new mongoose.Schema(//הגדרת הסכמה
         forImpressions: {
             //link to show...
             type: String,
-        }, participants: {
-            type:
-                [{
-                    user:
-                    {
-                        type: mongoose.Schema.Types.ObjectId,
-                        ref: 'User',
-                        required: true,
-                    },
-                    numPart: {
-                        type: Number,
-                        default: 1
-                    }
-                }], default: []
         }
     },
     { timestamps: true }

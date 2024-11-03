@@ -5,6 +5,8 @@
     display: flex;
     flex-direction: column;
     font-family:"Varela Round";
+    margin: 0;
+    padding: 0;
 }
 
 .home-container {
@@ -13,12 +15,12 @@
     /* שינוי הכיוון לעמודה */
     justify-content: flex-start;
     min-height: 120vh;
-    padding: 20px;
-    padding-top: 80px;
+    /* padding: 20px; */
+    /* padding-top: 80px; */
     background: radial-gradient(circle, #191923 0%, #1d1e3d 40%, #5b5d6e 100%);
     align-items: center;
     /* justify-content: space-between; */
-    height: 100vh;
+    /* height: 100vh; */
     /* background-color: #292a44; */
     padding: 20px;
     background: radial-gradient(circle, #191923 0%, #1d1e3d 40%, #5b5d6e 100%);

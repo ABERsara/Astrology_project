@@ -17,10 +17,16 @@ const Navbar = () => {
   const { firstname, lastname } = useAuth();  // בדיקה האם המשתמש מחובר
   const [rememberMe, setRememberMe] = useState(false);
   const [error, setError] = useState(null);
-  const logoutClick = () => {
+  const [isPersonalZoneOpen, setIsPersonalZoneOpen] = useState(false);
+  const [selectedOption, setSelectedOption] = useState("האזור האישי");
+    const logoutClick = () => {
     console.log("logout")
     logout()
   }
+  const handleSelectOption = (option) => {
+    setSelectedOption(option);
+    setIsPersonalZoneOpen(false); // סגירת התפריט לאחר בחירת אפשרות
+  };
   useEffect(() => {
     if (isLogoutSuccess) {
       navigate("/")
@@ -77,15 +83,43 @@ const Navbar = () => {
         <img className="logo-homepage" src="/logor.png" />
         <NavLink to="/dash/about" className={({ isActive }) => getNavLinkClass(isActive)}>אודות</NavLink>
         <NavLink to="/dash/astro" className={({ isActive }) => getNavLinkClass(isActive)}>אסטרולוגיה</NavLink>
-        <NavLink to="/dash/blogs" className={({ isActive }) => getNavLinkClass(isActive)}>בלוג</NavLink>
+        {/* <NavLink to="/dash/blogs" className={({ isActive }) => getNavLinkClass(isActive)}>בלוג</NavLink> */}
         <NavLink to="/dash/diagnosiss" className={({ isActive }) => getNavLinkClass(isActive)}>אבחונים</NavLink>
         <NavLink to="/dash/reviews" className={({ isActive }) => getNavLinkClass(isActive)}>מה אומרים עלינו?</NavLink>
-        <NavLink to="/dash/user" className={({ isActive }) => getNavLinkClass(isActive)}>האזור האישי</NavLink>
-        <NavLink to="/dash/user/changePassword" className={({ isActive }) => getNavLinkClass(isActive)}>שנה סיסמה</NavLink>
-        <NavLink to="/dash/user/editProfile" className={({ isActive }) => getNavLinkClass(isActive)}>שנה פרופיל</NavLink>
-
+        <NavLink to="/dash/reviews" className={({ isActive }) => getNavLinkClass(isActive)}>קורסים</NavLink>
         <button onClick={() => scrollToSection("contact-section")}>יצירת קשר</button>
+        <div className="personal-zone">
+        <button
+          onClick={() => setIsPersonalZoneOpen(!isPersonalZoneOpen)}
+          className="dropdown-toggle"
+        >
+          {selectedOption} ▼
+        </button>
+        {isPersonalZoneOpen && (
+          <div
+            className="dropdown-menu"
+            onMouseLeave={() => setIsPersonalZoneOpen(false)}
+          >
+            <NavLink
+              to="/dash/user/editProfile"
+              className="dropdown-item"
+              onClick={() => handleSelectOption("עריכת פרופיל")}
+            >
+              עריכת פרופיל
+            </NavLink>
+            <NavLink
+              to="/dash/user/changePassword"
+              className="dropdown-item"
+              onClick={() => handleSelectOption("שנה סיסמה")}
+            >
+              שנה סיסמה
+            </NavLink>
+          </div>
+        )}
       </div>
+  </div>
+
+     
       {/* <div className="nav-menu">
         <div className="nav-text"></div>
         <h1>האזור האישי</h1>

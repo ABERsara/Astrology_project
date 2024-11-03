@@ -163,12 +163,10 @@
 
 .sentence1-astro {
     transform: translateY(-100px);
-    /* הזזה מלמעלה */
 }
 
 .sentence2-astro {
     transform: translateY(100px);
-    /* הזזה מלמטה */
 }
 
 /* כשמופיעה המחלקה 'show' */
@@ -176,7 +174,19 @@
 .sentence2-astro.show {
     opacity: 1;
     transform: translateY(0);
-    /* תחזור למקום המקורי */
     transition: opacity 1.2s ease, transform 1.2s ease;
-    /* כניסה קצת יותר איטית */
+}
+
+.posts-about {
+    background-color: var(--orange);
+}
+
+.title-posts {
+    color: var(--main);
+    position: relative;
+    left: 10px;
+    font-weight: 600;
+    font-size: 52px;
+    line-height: 125px;
+    text-align: center;
 }

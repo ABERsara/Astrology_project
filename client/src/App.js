@@ -11,7 +11,6 @@ import ViewBlogs from "./features/blogs/viewBlogs/ViewBlogs";
 import ViewSingleBlog from "./features/blogs/viewSingleBlog/ViewSingleBlog";
 import AddBlog from "./features/blogs/addBlog/AddBlog";
 import EditBlog from "./features/blogs/editBlog/EditBlog";
-import DeleteBlog from "./features/blogs/deleteBlog/DeleteBlog";
 import HomePage from "./components/homePage/HomePage"
 import PrivateZone from "./features/user/privateZone/PrivateZone";
 import ViewSingleUser from "./features/admin/viewSingleUser/ViewSingleUser"
@@ -42,7 +41,6 @@ function App() {
                   <Route index element={<ViewBlogs />} />
                   <Route path="add" element={<AddBlog />} />
                   <Route path="edit" element={<EditBlog />} />
-                  <Route path="delete" element={<DeleteBlog />} />
                   <Route path=":blogId" element={<ViewSingleBlog />} />
                 </Route>
 
