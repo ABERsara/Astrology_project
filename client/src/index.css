@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+
 :root{
   /* משתנים שנשתמש באתר */
 --main:#1d1e3d;
@@ -7,7 +9,7 @@
 --highlightColor:rgb(67, 97, 134);
 --lightBlue:teal;
 --logoBlue:#0A9BB5;
---gradiant:radial-gradient(circle, #191923 0%, #1d1e3d 40%, #5b5d6e 100%);
+/* --gradiant:radial-gradient(circle, #191923 0%, #1d1e3d 40%, #5b5d6e 100%); */
 --orange: #E49928;
 }
 
@@ -16,8 +18,10 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+  
 html {
-  font-family:"Varela Round";
+	font-family: "Varela Round", serif;
   font-weight: 400;
   font-style: normal;
   direction: rtl;
@@ -26,6 +30,9 @@ html {
 body{
   background-color: var(--main);
   color: var(--text);
+  margin-top: 7vw;
+  font-family: "Varela Round", serif;
+
 }
 
 a{
@@ -92,7 +99,7 @@ a{
 				.header-system-text {
 					display: block;
 					padding: 25px 0px;
-					font-size: 35px;
+					font-size: 1rem;
 					margin: 0;
 					font-weight: bold;
 					text-align: center;
@@ -122,7 +129,7 @@ a{
 						strong {
 							margin: 0;
 							font-weight: 400;
-							font-size: 16px;
+							font-size: 0.7rem;
 						}
 					}
 				}

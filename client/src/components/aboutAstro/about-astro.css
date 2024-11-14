@@ -1,10 +1,11 @@
 .astro-about {
     background: radial-gradient(circle, #191923 0%, #1d1e3d 40%, #5b5d6e 100%);
     height: auto;
+    /* width:100%; */
     display: flex;
     flex-direction: column;
     font-family: "Varela Round";
-    padding-top: 80px;
+    /* padding-top: 80px; */
 
 }
 
@@ -30,13 +31,13 @@
 .astro-sentences {
     width: 400px;
     height: 100vh;
-
+/* 
     font-family: "Varela Round";
     font-style: normal;
     font-weight: 600;
     font-size: 70px;
-    line-height: 123%;
-    text-align: right;
+    line-height: 123%; */
+    /* text-align: right; */
     margin-right: 0px;
     margin-left: 50%;
     /* right:12.5vw; */
@@ -52,7 +53,7 @@
 
     font-style: normal;
     font-weight: 600;
-    font-size: 72px;
+    font-size: 3.5rem;
     line-height: 125px;
     text-align: center;
 
@@ -67,10 +68,9 @@
     width: 714px;
     height: 125px;
 
-    font-family: 'Ploni Round AAA';
     font-style: normal;
     font-weight: 700;
-    font-size: 72px;
+    font-size: 3.5rem;
     line-height: 125px;
     text-align: center;
     letter-spacing: 0.05rem;
@@ -142,12 +142,12 @@
 .astro-txt p {
     font-style: normal;
     font-weight: 1000;
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     line-height: 42px;
     text-align: right;
-    width: 778px;
+    
     height: auto;
-    padding: 20px;
+    padding: 6rem;
     justify-content: center;
     align-items: center;
     text-align: right;

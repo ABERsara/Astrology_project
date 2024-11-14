@@ -51,7 +51,8 @@ const Navbar = () => {
     }
   };
 
-
+  
+  
   // פונקציה שמחזירה className בהתאם לסטטוס של isActive
   const getNavLinkClass = (isActive) => isActive ? "active-navlink-nav" : "";
   const isHomePage = location.pathname === "/";
@@ -86,7 +87,7 @@ const Navbar = () => {
         {/* <NavLink to="/dash/blogs" className={({ isActive }) => getNavLinkClass(isActive)}>בלוג</NavLink> */}
         <NavLink to="/dash/diagnosiss" className={({ isActive }) => getNavLinkClass(isActive)}>אבחונים</NavLink>
         <NavLink to="/dash/reviews" className={({ isActive }) => getNavLinkClass(isActive)}>מה אומרים עלינו?</NavLink>
-        <NavLink to="/dash/reviews" className={({ isActive }) => getNavLinkClass(isActive)}>קורסים</NavLink>
+        <NavLink to="/dash/courses" className={({ isActive }) => getNavLinkClass(isActive)}>קורסים</NavLink>
         <button onClick={() => scrollToSection("contact-section")}>יצירת קשר</button>
         <div className="personal-zone">
         <button

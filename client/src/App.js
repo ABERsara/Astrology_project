@@ -19,6 +19,7 @@ import RequireAuth from "./features/auth/RequireAuth";
 import AboutSection from "./components/aboutSection/AboutSection";
 import AboutAstro from "./components/aboutAstro/AboutAstro";
 import PersistLogin from "./features/auth/PersistLogin"
+import Course from "./components/course/Course";
 function App() {
   return (
     <Router>
@@ -34,6 +35,9 @@ function App() {
             <Route index element={<Outlet />} />
             <Route path="about" element={<AboutSection />} />
             <Route path="astro" element={<AboutAstro />} />
+            <Route path="courses" element={<Outlet/>}>
+<Route index element={<Course/>}/>
+</Route>
             <Route element={<PersistLogin />}>
               <Route element={<RequireAuth allowPermission={["Admin", "User"]} />}>
                 {/* בלוגים - מקוננים תחת dash */}

@@ -29,8 +29,7 @@
     height: 100%;
     color: var(--orange);
     position: relative; /* מאפשר למקם את ה-X בקצה השמאלי */
-    font-family:"Varela Round";
-}
+    font-family: "Varela Round", serif;}
 
 .login-page-form {
     background-color: var(--text);
@@ -70,7 +69,9 @@
 
 .login-page-form input[type="text"],
 .login-page-form input[type="email"],
-.login-page-form input[type="password"] {
+.login-page-form input[type="password"],
+.login-page-form input[type="phone"],
+.login-page-form input[type="file"]{
     width: 100%;
     padding: 5px;
     border: solid 2px var(--orange);
@@ -108,8 +109,7 @@
     border: none;
     cursor: pointer;
     letter-spacing: 0.5px;
-    font-family:"Varela Round";
-    margin: 0;
+    font-family: "Varela Round", serif;    margin: 0;
 }
 .login-page-form button:hover{
     background-color: var(--text);
@@ -132,8 +132,8 @@ border: 1px solid var(--orange);
     border-radius: 30px; 
     text-align: center;
     cursor: pointer;
-    font-family: "Varela Round";
-    position: relative; /* שנה ל-relative */
+    font-family: "Varela Round", serif;
+        position: relative; /* שנה ל-relative */
     padding: 0;
 }
 
@@ -182,6 +182,6 @@ border: 1px solid var(--orange);
 /* טקסט */
 .custom-success-swal .custom-success-text {
     color: var(--orange); /* צבע הטקסט כתום */
-    font-size: 16px;
+    font-size: 0.7rem;
     margin-top: 10px;
 }

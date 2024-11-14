@@ -13,9 +13,9 @@ const ViewBlogs = () => {
   const navigate = useNavigate();
   const [isDeleteClicked, setIsDeleteClicked] = useState(false);
   const [deleteBlog, { isSuccess: isDeleteSuccess }] = useDeleteBlogMutation();
-const {permission}=useAuth()
-const location=useLocation()
-const isAstroPage = location.pathname === "/astro";
+  const { permission } = useAuth()
+  const location = useLocation()
+  const isAstroPage = location.pathname === "/astro";
 
   //לחצן למעבר מהיר לבלוג הרצוי
   const handleBlogClick = (blogId) => {
@@ -57,16 +57,16 @@ const isAstroPage = location.pathname === "/astro";
       console.error("Error downloading the file", error);
     }
   };
- // מספר התווים הרצוי (לדוגמה 400 תווים)
-const MAX_CONTENT_LENGTH = 800;
+  // מספר התווים הרצוי (לדוגמה 400 תווים)
+  const MAX_CONTENT_LENGTH = 800;
 
-// פונקציה שחותכת את תוכן הפוסט לפי המספר שנקבע
-const getShortContent = (content) => {
-  if (content.length > MAX_CONTENT_LENGTH) {
-    return content.slice(0, MAX_CONTENT_LENGTH) + "…";
-  }
-  return content;
-};
+  // פונקציה שחותכת את תוכן הפוסט לפי המספר שנקבע
+  const getShortContent = (content) => {
+    if (content.length > MAX_CONTENT_LENGTH) {
+      return content.slice(0, MAX_CONTENT_LENGTH) + "…";
+    }
+    return content;
+  };
 
   useEffect(() => {
     if (isDeleteSuccess) {
@@ -80,8 +80,8 @@ const getShortContent = (content) => {
   return (
     <div className="blogs-list">
       <div className="blogs-list-top">
-        {isAstroPage&&<Search placeholder="חיפוש לפי שם חברה" />}
-        {permission==='Admin' &&<Link to="/dash/blogs/add" className="blogs-list-add-button">
+        {isAstroPage && <Search placeholder="חיפוש לפי שם חברה" />}
+        {permission === 'Admin' && <Link to="/dash/blogs/add" className="blogs-list-add-button">
           הוספת בלוג
         </Link>}
       </div>
@@ -116,11 +116,11 @@ const getShortContent = (content) => {
 
             )}
             <div className="blog-actions">
-             <Link to={`/dash/blogs/${blog._id}`} className="blogs-list-button blogs-list-view">
-                צפייה
+              <Link to={`/dash/blogs/${blog._id}`} className="blogs-list-button blogs-list-view">
+                להמשיך לקרוא
               </Link>
-              {permission==='Admin'&&<EditBlogButton blog={blog} /> }{/* הכפתור להצגת עמוד העדכון */}
-              {permission==='Admin'&&<button
+              {permission === 'Admin' && <EditBlogButton blog={blog} />}{/* הכפתור להצגת עמוד העדכון */}
+              {permission === 'Admin' && <button
                 onClick={(event) => deleteClick(event, blog)}
                 className="blogs-list-button blogs-list-delete"
               >

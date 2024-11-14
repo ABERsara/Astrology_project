@@ -1,10 +1,10 @@
 .about-container {
-    background: var(--gradient);
+    background: radial-gradient(circle, #191923 0%, #1d1e3d 40%, #5b5d6e 100%);
     display: flex;
     flex-direction: column;
     font-family: "Varela Round";
-    padding-top: 80px;
-
+    /* padding-top: 80px; */
+/* background-color: #fff; */
 }
 
 .about-me-container {
@@ -26,18 +26,14 @@
 }
 
 .about-me-sentences {
-    width: 400px;
-    height: 70vh;
-
+/*     
     font-family: "Varela Round";
     font-style: normal;
     font-weight: 600;
-    font-size: 70px;
-    /* line-height: 123%; */
+    font-size: 3rem;
+     */
     text-align: right;
-    /* margin-right: 0px;
-    margin-left: 50%; */
-    /* right:12.5vw; */
+   
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     margin-top: 100px;
 }
@@ -49,7 +45,7 @@
 
     font-style: normal;
     font-weight: 600;
-    font-size: 72px;
+    font-size: 4.5rem;
     line-height: 125px;
     text-align: center;
 
@@ -65,7 +61,7 @@
     margin-top: 40px;
     font-style: normal;
     font-weight: 700;
-    font-size: 72px;
+    font-size: 4.5rem;
     /* line-height: 125px; */
     text-align: center;
     letter-spacing: 0.05rem;
@@ -86,33 +82,36 @@
 
 
   
-.Aries-horo {
+.Aries-about {
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
     width: 96.75px;
     height: 74.86px;
     transform: rotate(15.01deg);
+    position: relative;
+    left: -3%;
 }
 
 
-.Taurus-horo {
+.Taurus-about {
 
     /* right: 20px; */
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
     /* transform: rotate(32.27deg); */
     /* אייקונים/Vector */
 
-    position: absolute;
-    width: 99.55px;
-    height: 103.62px;
+    position: relative;
+    width: 89.55px;
+    height: 93.62px;
     /* left: 1097px; */
 
     transform: rotate(-17.77deg);
-
+right: -4%;
+top:10%;
 }
 
 
-.Aries-horo:hover,
-.Taurus-horo:hover {
+.Aries-about:hover,
+.Taurus-about:hover {
     transform: scale(1.1);
     cursor: pointer;
 }
@@ -124,7 +123,7 @@
     align-items: center;
     height: auto;
     text-align: center;
-    padding: 200px; /* ריווח פנימי מכל הצדדים */
+    padding: 6rem; /* ריווח פנימי מכל הצדדים */
     background-color: #fff;
     color: var(--logoBlue);
 }
@@ -133,16 +132,16 @@
 .about-txt p {
     font-style: normal;
     font-weight: 1000;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     line-height: 42px;
     text-align: right;
     /* width: 778px; */
     height: auto;
-    padding: 20px;
+    /* padding: 1rem; */
     justify-content: center;
     align-items: center;
     text-align: right;
-    left: 50px;
+    /* left: 50%; */
 }
 
 
@@ -174,14 +173,14 @@
 
 .about-question {
     display: flex;
-    background-color: var(--gradiant);
+    background-color: radial-gradient(circle, #191923 0%, #1d1e3d 40%, #5b5d6e 100%);
     height: 40vh;
     color: var(--orange);
     /* width: 400px; */
     font-family: "Varela Round";
     font-style: normal;
     font-weight: 600;
-    font-size: 50px;
+    font-size: 3.5rem;
     /* line-height: 123%; */
     text-align: center;
     /* margin-right: 0px; */
@@ -192,6 +191,9 @@
     justify-content: space-between;
     align-items: center;
 }
+div.about-question{
+    justify-content: center;
+}
 
 .more-txt {
     background-color: var(--text);
@@ -199,10 +201,10 @@
     min-height: 60vh;
     font-style: normal;
     font-weight: 1000;
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     line-height: 42px;
     text-align: right;
-    padding: 200px;
+    padding: 6rem;
     /* width: 778px; */
     height: auto;
     justify-content: center;
@@ -218,7 +220,7 @@
     height: 20vh;
     font-style: normal;
     font-weight: 600;
-    font-size: 52px;
+    font-size: 1.5rem;
     line-height: 125px;
     text-align: center;
 }

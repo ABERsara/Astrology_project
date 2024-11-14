@@ -145,9 +145,8 @@ const ZodiacWheel = () => {
           className="modal"
           overlayClassName="modal-overlay"
         >
-          <button className="close" onClick={closeModal}>
-            &times;
-          </button>
+          <img src="/xMark.png" alt="חזור אחורה" className="img-back" onClick={closeModal}/>
+          
           {selectedSign && (
     <>
       <h2>{zodiacInfo[selectedSign].hebrewName}</h2>
@@ -159,9 +158,13 @@ const ZodiacWheel = () => {
   )}
         </Modal>
       </div>
-      <div className='button-container'>
-        <button onClick={startSpin} className="spin-button">
-          {isSpinning ? 'עצור סיבוב' : 'התחל סיבוב'}
+      <div className='button-container button-below-wheel'>
+      <button className="spin-button" onClick={startSpin}>
+          <img
+            src={isSpinning ? "/pause.png" : "/play-button.png"}
+            alt={isSpinning ? "Pause" : "Play"}
+            style={isSpinning?{ width: '30px', height: '30px' }:{width: '25px', height: '25px' }}
+          />
         </button>
       </div>
     </div>

@@ -11,19 +11,6 @@ const courseSchema = new mongoose.Schema(//הגדרת הסכמה
             //Link to the course!!
             type: String,
             required:true
-        }, recommendations: {
-            type: [{
-                name: {
-                    type: String,
-                    required: true
-                }, recommendation:
-                {
-                    type: String,
-                    required: true
-                }
-            }
-            ],
-            default: []
         }, numParts: {
             type: Number,
             required: true,

@@ -1,0 +1,57 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #1a1a2e;
+    font-family: Arial, sans-serif;
+    direction: rtl;
+  } */
+  
+  .container {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .plan-card {
+    background-color: #f5f5f5;
+    width: 200px;
+    padding: 20px;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .plan-title {
+    color: orange;
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .plan-content h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  
+  table {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  
+  table td {
+    font-size: 14px;
+    padding: 5px;
+    text-align: right;
+  }
+  
+  .price {
+    color: orange;
+    font-size: 16px;
+  }
+  

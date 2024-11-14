@@ -1,27 +1,28 @@
 /* zodiac-wheel.css */
 
+
 .wheel-container {
     position: absolute;
-    width: 500px; 
-    height: 700px;
+    /* width: 500px; 
+    height: 700px; */
     /* margin: 50px auto; */
-    padding: 5px;
-    margin-top: 30px !important;
-    margin-bottom: 30px !important;
-    font-family:"Varela Round";
-    display: flex;
+   /* padding: 5vw; */
+    /* margin-top: 0 !important; */
+    /* margin-bottom: 50px !important; */
+    font-family: "Varela Round", serif;
+        display: flex;
     flex-direction: column;
     align-items: center;
   }
   .zodiac-container{
-    width: 450px;
-    height: 450px;
+    width: 400px;
+    height: 400px;
     position: relative; /* Keep wheel positioned relative to its container */
     overflow: hidden;
   }
   .button-container{
-    /* position: relative; */
-    width: 450px;
+    position: relative;
+    /* width: 400px; */
     display: flex;
     justify-content: center; /* Center the button horizontally */
     /* margin-top: 10px; */
@@ -63,16 +64,20 @@
 .modal {
   background-color: white;
   padding: 20px;
-  border-radius: 10px;
+  border-radius:10px;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   max-width: 400px;
   width: 80%;
-  color: #333;
+  color: var(--orange);
   z-index: 300;
+  border: none;
+  outline: none;
 }
+
+
 .zodiac-sign {
   position: absolute;
   width: 50%; /* חצי מרוחב הגלגל */
@@ -86,7 +91,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 12px; /* גודל הטקסט */
   text-align: center;
   transform: rotate(0deg) skewY(-30deg); /* נעדכן לפי כל פלח */
 }
@@ -106,33 +110,29 @@
 
 .spin-button {
   position: relative;
-    padding: 5px 10px;
-    font-size: 1rem;
-    color: white;
-    background-color: #E49928;
-    border-radius: 5px;
-    text-decoration: none;
-    transition: background-color 0.3s ease;
-    text-align: center;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 17px 0px 25px 2px;
-    gap: 6px;
-    width: 120px;
-    cursor: pointer;
-    height: 5px;
-    /* left: 1537px; */
-    /* bottom: 5vw; */
-    font-family: "Varela Round";
-    border-radius: 56px;
+  padding: 0;
+  right: 250px;
+  bottom:10px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+ background-color: transparent;
+ width: 40px;
+ height: 40px;
+ justify-content: center;
+ align-items: center;
 }
 
-.spin-button:hover {
-  background-color:var(--text);
-  color: var(--orange);
-  cursor: pointer;
 
+
+.spin-button .spin-image {
+  transition: filter 0.3s ease;
+}
+
+
+
+.wheel, .button-below-wheel {
+  margin: 0;
+  padding: 0;
 }
 

@@ -51,10 +51,12 @@
     []client-admin (view,add,delete, update. )
 []part 8 posts to about page
     []an un register user will be able to server
-    []
+    []veiw posts , edit add and delete by admin-design
 []problems
     []file upload
     []login is too down
-    []buttons home page
-    []private section
-    []font family
+    [v]buttons home page
+    [v]private section
+    [v]font family
+    []font-size
+    []my favourites

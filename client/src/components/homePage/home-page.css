@@ -4,8 +4,8 @@
     height: auto;
     display: flex;
     flex-direction: column;
-    font-family:"Varela Round";
-    margin: 0;
+    font-family: "Varela Round", serif;
+        margin: 0;
     padding: 0;
 }
 
@@ -60,7 +60,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    width: 50%;
+    width: 45%;
     height: auto;
     /* position: absolute; */
     bottom: 20vh;
@@ -72,23 +72,23 @@
 .home-link {
     position: relative;
     padding: 10px 20px;
-    font-size: 1.2em;
+    font-size: 1rem;
     color: white;
     background-color: #E49928;
     border-radius: 5px;
     text-decoration: none;
     transition: background-color 0.3s ease;
     
-    left: 237px;
+    left: 137px;
     text-align: center;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding: 23px 0px 30px 2px;
+    padding: 19px 0px 22px 2px;
     gap: 6px;
-    width: 200px;
-    height: 56px;
+    width: 130px;
+    height: 26px;
     /* left: 1537px; */
     bottom: 5vw;
     border-radius: 56px;
@@ -111,10 +111,10 @@
     height: 314px;
     /* left: 673px;
 top: 234px; */
-font-family:"Varela Round";
+font-family: "Varela Round", serif;
     font-style: normal;
     font-weight: 600;
-    font-size: 70px;
+    font-size: 3.8rem;
     line-height: 123%;
     /* or 157px */
     text-align: right;
@@ -135,7 +135,7 @@ font-family:"Varela Round";
 }
 
 .info-homepage {
-    font-size: 20px;
+    font-size: 1.15rem;
     line-height: 100%;
 
 }
@@ -161,8 +161,8 @@ background-color:transparent;
 border: none;
 color: var(--text);
 cursor: pointer;
-font-family:"Varela Round";
-font-size: 1rem;
+font-family: "Varela Round", serif;
+font-size: 0.9rem;
 }
 .login-from-home:hover {
     color: rgb(25, 197, 213);
@@ -191,10 +191,10 @@ font-size: 1rem;
 .home-about-section p{
 width: 785px;
 height: auto;
-font-family:"Varela Round";
+font-family: "Varela Round", serif;
 font-style: normal;
 font-weight: 600;
-font-size: 18px;
+font-size: 1.2rem;
 line-height: 31px;
 text-align: right;
 justify-content: center;

@@ -129,6 +129,9 @@ const LoginPage = () => {
       console.log('Error during login:', err);
     }
   }
+  const closeModal=()=>{
+    Swal.close();
+  }
 
   return (
     <div>
@@ -136,7 +139,7 @@ const LoginPage = () => {
       {selectLogin ? <PopUp width={'350px'} >
         <div className="login-page">
           <form id="loginForm" className="login-page-form" onSubmit={onsubmit}>
-            <img src="/xMark.png" alt="" className="img-back" />
+            <img src="/xMark.png" alt="" className="img-back" onClick={closeModal}/>
             <h1 className="login-h1">איזה כיף שבאת אלינו!</h1>
             <div>
               <label className="login-item name">שם:</label>
@@ -147,7 +150,7 @@ const LoginPage = () => {
               <input type="email" required name="email" id="email" />
             </div>
             <div className="login-item password">
-              <label>סיסמא:</label>
+              <label className="login-item password">סיסמא:</label>
               <input type="password" required name="password" id="password" />
             </div>
             <div className="login-item checkbox">

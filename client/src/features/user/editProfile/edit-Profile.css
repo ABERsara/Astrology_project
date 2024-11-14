@@ -1,15 +1,27 @@
-.edit-profile{
+/* .login-page{
     background-color:var(--mainLight);
     padding-top: 200px;
     border-radius: 10px;
     margin-top: 10px;
 }
-.edit-profile-form{
-    display: flex;
+.loginForm{
+     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-between; 
+
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 10px;
+gap: 10px;
+
+position: relative;
+width: 260px;
+height: 557px;
+
+
 }
-.edit-profile-form input{
+.login-item input{
     padding: 30px;
     background-color:var(--main);
     color: var(--text);
@@ -17,7 +29,7 @@
     margin-bottom: 30px;
     width: 45%;
 }
-.edit-profile-form button{
+.loginForm button{
 width: 100%;
 margin: 30px;
 background-color: var(--main);
@@ -25,4 +37,21 @@ color: var(--text);
 border: none;
 border-radius: 5px;
 cursor: pointer;
+} */
+ .edit-profile-zone{
+    width: 100%;
+    height: auto;
+    padding: 10vw;
+    margin-top: 2vw;
+    background-color: radial-gradient(circle, #191923 0%, #1d1e3d 40%, #5b5d6e 100%);;
+ }
+
+.edit-profile{
+    width:30vw;
+}
+.login-page-form input[type="file"]{
+    border-radius: 5vw;
+    width: 5vw;
+    height: 5vw;
+    background-color: #e12020;
 }
