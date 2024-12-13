@@ -6,7 +6,7 @@
     []upload files better
     [v]update user is inactive and permission
 []part 2 diagnosis-client 
-    []request a diagnosis by a user (filling details)
+    [v]request a diagnosis by a user (filling details)
     []add a diagnosis for a user (recording? open on google meet? scedueled by google calander? upload a file with diagnosis?)
     []fix a diagnosis
     []view all diagnosis by manager
@@ -52,11 +52,14 @@
 []part 8 posts to about page
     []an un register user will be able to server
     []veiw posts , edit add and delete by admin-design
+    []love posts
+[]part 9 What our custemrs say
+    []add a response
 []problems
     []file upload
     []login is too down
     [v]buttons home page
     [v]private section
     [v]font family
-    []font-size
-    []my favourites
+    [v]font-size
+    

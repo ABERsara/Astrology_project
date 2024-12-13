@@ -7,18 +7,21 @@ const corsOptions=require("./config/corsOptions")
 const connectDB=require("./config/connectDB")
 const app=express()
 const PORT=process.env.PORT || 2024
+const path = require('path');
 connectDB()
 //middlware
 app.use(cors(corsOptions))
 app.use(cookieParser())
 app.use(express.json())
 app.use(express.static('public'));
+
 app.get("/",(req,res)=>{
 res.send("HomePage")
 })
 app.use("/api/auth",require("./routes/authRouter"))
 app.use("/api/users",require("./routes/userRouter"))
 app.use("/api/contacts",require("./routes/contactRouter"))
+app.use("/api/diagnosis", require("./routes/diagnosisRouter"));
 app.use("/api/responses",require("./routes/responseRouter"))
 app.use("/api/blogs",require("./routes/blogRouter"))
 mongoose.connection.once("open",()=>{

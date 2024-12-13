@@ -35,9 +35,12 @@ function App() {
             <Route index element={<Outlet />} />
             <Route path="about" element={<AboutSection />} />
             <Route path="astro" element={<AboutAstro />} />
-            <Route path="courses" element={<Outlet/>}>
-<Route index element={<Course/>}/>
-</Route>
+            <Route path="diagnosis" element={<UploadDiagnosis/>}/>
+            <Route path="courses" element={<Outlet />}>
+              <Route index element={<Course />} />
+              
+            </Route>
+            
             <Route element={<PersistLogin />}>
               <Route element={<RequireAuth allowPermission={["Admin", "User"]} />}>
                 {/* בלוגים - מקוננים תחת dash */}
@@ -46,6 +49,7 @@ function App() {
                   <Route path="add" element={<AddBlog />} />
                   <Route path="edit" element={<EditBlog />} />
                   <Route path=":blogId" element={<ViewSingleBlog />} />
+                  
                 </Route>
 
                 {/* אזור אישי של המשתמש */}
@@ -55,14 +59,15 @@ function App() {
                   <Route path="chargeHistory" element={<ChargeHistory />} />
                   <Route path="accountOverview" element={<AccountOverview />} />
                   <Route path="changePassword" element={<ChangePassword />} />
+                  
                 </Route>
 
 
-                {/* ניהול אבחונים */}
-                <Route path="diagnosis" element={<Outlet />}>
+                ניהול אבחונים
+                {/* <Route path="diagnosis" element={<Outlet />}>
                   <Route index element={<h1>כרגע לא ברור לי מה לשים פה</h1>} />
                   <Route path="upload" element={<UploadDiagnosis />} />
-                </Route>
+                </Route> */}
                 <Route element={<RequireAuth allowPermission={["Admin"]} />}>
 
                   {/* ניהול משתמשים - גם תחת ה-dashboard */}

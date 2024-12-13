@@ -28,9 +28,9 @@ html {
   text-align: right;
 }
 body{
-  background-color: var(--main);
+	background: radial-gradient(circle, #191923 0%, #1d1e3d 40%, #5b5d6e 100%);;
   color: var(--text);
-  margin-top: 7vw;
+  margin-top: 5vw;
   font-family: "Varela Round", serif;
 
 }

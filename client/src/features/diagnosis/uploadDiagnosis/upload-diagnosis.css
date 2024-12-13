@@ -1,0 +1,162 @@
+.diagnosis-container {
+    /* background: radial-gradient(circle, #191923 0%, #1d1e3d 40%, #5b5d6e 100%); */
+    overflow: hidden;
+    
+ }
+ 
+ .diagnosis-h1 {
+     color: var(--orange);
+     font-size: 3.5rem;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     font-style: normal;
+     font-weight: 600;
+     line-height: 167px;
+     text-align: right;
+     letter-spacing: 0.26em;
+     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+ }
+ 
+ /* .diagnosis-contains {
+     display: flex;
+     flex-direction: column; /* כדי שהכותרות יהיו במבנה של עמודה 
+ } */
+ 
+ .general_character_diagnosis {
+     position: relative; 
+     margin: 20px;
+     padding: 20px;
+     display: flex;
+     flex-direction: column; 
+ }
+ 
+ .general_character_diagnosis h4 {
+     font-style: normal;
+     font-weight: 600;
+     font-size: 1.5vw;
+     line-height: 42px;
+     text-align: right;
+     color: var(--text);
+     padding: 20px;
+     transition: transform 0.3s ease-in-out; /* מגדיר מעבר חלק */
+
+ }
+ .gcd1, .gcd2 {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* ריווח בין התמונה לטקסט */
+}
+
+.gcd1:hover, .gcd2:hover {
+    animation: moveBackAndForth 1.5s ease-in-out infinite; /* אנימציה מחזורית */
+}
+
+@keyframes moveBackAndForth {
+    0% { transform: translateX(0); }       /* מיקום התחלתי */
+    25% { transform: translateX(10px); }  /* תזוזה ימינה */
+    50% { transform: translateX(-10px); } /* תזוזה שמאלה */
+    75% { transform: translateX(5px); }   /* חזרה קצת ימינה */
+    100% { transform: translateX(0); }    /* חזרה למיקום ההתחלתי */
+}
+
+
+.general_character_diagnosis h4, 
+.general_character_diagnosis img {
+    transition: transform 0.3s ease-in-out; /* להבטיח שהתמונה והטקסט יזוזו חלק */
+}
+
+
+
+
+ .general_character_diagnosis img {
+     width: 47px;
+     height: 42.5px;
+     margin: 20px;
+ }
+ 
+ .gcd1 {
+    position: relative;
+    display: flex;
+     right: 40vw;
+ }
+ 
+ .gcd2 {
+    display: flex;
+    position: relative;
+     right: 30vw;
+ }
+ .diagnosis-h3{
+ position: relative;
+ right: 10vw;
+font-weight: 600;
+font-size: 3rem;
+/* margin: 10px; */
+text-align: right;
+letter-spacing: 0.26em;
+color: var(--orange);
+text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+ }
+ .diagnosis-h5{
+    /* כמה פרטים שאני צריכה בשביל האבחון: */
+
+position: relative;
+margin: 10px;
+right: 10vw;
+font-weight: 600;
+font-size: 1.5rem;
+/* line-height: 56px; */
+text-align: right;
+
+color: #0A9BB5;
+
+
+ }
+ .formDiagnosis{
+display: flex;
+padding: 5vw;
+ }
+ .add-form-diagnosis{
+    display: flex;
+    flex-direction: column;
+    gap: 3vw;
+    justify-content: space-between;
+ }
+ .diagnosis-item{
+position: relative;
+background: var(--text);
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+border-radius: 24px;
+width: 100%;
+border: solid 2px var(--orange);
+border-radius: 5px;
+background-color: var(--text);
+color: var(--orange);
+    padding: 9px;
+    border: solid 0.2vw var(--text);
+    border-radius: 5vw;
+    color: var(--orange);
+    
+width: 40vw;
+
+
+ }
+ .submit-container {
+    display: flex;
+    justify-content: center; /* מרכז את הכפתור אופקית */
+    margin-top: 4vw; /* הוספת מרווח בין הכפתור לשדות הטופס */
+margin-right: 10vw;
+}
+
+ .submit-diagnosis {
+    padding: 10px;
+    position: relative;
+    background: var(--orange);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5vw;
+    width: 50vw;
+    margin: 0 auto; /* מרכז את הכפתור */
+    text-align: center; /* מוודא שהטקסט עצמו במרכז הכפתור */
+}
+
+ 

@@ -1,13 +1,14 @@
-import { Link, NavLink,Navigate, useNavigate } from "react-router-dom";
+import { Link, NavLink, Navigate, useNavigate } from "react-router-dom";
 import ZodiacWheel from "./ZodiacWheel";
 import "./home-page.css";
 import Footer from "../../components/footer/Footer";
 import { useEffect, useState } from "react";
 import Navbar from "../../components/navbar/Navbar"
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faShareSquare } from '@fortawesome/free-solid-svg-icons';
 const HomePage = () => {
     const [showWheel, setShowWheel] = useState(true);
-   
+
     useEffect(() => {
         const handleScroll = () => {
             if (window.scrollY < 130) {
@@ -24,32 +25,35 @@ const HomePage = () => {
         };
     }, []);
 
-  
-   
+
+
     return (
         <div className="home-page-casing">
-                            <Navbar/>
+            <Navbar />
             <div className="home-container">
                 <div className="zwheel">
                     {showWheel ? <ZodiacWheel /> : null}
+                    
                 </div>
                 <div className="sentence-on-astro">
-                    <div className="sentence1">משפט חזק על</div>
-                    <div className="sentence2">האסטרולוגיה</div>
+                    <div className="sentence1">מפת הכוכבים כמסע</div>
+                    <div className="sentence2">להבנה עצמית</div>
                     <div className="info-homepage">
-                    היא כלי עזר בחיינו. שמה מראה ומשקפת את המציאות, משפרת תודעה ע"י ניתוח האישיות שלנו ושל הזולת, וחוזה מגמות עתידיות ומאפשרת להתכונן
+                        היא כלי עזר בחיינו. שמה מראה ומשקפת את המציאות, משפרת תודעה ע"י ניתוח האישיות שלנו ושל הזולת, וחוזה מגמות עתידיות ומאפשרת להתכונן
                     </div>
                 </div>
-                <div className="home-links">
-                    <Link to={"/dash/astro"} className="home-link">
+                <div className="home-links more_to_read">
+                    <Link to={"/dash/astro"} className="home-link more_to_read">
                         לקרוא עוד
                     </Link>
                 </div>
+
+
             </div>
 
             <div className="home-about-section">
                 <div id="about-section" className="about-section">
-                    <img alt="דלי" src="/9.png" className="horoscopes Aquarius"/>
+                    <img alt="דלי" src="/9.png" className="horoscopes Aquarius" />
                     <h2>אודות</h2>
                     <p>הרעיון של אסטרולוגיה הוא זיהוי כלים ויכולות של האדם.
                         רוחי  לוקחת את זה צעד קדימה- באופן שמהכלי הזה היא מנסה לסייע לאדם,
@@ -66,20 +70,20 @@ const HomePage = () => {
                         (למרות שיש הרבה  שמתנגדים וטוענים שזה התעסקות בכוחות מיסטיים- גרמי השמיים...)
                         להתעסק עם  זה להבנת נפש האדם.
                         ואז זה בעצם רק כלי...</p>
-                    <img alt="טלה" src="/7.png" className="horoscopes Aries"/>
-                    <img alt="סרטן" src="/1.png" className="horoscopes Cancer"/>
-                    <img alt="תאומים" src="/5.png" className="horoscopes Gemini"/>
-                    <img alt="שור" src="/6.png" className="horoscopes Taurus"/>
+                    <img alt="טלה" src="/7.png" className="horoscopes Aries" />
+                    <img alt="סרטן" src="/1.png" className="horoscopes Cancer" />
+                    <img alt="תאומים" src="/5.png" className="horoscopes Gemini" />
+                    <img alt="שור" src="/6.png" className="horoscopes Taurus" />
                     {/* <Link to={"/dash/about"} className="home-link-about">
                         לקרוא עוד
                     </Link> */}
                 </div>
 
-               
+
             </div>
             <div id="contact-section" className="contact-section">
-                    <Footer />
-                </div>
+                <Footer />
+            </div>
         </div>
     );
 };

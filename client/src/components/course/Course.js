@@ -6,8 +6,8 @@ const PlanCard = ({ title, features, price }) => (
     <h2 className="plan-title">{title}</h2>
     <div className="plan-content">
       <h3>הקורס כולל:</h3>
-      <table>
-        <tbody>
+      <table className="table-plan-card">
+        <tbody >
           {features.map((feature, index) => (
             <tr key={index}>
               <td>{feature}</td>
@@ -16,14 +16,14 @@ const PlanCard = ({ title, features, price }) => (
           ))}
         </tbody>
       </table>
-      <h4 className="price">מחיר: {price}</h4>
+      <h4 className="table-plan-card-price">מחיר: {price}</h4>
     </div>
   </div>
 );
 
 const Course = () => {
   return (
-    <div className="container">
+    <div className="container-plan-card">
       <PlanCard title="mini" features={["יישום", "יישום", "יישום"]} price="100₪" />
       <PlanCard title="standard" features={["יישום", "יישום", "יישום", "יישום"]} price="200₪" />
       <PlanCard title="extra" features={["יישום", "יישום", "יישום", "יישום", "יישום"]} price="300₪" />

@@ -33,9 +33,9 @@ const getResponse=async(req,res)=>{
 }
 //change the case if a user is responses about a course- he needs to give the course name
 const addResponse=async(req,res)=>{
-    const { registerUser,responseFor,courseName,title,apearName,content,enjoyService}=req.body
+    const { registerUser,apearName,content,allowed}=req.body
  //confirm data!
- if ( !registerUser ||!responseFor || !content  ) {
+ if ( !registerUser  || !content  ) {
     return res.status(400).json({
         error:true,
          message: 'fields are required',
@@ -43,7 +43,7 @@ const addResponse=async(req,res)=>{
 }
 try {
     // Create and store the new response
-    const response = await Responses.create({registerUser,responseFor,courseName,title,apearName,content,enjoyService});
+    const response = await Responses.create({registerUser,apearName,content,allowed});
     res.status(201).json({ 
         error:false,
         message: 'New response created',
@@ -57,9 +57,9 @@ try {
 }
 }
 const updateResponse=async(req,res)=>{
-    const {id,registerUser,responseFor,courseName,title,apearName,content,enjoyService}=req.body
+    const {id,registerUser,apearName,content,allowed}=req.body
     //confirm data!
-    if ( !id||!registerUser ||!responseFor || !content  ) {
+    if ( !id||!registerUser || !content  ) {
         return res.status(400).json({
             error:true,
              message: 'fields are required',
@@ -74,9 +74,8 @@ const updateResponse=async(req,res)=>{
     data:null})
    }
    response.registerUser=registerUser
-   response.responseFor=responseFor
-   response.courseName=courseName
-   response.title=title
+//    response.courseName=courseName
+//    response.title=title
    response.apearName=apearName
    response.content=content
    response.enjoyService=enjoyService

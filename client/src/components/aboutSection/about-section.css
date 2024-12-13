@@ -1,5 +1,5 @@
 .about-container {
-    background: radial-gradient(circle, #191923 0%, #1d1e3d 40%, #5b5d6e 100%);
+    background: radial-gradient(circle, hwb(240 10% 86%) 0%, #1d1e3d 40%, #5b5d6e 100%);
     display: flex;
     flex-direction: column;
     font-family: "Varela Round";

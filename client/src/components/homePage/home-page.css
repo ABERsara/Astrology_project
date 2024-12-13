@@ -22,7 +22,7 @@
     /* justify-content: space-between; */
     /* height: 100vh; */
     /* background-color: #292a44; */
-    padding: 20px;
+    padding: 30px;
     background: radial-gradient(circle, #191923 0%, #1d1e3d 40%, #5b5d6e 100%);
     /* מעבר צבע משמיים כהים במרכז לשמיים בהירים בקצוות */
     position: relative;
@@ -78,21 +78,21 @@
     border-radius: 5px;
     text-decoration: none;
     transition: background-color 0.3s ease;
-    
-    left: 137px;
     text-align: center;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding: 19px 0px 22px 2px;
     gap: 6px;
+    border-radius: 56px
+}
+.more_to_read{
+    padding: 19px 0px 22px 2px;
+    /* left:10vw; */
     width: 130px;
     height: 26px;
-    /* left: 1537px; */
-    bottom: 5vw;
-    border-radius: 56px;
-
+    left: 10vw;
+    bottom: 5.8vw;
 }
 
 .home-link:hover {
@@ -107,7 +107,7 @@
 
 .sentence-on-astro {
     /* position: absolute; */
-    width: 400px;
+    width: 550px;
     height: 314px;
     /* left: 673px;
 top: 234px; */
@@ -132,6 +132,7 @@ font-family: "Varela Round", serif;
 
 .sentence2 {
     color:var(--orange);
+    justify-content: center;
 }
 
 .info-homepage {
@@ -283,6 +284,3 @@ height: 75px;
     /* max-width: 90%; */
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
-
-  
-  

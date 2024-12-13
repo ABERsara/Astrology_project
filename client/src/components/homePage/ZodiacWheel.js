@@ -3,7 +3,7 @@ import Modal from 'react-modal';
 import './zodiac-wheel.css';
 
 const zodiacSigns = [
-  "Taurus", "Gemini", "Cancer", "Leo", "Virgo", 
+  "Taurus", "Gemini", "Cancer", "Leo", "Virgo",
   "Libra", "Scorpio", "Sagittarius", "Capricorn", "Aquarius", "Pisces", "Aries"
 ];
 
@@ -19,56 +19,66 @@ const zodiacInfo = {
     dates: "20 באפריל – 20 במאי",
     description: "מזל שור הוא סימן של יציבות וביטחון, עם אהבה לחיים הטובים. ידוע ביכולת שלך לבנות ולהתמיד.",
     recommendation: "הייה פתוח לשינויים ואל תפחד לנסות דברים חדשים."
-  },  Gemini:{
+  }, Gemini: {
     hebrewName: "שור",
     dates: "20 באפריל – 20 במאי",
     description: "מזל שור הוא סימן של יציבות וביטחון, עם אהבה לחיים הטובים. ידוע ביכולת שלך לבנות ולהתמיד.",
-    recommendation: "הייה פתוח לשינויים ואל תפחד לנסות דברים חדשים."},
+    recommendation: "הייה פתוח לשינויים ואל תפחד לנסות דברים חדשים."
+  },
   Cancer: {
     hebrewName: "סרטן",
     dates: "20 באפריל – 20 במאי",
     description: "מזל שור הוא סימן של יציבות וביטחון, עם אהבה לחיים הטובים. ידוע ביכולת שלך לבנות ולהתמיד.",
-    recommendation: "הייה פתוח לשינויים ואל תפחד לנסות דברים חדשים."},
+    recommendation: "הייה פתוח לשינויים ואל תפחד לנסות דברים חדשים."
+  },
   Leo: {
     hebrewName: "אריה",
     dates: "20 באפריל – 20 במאי",
     description: "מזל שור הוא סימן של יציבות וביטחון, עם אהבה לחיים הטובים. ידוע ביכולת שלך לבנות ולהתמיד.",
-    recommendation: "הייה פתוח לשינויים ואל תפחד לנסות דברים חדשים."},
+    recommendation: "הייה פתוח לשינויים ואל תפחד לנסות דברים חדשים."
+  },
   Virgo: {
     hebrewName: "שור",
     dates: "20 באפריל – 20 במאי",
     description: "מזל שור הוא סימן של יציבות וביטחון, עם אהבה לחיים הטובים. ידוע ביכולת שלך לבנות ולהתמיד.",
-    recommendation: "הייה פתוח לשינויים ואל תפחד לנסות דברים חדשים."},
+    recommendation: "הייה פתוח לשינויים ואל תפחד לנסות דברים חדשים."
+  },
   Libra: {
     hebrewName: "שור",
     dates: "20 באפריל – 20 במאי",
     description: "מזל שור הוא סימן של יציבות וביטחון, עם אהבה לחיים הטובים. ידוע ביכולת שלך לבנות ולהתמיד.",
-    recommendation: "הייה פתוח לשינויים ואל תפחד לנסות דברים חדשים."},
-  Scorpio:{
+    recommendation: "הייה פתוח לשינויים ואל תפחד לנסות דברים חדשים."
+  },
+  Scorpio: {
     hebrewName: "שור",
     dates: "20 באפריל – 20 במאי",
     description: "מזל שור הוא סימן של יציבות וביטחון, עם אהבה לחיים הטובים. ידוע ביכולת שלך לבנות ולהתמיד.",
-    recommendation: "הייה פתוח לשינויים ואל תפחד לנסות דברים חדשים."},
+    recommendation: "הייה פתוח לשינויים ואל תפחד לנסות דברים חדשים."
+  },
   Sagittarius: {
     hebrewName: "שור",
     dates: "20 באפריל – 20 במאי",
     description: "מזל שור הוא סימן של יציבות וביטחון, עם אהבה לחיים הטובים. ידוע ביכולת שלך לבנות ולהתמיד.",
-    recommendation: "הייה פתוח לשינויים ואל תפחד לנסות דברים חדשים."},
+    recommendation: "הייה פתוח לשינויים ואל תפחד לנסות דברים חדשים."
+  },
   Capricorn: {
     hebrewName: "שור",
     dates: "20 באפריל – 20 במאי",
     description: "מזל שור הוא סימן של יציבות וביטחון, עם אהבה לחיים הטובים. ידוע ביכולת שלך לבנות ולהתמיד.",
-    recommendation: "הייה פתוח לשינויים ואל תפחד לנסות דברים חדשים."},
+    recommendation: "הייה פתוח לשינויים ואל תפחד לנסות דברים חדשים."
+  },
   Aquarius: {
     hebrewName: "שור",
     dates: "20 באפריל – 20 במאי",
     description: "מזל שור הוא סימן של יציבות וביטחון, עם אהבה לחיים הטובים. ידוע ביכולת שלך לבנות ולהתמיד.",
-    recommendation: "הייה פתוח לשינויים ואל תפחד לנסות דברים חדשים."},
+    recommendation: "הייה פתוח לשינויים ואל תפחד לנסות דברים חדשים."
+  },
   Pisces: {
     hebrewName: "שור",
     dates: "20 באפריל – 20 במאי",
     description: "מזל שור הוא סימן של יציבות וביטחון, עם אהבה לחיים הטובים. ידוע ביכולת שלך לבנות ולהתמיד.",
-    recommendation: "הייה פתוח לשינויים ואל תפחד לנסות דברים חדשים."}
+    recommendation: "הייה פתוח לשינויים ואל תפחד לנסות דברים חדשים."
+  }
 };
 
 Modal.setAppElement('#root');
@@ -109,7 +119,7 @@ const ZodiacWheel = () => {
     const a = matrixValues[0];
     const b = matrixValues[1];
     const angleRad = Math.atan2(b, a);
-    
+
     let angleDeg = (angleRad * (180 / Math.PI) + 360) % 360;
     angleDeg = angleDeg < 0 ? 360 + angleDeg : angleDeg;
     const correctedIndex = Math.round((12 - angleDeg / 30 + index) % 12);
@@ -129,15 +139,15 @@ const ZodiacWheel = () => {
         <div className={`zodiac-wheel ${isSpinning ? 'spinning' : ''}`}>
           {zodiacSigns.map((sign, index) => (
             <div
-              key={sign} 
-              className={`zodiac-sign sign-${index}`} 
+              key={sign}
+              className={`zodiac-sign sign-${index}`}
               onClick={() => handleSignClick(index)}
             >
               {/* להוסיף כיתוב מזלות */}
             </div>
           ))}
         </div>
-        
+
         <Modal
           isOpen={selectedSign}
           onRequestClose={closeModal}
@@ -145,27 +155,41 @@ const ZodiacWheel = () => {
           className="modal"
           overlayClassName="modal-overlay"
         >
-          <img src="/xMark.png" alt="חזור אחורה" className="img-back" onClick={closeModal}/>
-          
+          <img src="/xMark.png" alt="חזור אחורה" className="img-back" onClick={closeModal} />
+
           {selectedSign && (
-    <>
-      <h2>{zodiacInfo[selectedSign].hebrewName}</h2>
-      <h5>{zodiacInfo[selectedSign].dates}</h5>
-      <p>{zodiacInfo[selectedSign].description}</p>
-      <h5>המלצה:</h5>
-      <p>{zodiacInfo[selectedSign].recommendation}</p>
-    </>
-  )}
+            <>
+              <h2>{zodiacInfo[selectedSign].hebrewName}</h2>
+              <h5>{zodiacInfo[selectedSign].dates}</h5>
+              <p>{zodiacInfo[selectedSign].description}</p>
+              <h5>המלצה:</h5>
+              <p>{zodiacInfo[selectedSign].recommendation}</p>
+            </>
+          )}
         </Modal>
       </div>
       <div className='button-container button-below-wheel'>
-      <button className="spin-button" onClick={startSpin}>
+        <button className="spin-button" onClick={startSpin}>
           <img
             src={isSpinning ? "/pause.png" : "/play-button.png"}
             alt={isSpinning ? "Pause" : "Play"}
-            style={isSpinning?{ width: '30px', height: '30px' }:{width: '25px', height: '25px' }}
+            style={isSpinning ? { width: '30px', height: '30px' } : { width: '25px', height: '25px' }}
           />
         </button>
+      </div>
+      <div className="circle-text-container">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" className="circle-text">
+          <path
+            id="circlePath"
+            d="M 50,50 m -40,0 a 30,40 0 1,1 70,0 a 30,40 0 1,1 -80,0"
+            fill="none"
+          />
+          <text fontSize="4.5" fill="white" textAnchor="middle">
+            <textPath href="#circlePath" startOffset="50%">
+              סקרן לגלות מה סימן המזל שלך חושף? נסה אותי
+            </textPath>
+          </text>
+        </svg>
       </div>
     </div>
   );

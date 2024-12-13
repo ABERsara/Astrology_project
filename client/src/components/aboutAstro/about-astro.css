@@ -1,5 +1,5 @@
 .astro-about {
-    background: radial-gradient(circle, #191923 0%, #1d1e3d 40%, #5b5d6e 100%);
+background: var(--text);
     height: auto;
     /* width:100%; */
     display: flex;
@@ -10,14 +10,14 @@
 }
 
 .astro-container {
-
+    background: radial-gradient(circle, #191923 0%, #1d1e3d 40%, #5b5d6e 100%);
     display: flex;
     flex-direction: column;
     /* שינוי הכיוון לעמודה */
     justify-content: flex-start;
     min-height: 100vh;
     padding: 20px;
-    padding-top: 80px;
+    /* padding-top: 80px; */
     /* background: radial-gradient(circle, #191923 0%, #1d1e3d 40%, #5b5d6e 100%); */
     align-items: center;
     /* justify-content: space-between; */
@@ -189,4 +189,19 @@
     font-size: 52px;
     line-height: 125px;
     text-align: center;
+}
+.view-more-btn{
+position: absolute;
+background: var(--main);
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+border-radius: 24px;
+font-family: "Varela Round", serif;
+width: 12vw;
+height: 7vh;
+color: var(--text);
+}
+.view-blogs-section{
+    background-color: var(--orange);
+    min-height: 100vh;
+    
 }

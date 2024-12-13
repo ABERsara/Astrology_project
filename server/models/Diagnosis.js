@@ -1,48 +1,54 @@
 const mongoose = require('mongoose')//יבוא הספרייה
-const User = require('./User')
 
-const diagnosisSchema = new mongoose.Schema(//הגדרת הסכמה
+const diagnosisSchema = new mongoose.Schema(
     {
         IdentificationNum: {
-            type: Number,
-            required: true,
-            unique: true
+            type: String,
+            unique: true, // מבטיח ייחודיות
         },
         birthdate: {
             type: Date,
-            required: true
-        }, birthTime: {
+            required: true,
+        },
+        birthTime: {
             hour: {
                 type: Number,
-                required: true,
-                default: 0
-            }, minutes: {
+                default: 0,
+            },
+            minutes: {
                 type: Number,
-                required: true,
-                default: 0
-            }
-        }, utc: {
+                default: 0,
+            },
+        },
+        utc: {
             city: {
                 type: String,
-                required: true,
                 default: "unknown",
             },
             country: {
                 type: String,
-                required: true,
-            }
-        }, //האם האבחון מדויק או לא
+                default: "unknown",
+            },
+        },
         diagnosisType: {
             type: Boolean,
-            required: true,
+            default:false,
         },
-        //האבחון עצמו
         diagnosis: {
-            type: String
-        }
+            type: String,
+        },
     },
     { timestamps: true }
-)
+);
+// יצירת מספר אבחוני ייחודי אוטומטית
+diagnosisSchema.pre('save', async function (next) {
+    if (!this.isNew) return next();
 
-//ייצוא
-module.exports = mongoose.model('Diagnosis', diagnosisSchema)
+    const lastDiagnosis = await this.constructor.findOne().sort({ IdentificationNum: -1 });
+    const lastId = lastDiagnosis ? parseInt(lastDiagnosis.IdentificationNum, 10) : 0;
+    this.IdentificationNum = String(lastId + 1).padStart(6, '0'); // מוסיף אפסים להשלמת 6 ספרות
+    next();
+});
+
+const Diagnosis = mongoose.model('Diagnosis', diagnosisSchema);
+module.exports = Diagnosis;

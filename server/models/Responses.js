@@ -8,27 +8,29 @@ const responsesSchema = new mongoose.Schema(//הגדרת הסכמה
             ref: 'User',
             required: true,
         },
-        responseFor: {
-            type: String,
-            required: true
-        }, courseName: {
-            type: String
-        }, title: {
-            type: String,
-        },
+        // responseFor: {
+        //     type: String,
+        //     required: true
+        // },
+        //  courseName: {
+        //     type: String
+        // }, title: {
+        //     type: String,
+        // },
         apearName: {
             type: Boolean,
-            require: true,
             default: true
         }, content: {
             type: String,
             require: true,
-        }, enjoyService: {
-            type: String
-        }, allowed: {
+        },
+        //  enjoyService: {
+        //     type: String
+        // },
+         allowed: {
             //האם מורשה לפרסם את התגובה
             type: Boolean,
-            default: false
+            default: true
         }
     },
     { timestamps: true }

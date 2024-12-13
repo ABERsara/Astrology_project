@@ -99,10 +99,12 @@ const AboutAstro = () => {
 
       </div><div className="posts-about">
         <h2 className="title-posts">מאמרים מומלצים:</h2>
-        <ViewBlogs limit={3} />
-        <button  className="view-more-btn">
-          לראות עוד
-        </button>
+        <div className="view-blogs-section">
+          <ViewBlogs limit={3} />
+          <button className="view-more-btn">
+            לראות עוד
+          </button>
+        </div>
       </div>
     </div>
   );
