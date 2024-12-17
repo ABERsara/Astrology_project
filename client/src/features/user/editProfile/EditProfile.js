@@ -3,19 +3,48 @@ import { useUpdateUserMutation, useGetUserQuery } from "../userApiSlice";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import useAuth from "../../../hooks/useAuth";
+import React, { useRef, useState } from "react";
 
 const EditProfile = () => {
   const navigate = useNavigate();
-  const { id } = useAuth()
+  const { id, image: initialImage } = useAuth()
   const { data: user, isSuccess: isGetUserSuccess } = useGetUserQuery(id, { refetchOnMountOrArgChange: true }); // קריאה עם ה-ID
   const [updateUser, { isSuccess: isUpdateSuccess, isError, error }] = useUpdateUserMutation();
   useEffect(() => {
     if (isUpdateSuccess) {
+
       navigate("/dash/user");
     }
   }, [isUpdateSuccess]);
 
+  const [image, setImage] = useState(initialImage || ""); // תמונה שתוצג
+  const fileInputRef = useRef(null);
+  const [previewImage, setPreviewImage] = useState(null);
 
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setPreviewImage(URL.createObjectURL(file)); // יצירת תצוגה מקדימה
+    }
+  };
+  // פתיחת ה-input בלחיצה על התמונה
+  const handleImageClick = () => {
+    fileInputRef.current.click();
+  };
+
+  // טיפול בהעלאת קובץ חדש
+
+
+
+
+  // טיפול בהעלאת קובץ חדש
+  // const handleFileChange = (e) => {
+  //   const file = e.target.files[0];
+  //   if (file) {
+  //     const objectUrl = URL.createObjectURL(file); // יצירת URL מקומי
+  //     setMyImage(objectUrl); // הצגת תצוגה מקדימה
+  //   }
+  // };
 
   //    const formSubmit = (e) => {
   //  e.preventDefault();
@@ -46,6 +75,15 @@ const EditProfile = () => {
   const formSubmit = (e) => {
     e.preventDefault();
     const dataForm = new FormData(e.target);
+    const file = fileInputRef.current.files[0]; // קבלת הקובץ מה-input
+    console.log('file: ', file);
+
+    // אם נבחרה תמונה חדשה, נוסיף אותה ל-FormData
+    if (file) {
+      dataForm.set("image", file);
+    } else if (user.image) {
+      dataForm.set("image", user.image); // הוספת התמונה הקיימת כברירת מחדל
+    }
     // const imageFile = dataForm.get('image');
     // if (!imageFile || imageFile.size === 0) {
     //   console.log("image",imageFile)
@@ -56,18 +94,18 @@ const EditProfile = () => {
     for (let pair of dataForm.entries()) {
       console.log(pair[0] + ': ' + pair[1]);
     }
-    const data = {
-      ...dataForm, ...user,
-      firstname: dataForm.get('firstname'),
-      lastname: dataForm.get('lastname'),
-      phone: dataForm.get('phone'),
-      email: dataForm.get('email'),
-      // image:dataForm.get('image').filename||user.image.filename,
-      id: user._id
-    };
-    console.log("זה הנתונים שהתקבלו: ", dataForm);
+    // const data = {
+    //   ...dataForm, ...user,
+    //   firstname: dataForm.get('firstname'),
+    //   lastname: dataForm.get('lastname'),
+    //   phone: dataForm.get('phone'),
+    //   email: dataForm.get('email'),
+    //   // image:dataForm.get('image').filename||user.image.filename,
+    //   id: user._id
+    // };
+    // console.log("זה הנתונים שהתקבלו: ", dataForm);
     try {
-      updateUser(data);
+      updateUser(dataForm);
     } catch (error) {
       console.log(error);
 
@@ -75,6 +113,7 @@ const EditProfile = () => {
     };
   }
   const closeModal = () => {
+
     navigate("/dash/user")
   }
   return (
@@ -86,21 +125,55 @@ const EditProfile = () => {
         </div>
       ) : (
         <div className="edit-profile-zone">
-          <div className="login-page">
-            <form className="login-page-form edit-profile" onSubmit={formSubmit}>
-              <img src="/xMark.png" alt="" className="img-back" onClick={closeModal} />
-              <label className="login-item image">העלה תמונת פרופיל:</label>
-              <input type="file" name="image" />
-              <label className="login-item name">שם פרטי:</label>
+          <img src="/xMark.png" alt="" className="edit-profile-item-img-back" onClick={closeModal} />
+
+          <h1>עריכת פרופיל</h1>
+
+          <div className="edit-profile-page">
+            <form className="edit-profile-form edit-profile" onSubmit={formSubmit}>
+              {/* <label className="edit-profile-item image"></label> */}
+              {/* <img
+                className="edit-profile-item image" alt=""
+                src={image ? `http://localhost:2024/uploads/${image}` : "/account-white.png"}
+
+              /><input type="file" name="image" /> */}
+              {/* תמונה ולחיצה לפתיחת ה-input */}
+              <img
+                src={previewImage ? previewImage : image ? `http://localhost:2024/uploads/${image}` : "/account-white.png"}
+                alt="profile"
+                className="edit-profile-item image"
+                onClick={handleImageClick}
+                style={{
+                  cursor: "pointer",
+                  width: "100px",
+                  height: "100px",
+                  borderRadius: "50%",
+                  objectFit: "cover",
+                  border: "2px solid #ddd",
+                }}
+              />
+              <input
+                type="file"
+                ref={fileInputRef}
+                style={{ display: "none" }}
+                onChange={handleFileChange}
+                name="image"
+              />
+
+              <label className="edit-profile-item firstname">שם פרטי:</label>
               <input type="text" name="firstname" required defaultValue={user.firstname} />
-              <label className="login-item name">שם משפחה:</label>
+              <label className="edit-profile-item lastname">שם משפחה:</label>
               <input type="text" name="lastname" defaultValue={user.lastname ? user.lastname : ""} />
-              <label className="login-item email">טלפון:</label>
+              <label className="edit-profile-item phone">טלפון:</label>
               <input type="phone" name="phone" defaultValue={user.phone ? user.phone : ""} />
-              <label className="login-item email">אימייל:</label>
+              <label className="edit-profile-item email">אימייל:</label>
               <input type="email" name="email" required defaultValue={user.email} />
-            
-              <button type="submit">עדכן</button>
+              <input type="hidden" name="id" value={user._id} />
+              <input type="hidden" name="permission" value={user.permission} />
+
+              <div className="edit-profile-item-submit-button">
+                <button type="submit" className="edit-profile-item-submit">עדכן</button>
+              </div>
               <div id="error-message" className="error-message"></div>
             </form>
           </div>

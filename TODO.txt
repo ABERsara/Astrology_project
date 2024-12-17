@@ -26,10 +26,10 @@
 []part 5 layouts and design
     [v]layout for site
     []layout for admin zone
-    []layout for private zone
+    [veiw]layout for private zone
     [v]design home page
     [v]add move elements
-    []design site
+    [v]design site
     [v]design login and register
     [v]astro page
     [v]about page

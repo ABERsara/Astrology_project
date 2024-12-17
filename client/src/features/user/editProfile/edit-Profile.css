@@ -1,57 +1,113 @@
-/* .login-page{
-    background-color:var(--mainLight);
-    padding-top: 200px;
-    border-radius: 10px;
-    margin-top: 10px;
-}
-.loginForm{
-     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between; 
 
-display: flex;
-flex-direction: column;
-align-items: center;
-padding: 10px;
-gap: 10px;
-
-position: relative;
-width: 260px;
-height: 557px;
-
-
-}
-.login-item input{
-    padding: 30px;
-    background-color:var(--main);
-    color: var(--text);
-    border-radius: 5px;
-    margin-bottom: 30px;
-    width: 45%;
-}
-.loginForm button{
-width: 100%;
-margin: 30px;
-background-color: var(--main);
-color: var(--text);
-border: none;
-border-radius: 5px;
-cursor: pointer;
-} */
- .edit-profile-zone{
+.edit-profile-zone {
     width: 100%;
-    height: auto;
-    padding: 10vw;
-    margin-top: 2vw;
+    /* height: auto; */
+    padding: 3vw;
+    /* margin-top: 15vw; */
     background-color: radial-gradient(circle, #191923 0%, #1d1e3d 40%, #5b5d6e 100%);;
- }
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    position: relative; /* חשוב: הופך את האלמנט להורה יחסי */
 
-.edit-profile{
-    width:30vw;
+    /* margin: 1rem; */
+    /* overflow: hidden; */
 }
-.login-page-form input[type="file"]{
+
+.edit-profile-zone h1 {
+    color: var(--orange);
+    text-align: right; /* יישור לימין */
+    letter-spacing: 0.5px;
+    width: 35vw; /* נוודא שהכותרת תופסת את כל הרוחב */
+
+    
+}
+
+/*  */
+
+.edit-profile-form {
+    gap: 1rem;
+    max-width: 35vw;
+    position: relative;
+    /* רוחב מקסימלי */
+}
+
+.edit-profile-form label {
+    margin: 0.5rem;
+    /* margin-bottom: 5px; */
+    letter-spacing: 0.5px;
+    color: var(--text);
+    text-align: right;
+    /* יישור הטקסט לימין */
+    display: block;
+    /* מוודא שהטקסט תופס את כל רוחב התיבה */
+    direction: rtl;
+    /* כיוון ימין לשמאל עבור עברית */
+    /* margin-bottom: 5px; */
+    letter-spacing: 0.5px;
+}
+
+.edit-profile-form input[type="file"] {
     border-radius: 5vw;
-    width: 5vw;
-    height: 5vw;
-    background-color: #e12020;
+    width: 4.5vw;
+    height: 4.5vw;
+    background-color: transparent;
+    border: 2px var(--orange) solid;
+    margin-bottom: 0.5rem;
+}
+
+.edit-profile-form input[type="text"],
+.edit-profile-form input[type="phone"],
+.edit-profile-form input[type="email"] {
+    height: 2rem;
+    width: 35vw;
+    background: #FFFFFF;
+    border-radius: 8px;
+
+}
+
+button.edit-profile-item-submit {
+    display: flex;
+    background-color: var(--orange);
+    color: var(--text);
+    text-align: center;
+    border-radius: 10px;
+    padding: 9px;
+    width: 150px;
+    height: 5vh;
+    border: none;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+    font-family: "Varela Round", serif;
+justify-content: center;
+display: flex;
+
+margin-top: 1rem; /* מסיר מרווח */
+
+}
+.edit-profile-item-submit-button {
+    width: 100%; /* מוודא שהתיבה תופסת את כל הרוחב */
+    display: flex;
+    justify-content: flex-end; /* ממקם את הכפתור בצד ימין */
+    margin: 0; /* אפס מרווחים */
+    padding: 0; /* אפס ריפוד */
+
+
+}
+.edit-profile-item-submit:hover {
+    background-color: var(--text);
+    color: var(--orange);
+    border: 1px solid var(--orange);
+}
+
+.edit-profile-item-img-back {
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    position: absolute;
+    top: 1vw; /* מיקום מהחלק העליון */
+    right: 1vw; /* צמוד לימין */
+    cursor: pointer;
 }

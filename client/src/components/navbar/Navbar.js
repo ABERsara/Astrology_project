@@ -9,12 +9,28 @@ import Search from "../search/Search";
 import "./navbar.css"
 import LoginPage from '../../features/auth/registerLogin/login-default';
 import RegisterPage from '../../features/auth/registerLogin/RegisterUser';
+import useGetFilePath from "../../hooks/useGetFilePath";
 
 const Navbar = () => {
+  const {getFilePath} = useGetFilePath()
+
   const [logout, { isSuccess: isLogoutSuccess }] = useSendLogoutMutation()
   const navigate = useNavigate();
   const location = useLocation();
-  const { firstname, lastname } = useAuth();  // בדיקה האם המשתמש מחובר
+  const { firstname, lastname, image } = useAuth();
+  const [currentFirstname, setCurrentFirstname] = useState(firstname);
+  const [currentLastname, setCurrentLastname] = useState(lastname);
+  const [currentImage, setCurrentImage] = useState(image);
+
+  useEffect(() => {
+    // ריענון הנתונים מהשרת
+    setCurrentFirstname(firstname);
+    setCurrentLastname(lastname);
+    setCurrentImage(image);
+  }, [firstname, lastname, image]); // הפעלת ה-Effect כשהערכים משתנים
+
+  
+   
   const [rememberMe, setRememberMe] = useState(false);
   const [error, setError] = useState(null);
   const [isPersonalZoneOpen, setIsPersonalZoneOpen] = useState(false);
@@ -61,8 +77,14 @@ const Navbar = () => {
     <div className="navbarBox">
       <div className="navbar-top-homepage">
         {firstname ?
-          <div className="nav-hello"><img className="account-profile" alt="" src="/account-white.png" />
-            היי {firstname}{ } {lastname}! </div>
+          <div className="nav-hello">
+            <img 
+          className="account-profile" 
+          alt="" 
+          src={getFilePath(currentImage?currentImage:image)}
+          onClick={() => navigate("/dash/user/editProfile")} // מעבר לדף עריכת פרופיל 
+          />
+            היי {currentFirstname}{ } {currentLastname}! </div>
           : <><LoginPage />
             <RegisterPage /></>}
         <img alt="" src="/shopping-cart.png" className="shopping-cart-home" />
@@ -88,6 +110,7 @@ const Navbar = () => {
         <NavLink to="/dash/diagnosis" className={({ isActive }) => getNavLinkClass(isActive)}>אבחונים</NavLink>
         <NavLink to="/dash/reviews" className={({ isActive }) => getNavLinkClass(isActive)}>מה אומרים עלינו?</NavLink>
         <NavLink to="/dash/courses" className={({ isActive }) => getNavLinkClass(isActive)}>קורסים</NavLink>
+
         <button onClick={() => scrollToSection("contact-section")}>יצירת קשר</button>
         <div className="personal-zone">
         <button
@@ -102,11 +125,11 @@ const Navbar = () => {
             onMouseLeave={() => setIsPersonalZoneOpen(false)}
           >
             <NavLink
-              to="/dash/user/editProfile"
+              to="/dash/user"
               className="dropdown-item"
-              onClick={() => handleSelectOption("עריכת פרופיל")}
+              onClick={() => handleSelectOption("אזור אישי")}
             >
-              עריכת פרופיל
+             אזור אישי
             </NavLink>
             <NavLink
               to="/dash/user/changePassword"

@@ -11,15 +11,13 @@ router.use((req, res, next) => {
 
 router.use(verifyJWT)
 
-router.get("/",controller.getDiagnosiss);
+
 router.get("/:id",controller.getDiagnosis);
-router.post("/", (req, res, next) => {
-    console.log('Received POST request on /api/diagnosis');
-    next(); // אם הבקשה הגיעה נכון, תעבור לפונקציה בקונטולר
-}, controller.addDiagnosis);
+router.post("/", controller.addDiagnosis);
 
 router.use(verifyAdmin)
 
+router.get("/",controller.getDiagnosiss);
 router.delete("/",controller.deleteDiagnosis);
 router.put("/",controller.updateDiagnosis);
 

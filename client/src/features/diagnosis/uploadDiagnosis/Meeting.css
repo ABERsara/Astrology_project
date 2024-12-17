@@ -4,7 +4,7 @@
 }
 .appointment-title{
     color: var(--orange);
-     font-size: 3.5rem;
+     font-size: 3rem;
      display: flex;
      justify-content: center;
      align-items: center;
@@ -18,97 +18,144 @@
 .appointment-form{
     display: flex;
     flex-direction: column;
-    padding: 5vw; 
+    padding: 2vw; 
+    justify-content: center;
+    align-items: start;
+    margin-right: 10vw;
 }
-.meeting-type-buttons h7,.calendar-container h7{
+.heading-text{
   
 font-style: normal;
 font-weight: 600;
-font-size: 2vw;
-line-height: 70px;
+ font-size: 1.3rem;
+
+/* line-height: 70px; */
 text-align: right;
 color: #FFFFFF;
 }
 .meeting-type-buttons {
     display: flex;
-    flex-direction: column;
-    justify-content: space-around;
     margin-bottom: 20px;
+   
+    gap: 1.5vw; /* שליטה על המרווח בין הכפתורים */
+    justify-content: center; /* מרכז את הכפתורים */
   }
   
   .meeting-button {
-    /* Frame 28 */
-
+  
 box-sizing: border-box;
-
-/* Auto layout */
 display: flex;
 flex-direction: row;
 justify-content: center;
 align-items: center;
-padding: 0px 24px;
-gap: 10px;
-
-/* צבע/כתום */
+padding: 0px 16px;
+gap: 3vw;
+width: 10vw;
+height: 4vw;
 border: 1px solid #E49928;
+color: var(--orange);
+background: #e4992830;
 filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 border-radius: 16px;
+font-family: "Varela Round", serif;
 
   }
   
   .meeting-button.selected {
-    /* Frame 27 */
-
-/* Auto layout */
 display: flex;
 flex-direction: row;
 justify-content: center;
 align-items: center;
 padding: 0px 24px;
 gap: 10px;
-
-position: absolute;
-width: 273px;
-height: 70px;
-left: 1022px;
-top: 585px;
-
 background: #FFFFFF;
 box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 border-radius: 16px;
-
   }
   
-  .meeting-button:hover {
+  .meeting-button:hover,.calendar-button:hover {
     background-color: #f0f0f0;
+    cursor: pointer;
   }
   
-  .calendar-container {
-    margin: 20px 0;
+  /* .calendar-container {
+    gap: 0.5vw; 
+    justify-content: center; 
+
   }
+  .react-datepicker__input-container input::placeholder {
+    color: var(--orange); 
+    font-weight: 600; 
+    font-family: "Varela Round", serif;
+
+}
+
   .calendar-button{
-    /* Frame 30 */
-
-box-sizing: border-box;
-
-display: flex;
-flex-direction: row;
-justify-content: center;
-align-items: center;
-padding: 0px 22px;
-gap: 10px;
-
-border: 2px solid #E49928;
-border-radius: 8px;
-
+    
+  
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    
+    gap: 3vw;
+    width: 12vw;
+    height: 4vw;
+    border: 1px solid #E49928;
+    color: var(--orange);
+    background: #e4992830;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    border-radius: 16px;
+    align-items: center;
+    justify-content: center;
   }
+   */
+   .calendar-container {
+    display: flex;
+    align-items: center; /* יישור מרכזי */
+    margin: 20px 0;
+    gap: 1.5vw;
+}
+.react-datepicker__input-container input::placeholder {
+  color: var(--orange); 
+  font-weight: 600; 
+  font-family: "Varela Round", serif;
+
+}
+.calendar-container .heading-text {
+    font-size: 1.3rem;
+    
+    font-weight: bold;
+    text-align: center;
+}
+
+.calendar-button {
+    display: flex;
+    justify-content: center; /* יישור אופקי */
+    align-items: center; /* יישור אנכי */
+    padding: 0px 16px;
+    width: 12vw;
+    height: 4vw;
+    border: 1px solid #E49928;
+    color: var(--orange);
+    background: #e4992830;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    border-radius: 16px;
+    font-family: "Varela Round", serif;
+    font-size: 0.8rem;
+    text-align: center;
+}
+
   .submit-container {
     display: flex;
     justify-content: center; /* מרכז את הכפתור אופקית */
     margin-top: 4vw; /* הוספת מרווח בין הכפתור לשדות הטופס */
 margin-right: 10vw;
+
 }
   .submit-meeting{
+    font-family: "Varela Round", serif;
     padding: 10px;
     position: relative;
     background: var(--orange);
@@ -117,4 +164,18 @@ margin-right: 10vw;
     width: 20vw;
     margin: 0 auto; /* מרכז את הכפתור */
     text-align: center; 
+    cursor: pointer; /* סמן של יד שמראה שניתן ללחוץ */
+    transition: all 0.3s ease; /* אנימציה חלקה */
   }
+  .submit-meeting:hover {
+    box-shadow: 0px 6px 6px rgba(0, 0, 0, 0.35); /* הצללה מוגברת */
+    transform: scale(1.05); /* אפקט גדילה קל */
+    background: white;
+}
+
+.submit-meeting:active {
+    background: white; /* רקע לבן בלחיצה */
+    color: var(--orange); /* טקסט בצבע הכתום */
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.2); /* הצללה קטנה יותר */
+    transform: scale(0.95); /* אפקט "לחיצה" */
+}

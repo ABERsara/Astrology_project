@@ -5,7 +5,7 @@ const User = require("../models/User")
 
 
 const register = async (req, res) => {
-    const image = req.image?.filename || ""; // Handle file upload
+    // const image = req.image?.filename || ""; // Handle file upload
     const { firstname, lastname, phone, email, password, active, diagnosis } = req.body
     if (!firstname || !email || !password) {
         return res.status(401).json({
@@ -100,7 +100,7 @@ const login = async (req, res) => {
     }
     //Get the user from DB
     //כרגע הצגתי מהאבחון את כל השדות מלבד המספר הסידורי, אולי בהמשך נשנה
-    const foundUser = await User.findOne({ email: email, active: true }).populate("diagnosis", { IdentificationNum: 0 }).lean()
+    const foundUser = await User.findOne({ email: email }).populate("diagnosis", { IdentificationNum: 0 }).lean()
     if (!foundUser) {
         return res.status(401).json({
             error: true,
@@ -118,7 +118,7 @@ const login = async (req, res) => {
             data: null
         })
     }
-    console.log("המשתמש נכנס בהצלחה " + firstname);
+    // console.log("המשתמש נכנס בהצלחה " + firstname);
 
     //ע"מ לקודד סיסמה מורכבת
     // require('crypto').randomBytes(64).toString('hex')
@@ -151,10 +151,12 @@ const login = async (req, res) => {
 //כניסה דרך הטקן שנשמר בעוגיה למשך 7 ימים
 const refresh = async (req, res) => {
     const cookies = req.cookies
+    // console.log('cookies: ',cookies);
+    
     if (!cookies?.jwt) {
         return res.status(401).json({
             error: true,
-            message: "Unauthorized",
+            message: "Unauthorized from refresh no cookies",
             data: null
         })
     }
@@ -166,13 +168,13 @@ const refresh = async (req, res) => {
             if (err) {
                 return res.status(403).json({
                     error: true,
-                    message: "Forbidden",
+                    message: "Forbidden from refresh token",
                     data: null
                 })
             }
             const foundUser = await User.findOne({
                 email: decode.email,
-                active: true
+                // active: true
             }).
                 populate("diagnosis", { diagnosis: 1 }).lean()
             const userInfo = {

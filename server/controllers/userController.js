@@ -69,8 +69,8 @@ const addUser = async (req, res) => {
     }
 }
 const updateUser = async (req, res) => {
-    console.log(req.image);
-    const image=req.image?.filename? req.image.filename:"";
+    // console.log(req.כ);
+    const image=req.file?.filename? req.file.filename:"";
     const {id,  firstname, lastname, phone, email, password,  permission, active, diagnosis } = req.body;
 
     // confirm data!

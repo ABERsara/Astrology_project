@@ -1,0 +1,97 @@
+.pz {
+    display: flex;
+    flex-wrap: wrap;
+    /* כדי לאפשר ירידה לשורה הבאה */
+    justify-content: center;
+    /* ממרכז את התוכן */
+    gap: 10px;
+    /* ריווח בין הפריטים */
+    padding: 5vw;
+}
+
+.pz-item {
+    flex: 1 1 calc(50% - 10px);
+    overflow: hidden;
+
+    /* כל פריט תופס 50% מהרוחב, פחות הריווח */
+    max-width: calc(50% - 10px);
+    /* כדי לוודא שזה לא יחרוג */
+    height: 400px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    font-weight: bold;
+    text-align: center;
+    transition: transform 0.3s ease;
+    /* מעבר חלק */
+    cursor: pointer;
+    /* מצביע עכבר ללחיצה */
+}
+
+.pz-item:active {
+    transform: scale(1.1);
+    z-index: 1;
+    /* הגדלה קלה */
+}
+
+.pz-item:hover {
+    transform: scale(1.1);
+    z-index: 1;
+    /* הגדלה קלה */
+}
+
+/* פופאפ */
+.popup-overlay-private-zone {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* רקע כהה */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.popup-private-zone {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 500px;
+    width: 80%;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.popup-private-zone button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: var(--orange);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.popup-private-zone button:hover {
+    background-color: darkorange;
+}
+
+.pz-item h3 {
+    background: var(--text);
+    color: var(--orange);
+    width: 100%;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    border-radius: 4px;
+    /* height: 1.9vw; */
+    height: auto; /* או גובה קבוע */
+    margin-bottom: 2vw;
+    /* ריווח חיצוני מהקצה התחתון */
+    box-sizing: border-box;
+    /* לוודא שהרוחב כולל padding */
+}

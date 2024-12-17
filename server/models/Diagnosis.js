@@ -32,11 +32,15 @@ const diagnosisSchema = new mongoose.Schema(
         },
         diagnosisType: {
             type: Boolean,
-            default:false,
+            default: false,
         },
         diagnosis: {
             type: String,
         },
+        meeting: { 
+            type: mongoose.Schema.Types.ObjectId, 
+            ref: 'Meeting', unique: true
+         } // שדה אחד לפגישה
     },
     { timestamps: true }
 );

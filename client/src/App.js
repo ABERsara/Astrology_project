@@ -20,6 +20,7 @@ import AboutSection from "./components/aboutSection/AboutSection";
 import AboutAstro from "./components/aboutAstro/AboutAstro";
 import PersistLogin from "./features/auth/PersistLogin"
 import Course from "./components/course/Course";
+import Meeting from "./features/diagnosis/uploadDiagnosis/Meeting";
 function App() {
   return (
     <Router>

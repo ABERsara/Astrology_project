@@ -30,8 +30,8 @@ const Meeting = () => {
       <form onSubmit={handleSubmit} className="appointment-form">
         {/* כפתורים לבחירת סוג הפגישה */}
         <div className="meeting-type-buttons">
-            <h7>איך את רוצה להפגש?</h7>
-          <button
+        <p className="heading-text">איך את רוצה להפגש?</p>
+                  <button
             type="button"
             className={`meeting-button ${meetingType === "phone" ? "selected" : ""}`}
             onClick={() => setMeetingType("phone")}
@@ -56,7 +56,7 @@ const Meeting = () => {
 
         {/* לוח שנה לבחירת תאריך */}
         <div className="calendar-container">
-          <h7>מתי נח לך?</h7>
+        <p className="heading-text">מתי נח לך?</p>
           <DatePicker
           className="calendar-button"
             selected={selectedDate}
