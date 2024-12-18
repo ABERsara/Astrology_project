@@ -20,7 +20,7 @@ import AboutSection from "./components/aboutSection/AboutSection";
 import AboutAstro from "./components/aboutAstro/AboutAstro";
 import PersistLogin from "./features/auth/PersistLogin"
 import Course from "./components/course/Course";
-import Meeting from "./features/diagnosis/uploadDiagnosis/Meeting";
+import UserResponses from "./features/responses/UserResponses";
 function App() {
   return (
     <Router>
@@ -37,6 +37,7 @@ function App() {
             <Route path="about" element={<AboutSection />} />
             <Route path="astro" element={<AboutAstro />} />
             <Route path="diagnosis" element={<UploadDiagnosis/>}/>
+            <Route path="reviews" element={<UserResponses/>}/>
             <Route path="courses" element={<Outlet />}>
               <Route index element={<Course />} />
               

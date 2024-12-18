@@ -1,7 +1,7 @@
 const Responses=require("../models/Responses")
 
 const getResponses=async(req,res)=>{
-const responses=await Responses.find({}).lean()
+const responses=await Responses.find({}).populate("registerUser").lean()
 if(!responses.length){
     return res.status(400).json({
        error:true,
@@ -31,33 +31,51 @@ const getResponse=async(req,res)=>{
     return res.status(500).json({message:err})
 }
 }
-//change the case if a user is responses about a course- he needs to give the course name
-const addResponse=async(req,res)=>{
-    const { registerUser,apearName,content,allowed}=req.body
- //confirm data!
- if ( !registerUser  || !content  ) {
-    return res.status(400).json({
-        error:true,
-         message: 'fields are required',
-        data:null })
-}
-try {
-    // Create and store the new response
-    const response = await Responses.create({registerUser,apearName,content,allowed});
-    res.status(201).json({ 
-        error:false,
-        message: 'New response created',
-        data: response });
-} catch (error) {
-    console.error('Error creating response:', error);
-    res.status(400).json({ 
-        error:true,
-        message: error,
-    data:null});
-}
-}
+const addResponse = async (req, res) => {
+    const { registerUser, apearName, content, allowed } = req.body;
+
+    // אימות הנתונים הנדרשים
+    if (!registerUser || !content) {
+        return res.status(400).json({
+            error: true,
+            message: 'fields are required',
+            data: null
+        });
+    }
+
+    try {
+        // שליפת התגובה האחרונה לפי זמן
+        const lastResponse = await Responses.findOne({}, {}, { sort: { createdAt: -1 } });
+    
+        // קביעת `position` לסירוגין
+        const newPosition = lastResponse && lastResponse.position === 'left' ? 'right' : 'left';
+    
+        // יצירת תגובה חדשה עם `position`
+        const response = await Responses.create({
+          registerUser,
+          apearName,
+          content,
+          allowed,
+          position: newPosition, // מוודא שהכיוון מחושב ונשמר
+        });
+    
+        res.status(201).json({
+            error: false,
+            message: 'New response created',
+            data: response
+        });
+    } catch (error) {
+        console.error('Error creating response:', error);
+        res.status(400).json({
+            error: true,
+            message: 'Error creating response',
+            data: null
+        });
+    }
+};
+
 const updateResponse=async(req,res)=>{
-    const {id,registerUser,apearName,content,allowed}=req.body
+    const {id,registerUser,apearName,content,allowed,position}=req.body
     //confirm data!
     if ( !id||!registerUser || !content  ) {
         return res.status(400).json({
@@ -78,13 +96,13 @@ const updateResponse=async(req,res)=>{
 //    response.title=title
    response.apearName=apearName
    response.content=content
-   response.enjoyService=enjoyService
-   
+   response.allowed=allowed
+   response.position=position
    //save the changes
    const updatedResponses=await response.save()
    res.json({
     error:false,
-    massage:`${updatedResponses.firstname} updated`,
+    massage:`${updatedResponses.registerUser.firstname} updated`,
 data:updatedResponses})
 }
 const deleteResponse=async(req,res)=>{

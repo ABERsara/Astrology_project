@@ -3,7 +3,7 @@
     [v]edit profile-works well
     [v]change password-works well
     [v]delete user (deleted=true)
-    []upload files better
+    [v]upload files better
     [v]update user is inactive and permission
 []part 2 diagnosis-client 
     [v]request a diagnosis by a user (filling details)
@@ -56,7 +56,7 @@
 []part 9 What our custemrs say
     []add a response
 []problems
-    []file upload
+    [v]file upload
     []login is too down
     [v]buttons home page
     [v]private section

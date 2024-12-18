@@ -31,6 +31,10 @@ const responsesSchema = new mongoose.Schema(//הגדרת הסכמה
             //האם מורשה לפרסם את התגובה
             type: Boolean,
             default: true
+        },position: {
+            type: String,
+            enum: ['left', 'right'],
+            default: 'left' // ברירת מחדל
         }
     },
     { timestamps: true }

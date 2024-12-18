@@ -4,14 +4,14 @@ const responseApiSlice = apiSlice.injectEndpoints({
     endpoints: (build) => ({
         getAllResponses: build.query({
             query: () => ({
-                url: "/api/response"
+                url: "/api/responses"
             }),
             providesTags: ["Responses"]
 
         }),
         addResponse: build.mutation({
             query: (response) => ({
-               url: "/api/response",
+               url: "/api/responses",
                 method: "POST",
                 body: response
             }),
@@ -19,7 +19,7 @@ const responseApiSlice = apiSlice.injectEndpoints({
         }),
         updateResponse: build.mutation({
             query: (response) => ({
-                url: "/api/response",
+                url: "/api/responses",
                 method: "PUT",
                 body: response
             }),
@@ -27,7 +27,7 @@ const responseApiSlice = apiSlice.injectEndpoints({
         }),
         deleteResponse: build.mutation({
             query: ({ id }) => ({
-                url: `/api/response/${id}`,
+                url: `/api/responses/${id}`,
                 method: "DELETE"
             }),
             invalidatesTags: ["Responses"]
