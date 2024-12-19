@@ -17,7 +17,7 @@ const responsesSchema = new mongoose.Schema(//הגדרת הסכמה
         // }, title: {
         //     type: String,
         // },
-        apearName: {
+        appearName: {
             type: Boolean,
             default: true
         }, content: {

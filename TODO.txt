@@ -7,7 +7,7 @@
     [v]update user is inactive and permission
 []part 2 diagnosis-client 
     [v]request a diagnosis by a user (filling details)
-    []add a diagnosis for a user (recording? open on google meet? scedueled by google calander? upload a file with diagnosis?)
+    []add a diagnosis for a user -meeting(recording? open on google meet? scedueled by google calander? upload a file with diagnosis?)
     []fix a diagnosis
     []view all diagnosis by manager
     []view a single diagnosis
@@ -26,7 +26,7 @@
 []part 5 layouts and design
     [v]layout for site
     []layout for admin zone
-    [veiw]layout for private zone
+    [v]layout for private zone
     [v]design home page
     [v]add move elements
     [v]design site
@@ -54,10 +54,13 @@
     []veiw posts , edit add and delete by admin-design
     []love posts
 []part 9 What our custemrs say
-    []add a response
+    [v]add a response
+    []delete a response by admin
+    []design add a response
+    [v]appearname
 []problems
     [v]file upload
-    []login is too down
+    [v]login is too down
     [v]buttons home page
     [v]private section
     [v]font family

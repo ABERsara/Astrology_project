@@ -14,7 +14,7 @@ const PopUp = ({ close, width, children }) => (
   <div className="popup">
     <div className="popup-wrapper animated" style={{ width: width }}>
       {close ? <div onClick={close} className="close-popup">
-        <img loading="lazy" src={ 'cross-popup.svg'} alt="close" />
+        {/* <img loading="lazy" src={'cross-popup.svg'} alt="close" /> */}
       </div> : null}
       <div className='children-popup'>{children}</div>
     </div>
@@ -28,7 +28,7 @@ const LoginPage = () => {
   const token = useSelector(selectedToken);
   console.log('Token:', token);
   const [selectLogin, setSelectedlogin] = useState(false)
-  
+
   // const handleGoogleLoginSuccess = (response) => {
   //   console.log('Login Success:', response);
   //   const token = response.credential; // קבלת הטוקן מ-Google
@@ -129,43 +129,48 @@ const LoginPage = () => {
       console.log('Error during login:', err);
     }
   }
-  const closeModal=()=>{
-    Swal.close();
-  }
+  const closeModal = () => {
+    setSelectedlogin(false); // סגירת הפופאפ
+  };
+
 
   return (
     <div>
-      <button className="login-from-home" onClick={()=>setSelectedlogin(true)}>התחברות</button>
-      {selectLogin ? <PopUp width={'350px'} >
-        <div className="login-page">
-          <form id="loginForm" className="login-page-form" onSubmit={onsubmit}>
-            <img src="/xMark.png" alt="" className="img-back" onClick={closeModal}/>
-            <h1 className="login-h1">איזה כיף שבאת אלינו!</h1>
-            <div>
-              <label className="login-item name">שם:</label>
-              <input type="text" required name="firstname" id="firstname" />
-            </div>
-            <div>
-              <label className="login-item email">אימייל:</label>
-              <input type="email" required name="email" id="email" />
-            </div>
-            <div className="login-item password">
-              <label className="login-item password">סיסמא:</label>
-              <input type="password" required name="password" id="password" />
-            </div>
-            <div className="login-item checkbox">
-              <label>
-                <input type="checkbox" id="rememberMeLogin" /> זכור אותי
-              </label>
-            </div>
-            <button type="submit">אני רוצה להיכנס!</button>
-            <div id="error-message" className="error-message"></div>
-            {/* <!-- אזור השגיאות --> */}
-            <div id="googleLoginButton" className="sign-with-google"></div>
-            {/* <!-- מקום להוספת כפתור ההתחברות עם Google --> */}
-          </form>
-        </div>
-      </PopUp> : null}
+      <button className="login-from-home" onClick={() => setSelectedlogin(true)}>התחברות</button>
+      {selectLogin ? <PopUp width={'350px'} close={closeModal}>
+  <div className="login-page">
+    <form id="loginForm" className="login-page-form" onSubmit={onsubmit}>
+      <img 
+        src="/xMark.png" 
+        alt="close" 
+        className="img-back" 
+        onClick={closeModal} 
+      />
+      <h1 className="login-h1">איזה כיף שבאת אלינו!</h1>
+      <div>
+        <label className="login-item name">שם:</label>
+        <input type="text" required name="firstname" id="firstname" />
+      </div>
+      <div>
+        <label className="login-item email">אימייל:</label>
+        <input type="email" required name="email" id="email" />
+      </div>
+      <div className="login-item password">
+        <label className="login-item password">סיסמא:</label>
+        <input type="password" required name="password" id="password" />
+      </div>
+      <div className="login-item checkbox">
+        <label>
+          <input type="checkbox" id="rememberMeLogin" /> זכור אותי
+        </label>
+      </div>
+      <button type="submit">אני רוצה להיכנס!</button>
+      <div id="error-message" className="error-message"></div>
+      <div id="googleLoginButton" className="sign-with-google"></div>
+    </form>
+  </div>
+</PopUp>
+ : null}
     </div>
   );
 };

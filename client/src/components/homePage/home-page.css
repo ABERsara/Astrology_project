@@ -263,24 +263,3 @@ height: 75px;
     padding: 0;
 }
 /* הוספת CSS למודאל */
-.modal-overlay-homepage {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.75); /* רקע שקוף מאחורי המודאל */
-    z-index: 9999;
-}
-
-.modal-content-homepage {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 10px;
-    border-radius: 10px;
-    width: 350px;
-    /* max-width: 90%; */
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-}

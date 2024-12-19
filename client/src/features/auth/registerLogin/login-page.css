@@ -143,15 +143,15 @@ border: 1px solid var(--orange);
     font-size: 2rem;
     padding: 10px;
 }
-.modal-overlay-homepage {
+/* .modal-overlay-homepage {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.75); /* רקע שקוף מאחורי המודאל */
+    background-color: rgba(0, 0, 0, 0.75); 
     z-index: 9999;
-}
+} */
 
 .modal-content-homepage {
     position: absolute;
@@ -161,7 +161,7 @@ border: 1px solid var(--orange);
     padding: 10px;
     border-radius: 10px;
     width: 350px;
-    /* max-width: 90%; */
+   
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 

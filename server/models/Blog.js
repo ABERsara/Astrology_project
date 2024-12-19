@@ -10,6 +10,17 @@ const blogSchema = new mongoose.Schema(//הגדרת הסכמה
         content: {
             type: String
         },
+        lovely:{
+            user: {
+                type:mongoose.Schema.Types.ObjectId ,
+                ref:"User",
+                required:true
+            },
+            love: {
+                type: Boolean,
+                default: false,
+            },
+        },
         file: {
             type: String,
         },

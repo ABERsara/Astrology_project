@@ -14,14 +14,14 @@
   
   .response-content {
     
-    
-    /*  */
     position: absolute; /* מקבע את הטקסט בתוך התמונה */
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     display: flex; /* מאפשר מרכוז באמצעות flexbox */
+    flex-direction: column;
+    gap: 10px;
     align-items: center; /* מרכוז אנכי */
     justify-content: center; /* מרכוז אופקי */
     text-align: center;
@@ -51,14 +51,7 @@
     margin-right: 0;
 } */
 
-/* .response-container.left .response-content {
-    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUg...');
-}
 
-.response-container.right .response-content {
-    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUg...');
-} */
-  
   .response-container p {
     max-width: 60%; /* רוחב מקסימלי לטקסט */
     white-space: normal; /* שבירת שורות רגילה */
@@ -89,12 +82,7 @@
     left:0;
   }
   
-  /* .response-content {
-    padding: 10px 15px;
-    border-radius: 10px;
-    max-width: 60%;
-    font-size: 14px;
-  } */
+  
    
   
   .add-response-button {
@@ -129,7 +117,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1000;
+    z-index: 100;
   }
   
   .popup-content-response {
@@ -202,4 +190,22 @@
     padding-left: 15vw; /* ריווח פנימי משמאל */
     margin-right: 20px; /* מגבלת גלישה מהצד הימני */
     padding-right: 2vw; /* אין ריווח פנימי מימין */
+}
+
+   
+
+.response-content p {
+    margin: 0;
+    padding: 0;
+    max-width: 90%; /* הגבלת רוחב לטקסט */
+    word-wrap: break-word;
+}
+
+/* סגנון לשם */
+.response-name {
+    margin-top: 10px; /* רווח מעל השם */
+    font-size: 14px; /* גודל טקסט קטן יותר */
+    color: #181616; /* צבע ייחודי לשם */
+    font-weight: bold;
+    display: flex;
 }

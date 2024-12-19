@@ -32,7 +32,7 @@ const getResponse=async(req,res)=>{
 }
 }
 const addResponse = async (req, res) => {
-    const { registerUser, apearName, content, allowed } = req.body;
+    const { registerUser, appearName, content, allowed } = req.body;
 
     // אימות הנתונים הנדרשים
     if (!registerUser || !content) {
@@ -45,15 +45,15 @@ const addResponse = async (req, res) => {
 
     try {
         // שליפת התגובה האחרונה לפי זמן
-        const lastResponse = await Responses.findOne({}, {}, { sort: { createdAt: -1 } });
-    
-        // קביעת `position` לסירוגין
-        const newPosition = lastResponse && lastResponse.position === 'left' ? 'right' : 'left';
+        const lastApprovedResponse = await Responses.findOne({ allowed: true }, {}, { sort: { createdAt: -1 } });
+        const newPosition = lastApprovedResponse && lastApprovedResponse.position === 'left' ? 'right' : 'left';
+            
+        
     
         // יצירת תגובה חדשה עם `position`
         const response = await Responses.create({
           registerUser,
-          apearName,
+          appearName,
           content,
           allowed,
           position: newPosition, // מוודא שהכיוון מחושב ונשמר
@@ -75,7 +75,7 @@ const addResponse = async (req, res) => {
 };
 
 const updateResponse=async(req,res)=>{
-    const {id,registerUser,apearName,content,allowed,position}=req.body
+    const {id,registerUser,appearName,content,allowed,position}=req.body
     //confirm data!
     if ( !id||!registerUser || !content  ) {
         return res.status(400).json({
@@ -94,7 +94,7 @@ const updateResponse=async(req,res)=>{
    response.registerUser=registerUser
 //    response.courseName=courseName
 //    response.title=title
-   response.apearName=apearName
+   response.appearName=appearName
    response.content=content
    response.allowed=allowed
    response.position=position
