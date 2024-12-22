@@ -126,4 +126,20 @@ box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
   opacity: 1 !important;
   pointer-events: auto !important;
 }
+.blogs-list-add-button{
+/* position: absolute; */
+background: var(--main);
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+border-radius: 24px;
+font-size: 1rem;
+display: flex;
+justify-content: center;
+align-items: center;
+text-align: center; /* מרכז טקסט בתוך הכפתור */
+font-family: "Varela Round", serif;
+width: 12vw;
+height: 7vh;
+margin-right: 2vw;
+color: var(--text);
 
+}

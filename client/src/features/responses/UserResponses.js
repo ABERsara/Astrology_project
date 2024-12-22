@@ -1,18 +1,44 @@
 import { useNavigate } from "react-router-dom";
-import { useAddResponseMutation, useDeleteResponseMutation, useGetAllResponsesQuery } from "./responseApiSlice";
+import { useAddResponseMutation, useDeleteResponseMutation, useGetAllResponsesQuery, useUpdateResponseMutation } from "./responseApiSlice";
 import { useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import "./user-responses.css";
 
 const UserResponses = () => {
-  const { id } = useAuth();
+  const { id, isAdmin, isUser } = useAuth();
   const { data: responsesObject, isError, error, isLoading } = useGetAllResponsesQuery();
   const [addResponse] = useAddResponseMutation();
+  const [updateResponse] = useUpdateResponseMutation();
   const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [isApprovalPopupOpen, setIsApprovalPopupOpen] = useState(false);
+  const [selectedResponse, setSelectedResponse] = useState(null); // כדי לשמור איזו תגובה נבחרה
+
+  const handleUpdateResponse = (response) => {
+    setSelectedResponse(response); // שומרים איזו תגובה נבחרה
+    setIsApprovalPopupOpen(true); // פותחים את הפופאפ
+  };
+
+  const handleApproveResponse = async (response) => {
+    try {
+      await updateResponse({
+        ...response,
+        id: response._id,
+        allowedAdmin: !response.allowedAdmin, // אם התגובה מאושרת כבר, נבטל את האישור ולהפך
+      });
+      alert("התגובה אושרה")
+      setIsApprovalPopupOpen(false); // סוגרים את הפופאפ
+    } catch (error) {
+      console.error("Error updating response:", error);
+    }
+  };
+
+  const handleCancelApproval = () => {
+    setIsApprovalPopupOpen(false); // סוגרים את הפופאפ אם המנהל בחר לא לאשר
+  };
 
   const [responseData, setResponseData] = useState({
     content: "",
-    allowed: true,
+    alloweduser: true,
     appearName: true,
   });
 
@@ -24,7 +50,7 @@ const UserResponses = () => {
       });
       setResponseData({
         content: "",
-        allowed: true,
+        alloweduser: true,
         appearName: true,
       }); // איפוס השדות לאחר הוספה
       setIsPopupOpen(false);
@@ -38,9 +64,9 @@ const UserResponses = () => {
       {isLoading && <p>Loading responses...</p>}
       {isError && <p>Error loading responses!</p>}
       {responsesObject?.data?.length === 0 && <p>אין עדיין תגובות.</p>}
-{console.log(responsesObject)}
+      {console.log(responsesObject)}
       {responsesObject?.data
-        ?.filter((response) => response.allowed)
+        ?.filter((response) => isAdmin || (response.alloweduser && response.allowedAdmin))
         .map((response) => (
           <div key={response._id} className={`response-container ${response.position}`}>
             <div
@@ -58,19 +84,35 @@ const UserResponses = () => {
             >
               <p>{response.content}</p>
               {response.appearName && response.registerUser?.firstname && response.registerUser?.lastname ? (
-  <p className="response-name">
-    {response.registerUser.firstname} {response.registerUser.lastname}
-  </p>
+                <p className="response-name">
+                  {response.registerUser.firstname} {response.registerUser.lastname}
+                </p>
 
-) : null}
+              ) : null}
+              {isAdmin && (
+                <div className="permission-response-button">
+                  {response.allowedAdmin ? (
+                    // אם התגובה כבר אושרה, הצג כפתור לשנות את האישור
+                    <button onClick={() => handleUpdateResponse(response)}>
+                      התגובה כבר אושרה, רוצה לשנות?
+                    </button>
+                  ) : (
+                    // אם התגובה לא אושרה, הצג כפתור לאישור
+                    <button onClick={() => handleUpdateResponse(response)}>
+                      אשר תגובה לפרסום
+                    </button>
+                  )}
+                </div>
+              )}
 
             </div>
           </div>
         ))}
 
-      <div className="add-response-button">
+      {isUser && <div className="add-response-button">
         <button onClick={() => setIsPopupOpen(true)}>הוספת תגובה</button>
-      </div>
+      </div>}
+
 
       {isPopupOpen && (
         <div className="popup-overlay-response">
@@ -91,9 +133,9 @@ const UserResponses = () => {
               <label>
                 <input
                   type="checkbox"
-                  checked={responseData.allowed}
+                  checked={responseData.alloweduser}
                   onChange={(e) =>
-                    setResponseData({ ...responseData, allowed: e.target.checked })
+                    setResponseData({ ...responseData, alloweduser: e.target.checked })
                   }
                 />
                 האם לאשר לפרסום
@@ -117,6 +159,21 @@ const UserResponses = () => {
           </div>
         </div>
       )}
+      {isApprovalPopupOpen && selectedResponse && (
+        <div className="popup-overlay-response">
+          <div className="popup-content-response">
+            <h2>האם לאשר את התגובה לפרסום?</h2>
+            <p>{selectedResponse.content}</p>
+            <div className="popup-actions-response">
+              <button onClick={() => handleApproveResponse(selectedResponse)}>
+                {selectedResponse.allowedAdmin ? "התגובה כבר אושרה" : "אשר תגובה לפרסום"}
+              </button>
+              <button onClick={handleCancelApproval}>ביטול</button>
+            </div>
+          </div>
+        </div>
+      )}
+
     </div>
   );
 };

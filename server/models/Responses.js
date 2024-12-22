@@ -27,11 +27,18 @@ const responsesSchema = new mongoose.Schema(//הגדרת הסכמה
         //  enjoyService: {
         //     type: String
         // },
-         allowed: {
-            //האם מורשה לפרסם את התגובה
+         allowedUser: {
+            // הרשאת משתמש
+            // האם מורשה לפרסם את התגובה
             type: Boolean,
             default: true
-        },position: {
+        },
+        //הרשאת מנהל לפרסום התגובה
+        allowedAdmin:{
+            type: Boolean,
+            default: false
+        },
+        position: {
             type: String,
             enum: ['left', 'right'],
             default: 'left' // ברירת מחדל

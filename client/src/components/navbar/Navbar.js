@@ -12,15 +12,15 @@ import RegisterPage from '../../features/auth/registerLogin/RegisterUser';
 import useGetFilePath from "../../hooks/useGetFilePath";
 
 const Navbar = () => {
-  const {getFilePath} = useGetFilePath()
+  const { getFilePath } = useGetFilePath()
 
   const [logout, { isSuccess: isLogoutSuccess }] = useSendLogoutMutation()
   const navigate = useNavigate();
   const location = useLocation();
-  const { firstname, lastname, image } = useAuth();
+  const { firstname, lastname, image, isUser, isAdmin } = useAuth();
   const [currentFirstname, setCurrentFirstname] = useState(firstname);
   const [currentLastname, setCurrentLastname] = useState(lastname);
-  const [currentImage, setCurrentImage] = useState(image);
+  const [currentImage, setCurrentImage] = useState(image ? `http://localhost:2024/public/uploads${image}` : "/noavatar.png")
 
   useEffect(() => {
     // ריענון הנתונים מהשרת
@@ -29,13 +29,13 @@ const Navbar = () => {
     setCurrentImage(image);
   }, [firstname, lastname, image]); // הפעלת ה-Effect כשהערכים משתנים
 
-  
-   
+
+
   const [rememberMe, setRememberMe] = useState(false);
   const [error, setError] = useState(null);
   const [isPersonalZoneOpen, setIsPersonalZoneOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState("האזור האישי");
-    const logoutClick = () => {
+  const logoutClick = () => {
     console.log("logout")
     logout()
   }
@@ -67,8 +67,8 @@ const Navbar = () => {
     }
   };
 
-  
-  
+
+
   // פונקציה שמחזירה className בהתאם לסטטוס של isActive
   const getNavLinkClass = (isActive) => isActive ? "active-navlink-nav" : "";
   const isHomePage = location.pathname === "/";
@@ -78,12 +78,12 @@ const Navbar = () => {
       <div className="navbar-top-homepage">
         {firstname ?
           <div className="nav-hello">
-            <img 
-          className="account-profile" 
-          alt="" 
-          src={getFilePath(currentImage?currentImage:image)}
-          onClick={() => navigate("/dash/user/editProfile")} // מעבר לדף עריכת פרופיל 
-          />
+            <img
+              className="account-profile"
+              alt=""
+              src={getFilePath(currentImage ? currentImage : image)}
+              onClick={() => navigate("/dash/user/editProfile")} // מעבר לדף עריכת פרופיל 
+            />
             היי {currentFirstname}{ } {currentLastname}! </div>
           : <><LoginPage />
             <RegisterPage /></>}
@@ -110,40 +110,40 @@ const Navbar = () => {
         <NavLink to="/dash/diagnosis" className={({ isActive }) => getNavLinkClass(isActive)}>אבחונים</NavLink>
         <NavLink to="/dash/reviews" className={({ isActive }) => getNavLinkClass(isActive)}>מה אומרים עלינו?</NavLink>
         <NavLink to="/dash/courses" className={({ isActive }) => getNavLinkClass(isActive)}>קורסים</NavLink>
-
+        {isAdmin && <NavLink to="/dash/manage/users" className={({ isActive }) => getNavLinkClass(isActive)}>משתמשים רשומים</NavLink>}
         <button onClick={() => scrollToSection("contact-section")}>יצירת קשר</button>
         <div className="personal-zone">
-        <button
-          onClick={() => setIsPersonalZoneOpen(!isPersonalZoneOpen)}
-          className="dropdown-toggle"
-        >
-          {selectedOption} ▼
-        </button>
-        {isPersonalZoneOpen && (
-          <div
-            className="dropdown-menu"
-            onMouseLeave={() => setIsPersonalZoneOpen(false)}
+          <button
+            onClick={() => setIsPersonalZoneOpen(!isPersonalZoneOpen)}
+            className="dropdown-toggle"
           >
-            <NavLink
-              to="/dash/user"
-              className="dropdown-item"
-              onClick={() => handleSelectOption("אזור אישי")}
+            {selectedOption} ▼
+          </button>
+          {isPersonalZoneOpen && (
+            <div
+              className="dropdown-menu"
+              onMouseLeave={() => setIsPersonalZoneOpen(false)}
             >
-             אזור אישי
-            </NavLink>
-            <NavLink
-              to="/dash/user/changePassword"
-              className="dropdown-item"
-              onClick={() => handleSelectOption("שנה סיסמה")}
-            >
-              שנה סיסמה
-            </NavLink>
-          </div>
-        )}
+              <NavLink
+                to="/dash/user"
+                className="dropdown-item"
+                onClick={() => handleSelectOption("אזור אישי")}
+              >
+                אזור אישי
+              </NavLink>
+              <NavLink
+                to="/dash/user/changePassword"
+                className="dropdown-item"
+                onClick={() => handleSelectOption("שנה סיסמה")}
+              >
+                שנה סיסמה
+              </NavLink>
+            </div>
+          )}
+        </div>
       </div>
-  </div>
 
-     
+
       {/* <div className="nav-menu">
         <div className="nav-text"></div>
         <h1>האזור האישי</h1>

@@ -113,7 +113,7 @@ const updateUser = async (req, res) => {
         res.json({
             error: false,
             message: `${updatedUser.firstname} updated`,
-            data: { _id: user._id, firstname: user.firstname, lastname: user.lastname }
+            data: { _id: user._id, firstname: user.firstname, lastname: user.lastname ,image}
         });
     } catch (err) {
         res.status(500).json({ error: true, message: err.message });

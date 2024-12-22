@@ -32,7 +32,7 @@ const getResponse=async(req,res)=>{
 }
 }
 const addResponse = async (req, res) => {
-    const { registerUser, appearName, content, allowed } = req.body;
+    const { registerUser, appearName, content, allowedUser,allowedAdmin } = req.body;
 
     // אימות הנתונים הנדרשים
     if (!registerUser || !content) {
@@ -45,7 +45,7 @@ const addResponse = async (req, res) => {
 
     try {
         // שליפת התגובה האחרונה לפי זמן
-        const lastApprovedResponse = await Responses.findOne({ allowed: true }, {}, { sort: { createdAt: -1 } });
+        const lastApprovedResponse = await Responses.findOne({ allowedUser: true , allowedAdmin:true}, {}, { sort: { createdAt: -1 } });
         const newPosition = lastApprovedResponse && lastApprovedResponse.position === 'left' ? 'right' : 'left';
             
         
@@ -55,7 +55,8 @@ const addResponse = async (req, res) => {
           registerUser,
           appearName,
           content,
-          allowed,
+          allowedUser,
+          allowedAdmin,
           position: newPosition, // מוודא שהכיוון מחושב ונשמר
         });
     
@@ -75,7 +76,7 @@ const addResponse = async (req, res) => {
 };
 
 const updateResponse=async(req,res)=>{
-    const {id,registerUser,appearName,content,allowed,position}=req.body
+    const {id,registerUser,appearName,content,allowedUser,allowedAdmin,position}=req.body
     //confirm data!
     if ( !id||!registerUser || !content  ) {
         return res.status(400).json({
@@ -96,7 +97,8 @@ const updateResponse=async(req,res)=>{
 //    response.title=title
    response.appearName=appearName
    response.content=content
-   response.allowed=allowed
+   response.allowedUser=allowedUser
+   response.allowedAdmin=allowedAdmin
    response.position=position
    //save the changes
    const updatedResponses=await response.save()

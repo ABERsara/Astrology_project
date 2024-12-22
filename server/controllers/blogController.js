@@ -1,7 +1,8 @@
 const Blog=require("../models/Blog")
 //לא גמור
 const getBlogs=async(req,res)=>{
-const blogs=await Blog.find({}).lean()
+const limit = parseInt(req.query.limit) || 0;
+const blogs=await Blog.find({}).limit(limit).lean()
 if(!blogs.length){
     return res.status(400).json({
        error:true,
@@ -56,19 +57,17 @@ const getBlog=async(req,res)=>{
 // }
 // }
 const addBlog = async (req, res) => {
-    console.log("Request received:", req.body); // הדפס את הנתונים המתקבלים בשרת
-    const file=(req.file?.filename? req.file.filename:"")
     const { title,content} = req.body;
     if (!title ) {
         return res.status(400).json({
             error: true,
-            message: 'title and file are required',
+            message: 'title is required',
             data: null
         });
     }
 
     try {
-        const blog = await Blog.create({ title,content, file});
+        const blog = await Blog.create({ title,content });
         res.status(201).json({
             error: false,
             message: 'New blog created',
@@ -85,8 +84,7 @@ const addBlog = async (req, res) => {
 }
 
 const updateBlog = async (req, res) => {
-    const { id, title, content, existingFile } = req.body;
-    const file = req.file ? req.file.filename : existingFile; // אם לא נבחר קובץ חדש, נשתמש בקובץ הקיים
+    const { id, title, content } = req.body;
     
     if (!id || !title) {
        return res.status(400).json({
@@ -107,7 +105,6 @@ const updateBlog = async (req, res) => {
     
     blog.title = title;
     blog.content = content;
-    blog.file = file; // שמירת הקובץ החדש או הקיים
     
     const updatedBlog = await blog.save();
     res.json({

@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./about-astro.css";
 import ViewBlogs from "../../features/blogs/viewBlogs/ViewBlogs";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const AboutAstro = () => {
   const [showFirstSentence, setShowFirstSentence] = useState(false);
@@ -101,9 +101,9 @@ const AboutAstro = () => {
         <h2 className="title-posts">מאמרים מומלצים:</h2>
         <div className="view-blogs-section">
           <ViewBlogs limit={3} />
-          <button className="view-more-btn">
+          <Link to={`/dash/blogs`} className="view-more-btn">
             לראות עוד
-          </button>
+          </Link>
         </div>
       </div>
     </div>

@@ -35,7 +35,10 @@ const usersSchema = new mongoose.Schema(//הגדרת הסכמה
         diagnosis: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Diagnosis'
-        }
+        },lovedBlogs: [{
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Blog" // קישור לבלוגים שהמשתמש אהב
+        }]
     },
     { timestamps: true }
 )

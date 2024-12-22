@@ -5,7 +5,7 @@ const User = require("../models/User")
 
 
 const register = async (req, res) => {
-    // const image = req.image?.filename || ""; // Handle file upload
+    const image=req.file?.filename? req.file.filename:"";
     const { firstname, lastname, phone, email, password, active, diagnosis } = req.body
     if (!firstname || !email || !password) {
         return res.status(401).json({

@@ -8,12 +8,14 @@ import {
   MdAddToDrive, MdFileDownload, MdOutlineLibraryAdd
 } from "react-icons/md"
 import useAuth from "../../../hooks/useAuth";
-const ViewBlogs = () => {
-  const { data: blogsObject, isError, error, isLoading } = useGetAllBlogsQuery();
+const ViewBlogs = ({ limit=0 }) => {
+  const { data: blogsObject, isLoading, isError, error } = useGetAllBlogsQuery({ limit });
   const navigate = useNavigate();
   const [isDeleteClicked, setIsDeleteClicked] = useState(false);
   const [deleteBlog, { isSuccess: isDeleteSuccess }] = useDeleteBlogMutation();
-  const { permission } = useAuth()
+  const { isAdmin,isUser } = useAuth()
+  console.log(isAdmin);
+
   const location = useLocation()
   const isAstroPage = location.pathname === "/astro";
 
@@ -75,17 +77,21 @@ const ViewBlogs = () => {
   }, [isDeleteSuccess, navigate]);
 
   if (isLoading) return <h1>Loading ...</h1>
-  if (isError) return <h1>{JSON.stringify(error)}</h1>
+  if (isError) return <h1>{JSON.stringify(error)}{isAdmin && <Link to="/dash/blogs/add" className="blogs-list-add-button">
+    הוספת בלוג
+  </Link>}</h1>
 
   return (
     <div className="blogs-list">
       <div className="blogs-list-top">
         {isAstroPage && <Search placeholder="חיפוש לפי שם חברה" />}
-        {permission === 'Admin' && <Link to="/dash/blogs/add" className="blogs-list-add-button">
+        
+      </div>
+      {isAdmin && <Link to="/dash/blogs/add" className="blogs-list-add-button">
           הוספת בלוג
         </Link>}
-      </div>
       <div className="blogs-container">
+     
         {blogsObject.data?.map(blog => (
           <div
             key={blog._id}
@@ -95,7 +101,7 @@ const ViewBlogs = () => {
           >
             <h2 className="blog-title">{blog.title}</h2>
             <p className="blog-content">{getShortContent(blog.content)}</p>
-            {blog.file && (
+            {/* {blog.file && (
               <div className="blog-file">
                 <img src={blog.file ? `http://localhost:2024/uploads/${blog.file}` : "/noavatar.png"}
                   alt=""
@@ -114,13 +120,13 @@ const ViewBlogs = () => {
                 </div>
               </div>
 
-            )}
+            )} */}
             <div className="blog-actions">
-              <Link to={`/dash/blogs/${blog._id}`} className="blogs-list-button blogs-list-view">
-                להמשיך לקרוא
-              </Link>
-              {permission === 'Admin' && <EditBlogButton blog={blog} />}{/* הכפתור להצגת עמוד העדכון */}
-              {permission === 'Admin' && <button
+             {isUser&&<Link to={`/dash/blogs/${blog._id}`} className="blogs-list-button blogs-list-view">
+               להמשיך לקרוא
+              </Link>}
+              {isAdmin && <EditBlogButton blog={blog} />}{/* הכפתור להצגת עמוד העדכון */}
+              {isAdmin  && <button
                 onClick={(event) => deleteClick(event, blog)}
                 className="blogs-list-button blogs-list-delete"
               >

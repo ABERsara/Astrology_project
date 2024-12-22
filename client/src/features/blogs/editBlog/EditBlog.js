@@ -21,11 +21,11 @@ const EditBlog = () => {
   const formSubmit = async (e) => {
     e.preventDefault();
     const data = new FormData(e.target);
-    // const blogObject = Object.fromEntries(data.entries());
-    console.log("Blog object:", data);
+    const blogObject = Object.fromEntries(data.entries());
+    // console.log("Blog object:", data);
     try {
-      await updateBlog(data).unwrap();
-      console.log("Blog updated successfully");
+      await updateBlog(blogObject).unwrap();
+      // console.log("Blog updated successfully");
     } catch (err) {
       console.error("Failed to update the blog: ", err);
     }
@@ -56,12 +56,12 @@ const EditBlog = () => {
             name="content"
             placeholder="הכנס תוכן"
           />
-        <label>בחר קובץ (אם תרצה לעדכן):</label>
+         {/* <label>בחר קובץ (אם תרצה לעדכן):</label>
 <input type="file" name="file" />
 {selectedBlog.file && (
   <div>
     <p>קובץ נוכחי: {selectedBlog.file}</p>
-    {/* הצגת תצוגה מקדימה אם מדובר בתמונה */}
+     הצגת תצוגה מקדימה אם מדובר בתמונה 
     {selectedBlog.file.endsWith(".jpg") || selectedBlog.file.endsWith(".png") ? (
       <img
         src={`/uploads/${selectedBlog.file}`}
@@ -69,16 +69,16 @@ const EditBlog = () => {
         style={{ maxWidth: "200px", maxHeight: "200px" }}
       />
     ) : (
-      // קישור להורדה אם זה לא תמונה
+     קישור להורדה אם זה לא תמונה
       <a href={`/uploads/${selectedBlog.file}`} target="_blank" rel="noopener noreferrer">
         הורד קובץ קיים
       </a>
       
     )}
-     {/* שמירת שם הקובץ הישן בשדה נסתר */}
+      שמירת שם הקובץ הישן בשדה נסתר 
   <input type="hidden" name="existingFile" value={selectedBlog.file} />
   </div>
-)}
+)} */}
 
 
           <button className="button-form-edit-blog">עדכן</button>
