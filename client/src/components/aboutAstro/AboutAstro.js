@@ -2,8 +2,10 @@ import React, { useEffect, useRef, useState } from "react";
 import "./about-astro.css";
 import ViewBlogs from "../../features/blogs/viewBlogs/ViewBlogs";
 import { Link, useLocation } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
 
 const AboutAstro = () => {
+  const {isUser,isAdmin}=useAuth();
   const [showFirstSentence, setShowFirstSentence] = useState(false);
   const [showSecondSentence, setShowSecondSentence] = useState(false);
   const sentencesRef = useRef(null);
@@ -101,9 +103,9 @@ const AboutAstro = () => {
         <h2 className="title-posts">מאמרים מומלצים:</h2>
         <div className="view-blogs-section">
           <ViewBlogs limit={3} />
-          <Link to={`/dash/blogs`} className="view-more-btn">
+          {(isUser||isAdmin)&&<Link to={`/dash/blogs`} className="view-more-btn">
             לראות עוד
-          </Link>
+          </Link>}
         </div>
       </div>
     </div>

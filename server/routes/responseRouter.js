@@ -3,9 +3,10 @@ const controller=require("../controllers/responsesController")
 const router=express.Router();
 const verifyJWT = require("../middlware/verifyJWT");
 
+router.get("/",controller.getResponses);
+
 router.use(verifyJWT);
 
-router.get("/",controller.getResponses);
 router.get("/:id",controller.getResponse);
 router.post("/",controller.addResponse);
 router.put("/",controller.updateResponse);

@@ -8,18 +8,8 @@ import { setCredentials } from '../authSlice';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux'; // אם את גם משתמשת ב-useSelector
 import { selectedToken } from "../authSlice"
-import SweetAlert from 'sweetalert2';
+import PopUp from '../../PopUp';
 
-const PopUp = ({ close, width, children }) => (
-  <div className="popup">
-    <div className="popup-wrapper animated" style={{ width: width }}>
-      {close ? <div onClick={close} className="close-popup">
-        {/* <img loading="lazy" src={'cross-popup.svg'} alt="close" /> */}
-      </div> : null}
-      <div className='children-popup'>{children}</div>
-    </div>
-  </div>
-);
 const LoginPage = () => {
   const dispatch = useDispatch();
   const [login] = useLoginMutation();
@@ -105,7 +95,7 @@ const LoginPage = () => {
     const rememberMeLogin = document.getElementById('rememberMeLogin').checked;
 
     if (!firstname || !email || !password) {
-      Swal.showValidationMessage('אנא מלא את כל השדות');
+      // Swal.showValidationMessage('אנא מלא את כל השדות');
       return false;
     }
 
@@ -182,24 +172,24 @@ export default LoginPage;
 
 // showAlert({ msgTitle: 'הכתובת עודכנה', msgText: '', msgType: 'success' })
 
-const showAlert = ({ msgTitle, msgText, msgType, msgTimer }) => {
-  SweetAlert.fire({
-    icon: msgType ? msgType : 'error',
-    title: msgTitle ? msgTitle : 'שגיאה בחיבור לרשת',
-    text: msgText !== null ? msgText : 'בבקשה נסה שוב מאוחר יותר',
-    timer: msgTimer ? msgTimer : 5000,
-    showConfirmButton: false,
-    didOpen: () => {
-      const iconElement = document.querySelector('.swal2-icon');
-      if (iconElement) {
-        iconElement.style.cursor = 'pointer';
-        iconElement.addEventListener('click', () => {
-          SweetAlert.close();
-        });
-      }
-    }
-  });
-};
+// const showAlert = ({ msgTitle, msgText, msgType, msgTimer }) => {
+//   SweetAlert.fire({
+//     icon: msgType ? msgType : 'error',
+//     title: msgTitle ? msgTitle : 'שגיאה בחיבור לרשת',
+//     text: msgText !== null ? msgText : 'בבקשה נסה שוב מאוחר יותר',
+//     timer: msgTimer ? msgTimer : 5000,
+//     showConfirmButton: false,
+//     didOpen: () => {
+//       const iconElement = document.querySelector('.swal2-icon');
+//       if (iconElement) {
+//         iconElement.style.cursor = 'pointer';
+//         iconElement.addEventListener('click', () => {
+//           SweetAlert.close();
+//         });
+//       }
+//     }
+//   });
+// };
 
 
 

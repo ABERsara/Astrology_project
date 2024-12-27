@@ -28,14 +28,15 @@
     [v]layout for site
     []layout for admin zone: 
         []bell for notifications replace heart,
-        []see all users,
+        [v]see all users,
+        []design see users
         [v]see responses and approve,
         []see responses for permission (notify)
         []view all diagnosises,
-        []view all responses,
+        [v]view all responses,
         []upload a diagnosis for a user
         []change calander dates
-        []
+        []design for blogs completely
     [v]layout for private zone
     [v]design home page
     [v]add move elements
@@ -62,12 +63,14 @@
     []client-admin (view,add,delete, update. )
 []part 8 posts to about page
     []an un register user will be able to server
-    []veiw posts , edit add and delete by admin-design
+    [v]veiw posts , edit add and delete by admin-design
     []love posts
+    [v]only 3 posts!
+    []download posts by users
 []part 9 What our custemrs say
     [v]add a response
     []delete a response by admin
-    []assurance to adveirtise by admin
+    [v]assurance to adveirtise by admin
     []design add a response
     [v]appearname
 []problems

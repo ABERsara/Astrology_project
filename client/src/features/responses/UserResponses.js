@@ -9,10 +9,25 @@ const UserResponses = () => {
   const { data: responsesObject, isError, error, isLoading } = useGetAllResponsesQuery();
   const [addResponse] = useAddResponseMutation();
   const [updateResponse] = useUpdateResponseMutation();
+  const [deleteResponse]=useDeleteResponseMutation();
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [isApprovalPopupOpen, setIsApprovalPopupOpen] = useState(false);
   const [selectedResponse, setSelectedResponse] = useState(null); // כדי לשמור איזו תגובה נבחרה
+  const [isDeletedConfirm,setIsDeletedConfirm]=useState(false);
+  const [selectedResponseDelete, setSelectedResponseDelete] = useState(null); // כדי לשמור איזו תגובה נבחרה
 
+const handelDeleteResponse=(responseId)=>{
+setSelectedResponseDelete(responseId);
+setIsDeletedConfirm(true);
+}
+const handleConfirmDelete=async (responseId)=>{
+  try{
+    await deleteResponse(responseId)
+    setIsDeletedConfirm(false)
+  }catch (error) {
+    console.error("Error deleting response:", error);
+  }
+}
   const handleUpdateResponse = (response) => {
     setSelectedResponse(response); // שומרים איזו תגובה נבחרה
     setIsApprovalPopupOpen(true); // פותחים את הפופאפ
@@ -25,7 +40,6 @@ const UserResponses = () => {
         id: response._id,
         allowedAdmin: !response.allowedAdmin, // אם התגובה מאושרת כבר, נבטל את האישור ולהפך
       });
-      alert("התגובה אושרה")
       setIsApprovalPopupOpen(false); // סוגרים את הפופאפ
     } catch (error) {
       console.error("Error updating response:", error);
@@ -38,7 +52,7 @@ const UserResponses = () => {
 
   const [responseData, setResponseData] = useState({
     content: "",
-    alloweduser: true,
+    allowedUser: true,
     appearName: true,
   });
 
@@ -50,7 +64,7 @@ const UserResponses = () => {
       });
       setResponseData({
         content: "",
-        alloweduser: true,
+        allowedUser: true,
         appearName: true,
       }); // איפוס השדות לאחר הוספה
       setIsPopupOpen(false);
@@ -64,10 +78,11 @@ const UserResponses = () => {
       {isLoading && <p>Loading responses...</p>}
       {isError && <p>Error loading responses!</p>}
       {responsesObject?.data?.length === 0 && <p>אין עדיין תגובות.</p>}
-      {console.log(responsesObject)}
+      
       {responsesObject?.data
-        ?.filter((response) => isAdmin || (response.alloweduser && response.allowedAdmin))
+        ?.filter((response) =>  isAdmin ||  ( response.allowedAdmin&&response.allowedUser))
         .map((response) => (
+          
           <div key={response._id} className={`response-container ${response.position}`}>
             <div
               className={`response-content ${response.position}`}
@@ -83,9 +98,10 @@ const UserResponses = () => {
               }}
             >
               <p>{response.content}</p>
-              {response.appearName && response.registerUser?.firstname && response.registerUser?.lastname ? (
+              {response.appearName && response.registerUser?.firstname ? (
                 <p className="response-name">
-                  {response.registerUser.firstname} {response.registerUser.lastname}
+                  {response.registerUser.firstname}
+                  {response.registerUser.lastname|| ""}
                 </p>
 
               ) : null}
@@ -133,9 +149,9 @@ const UserResponses = () => {
               <label>
                 <input
                   type="checkbox"
-                  checked={responseData.alloweduser}
+                  checked={responseData.allowedUser}
                   onChange={(e) =>
-                    setResponseData({ ...responseData, alloweduser: e.target.checked })
+                    setResponseData({ ...responseData, allowedUser: e.target.checked })
                   }
                 />
                 האם לאשר לפרסום

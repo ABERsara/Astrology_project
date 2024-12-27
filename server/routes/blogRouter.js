@@ -5,11 +5,12 @@ const verifyJWT = require("../middlware/verifyJWT");
 //const useMulterStorage = require("../hooks/useMulterStorage"); // ייבוא ה-hook
 const router = express.Router();
 
+router.get("/", controller.getBlogs);
+
 router.use(verifyJWT)
 // יצירת ה-upload באמצעות ה-hook
 //const upload = useMulterStorage();
 
-router.get("/", controller.getBlogs);
 router.get("/:id", controller.getBlog);
 
 router.use(verifyAdmin)

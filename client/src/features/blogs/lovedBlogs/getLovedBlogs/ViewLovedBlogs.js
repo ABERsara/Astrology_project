@@ -1,48 +1,20 @@
 import "./view-blogs.css"
 import Search from "../../../components/search/Search"
-import { useGetAllBlogsQuery, useDeleteBlogMutation, useAddBlogMutation } from "../blogsApiSlice"
+import { useAddLovedBlogMutation,useGetUserLovedBlogsQuery,useRemoveLovedBlogMutation } from "../lovedBlogsApiSlice"
 import { Link, useLocation, useNavigate } from "react-router-dom"
-import React, { useEffect, useState } from 'react';
-import EditBlogButton from "../editBlog/EditBlogButton";
-import PopUp from "../../PopUp"; // הייבוא של הפופאפ הקיים
+import { useEffect, useState } from 'react';
 import {
   MdAddToDrive, MdFileDownload, MdOutlineLibraryAdd
 } from "react-icons/md"
 import useAuth from "../../../hooks/useAuth";
-const ViewBlogs = ({ limit=0 }) => {
-  const { data: blogsObject, isLoading, isError, error } = useGetAllBlogsQuery({ limit });
+const ViewLovedBlogs = () => {
+  const { data: blogsObject, isLoading, isError, error } = useGetUserLovedBlogsQuery();
   const navigate = useNavigate();
   const [isDeleteClicked, setIsDeleteClicked] = useState(false);
-  const [deleteBlog, { isSuccess: isDeleteSuccess }] = useDeleteBlogMutation();
-  const [isPopupOpen, setIsPopupOpen] = useState(false);
-  const [addBlog, { isSuccess, isError:isAddedError, isLoading:isAddedLoading }] = useAddBlogMutation();
-  const { isAdmin,isUser } = useAuth()
+  const [deleteBlog, { isSuccess: isDeleteSuccess }] = useRemoveLovedBlogMutation();
+  const { id ,isAdmin,isUser} = useAuth()
+
   
-  // פונקציה לפתיחה וסגירה של הפופאפ
-  const openPopup = () => setIsPopupOpen(true);
-  const closePopup = () => setIsPopupOpen(false);
-
-  // שליחת הטופס
-  const formSubmit = (e) => {
-    e.preventDefault();
-    const data = new FormData(e.target);
-    const blogObject = Object.fromEntries(data.entries());
-    console.log("Data to be sent:", blogObject);
-    addBlog(blogObject);
-  };
-
-  // מעקב אחרי הצלחה
-  React.useEffect(() => {
-    if (isSuccess) {
-      closePopup(); // סגור את הפופאפ לאחר שליחה מוצלחת
-      navigate("/dash/blogs");
-    }
-  }, [isSuccess, navigate]);
-  console.log(isAdmin);
-
-  const location = useLocation()
-  const isAstroPage = location.pathname === "/astro";
-
   //לחצן למעבר מהיר לבלוג הרצוי
   const handleBlogClick = (blogId) => {
     (isUser||isAdmin)&&navigate(`/dash/blogs/${blogId}`)
@@ -51,7 +23,7 @@ const ViewBlogs = ({ limit=0 }) => {
     event.stopPropagation(); // מונע את הפעלת ה-`onClick` על הבלוג
     if (!isDeleteClicked && window.confirm("בטוח שברצונך למחוק את הבלוג?")) {
       setIsDeleteClicked(true);
-      deleteBlog({ id: blog._id }).then(() => {
+      deleteBlog({userId:id ,blogId: blog._id }).then(() => {
         navigate("/dash/blogs");
       });
     }
@@ -100,37 +72,19 @@ const ViewBlogs = ({ limit=0 }) => {
   }, [isDeleteSuccess, navigate]);
 
   if (isLoading) return <h1>Loading ...</h1>
-  if (isError) return <h1>{JSON.stringify(error)} {isAdmin && <button onClick={openPopup} className="blogs-list-add-button">
-  הוספת בלוג
-</button>}</h1>
+  if (isError) return <h1>{JSON.stringify(error)}{isAdmin && <Link to="/dash/blogs/add" className="blogs-list-add-button">
+    הוספת בלוג
+  </Link>}</h1>
 
   return (
-      <div className="blogs-list">
-      {/* כפתור לפתיחת הפופאפ */}
-     {isAdmin && <button onClick={openPopup} className="blogs-list-add-button">
-        הוספת בלוג
-      </button>}
-
-      {/* הפופאפ עצמו */}
-      {isPopupOpen && (
-        <PopUp close={closePopup} width="400px">
-          <form onSubmit={formSubmit} className="add-blog-form">
-            <input type="text" required name="title" placeholder="כותרת" />
-            <textarea required name="content" placeholder="תוכן" rows="5"></textarea>
-            <button type="submit" disabled={isLoading}>
-              {isLoading ? "שולח..." : "שלח"}
-            </button>
-            <button type="button" onClick={closePopup}>
-              ביטול
-            </button>
-          </form>
-        </PopUp>
-      )}
+    <div className="blogs-list">
       <div className="blogs-list-top">
-        {isAstroPage && <Search placeholder="חיפוש לפי שם חברה" />}
+        <Search placeholder="חיפוש לפי שם חברה" />
         
       </div>
-      
+      {isAdmin && <Link to="/dash/blogs/add" className="blogs-list-add-button">
+          הוספת בלוג
+        </Link>}
       <div className="blogs-container">
      
         {blogsObject.data?.map(blog => (
@@ -181,4 +135,4 @@ const ViewBlogs = ({ limit=0 }) => {
   )
 }
 
-export default ViewBlogs;
+export default ViewLovedBlogs;

@@ -1,4 +1,5 @@
 const User = require("../models/User")
+
 const getUserLovedBlogs = async (req, res) => {
     try {
         const userId = req.params.id; // מזהה המשתמש מהבקשה
@@ -43,4 +44,10 @@ const removeLovedBlog = async (req, res) => {
     } catch (error) {
         res.status(500).json({ message: 'Error removing loved blog', error });
     }
+};
+
+module.exports = {
+    getUserLovedBlogs,
+    addLovedBlog,
+    removeLovedBlog
 };

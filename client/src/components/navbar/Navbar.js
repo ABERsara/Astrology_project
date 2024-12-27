@@ -7,7 +7,7 @@ import { useSendLogoutMutation } from "../../features/auth/authApiSlice";
 import { MdLogout, MdDensityMedium, MdEmojiPeople, MdFace, MdOutlinePermIdentity, MdOutlineSearch } from "react-icons/md";
 import Search from "../search/Search";
 import "./navbar.css"
-import LoginPage from '../../features/auth/registerLogin/login-default';
+import LoginPage from '../../features/auth/registerLogin/login-page';
 import RegisterPage from '../../features/auth/registerLogin/RegisterUser';
 import useGetFilePath from "../../hooks/useGetFilePath";
 
@@ -38,6 +38,9 @@ const Navbar = () => {
   const logoutClick = () => {
     console.log("logout")
     logout()
+  }
+  const handleLovedBlogs=()=>{
+
   }
   const handleSelectOption = (option) => {
     setSelectedOption(option);
@@ -88,7 +91,7 @@ const Navbar = () => {
           : <><LoginPage />
             <RegisterPage /></>}
         <img alt="" src="/shopping-cart.png" className="shopping-cart-home" />
-        <img alt="" src="/heart.png" className="heart-home" />
+        <img alt="" src="/heart.png" className="heart-home"onClick={handleLovedBlogs} />
         {/* הצגת כפתור היציאה רק אם המשתמש לא נמצא בדף הבית */}
         {!isHomePage && (
           <button className="logout-button" onClick={logoutClick}>
