@@ -62,7 +62,7 @@
     []client-for user (view only, later download?)
     []client-admin (view,add,delete, update. )
 []part 8 posts to about page
-    []an un register user will be able to server
+    [v]an un register user will be able to server
     [v]veiw posts , edit add and delete by admin-design
     []love posts
     [v]only 3 posts!
@@ -81,3 +81,19 @@
     [v]font family
     [v]font-size
     []Update an upload picture view by navbar
+[]fix
+    []add blog button
+    []add blog design
+    []update blog design
+    []single blog
+    []x mark on appproval response, approval response button to center
+    []personal zone- change password to another place, manage users
+    []update user to not delete a part of his information
+    []change password design
+    []search on users
+    []remove search at all
+    []search by blogs
+    []add response design
+    []update user by admin- design
+    []user's image by side
+    []delete a response

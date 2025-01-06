@@ -5,7 +5,7 @@
     display: flex;
     flex-direction: column;
     font-family: "Varela Round", serif;
-        margin: 0;
+    margin: 0;
     padding: 0;
 }
 
@@ -86,7 +86,8 @@
     gap: 6px;
     border-radius: 56px
 }
-.more_to_read{
+
+.more_to_read {
     padding: 19px 0px 22px 2px;
     /* left:10vw; */
     width: 130px;
@@ -111,7 +112,7 @@
     height: 314px;
     /* left: 673px;
 top: 234px; */
-font-family: "Varela Round", serif;
+    font-family: "Varela Round", serif;
     font-style: normal;
     font-weight: 600;
     font-size: 3.8rem;
@@ -127,11 +128,11 @@ font-family: "Varela Round", serif;
 }
 
 .sentence1 {
-    color:var(--text);
+    color: var(--text);
 }
 
 .sentence2 {
-    color:var(--orange);
+    color: var(--orange);
     justify-content: center;
 }
 
@@ -154,21 +155,23 @@ font-family: "Varela Round", serif;
     top: 0;
     color: #fff;
     direction: rtl;
-    background-color:var(--main);
+    background-color: var(--main);
     z-index: 10;
 }
+
 .login-from-home {
-background-color:transparent;
-border: none;
-color: var(--text);
-cursor: pointer;
-font-family: "Varela Round", serif;
-font-size: 0.9rem;
+    background-color: transparent;
+    border: none;
+    color: var(--text);
+    cursor: pointer;
+    font-family: "Varela Round", serif;
+    font-size: 0.9rem;
 }
-.login-from-home:hover {
+
+/* .login-from-home:hover {
     color: rgb(25, 197, 213);
-    background-color:transparent;
-}
+    background-color: transparent;
+} */
 
 
 .home-about-section {
@@ -189,17 +192,17 @@ font-size: 0.9rem;
     /* background: radial-gradient(circle, #191923 0%, #1d1e3d 40%, #5b5d6e 100%); */
 }
 
-.home-about-section p{
-width: 785px;
-height: auto;
-font-family: "Varela Round", serif;
-font-style: normal;
-font-weight: 600;
-font-size: 1.2rem;
-line-height: 31px;
-text-align: right;
-justify-content: center;
-align-items: center;
+.home-about-section p {
+    width: 785px;
+    height: auto;
+    font-family: "Varela Round", serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 1.2rem;
+    line-height: 31px;
+    text-align: right;
+    justify-content: center;
+    align-items: center;
 
 
 
@@ -213,53 +216,60 @@ align-items: center;
 }
 
 .Aquarius {
-   
-    top:0px;
+
+    top: 0px;
     left: 23px;
-width: 111px;
-height: 69px;
-transform: rotate(-7.67deg);
+    width: 111px;
+    height: 69px;
+    transform: rotate(-7.67deg);
 }
 
-.Taurus{
-    left:600px;
+.Taurus {
+    left: 600px;
     bottom: 270px;
-width: 79px;
-height: 82px;
-transform: rotate(10.67deg);
+    width: 79px;
+    height: 82px;
+    transform: rotate(10.67deg);
 
 }
 
-.Gemini{
+.Gemini {
     left: 470px;
     bottom: 55px;
-width: 67.28px;
-height: 75.77px;
-transform: rotate(15.67deg);
+    width: 67.28px;
+    height: 75.77px;
+    transform: rotate(15.67deg);
 
 }
 
-.Cancer{
+.Cancer {
     right: 470px;
     bottom: 180px;
-  width: 84.31px;
-height: 74.42px;
-transform: rotate(20.29deg);
+    width: 84.31px;
+    height: 74.42px;
+    transform: rotate(20.29deg);
 
 }
-.Aries{
+
+.Aries {
     right: 479px;
     bottom: 45px;
-width: 84px;
-height: 75px;
+    width: 84px;
+    height: 75px;
 }
-.Aquarius:hover,.Taurus:hover,.Cancer:hover,.Gemini:hover,.Aries:hover{
+
+.Aquarius:hover,
+.Taurus:hover,
+.Cancer:hover,
+.Gemini:hover,
+.Aries:hover {
     transform: scale(1.1);
     cursor: pointer;
 }
+
 .contact-section {
     width: 98.5vw;
-    background-color:#1d1e3d;
+    background-color: #1d1e3d;
     padding: 0;
 }
-/* הוספת CSS למודאל */
+

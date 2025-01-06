@@ -99,6 +99,24 @@
     border-radius: 5px;
     cursor: pointer;
   }
+  .checkbox-group {
+    display: flex;
+    flex-direction: column; /* מסדר את האלמנטים בטור */
+    gap: 10px; /* מוסיף ריווח אנכי בין האלמנטים */
+    align-items: flex-start; /* מוודא יישור לימין */
+  }
+  
+  .checkbox-group label {
+    display: flex;
+    align-items: center;
+    gap: 5px; /* ריווח בין תיבת הסימון לטקסט */
+  }
+  
+  .checkbox-allowedUser, 
+  .checkbox-appearName {
+    margin: 0; /* ביטול רווחים חיצוניים */
+    padding: 0; /* ביטול רווחים פנימיים */
+  }
   
   .add-response-button button:hover {
     background-color: var(--text);
@@ -127,11 +145,19 @@
     width: 300px;
     justify-content: center;
     align-items: center;
+    display: flex;
+    
+    flex-direction: column; 
+    gap: 10px; 
+    align-items: flex-start;
+   
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   }
   
   .popup-content-response h2 {
     margin-top: 0;
+    align-items: center;
+
   }
   
   .popup-content-response textarea {
@@ -141,11 +167,16 @@
     border: 1px solid #ccc;
     border-radius: 5px;
     padding: 5px;
+    	font-family: "Varela Round", serif;
+
   }
   
   .popup-actions-response {
     display: flex;
     justify-content: space-between;
+    justify-content: center;
+    /* gap: 10px;  */
+    align-items: center;
   }
   
   .popup-actions-response button {
@@ -156,14 +187,11 @@
   }
   
   .popup-actions-response button:first-child {
-    background-color: var(--orange);
-    color: white;
-  }
-  
-  .popup-actions-response button:last-child {
     background-color: var(--lightBlue);
     color: white;
   }
+  
+  
   
   .response-container.left p {
     margin: 0; /* ביטול רווחים חיצוניים */
@@ -205,7 +233,25 @@
 .response-name {
     margin-top: 10px; /* רווח מעל השם */
     font-size: 14px; /* גודל טקסט קטן יותר */
-    color: #181616; /* צבע ייחודי לשם */
+    color: var(--main) ;/* צבע ייחודי לשם */
     font-weight: bold;
     display: flex;
+}
+.button-approval-response{
+  background-color:var(--text);
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: var(--main);
+  width: 15em;
+  height: 3em;
+  border: none;
+  cursor: pointer;
+  font-size: 10px;
+  font-family: "Varela Round", serif;
+font-weight: 400;
+font-style: normal;
+direction: rtl;
+text-align: right;
+box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+transition: all 0.3s ease;
 }

@@ -149,7 +149,7 @@ const EditProfile = () => {
                   height: "100px",
                   borderRadius: "50%",
                   objectFit: "cover",
-                  border: "2px solid #ddd",
+                  // border: "2px solid #ddd",
                 }}
               />
               <input

@@ -39,7 +39,7 @@ const Navbar = () => {
     console.log("logout")
     logout()
   }
-  const handleLovedBlogs=()=>{
+  const handleLovedBlogs = () => {
 
   }
   const handleSelectOption = (option) => {
@@ -91,7 +91,7 @@ const Navbar = () => {
           : <><LoginPage />
             <RegisterPage /></>}
         <img alt="" src="/shopping-cart.png" className="shopping-cart-home" />
-        <img alt="" src="/heart.png" className="heart-home"onClick={handleLovedBlogs} />
+        <img alt="" src="/heart.png" className="heart-home" onClick={handleLovedBlogs} />
         {/* הצגת כפתור היציאה רק אם המשתמש לא נמצא בדף הבית */}
         {!isHomePage && (
           <button className="logout-button" onClick={logoutClick}>
@@ -113,9 +113,8 @@ const Navbar = () => {
         <NavLink to="/dash/diagnosis" className={({ isActive }) => getNavLinkClass(isActive)}>אבחונים</NavLink>
         <NavLink to="/dash/reviews" className={({ isActive }) => getNavLinkClass(isActive)}>מה אומרים עלינו?</NavLink>
         <NavLink to="/dash/courses" className={({ isActive }) => getNavLinkClass(isActive)}>קורסים</NavLink>
-        {isAdmin && <NavLink to="/dash/manage/users" className={({ isActive }) => getNavLinkClass(isActive)}>משתמשים רשומים</NavLink>}
         <button onClick={() => scrollToSection("contact-section")}>יצירת קשר</button>
-        <div className="personal-zone">
+        {(isUser||isAdmin)&&<div className="personal-zone">
           <button
             onClick={() => setIsPersonalZoneOpen(!isPersonalZoneOpen)}
             className="dropdown-toggle"
@@ -141,9 +140,15 @@ const Navbar = () => {
               >
                 שנה סיסמה
               </NavLink>
+              {isAdmin && 
+              <NavLink 
+              to="/dash/manage/users" 
+              className={({ isActive }) => getNavLinkClass(isActive)}>משתמשים רשומים
+              </NavLink>}
+
             </div>
           )}
-        </div>
+        </div>}
       </div>
 
 
