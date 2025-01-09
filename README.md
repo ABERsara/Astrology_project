@@ -48,8 +48,28 @@ The interface was designed with a focus on accessibility and user engagement. Th
 - **Deployment**: Docker and Kubernetes for scalable containerized applications.  
 - **Version Control**: Git for collaborative development.  
 
-# Screenshot (Optional)  
-### Screenshot
+# Screenshots
+### Homepage
 Below is a screenshot of the homepage interface, showcasing the zodiac wheel and user-friendly design:
 
 ![Homepage Interface](assets/images/homepage.png)
+
+### Responses
+Below is a screenshot of the homepage interface, showcasing the zodiac wheel and user-friendly design:
+
+![responses Interface](assets/images/responses.png)
+
+### Posts
+Below is a screenshot of the homepage interface, showcasing the zodiac wheel and user-friendly design:
+
+![posts Interface](assets/images/posts.png)
+
+### Login/register
+Below is a screenshot of the homepage interface, showcasing the zodiac wheel and user-friendly design:
+![Login/register Interface](assets/images/register.png)
+
+### Edit Profile
+Below is a screenshot of the homepage interface, showcasing the zodiac wheel and user-friendly design:
+![Edit Profile Interface](assets/images/edit_profile.png)
+
+
