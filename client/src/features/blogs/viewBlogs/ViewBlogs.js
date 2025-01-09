@@ -106,10 +106,7 @@ const ViewBlogs = ({ limit=0 }) => {
 
   return (
       <div className="blogs-list">
-      {/* כפתור לפתיחת הפופאפ */}
-     {isAdmin && <button onClick={openPopup} className="blogs-list-add-button">
-        הוספת בלוג
-      </button>}
+     
 
       {/* הפופאפ עצמו */}
       {isPopupOpen && (
@@ -126,6 +123,14 @@ const ViewBlogs = ({ limit=0 }) => {
           </form>
         </PopUp>
       )}
+        {/* כפתור לפתיחת הפופאפ */}
+    {isAdmin && (
+      <div className="add-blog-container">
+        <button onClick={openPopup} className="blogs-list-add-button">
+          הוספת בלוג
+        </button>
+      </div>
+    )}
       <div className="blogs-list-top">
         {isAstroPage && <Search placeholder="חיפוש לפי שם חברה" />}
         

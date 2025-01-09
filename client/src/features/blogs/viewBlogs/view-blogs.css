@@ -44,7 +44,9 @@ box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
   justify-content: space-between;
   margin-top: 10px;
 }
-
+.blog-list{
+  background-color: #fff;
+}
 .blogs-list-button {
   padding: 8px 12px;
   border: none;
@@ -141,5 +143,10 @@ width: 12vw;
 height: 7vh;
 margin-right: 2vw;
 color: var(--text);
-
+cursor: pointer;
+}
+.add-blog-container {
+  background-color: var(--text); /* או כל צבע אחר שיתאים */
+  padding: 3px; /* הוסף ריפוד אם צריך */
+  border-radius: 8px; /* אם רוצים לעגל את הפינות */
 }
