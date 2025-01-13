@@ -82,10 +82,10 @@
     [v]font-size
     []Update an upload picture view by navbar
 []fix
-    []add blog button
-    []add blog design
-    []update blog design
-    []single blog
+    [v]add blog button
+    [v]add blog design
+    [v]update blog design
+    [v]single blog
     []x mark on appproval response, approval response button to center
     []personal zone- change password to another place, manage users
     []update user to not delete a part of his information
@@ -97,3 +97,4 @@
     []update user by admin- design
     []user's image by side
     []delete a response
+    []upload diagnosis

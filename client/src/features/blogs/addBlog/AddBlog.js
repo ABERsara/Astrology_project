@@ -1,40 +1,73 @@
-import "./add-blog.css"
-
+import "../editBlog/edit-blog.css"
 import { useAddBlogMutation } from "../blogsApiSlice"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
-const AddBlog = () => {
+
+const AddBlog = ({closePopup}) => {
   const [addBlog, { data, isError, error, isSuccess, isLoading }] = useAddBlogMutation()
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [blogData, setBlogData] = useState({
+    title: "",
+    content: "",
+  });
+
   const navigate = useNavigate()
   useEffect(() => {
     if (isSuccess) {
-      navigate("/dash/blogs")
+      closePopup(); // סגור את הפופאפ
+      navigate("/dash/blogs"); // נווט לעמוד הבלוגים
     }
+  }, [isSuccess, navigate]);
+  
 
-  }, [isSuccess])
-  const formSubmit = (e) => {
+  const formSubmit = async (e) => {
     e.preventDefault();
-    const data = new FormData(e.target);
-    const blogObject = Object.fromEntries(data.entries());
-
-    // בדיקה אם קובץ נבחר בשדה blogUrl
-    // if (!blogObject.file || typeof blogObject.file === 'object') {
-    //     blogObject.file = ''; // הגדר כמחרוזת ריקה אם לא נבחר קובץ
-    // }
-
-    console.log("Data to be sent:", blogObject); // הדפס את הנתונים כדי לוודא שהם נכונים
-    addBlog(blogObject);
-  }
+    try {
+      await addBlog({ ...blogData}).unwrap();
+    } catch (err) {
+      console.error("Failed to update the blog: ", err);
+    }
+  };
 
   return (
-    <div className="add-blog-container">
-      <form onSubmit={formSubmit} className="add-blog-form">
-        <input type="text" required name="title" placeholder="כותרת" />
-        <input type="text" required name="content" placeholder="תוכן" />
-        {/* <input type="file" name="file" /> */}
+    <div className="modal-update">
+      <div className="modal-content-update">
+        <img
+          className="xMark-edit-blog"
+          src="/xMark.png"
+          alt="x"
+          onClick={() => {
+            closePopup()
 
-        <button type="submit">שלח</button>
-      </form>
+            navigate("/dash/blogs")}}
+        />
+        <h1>הוספת בלוג</h1>
+        <form onSubmit={formSubmit} className="single-blog-form-update">
+          <label>כותרת</label>
+          <input
+            type="text"
+            name="title"
+            placeholder="הכנס כותרת"
+            value={blogData.title}
+            onChange={(e) =>
+              setBlogData({ ...blogData, title: e.target.value })
+            }
+          />
+          <label>תוכן</label>
+          <textarea
+            placeholder="כתוב את התוכן כאן..."
+            value={blogData.content}
+            onChange={(e) => {
+              setBlogData((prev) => ({
+                ...prev,
+                content: e.target.value,
+              }));
+            }}
+          ></textarea>
+          <p className="blog-content-length">{blogData.content ? blogData.content.length : ""}/2000 תווים</p>
+          <button className="button-form-edit-blog">הוסף</button>
+        </form>
+      </div>
     </div>
   )
 }

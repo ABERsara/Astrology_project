@@ -1,43 +1,50 @@
 @import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
 
-:root{
-  /* משתנים שנשתמש באתר */
---main:#1d1e3d;
---mainDark:#191923;
---mainLight: #5b5d6e;
---text:#FFFFFF;
---highlightColor:rgb(67, 97, 134);
---lightBlue:teal;
---logoBlue:#0A9BB5;
-/* --gradiant:radial-gradient(circle, #191923 0%, #1d1e3d 40%, #5b5d6e 100%); */
---orange: #E49928;
+:root {
+	/* משתנים שנשתמש באתר */
+	--main: #1d1e3d;
+	--mainDark: #191923;
+	--mainLight: #5b5d6e;
+	--text: #FFFFFF;
+	--highlightColor: rgb(67, 97, 134);
+	--lightBlue: teal;
+	--logoBlue: #0A9BB5;
+	/* --gradiant:radial-gradient(circle, #191923 0%, #1d1e3d 40%, #5b5d6e 100%); */
+	--orange: #E49928;
+	--orangeDark: #faa82e;
 }
 
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
 
-  
+
 html {
 	font-family: "Varela Round", serif;
-  font-weight: 400;
-  font-style: normal;
-  direction: rtl;
-  text-align: right;
+	font-weight: 400;
+	font-style: normal;
+	direction: rtl;
+	text-align: right;
 }
-body{
-	background: radial-gradient(circle, #191923 0%, #1d1e3d 40%, #5b5d6e 100%);;
-  color: var(--text);
-  margin-top: 5vw;
-  font-family: "Varela Round", serif;
+
+button {
+	font-family: "Varela Round", serif;
+}
+
+body {
+	background: radial-gradient(circle, #191923 0%, #1d1e3d 40%, #5b5d6e 100%);
+	;
+	color: var(--text);
+	margin-top: 5vw;
+	font-family: "Varela Round", serif;
 
 }
 
-a{
-  color: inherit;
-  text-decoration: none;
+a {
+	color: inherit;
+	text-decoration: none;
 }
 
 .popup {
@@ -46,35 +53,41 @@ a{
 	left: 0;
 	width: 100vw;
 	height: 100vh;
-	z-index: 1001; /* ערך גבוה יותר מהתפריט */
+	z-index: 1001;
+	/* ערך גבוה יותר מהתפריט */
 	background: rgba(67, 67, 67, 0.4);
-	display: flex; /* מרכז את התוכן */
+	display: flex;
+	/* מרכז את התוכן */
 	justify-content: center;
-	align-items: center; /* מבטיח שהפופאפ במרכז אנכית */
-	overflow: hidden; /* מבטל גלילה לא רצויה ברקע */
-  }
-  
-  .popup-wrapper {
+	align-items: center;
+	/* מבטיח שהפופאפ במרכז אנכית */
+	overflow: hidden;
+	/* מבטל גלילה לא רצויה ברקע */
+}
+
+.popup-wrapper {
 	position: relative;
-	max-width: 90%; /* הגבלה לרוחב */
-	max-height: 90%; /* הגבלה לגובה */
-	width: 500px; /* רוחב ברירת מחדל */
+	max-width: 90%;
+	/* הגבלה לרוחב */
+	max-height: 90%;
+	/* הגבלה לגובה */
+	width: 500px;
+	/* רוחב ברירת מחדל */
 	background: white;
 	border-radius: 10px;
 	padding: 20px;
-	
+
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
-  }
-  
-  .popup-wrapper .close-popup {
+}
+
+.popup-wrapper .close-popup {
 	position: absolute;
 	top: 10px;
 	right: 10px;
 	cursor: pointer;
 	z-index: 1002;
-  }
-  
-  .children-popup {
+}
+
+.children-popup {
 	padding: 20px;
-  }
-  
+}

@@ -146,7 +146,9 @@ color: var(--text);
 cursor: pointer;
 }
 .add-blog-container {
-  background-color: var(--text); /* או כל צבע אחר שיתאים */
-  padding: 3px; /* הוסף ריפוד אם צריך */
-  border-radius: 8px; /* אם רוצים לעגל את הפינות */
+  padding-top: 2vw;
+  background-color: var(--orange) !important; 
+  border-radius: 0% !important;
+  position: relative;
+  text-align: center;
 }

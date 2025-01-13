@@ -137,9 +137,11 @@ top: 234px; */
 }
 
 .info-homepage {
-    font-size: 1.15rem;
+    font-size: 1.1rem;
     line-height: 100%;
-
+    line-height: 123%;
+font-weight: 400;
+width:35vw;
 }
 
 .navbar-top-homepage {

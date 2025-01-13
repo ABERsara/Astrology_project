@@ -146,8 +146,8 @@
 .circle-text-container {
   position: absolute;
   pointer-events: none;
-  top: 1vw; /* למקם בצד שמאל עליון */
- left:0;
+  top: -0.5cm;
+   left:-0.5cm;
   width: 300px; /* התאמת רוחב המעגל */
   z-index: 20;
 }

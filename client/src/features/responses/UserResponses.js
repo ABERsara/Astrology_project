@@ -9,25 +9,25 @@ const UserResponses = () => {
   const { data: responsesObject, isError, error, isLoading } = useGetAllResponsesQuery();
   const [addResponse] = useAddResponseMutation();
   const [updateResponse] = useUpdateResponseMutation();
-  const [deleteResponse]=useDeleteResponseMutation();
+  const [deleteResponse] = useDeleteResponseMutation();
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [isApprovalPopupOpen, setIsApprovalPopupOpen] = useState(false);
   const [selectedResponse, setSelectedResponse] = useState(null); // כדי לשמור איזו תגובה נבחרה
-  const [isDeletedConfirm,setIsDeletedConfirm]=useState(false);
+  const [isDeletedConfirm, setIsDeletedConfirm] = useState(false);
   const [selectedResponseDelete, setSelectedResponseDelete] = useState(null); // כדי לשמור איזו תגובה נבחרה
 
-const handelDeleteResponse=(responseId)=>{
-setSelectedResponseDelete(responseId);
-setIsDeletedConfirm(true);
-}
-const handleConfirmDelete=async (responseId)=>{
-  try{
-    await deleteResponse(responseId)
-    setIsDeletedConfirm(false)
-  }catch (error) {
-    console.error("Error deleting response:", error);
+  const handelDeleteResponse = (responseId) => {
+    setSelectedResponseDelete(responseId);
+    setIsDeletedConfirm(true);
   }
-}
+  const handleConfirmDelete = async (responseId) => {
+    try {
+      await deleteResponse(responseId)
+      setIsDeletedConfirm(false)
+    } catch (error) {
+      console.error("Error deleting response:", error);
+    }
+  }
   const handleUpdateResponse = (response) => {
     setSelectedResponse(response); // שומרים איזו תגובה נבחרה
     setIsApprovalPopupOpen(true); // פותחים את הפופאפ
@@ -78,11 +78,11 @@ const handleConfirmDelete=async (responseId)=>{
       {isLoading && <p>Loading responses...</p>}
       {isError && <p>Error loading responses!</p>}
       {responsesObject?.data?.length === 0 && <p>אין עדיין תגובות.</p>}
-      
+
       {responsesObject?.data
-        ?.filter((response) =>  isAdmin ||  ( response.allowedAdmin&&response.allowedUser))
+        ?.filter((response) => isAdmin || (response.allowedAdmin && response.allowedUser))
         .map((response) => (
-          
+
           <div key={response._id} className={`response-container ${response.position}`}>
             <div
               className={`response-content ${response.position}`}
@@ -101,7 +101,7 @@ const handleConfirmDelete=async (responseId)=>{
               {response.appearName && response.registerUser?.firstname ? (
                 <p className="response-name">
                   {response.registerUser.firstname}
-                  {response.registerUser.lastname|| ""}
+                  {response.registerUser.lastname || ""}
                 </p>
 
               ) : null}
@@ -109,16 +109,16 @@ const handleConfirmDelete=async (responseId)=>{
                 <div className="permission-response-button">
                   {response.allowedAdmin ? (
                     // אם התגובה כבר אושרה, הצג כפתור לשנות את האישור
-                    <button 
-                    className="button-approval-response"
-                    onClick={() => handleUpdateResponse(response)}>
+                    <button
+                      className="button-approval-response"
+                      onClick={() => handleUpdateResponse(response)}>
                       התגובה כבר אושרה, רוצה לשנות?
                     </button>
                   ) : (
                     // אם התגובה לא אושרה, הצג כפתור לאישור
-                    <button 
-                    className="button-approval-response"
-                    onClick={() => handleUpdateResponse(response)}>
+                    <button
+                      className="button-approval-response"
+                      onClick={() => handleUpdateResponse(response)}>
                       אשר תגובה לפרסום
                     </button>
                   )}
@@ -137,18 +137,18 @@ const handleConfirmDelete=async (responseId)=>{
       {isPopupOpen && (
         <div className="popup-overlay-response">
           <div className="popup-content-response">
-          <  img 
-          src="/xMark.png"
-          alt="x"
-          style={{
-            cursor: "pointer",
-            width: "3em",
-            height: "3em",
-            borderRadius: "50%",
-            objectFit: "cover",
-            // border: "2px solid #ddd",
-          }}
-          onClick={() => setIsPopupOpen(false)}/>
+            <  img
+              src="/xMark.png"
+              alt="x"
+              style={{
+                cursor: "pointer",
+                width: "3em",
+                height: "3em",
+                borderRadius: "50%",
+                objectFit: "cover",
+                // border: "2px solid #ddd",
+              }}
+              onClick={() => setIsPopupOpen(false)} />
             <h2>הוספת תגובה</h2>
             <textarea
               placeholder="כתוב את התגובה שלך כאן..."
@@ -164,7 +164,7 @@ const handleConfirmDelete=async (responseId)=>{
             <div className="checkbox-group">
               <label>
                 <input
-                className="checkbox-allowedUser"
+                  className="checkbox-allowedUser"
                   type="checkbox"
                   checked={responseData.allowedUser}
                   onChange={(e) =>
@@ -188,7 +188,7 @@ const handleConfirmDelete=async (responseId)=>{
 
             <div className="popup-actions-response">
               <button onClick={handleAddResponse}>שלח</button>
-              
+
             </div>
           </div>
         </div>
@@ -196,14 +196,14 @@ const handleConfirmDelete=async (responseId)=>{
       {isApprovalPopupOpen && selectedResponse && (
         <div className="popup-overlay-response">
           <div className="popup-content-response">
-          <img src="/xMark.png" alt="x" className="img-back" onClick={handleCancelApproval}/>
+            <img src="/xMark.png" alt="x" className="img-back" onClick={handleCancelApproval} />
             <h2>האם לאשר את התגובה לפרסום?</h2>
             <p>{selectedResponse.content}</p>
             <div className="popup-actions-response">
               <button onClick={() => handleApproveResponse(selectedResponse)}>
                 {selectedResponse.allowedAdmin ? "התגובה כבר אושרה" : "אשר תגובה לפרסום"}
               </button>
-              
+
             </div>
           </div>
         </div>

@@ -9,15 +9,16 @@ import {
   MdAddToDrive, MdFileDownload, MdOutlineLibraryAdd
 } from "react-icons/md"
 import useAuth from "../../../hooks/useAuth";
-const ViewBlogs = ({ limit=0 }) => {
+import AddBlog from "../addBlog/AddBlog";
+const ViewBlogs = ({ limit = 0 }) => {
   const { data: blogsObject, isLoading, isError, error } = useGetAllBlogsQuery({ limit });
   const navigate = useNavigate();
   const [isDeleteClicked, setIsDeleteClicked] = useState(false);
   const [deleteBlog, { isSuccess: isDeleteSuccess }] = useDeleteBlogMutation();
   const [isPopupOpen, setIsPopupOpen] = useState(false);
-  const [addBlog, { isSuccess, isError:isAddedError, isLoading:isAddedLoading }] = useAddBlogMutation();
-  const { isAdmin,isUser } = useAuth()
-  
+  const [addBlog, { isSuccess, isError: isAddedError, isLoading: isAddedLoading }] = useAddBlogMutation();
+  const { isAdmin, isUser } = useAuth()
+
   // פונקציה לפתיחה וסגירה של הפופאפ
   const openPopup = () => setIsPopupOpen(true);
   const closePopup = () => setIsPopupOpen(false);
@@ -45,7 +46,7 @@ const ViewBlogs = ({ limit=0 }) => {
 
   //לחצן למעבר מהיר לבלוג הרצוי
   const handleBlogClick = (blogId) => {
-    (isUser||isAdmin)&&navigate(`/dash/blogs/${blogId}`)
+    (isUser || isAdmin) && navigate(`/dash/blogs/${blogId}`)
   }
   const deleteClick = (event, blog) => {
     event.stopPropagation(); // מונע את הפעלת ה-`onClick` על הבלוג
@@ -87,6 +88,9 @@ const ViewBlogs = ({ limit=0 }) => {
 
   // פונקציה שחותכת את תוכן הפוסט לפי המספר שנקבע
   const getShortContent = (content) => {
+    if (!content) {
+      return ""; // ערך ברירת מחדל
+    }
     if (content.length > MAX_CONTENT_LENGTH) {
       return content.slice(0, MAX_CONTENT_LENGTH) + "…";
     }
@@ -100,44 +104,40 @@ const ViewBlogs = ({ limit=0 }) => {
   }, [isDeleteSuccess, navigate]);
 
   if (isLoading) return <h1>Loading ...</h1>
-  if (isError) return <h1>{JSON.stringify(error)} {isAdmin && <button onClick={openPopup} className="blogs-list-add-button">
-  הוספת בלוג
-</button>}</h1>
+  if (isError) return <h1>{JSON.stringify(error)}  (
+    <div className="add-blog-container">
+      <button onClick={openPopup} className="blogs-list-add-button">
+        הוספת פוסט
+      </button>
+    </div>
+    )</h1>
 
   return (
-      <div className="blogs-list">
-     
+    <div className="blogs-list">
 
-      {/* הפופאפ עצמו */}
+      {/* פופאפ להוספת פוסט */}
       {isPopupOpen && (
         <PopUp close={closePopup} width="400px">
-          <form onSubmit={formSubmit} className="add-blog-form">
-            <input type="text" required name="title" placeholder="כותרת" />
-            <textarea required name="content" placeholder="תוכן" rows="5"></textarea>
-            <button type="submit" disabled={isLoading}>
-              {isLoading ? "שולח..." : "שלח"}
-            </button>
-            <button type="button" onClick={closePopup}>
-              ביטול
-            </button>
-          </form>
+          <AddBlog closePopup={closePopup} />
         </PopUp>
       )}
-        {/* כפתור לפתיחת הפופאפ */}
-    {isAdmin && (
-      <div className="add-blog-container">
-        <button onClick={openPopup} className="blogs-list-add-button">
-          הוספת בלוג
-        </button>
-      </div>
-    )}
+
+
+
+      {isAdmin && (
+        <div className="add-blog-container">
+          <button onClick={openPopup} className="blogs-list-add-button">
+            הוספת פוסט
+          </button>
+        </div>
+      )}
       <div className="blogs-list-top">
-        {isAstroPage && <Search placeholder="חיפוש לפי שם חברה" />}
-        
+        {isAstroPage && <Search placeholder="הכנס מילים או מילה שברצונך לחפש" />}
+
       </div>
-      
+
       <div className="blogs-container">
-     
+
         {blogsObject.data?.map(blog => (
           <div
             key={blog._id}
@@ -168,11 +168,11 @@ const ViewBlogs = ({ limit=0 }) => {
 
             )} */}
             <div className="blog-actions">
-             {isUser&&<Link to={`/dash/blogs/${blog._id}`} className="blogs-list-button blogs-list-view">
-               להמשיך לקרוא
+              {isUser && <Link to={`/dash/blogs/${blog._id}`} className="blogs-list-button blogs-list-view">
+                להמשיך לקרוא
               </Link>}
               {isAdmin && <EditBlogButton blog={blog} />}{/* הכפתור להצגת עמוד העדכון */}
-              {isAdmin  && <button
+              {isAdmin && <button
                 onClick={(event) => deleteClick(event, blog)}
                 className="blogs-list-button blogs-list-delete"
               >

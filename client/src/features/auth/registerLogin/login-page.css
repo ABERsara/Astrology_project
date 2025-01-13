@@ -1,22 +1,32 @@
 /* שולטים בגודל המודל */
 .custom-swal-modal {
-    width: 100%; /* תופס את כל רוחב המסך */
-    max-width: 350px; /* מגביל את המקסימום לרוחב של 500px */
-    height: auto; /* גובה אוטומטי לפי התוכן */
-    padding: 0; /* בלי ריווח פנימי */
+    width: 100%;
+    /* תופס את כל רוחב המסך */
+    max-width: 350px;
+    /* מגביל את המקסימום לרוחב של 500px */
+    height: auto;
+    /* גובה אוטומטי לפי התוכן */
+    padding: 0;
+    /* בלי ריווח פנימי */
     box-sizing: border-box;
 }
 
 .swal2-popup {
-    padding: 0 !important; /* משבית padding פנימי של SweetAlert */
+    padding: 0 !important;
+    /* משבית padding פנימי של SweetAlert */
 }
 
 .login-page-form {
-    width: 100%; /* כל רוחב המודל */
-    height: auto; /* אוטומטי לפי התוכן */
-    max-height: 90vh; /* מגביל את הגובה ל-90% מגובה החלון */
-    padding: 15px; /* פחות ריווח פנימי */
-    box-sizing: border-box; /* מוודא שרוחב כולל padding */
+    width: 100%;
+    /* כל רוחב המודל */
+    height: auto;
+    /* אוטומטי לפי התוכן */
+    max-height: 90vh;
+    /* מגביל את הגובה ל-90% מגובה החלון */
+    padding: 15px;
+    /* פחות ריווח פנימי */
+    box-sizing: border-box;
+    /* מוודא שרוחב כולל padding */
 }
 
 .login-page {
@@ -28,8 +38,10 @@
     align-items: center;
     height: 100%;
     color: var(--orange);
-    position: relative; /* מאפשר למקם את ה-X בקצה השמאלי */
-    font-family: "Varela Round", serif;}
+    position: relative;
+    /* מאפשר למקם את ה-X בקצה השמאלי */
+    font-family: "Varela Round", serif;
+}
 
 .login-page-form {
     background-color: var(--text);
@@ -41,12 +53,13 @@
     /* height: 550px; */
     width: 250px;
     border-radius: 10px;
-    position: relative; 
+    position: relative;
 }
 
 .login-page-form h1 {
     color: var(--orange);
-    text-align: center; /* ממרכז את הכותרת */
+    text-align: center;
+    /* ממרכז את הכותרת */
     letter-spacing: 0.5px;
 }
 
@@ -56,12 +69,16 @@
     width: 100%;
     /* text-align: right; */
 }
+
 .login-page-form label {
     margin-bottom: 5px;
     letter-spacing: 0.5px;
-    text-align: right; /* יישור הטקסט לימין */
-    display: block; /* מוודא שהטקסט תופס את כל רוחב התיבה */
-    direction: rtl; /* כיוון ימין לשמאל עבור עברית */
+    text-align: right;
+    /* יישור הטקסט לימין */
+    display: block;
+    /* מוודא שהטקסט תופס את כל רוחב התיבה */
+    direction: rtl;
+    /* כיוון ימין לשמאל עבור עברית */
     /* margin-bottom: 5px; */
     letter-spacing: 0.5px;
 }
@@ -71,21 +88,26 @@
 .login-page-form input[type="email"],
 .login-page-form input[type="password"],
 .login-page-form input[type="phone"],
-.login-page-form input[type="file"]{
+.login-page-form input[type="file"] {
     width: 100%;
     padding: 5px;
-    border: solid 2px var(--orange);
+    border: solid 1.5px var(--orange);
     border-radius: 5px;
     background-color: var(--text);
     color: var(--orange);
 }
+
 .checkbox {
     display: flex;
-    justify-content: flex-end; /* מיישר את הכפתור והטקסט לימין */
+    justify-content: flex-end;
+    /* מיישר את הכפתור והטקסט לימין */
     align-items: flex-start;
-    width: 100%; /* מוודא שהתיבה תופסת את כל רוחב הקונטיינר */
-    text-align: right; /* מוסיף יישור לימין לטקסט */
-    gap: 10px; /* יוצר מרווח בין תיבת הסימון לטקסט */
+    width: 100%;
+    /* מוודא שהתיבה תופסת את כל רוחב הקונטיינר */
+    text-align: right;
+    /* מוסיף יישור לימין לטקסט */
+    gap: 10px;
+    /* יוצר מרווח בין תיבת הסימון לטקסט */
     letter-spacing: 0.5px;
 }
 
@@ -109,12 +131,14 @@
     border: none;
     cursor: pointer;
     letter-spacing: 0.5px;
-    font-family: "Varela Round", serif;    margin: 0;
+    font-family: "Varela Round", serif;
+    margin: 0;
 }
-.login-page-form button:hover{
+
+.login-page-form button:hover {
     background-color: var(--text);
-color:var(--orange);
-border: 1px solid var(--orange);
+    color: var(--orange);
+    border: 1px solid var(--orange);
 }
 
 .img-back {
@@ -123,26 +147,28 @@ border: 1px solid var(--orange);
     border-radius: 10px;
     position: absolute;
     top: 10px;
-    right: 0px; 
+    right: 0px;
     cursor: pointer;
 }
 
 .sign-with-google {
-    width: 100%; 
-    border-radius: 30px; 
+    width: 100%;
+    border-radius: 30px;
     text-align: center;
     cursor: pointer;
     font-family: "Varela Round", serif;
-        position: relative; /* שנה ל-relative */
+    position: relative;
     padding: 0;
 }
 
 
 .login-h1 {
-    text-align: center; /* יישור לאמצע */
+    text-align: center;
+    /* יישור לאמצע */
     font-size: 2rem;
     padding: 10px;
 }
+
 /* .modal-overlay-homepage {
     position: fixed;
     top: 0;
@@ -161,19 +187,24 @@ border: 1px solid var(--orange);
     padding: 10px;
     border-radius: 10px;
     width: 350px;
-   
+
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
-  /* מודל מותאם אישית לרישום מוצלח */
+/* מודל מותאם אישית לרישום מוצלח */
 .custom-success-swal {
-    background-color: var(--text); /* צבע הרקע לבן */
-    color: var(--orange); /* צבע הכיתוב כתום */
-    width: 250px; /* רוחב המודל */
-    padding: 20px; /* ריווח פנימי */
+    background-color: var(--text);
+    /* צבע הרקע לבן */
+    color: var(--orange);
+    /* צבע הכיתוב כתום */
+    width: 250px;
+    /* רוחב המודל */
+    padding: 20px;
+    /* ריווח פנימי */
     text-align: center;
     border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* צל למודל */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    /* צל למודל */
 }
 
 /* אייקון ה-V */
@@ -181,7 +212,8 @@ border: 1px solid var(--orange);
 
 /* טקסט */
 .custom-success-swal .custom-success-text {
-    color: var(--orange); /* צבע הטקסט כתום */
+    color: var(--orange);
+    /* צבע הטקסט כתום */
     font-size: 0.7rem;
     margin-top: 10px;
 }
