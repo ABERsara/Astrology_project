@@ -8,14 +8,13 @@
   .response-container {
     padding: 20px;
     position: relative;
-    width: 600px; /* גודל התמונה */
-    height: 350px; /* גובה התמונה */
-    /* margin: 0 auto; */
+    width: 600px; 
+    height: 350px;
   }
   
   .response-content {
     
-    position: absolute; /* מקבע את הטקסט בתוך התמונה */
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
@@ -141,7 +140,7 @@
   
   .popup-content-response {
 
-    background-color: white;
+    /* background-color: white; */
     padding: 20px;
     border-radius: 10px;
     width: 300px;
@@ -153,7 +152,7 @@
     gap: 10px; 
     align-items: flex-start;
    
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); */
   }
   
   .popup-content-response h2 {
@@ -232,17 +231,24 @@
 }
 
 .xMark-add-response,.xMark-change-response{
-  margin: 0 !important;
+   margin: 0 !important;
   padding: 0 !important;
   position: relative;
   right: 0;
   top:0;
   cursor: pointer;
-  width: 3em;
+  width: 5em;
   height: 3em;
   border-radius: 50%;
-  object-fit: cover;
-  background-color: red;
+  object-fit: cover; 
+  /* background-color: red; 
+  width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    position: absolute;
+    top: 10px;
+    right: 0px;
+    cursor: pointer; */
 }
 
 .response-name {

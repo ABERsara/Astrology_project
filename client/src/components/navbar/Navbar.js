@@ -1,11 +1,9 @@
-import Swal from 'sweetalert2';
 import { useNavigate, useLocation, NavLink } from "react-router-dom";
 import { useState, useEffect } from "react";
 import '../../features/auth/registerLogin/login-page.css';
 import useAuth from "../../hooks/useAuth";
 import { useSendLogoutMutation } from "../../features/auth/authApiSlice";
 import { MdLogout, MdDensityMedium, MdEmojiPeople, MdFace, MdOutlinePermIdentity, MdOutlineSearch } from "react-icons/md";
-import Search from "../search/Search";
 import "./navbar.css"
 import LoginPage from '../../features/auth/registerLogin/login-page';
 import RegisterPage from '../../features/auth/registerLogin/RegisterUser';
@@ -23,16 +21,11 @@ const Navbar = () => {
   const [currentImage, setCurrentImage] = useState(image ? `http://localhost:2024/public/uploads${image}` : "/noavatar.png")
 
   useEffect(() => {
-    // ריענון הנתונים מהשרת
     setCurrentFirstname(firstname);
     setCurrentLastname(lastname);
     setCurrentImage(image);
-  }, [firstname, lastname, image]); // הפעלת ה-Effect כשהערכים משתנים
+  }, [firstname, lastname, image]);
 
-
-
-  const [rememberMe, setRememberMe] = useState(false);
-  const [error, setError] = useState(null);
   const [isPersonalZoneOpen, setIsPersonalZoneOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState("האזור האישי");
   const logoutClick = () => {
@@ -44,25 +37,16 @@ const Navbar = () => {
   }
   const handleSelectOption = (option) => {
     setSelectedOption(option);
-    setIsPersonalZoneOpen(false); // סגירת התפריט לאחר בחירת אפשרות
+    setIsPersonalZoneOpen(false);
   };
+
   useEffect(() => {
     if (isLogoutSuccess) {
       navigate("/")
     }
 
   }, [isLogoutSuccess])
-  // useEffect(() => {
-  //   if (firstname) {
-  //     // אם המשתמש מחובר, מציגים הודעה שהוא מחובר כבר
-  //     Swal.fire({
-  //       icon: 'info',
-  //       title: 'הינך כבר מחובר',
-  //       text: 'אתה מחובר כ ' + firstname,
-  //       confirmButtonText: 'אוקיי',
-  //     });
-  //   }
-  // }, [firstname]);
+
   const scrollToSection = (sectionId) => {
     const section = document.getElementById(sectionId);
     if (section) {
@@ -99,56 +83,57 @@ const Navbar = () => {
             יציאה
           </button>
         )}
-        {!isHomePage && (<Search placeholder="...Search" />)}
-        <div className="nav-icons">
-          {/* <MdDensityMedium /> */}
-        </div>
 
       </div>
       <div className="navbar-under-homepage">
         <img className="logo-homepage" src="/logor.png" />
         <NavLink to="/dash/about" className={({ isActive }) => getNavLinkClass(isActive)}>אודות</NavLink>
         <NavLink to="/dash/astro" className={({ isActive }) => getNavLinkClass(isActive)}>אסטרולוגיה</NavLink>
-        {/* <NavLink to="/dash/blogs" className={({ isActive }) => getNavLinkClass(isActive)}>בלוג</NavLink> */}
         <NavLink to="/dash/diagnosis" className={({ isActive }) => getNavLinkClass(isActive)}>אבחונים</NavLink>
         <NavLink to="/dash/reviews" className={({ isActive }) => getNavLinkClass(isActive)}>מה אומרים עלינו?</NavLink>
         <NavLink to="/dash/courses" className={({ isActive }) => getNavLinkClass(isActive)}>קורסים</NavLink>
         <button onClick={() => scrollToSection("contact-section")}>יצירת קשר</button>
-        {(isUser||isAdmin)&&<div className="personal-zone">
-          <button
-            onClick={() => setIsPersonalZoneOpen(!isPersonalZoneOpen)}
-            className="dropdown-toggle"
+        {(isUser || isAdmin) && (
+  <div className="personal-zone">
+    <button
+      onClick={() => setIsPersonalZoneOpen(!isPersonalZoneOpen)}
+      className="dropdown-toggle"
+    >
+      {selectedOption} ▼
+    </button>
+    {isPersonalZoneOpen && (
+      <div
+        className="dropdown-menu"
+        onMouseLeave={() => setIsPersonalZoneOpen(false)}
+      >
+        <NavLink
+          to="/dash/user"
+          className="dropdown-item"
+          onClick={() => handleSelectOption("אזור אישי")}
+        >
+          אזור אישי
+        </NavLink>
+        <NavLink
+          to="/dash/user/changePassword"
+          className="dropdown-item"
+          onClick={() => handleSelectOption("שנה סיסמה")}
+        >
+          שנה סיסמה
+        </NavLink>
+        {isAdmin && (
+          <NavLink
+            to="/dash/manage/users"
+            className="dropdown-item"
+            onClick={() => handleSelectOption("משתמשים רשומים")}
           >
-            {selectedOption} ▼
-          </button>
-          {isPersonalZoneOpen && (
-            <div
-              className="dropdown-menu"
-              onMouseLeave={() => setIsPersonalZoneOpen(false)}
-            >
-              <NavLink
-                to="/dash/user"
-                className="dropdown-item"
-                onClick={() => handleSelectOption("אזור אישי")}
-              >
-                אזור אישי
-              </NavLink>
-              <NavLink
-                to="/dash/user/changePassword"
-                className="dropdown-item"
-                onClick={() => handleSelectOption("שנה סיסמה")}
-              >
-                שנה סיסמה
-              </NavLink>
-              {isAdmin && 
-              <NavLink 
-              to="/dash/manage/users" 
-              className={({ isActive }) => getNavLinkClass(isActive)}>משתמשים רשומים
-              </NavLink>}
+            משתמשים רשומים
+          </NavLink>
+        )}
+      </div>
+    )}
+  </div>
+)}
 
-            </div>
-          )}
-        </div>}
       </div>
 
 

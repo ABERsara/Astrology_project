@@ -3,6 +3,7 @@ import { useAddResponseMutation, useDeleteResponseMutation, useGetAllResponsesQu
 import { useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import "./user-responses.css";
+import PopUp from "../PopUp";
 
 const UserResponses = () => {
   const { id, isAdmin, isUser } = useAuth();
@@ -107,7 +108,7 @@ const UserResponses = () => {
               ) : null}
               {isAdmin && (
                 <div className="permission-response-button">
-                 
+
                   {response.allowedAdmin ? (
                     // אם התגובה כבר אושרה, הצג כפתור לשנות את האישור
                     <button
@@ -136,10 +137,10 @@ const UserResponses = () => {
 
 
       {isPopupOpen && (
-        <div className="popup-overlay-response">
+          <PopUp width={'350px'} close={handleAddResponse}>
           <div className="popup-content-response">
             <  img
-              className="xMark-add-response"
+              className="img-back"
               src="/xMark.png"
               alt="x"
 
@@ -186,12 +187,19 @@ const UserResponses = () => {
 
             </div>
           </div>
-        </div>
+        </PopUp>
       )}
-      {isApprovalPopupOpen && selectedResponse && (
-        <div className="popup-overlay-response">
-          <div className="popup-content-response">
-            <img src="/xMark.png" alt="x" className="xMark-change-response" onClick={handleCancelApproval} />
+      {isApprovalPopupOpen && selectedResponse &&(
+
+          <PopUp width={'350px'} close={handleCancelApproval}>
+          <div 
+          className="popup-content-response"
+          >
+            <img
+              src="/xMark.png"
+              alt="x"
+              className="img-back"
+              onClick={handleCancelApproval} />
             <h2>האם לאשר את התגובה לפרסום?</h2>
             <p>{selectedResponse.content}</p>
             <div className="popup-actions-response">
@@ -200,8 +208,9 @@ const UserResponses = () => {
               </button>
 
             </div>
+
           </div>
-        </div>
+          </PopUp>
       )}
 
     </div>

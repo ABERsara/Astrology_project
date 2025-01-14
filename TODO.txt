@@ -86,14 +86,15 @@
     [v]add blog design
     [v]update blog design
     [v]single blog
-    []x mark on appproval response, approval response button to center
+    [v]x mark on appproval response, approval response button to center
     []personal zone- change password to another place, manage users
     []update user to not delete a part of his information
     []change password design
     []search on users
-    []remove search at all
+    []search on posts
+    [v]remove search at all
     []search by blogs
-    []add response design
+    [v]add response design
     []update user by admin- design
     []user's image by side
     []delete a response

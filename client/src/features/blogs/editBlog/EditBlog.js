@@ -159,7 +159,8 @@ const EditBlog = () => {
       <div className="modal-update">
         <div className="modal-content-update">
           <img
-            className="xMark-edit-blog"
+            // className="xMark-edit-blog"
+            className="img-back"
             src="/xMark.png"
             alt="x"
             onClick={() => navigate("/dash/blogs")}

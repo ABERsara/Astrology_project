@@ -159,8 +159,8 @@
     font-style: normal;
     font-weight: 600;
     font-size: 15px;
+    border-bottom: 1px solid #00008b;
     z-index: 1;
-    border-bottom: 3px solid #00008b;
 }
 
 .navbar-under-homepage button {
@@ -241,38 +241,43 @@
     position: relative;
 }
 
-.dropdown-toggle {
+.personal-zone {
+    position: relative;
+    display: inline-flex;
+        /* margin-left: 10px; */
+    margin-right: 10px;
+  }
+  
+  .dropdown-toggle {
     background: none;
     border: none;
     cursor: pointer;
     font-size: 16px;
-    margin-right: 40vw;
-    color: #e3a74c;
-    /* צבע טקסט התפריט */
-}
-
-.dropdown-menu {
+    color: var(--lightBlue);
+    text-align: left;
+  }
+  
+  .dropdown-menu {
     position: absolute;
     top: 100%;
-    right: 40vw;
+    right: 0;
     background-color: white;
-    border: 1px solid #ccc;
     border-radius: 5px;
     min-width: 150px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     z-index: 1;
-}
-
-.dropdown-item {
+  }
+  
+  .dropdown-item {
     display: block;
     padding: 10px;
     text-decoration: none;
-    color: black;
     font-size: 14px;
-}
-
-.dropdown-item:hover {
-    background-color: #f1f1f1;
-    color: var(--lightBlue);
-    /* צבע ריחוף */
-}
+    color:var(--lightBlue);
+  }
+  
+  .dropdown-item:hover {
+    background-color: #f0f0f0;
+    border-radius: 5px;
+  }
+  

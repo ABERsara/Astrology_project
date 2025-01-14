@@ -1,24 +1,18 @@
 /* שולטים בגודל המודל */
 .custom-swal-modal {
     width: 100%;
-    /* תופס את כל רוחב המסך */
     max-width: 350px;
-    /* מגביל את המקסימום לרוחב של 500px */
     height: auto;
-    /* גובה אוטומטי לפי התוכן */
     padding: 0;
-    /* בלי ריווח פנימי */
     box-sizing: border-box;
 }
 
 .swal2-popup {
     padding: 0 !important;
-    /* משבית padding פנימי של SweetAlert */
 }
 
 .login-page-form {
     width: 100%;
-    /* כל רוחב המודל */
     height: auto;
     /* אוטומטי לפי התוכן */
     max-height: 90vh;
