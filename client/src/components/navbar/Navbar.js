@@ -74,8 +74,9 @@ const Navbar = () => {
             היי {currentFirstname}{ } {currentLastname}! </div>
           : <><LoginPage />
             <RegisterPage /></>}
-        <img alt="" src="/shopping-cart.png" className="shopping-cart-home" />
+        {isAdmin ? <img alt="" src="/notification-bell.png" className="bell" /> : <img alt="" src="/shopping-cart.png" className="shopping-cart-home" />}
         <img alt="" src="/heart.png" className="heart-home" onClick={handleLovedBlogs} />
+
         {/* הצגת כפתור היציאה רק אם המשתמש לא נמצא בדף הבית */}
         {!isHomePage && (
           <button className="logout-button" onClick={logoutClick}>
@@ -94,45 +95,45 @@ const Navbar = () => {
         <NavLink to="/dash/courses" className={({ isActive }) => getNavLinkClass(isActive)}>קורסים</NavLink>
         <button onClick={() => scrollToSection("contact-section")}>יצירת קשר</button>
         {(isUser || isAdmin) && (
-  <div className="personal-zone">
-    <button
-      onClick={() => setIsPersonalZoneOpen(!isPersonalZoneOpen)}
-      className="dropdown-toggle"
-    >
-      {selectedOption} ▼
-    </button>
-    {isPersonalZoneOpen && (
-      <div
-        className="dropdown-menu"
-        onMouseLeave={() => setIsPersonalZoneOpen(false)}
-      >
-        <NavLink
-          to="/dash/user"
-          className="dropdown-item"
-          onClick={() => handleSelectOption("אזור אישי")}
-        >
-          אזור אישי
-        </NavLink>
-        <NavLink
-          to="/dash/user/changePassword"
-          className="dropdown-item"
-          onClick={() => handleSelectOption("שנה סיסמה")}
-        >
-          שנה סיסמה
-        </NavLink>
-        {isAdmin && (
-          <NavLink
-            to="/dash/manage/users"
-            className="dropdown-item"
-            onClick={() => handleSelectOption("משתמשים רשומים")}
-          >
-            משתמשים רשומים
-          </NavLink>
+          <div className="personal-zone">
+            <button
+              onClick={() => setIsPersonalZoneOpen(!isPersonalZoneOpen)}
+              className="dropdown-toggle"
+            >
+              {selectedOption} ▼
+            </button>
+            {isPersonalZoneOpen && (
+              <div
+                className="dropdown-menu"
+                onMouseLeave={() => setIsPersonalZoneOpen(false)}
+              >
+                <NavLink
+                  to="/dash/user"
+                  className="dropdown-item"
+                  onClick={() => handleSelectOption("אזור אישי")}
+                >
+                  אזור אישי
+                </NavLink>
+                <NavLink
+                  to="/dash/user/changePassword"
+                  className="dropdown-item"
+                  onClick={() => handleSelectOption("שנה סיסמה")}
+                >
+                  שנה סיסמה
+                </NavLink>
+                {isAdmin && (
+                  <NavLink
+                    to="/dash/manage/users"
+                    className="dropdown-item"
+                    onClick={() => handleSelectOption("משתמשים רשומים")}
+                  >
+                    משתמשים רשומים
+                  </NavLink>
+                )}
+              </div>
+            )}
+          </div>
         )}
-      </div>
-    )}
-  </div>
-)}
 
       </div>
 
