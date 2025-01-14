@@ -125,27 +125,20 @@ background: var(--text);
 .astro-txt {
     display: flex;
     justify-content: center;
-    /* יישור אופקי */
     align-items: center;
-    /* יישור אנכי */
     height: auto;
-    /* גורם לבלוק לתפוס את כל גובה העמוד */
     text-align: center;
-    /* יישור הטקסט במרכז אופקי */
     padding: 20px;
-    /* ריווח פנימי */
-
     background-color: #fff;
     color: var(--main);
 }
 
 .astro-txt p {
     font-style: normal;
-    font-weight: 1000;
     font-size: 1.3rem;
     line-height: 42px;
     text-align: right;
-    
+    font-weight: 400;
     height: auto;
     padding: 6rem;
     justify-content: center;

@@ -3,7 +3,7 @@ import "./upload-diagnosis.css"
 import { useState, useEffect } from 'react';
 import { useAddDiagnosisMutation } from "../uploadDiagnosis/diagnosisApiSlice";
 import Meeting from "./Meeting";
-import axios from "axios";
+// import axios from "axios";
 
 const UploadDiagnosis = () => {
   const { firstname, lastname, email, phone } = useAuth();

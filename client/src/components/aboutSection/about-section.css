@@ -131,17 +131,14 @@ top:10%;
 
 .about-txt p {
     font-style: normal;
-    font-weight: 1000;
+    font-weight: 400;
     font-size: 1.2rem;
     line-height: 42px;
     text-align: right;
-    /* width: 778px; */
     height: auto;
-    /* padding: 1rem; */
     justify-content: center;
     align-items: center;
     text-align: right;
-    /* left: 50%; */
 }
 
 
@@ -200,7 +197,7 @@ div.about-question{
     color: var(--logoBlue);
     min-height: 60vh;
     font-style: normal;
-    font-weight: 1000;
+    font-weight: 400;
     font-size: 1.3rem;
     line-height: 42px;
     text-align: right;

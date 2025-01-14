@@ -99,7 +99,7 @@ const UserResponses = () => {
             >
               <p>{response.content}</p>
               {response.appearName && response.registerUser?.firstname ? (
-                <p className="response-name">
+                <p className={`response-name ${response.position}`}>
                   {response.registerUser.firstname}
                   {response.registerUser.lastname || ""}
                 </p>
@@ -107,6 +107,7 @@ const UserResponses = () => {
               ) : null}
               {isAdmin && (
                 <div className="permission-response-button">
+                 
                   {response.allowedAdmin ? (
                     // אם התגובה כבר אושרה, הצג כפתור לשנות את האישור
                     <button
@@ -138,16 +139,10 @@ const UserResponses = () => {
         <div className="popup-overlay-response">
           <div className="popup-content-response">
             <  img
+              className="xMark-add-response"
               src="/xMark.png"
               alt="x"
-              style={{
-                cursor: "pointer",
-                width: "3em",
-                height: "3em",
-                borderRadius: "50%",
-                objectFit: "cover",
-                // border: "2px solid #ddd",
-              }}
+
               onClick={() => setIsPopupOpen(false)} />
             <h2>הוספת תגובה</h2>
             <textarea
@@ -196,7 +191,7 @@ const UserResponses = () => {
       {isApprovalPopupOpen && selectedResponse && (
         <div className="popup-overlay-response">
           <div className="popup-content-response">
-            <img src="/xMark.png" alt="x" className="img-back" onClick={handleCancelApproval} />
+            <img src="/xMark.png" alt="x" className="xMark-change-response" onClick={handleCancelApproval} />
             <h2>האם לאשר את התגובה לפרסום?</h2>
             <p>{selectedResponse.content}</p>
             <div className="popup-actions-response">

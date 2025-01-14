@@ -6,6 +6,7 @@
   }
   
   .response-container {
+    padding: 20px;
     position: relative;
     width: 600px; /* גודל התמונה */
     height: 350px; /* גובה התמונה */
@@ -139,6 +140,7 @@
   }
   
   .popup-content-response {
+
     background-color: white;
     padding: 20px;
     border-radius: 10px;
@@ -229,13 +231,40 @@
     word-wrap: break-word;
 }
 
-/* סגנון לשם */
+.xMark-add-response,.xMark-change-response{
+  margin: 0 !important;
+  padding: 0 !important;
+  position: relative;
+  right: 0;
+  top:0;
+  cursor: pointer;
+  width: 3em;
+  height: 3em;
+  border-radius: 50%;
+  object-fit: cover;
+  background-color: red;
+}
+
 .response-name {
-    margin-top: 10px; /* רווח מעל השם */
-    font-size: 14px; /* גודל טקסט קטן יותר */
-    color: var(--main) ;/* צבע ייחודי לשם */
-    font-weight: bold;
-    display: flex;
+  position: absolute; 
+  bottom: 10px; 
+  font-size: 14px; 
+  color: var(--main);
+  font-weight: bold;
+  text-align: justify;
+  direction: rtl;
+  text-align-last: start;
+}
+
+
+
+.response-name.right{
+  text-align-last: right;
+  right: 5vw; 
+}
+.response-name.left{
+  text-align-last: left;
+  left: 5vw; 
 }
 .button-approval-response{
   background-color:var(--text);

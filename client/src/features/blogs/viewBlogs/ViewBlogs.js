@@ -103,6 +103,20 @@ const ViewBlogs = ({ limit = 0 }) => {
     }
   }, [isDeleteSuccess, navigate]);
 
+  const splitContentIntoParagraphs = (content) => {
+    if (!content) return [];
+    return content.split("\n").filter(paragraph => paragraph.trim() !== "");
+  };
+
+  const renderBlogContent = (content) => {
+    const paragraphs = splitContentIntoParagraphs(content);
+    return paragraphs.map((paragraph, index) => (
+      <p key={index} className="blog-paragraph">
+        {paragraph}
+      </p>
+    ));
+  };
+
   if (isLoading) return <h1>Loading ...</h1>
   if (isError) return <h1>{JSON.stringify(error)}  (
     <div className="add-blog-container">
@@ -146,7 +160,11 @@ const ViewBlogs = ({ limit = 0 }) => {
             style={{ cursor: 'pointer' }}
           >
             <h2 className="blog-title">{blog.title}</h2>
-            <p className="blog-content">{getShortContent(blog.content)}</p>
+            {/* <p className="blog-content">{getShortContent(blog.content)}</p> */}
+            <div className="blog-content">
+              {renderBlogContent(getShortContent(blog.content))}
+            </div>
+
             {/* {blog.file && (
               <div className="blog-file">
                 <img src={blog.file ? `http://localhost:2024/uploads/${blog.file}` : "/noavatar.png"}

@@ -39,7 +39,6 @@
     height: 100%;
     color: var(--orange);
     position: relative;
-    /* מאפשר למקם את ה-X בקצה השמאלי */
     font-family: "Varela Round", serif;
 }
 

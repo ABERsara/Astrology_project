@@ -11,7 +11,19 @@ const ViewSingleBlog = () => {
   const handleBackClick = () => {
     navigate('/dash/blogs')
   }
+  const splitContentIntoParagraphs = (content) => {
+    if (!content) return [];
+    return content.split("\n").filter(paragraph => paragraph.trim() !== "");
+  };
 
+  const renderBlogContent = (content) => {
+    const paragraphs = splitContentIntoParagraphs(content);
+    return paragraphs.map((paragraph, index) => (
+      <p key={index} className="blog-paragraph">
+        {paragraph}
+      </p>
+    ));
+  };
   if (isLoading) return <h1> Loading ...</h1>
   if (isError) return <h1>{JSON.stringify(error)}</h1>
   const blog = blogsObject.data.find(blog => blog._id === blogId)
@@ -27,7 +39,10 @@ const ViewSingleBlog = () => {
       >
         {/* תוכן הבלוג */}
         <h1 className="title">{blog.title}</h1>
-        <p className="content">{blog.content}</p>
+        <div className="content">
+  {renderBlogContent(blog.content)}
+</div>
+
         <button onClick={handleBackClick} className="button-view-single-blog">חזרה לכל הבלוגים</button>
 
       </div>
