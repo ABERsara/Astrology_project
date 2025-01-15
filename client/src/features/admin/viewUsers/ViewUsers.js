@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { format } from "date-fns";
 import { useEffect, useState } from "react";
 import Popup from "../../PopUp";
+import ViewSingleUser from "../viewSingleUser/ViewSingleUser";
 
 const ViewUsers = () => {
   const { data: usersObject, isError, error, isLoading, isSuccess } = useGetAllUsersQuery();
@@ -62,8 +63,8 @@ const ViewUsers = () => {
               <td>טלפון</td>
               <td>אימייל</td>
               <td>הרשאה</td>
-              <td>פעיל?</td>
-              <td>נרשם לאתר בתאריך?</td>
+              <td>סטטוס</td>
+              <td>תאריך הצטרפות</td>
               <td>פעולות</td>
             </tr>
           </thead>
@@ -125,11 +126,11 @@ const ViewUsers = () => {
       {/* פופאפ לעדכון */}
       {isUpdatePopupOpen && selectedUser && (
         <Popup close={closePopup} width={"500px"}>
+          
           <img src="/xMark.png" alt="x" className="close-popup-view-users img-back" onClick={closePopup} />
           <div  style={{ cursor: 'pointer' }}>
         <div className="single-user-info">
           <div className="single-user-img-container">
-            {/* מידע על המשתמש */}
             <img
                 src={selectedUser.image ? `http://localhost:2024/uploads/${selectedUser.image}` : "/account.png"}
                 alt="profile"
@@ -144,9 +145,12 @@ const ViewUsers = () => {
               />
            
           </div>
-          <p> {" "}{selectedUser.firstname } {selectedUser.lastname ? selectedUser.lastname : ""}</p>
-          <p> {" "}{selectedUser.email}</p>
-          <p>{" "}{selectedUser.phone ? selectedUser.phone : ""}</p>
+          <div className="single-user-personal-details">
+          <p>שם: {selectedUser.firstname} {selectedUser.lastname || ""}</p>
+            <p>אימייל: {selectedUser.email}</p>
+            <p>טלפון: {selectedUser.phone || ""}</p>
+          </div>
+         
         </div>
             <form onSubmit={formSubmit} className="single-user-form">
               <input name="id" defaultValue={selectedUser._id} type="hidden" />
@@ -168,6 +172,7 @@ const ViewUsers = () => {
               </button>
             </form>
           </div>
+         
         </Popup>
       )}
     </div>

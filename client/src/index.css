@@ -57,10 +57,8 @@ a {
 	/* ערך גבוה יותר מהתפריט */
 	background: rgba(67, 67, 67, 0.4);
 	display: flex;
-	/* מרכז את התוכן */
 	justify-content: center;
 	align-items: center;
-	/* מבטיח שהפופאפ במרכז אנכית */
 	overflow: hidden;
 	/* מבטל גלילה לא רצויה ברקע */
 }

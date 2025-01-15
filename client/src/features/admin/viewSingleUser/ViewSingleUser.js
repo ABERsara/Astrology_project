@@ -3,15 +3,14 @@ import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom"
 import { useGetAllUsersQuery, useUpdateUserMutation } from "../../user/userApiSlice";
 
-const ViewSingleUser = () => {
+const ViewSingleUser = ({userId}) => {
   const { data: usersObject, isError, error, isLoading, isSuccess } = useGetAllUsersQuery();
-  const { userId } = useParams();
+  // const { userId } = useParams();
   const [updateUser, { isSuccess: isUpdateSuccess }] = useUpdateUserMutation();
 
   const navigate = useNavigate();
-  
+
   useEffect(() => {
-    console.log("הגעתי לנוויגציה")
 
     if (isUpdateSuccess) {
       navigate("/dash/manage/users");
@@ -40,40 +39,55 @@ const ViewSingleUser = () => {
   if (!user) return <h1>{"Not found"}</h1>;
 
   return (
-    <div className="single-user">
       <div className="single-user-content" style={{ cursor: 'pointer' }}>
+      <img src="/xMark.png" alt="x" className="close-popup-view-users img-back" onClick={handleBackClick} />
+          <div  style={{ cursor: 'pointer' }}>
         <div className="single-user-info">
           <div className="single-user-img-container">
-            {/* מידע על המשתמש */}
-            {user.image}
+            <img
+                src={user.image ? `http://localhost:2024/uploads/${user.image}` : "/account.png"}
+                alt="profile"
+                className="edit-profile-item image"
+                style={{
+                  cursor: "pointer",
+                  width: "100px",
+                  height: "100px",
+                  borderRadius: "50%",
+                  objectFit: "cover",
+                }}
+              />
+           
           </div>
-          <p>שם : {" "}{user.firstname } {user.lastname ? user.lastname : ""}</p>
-          <p>אימייל: {" "}{user.email}</p>
-          <p>טלפון:{" "}{user.phone ? user.phone : ""}</p>
+          <div className="single-user-personal-details">
+          <p>שם: {user.firstname} {user.lastname || ""}</p>
+            <p>אימייל: {user.email}</p>
+            <p>טלפון: {user.phone || ""}</p>
+          </div>
+          {/* <p> {" "}{user.firstname } {user.lastname ? user.lastname : ""}</p>
+          <p> {" "}{user.email}</p>
+          <p>{" "}{user.phone ? user.phone : ""}</p> */}
         </div>
-
-        <form onSubmit={formSubmit} className="single-user-form">
-          <input name="id" defaultValue={user._id} type="hidden" />
-          <input name="firstname" defaultValue={user.firstname} type="hidden" />
-          <input name="email" defaultValue={user.email} type="hidden" />
-          <label>הרשאה</label>
-          <select name="permission" id="permission">
-            <option selected={user.permission === "User"} value="User">משתמש</option>
-            <option selected={user.permission === "Admin"} value="Admin">מנהל</option>
-            <option selected={user.permission === "Group"} value="Group">מנהל קבוצה</option>
-          </select>
-
-          <label>פעיל</label>
-          <select name="active" id="active">
-            <option selected={!user.active} value={false}>לא פעיל</option>
-            <option selected={user.active} value={true}>פעיל</option>
-          </select>
-
-          {/* כפתור לעדכון */}
-          <button type="submit" className="update-button-user">עדכן</button>
-        </form>
-      </div>
-      <button onClick={handleBackClick} className="back-button-user">חזרה לכל המשתמשים</button>
+            <form onSubmit={formSubmit} className="single-user-form">
+              <input name="id" defaultValue={user._id} type="hidden" />
+              <input name="firstname" defaultValue={user.firstname} type="hidden" />
+              <input name="email" defaultValue={user.email} type="hidden" />
+              <label>הרשאה</label>
+              <select name="permission" defaultValue={user.permission}>
+                <option value="User">משתמש</option>
+                <option value="Admin">מנהל</option>
+                <option value="Group">מנהל קבוצה</option>
+              </select>
+              <label>פעיל</label>
+              <select name="active" defaultValue={user.active}>
+                <option value={false}>לא פעיל</option>
+                <option value={true}>פעיל</option>
+              </select>
+              <button type="submit" className="update-button-user">
+                עדכן
+              </button>
+            </form>
+          </div>
+         
     </div>
   );
 }

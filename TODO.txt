@@ -95,7 +95,8 @@
     [v]remove search at all
     []search by blogs
     [v]add response design
-    []update user by admin- design
+    [v]update user by admin- design
     []user's image by side
     []delete a response
     []upload diagnosis
+    [v]dropdown box under personal-zone
