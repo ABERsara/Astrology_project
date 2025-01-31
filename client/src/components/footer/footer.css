@@ -104,7 +104,7 @@
 @media (max-width: 480px) {
     .footer {
         position: relative;
-        overflow: visible;
+        overflow: hidden;
     }
     .footer::before {
         font-size: 5rem;
@@ -113,7 +113,7 @@
         /* יצירת קשר */
         position: absolute;
         width: 100%;
-        top: -45px;
+        top: -50px;
         left: 50%;
         font-size: 10vw;
         transform: translateX(-50%);

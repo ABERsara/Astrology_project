@@ -13,19 +13,23 @@ const Footer = () => {
   const [message, setMessage] = useState("תיצרו איתי קשר!");
 
   const isAboutPage = location.pathname === '/dash/about';
+  const [isFormDisabled, setIsFormDisabled] = useState(false);
+
+  useEffect(() => {
+    if (isSuccess) {
+      setMessage("נרשמת בהצלחה, ניצור איתך קשר בהקדם");
+      setIsFormDisabled(true); // השבתת הטופס
+    }
+  }, [isSuccess]);
 
   const formSubmit = (e) => {
     e.preventDefault();
+    if (isFormDisabled) return; // מונע שליחה כפולה
     const data = new FormData(e.target);
     const contactObject = Object.fromEntries(data.entries());
     addContact(contactObject);
   };
 
-  useEffect(() => {
-    if (isSuccess) {
-      setMessage("נרשמת בהצלחה, ניצור איתך קשר בהקדם");
-    }
-  }, [isSuccess]);
 
   return (
     <div id="contact-section" className={`footer ${isAboutPage ? 'about-footer' : ''}`}>
@@ -39,13 +43,15 @@ const Footer = () => {
             required
             placeholder="השם שלך"
             defaultValue={firstname && firstname}
-            />
+            disabled={isFormDisabled}
+          />
           <input
             type="phone"
             name="phone"
             className="contact-item phone"
             placeholder="טלפון (נשמר חסוי)"
             defaultValue={phone || ""}
+            disabled={isFormDisabled}
           />
           <input
             type="email"
@@ -53,8 +59,9 @@ const Footer = () => {
             className="contact-item email"
             placeholder="אימייל (לא נטריד אותך סתם)"
             defaultValue={email || ""}
+            disabled={isFormDisabled}
           />
-          <button type="submit" className="">{message}</button>
+          <button type="submit" className="" disabled={isFormDisabled}>{message}</button>
         </form>
       </div>
     </div>

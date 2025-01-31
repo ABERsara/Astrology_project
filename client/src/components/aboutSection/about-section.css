@@ -3,17 +3,16 @@
     display: flex;
     flex-direction: column;
     font-family: "Varela Round";
-    /* padding-top: 80px; */
-/* background-color: #fff; */
+    width: 100%;   
 }
 
 .about-me-container {
-
+width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     min-height: 70vh;
-    padding: 20px;
+    /* padding: 20px; */
     padding-top: 80px;
     /* background: radial-gradient(circle, #191923 0%, #1d1e3d 40%, #5b5d6e 100%); */
     align-items: center;
