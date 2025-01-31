@@ -1,80 +1,41 @@
-/* עיצוב למכולה הראשית */
 .home-page-casing {
     background: radial-gradient(circle, #191923 0%, #1d1e3d 40%, #5b5d6e 100%);
     height: auto;
-    display: flex;
-    flex-direction: column;
     font-family: "Varela Round", serif;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+    overflow: hidden;
 }
 
 .home-container {
-    display: flex;
-    flex-direction: column;
-    /* שינוי הכיוון לעמודה */
     justify-content: flex-start;
-    min-height: 120vh;
-    /* padding: 20px; */
-    /* padding-top: 80px; */
+    min-height: 100vh;
     background: radial-gradient(circle, #191923 0%, #1d1e3d 40%, #5b5d6e 100%);
     align-items: center;
-    /* justify-content: space-between; */
-    /* height: 100vh; */
-    /* background-color: #292a44; */
-    padding: 30px;
+    padding: 0 30px;
     background: radial-gradient(circle, #191923 0%, #1d1e3d 40%, #5b5d6e 100%);
-    /* מעבר צבע משמיים כהים במרכז לשמיים בהירים בקצוות */
     position: relative;
-    /* margin-top: 40px; */
+    display: flex;
 }
 
 .zwheel {
-    position: fixed;
-    left: 10vw;
+    position: relative;
+    right: 4vw;
     transform: translateY(-50%);
-    width: 50%;
-    margin-top: 10px;
-    margin-bottom: 20px;
+    margin-bottom: 40vw;
     width: 50%;
     height: auto;
-    left: 20px;
     display: flex;
     justify-content: center;
-}
-
-
-/* .zwheel{
-    position: sticky;
-    top: 10px; 
-    left: 10vw;
-    transform: translateY(-50%);
-    width: 50%;
-    margin-top: 10px;
-} */
-/* עיצוב לקישורים */
-.home-links {
-    display: flex;
-    gap: 20px;
-    /* מרווח בין הקישורים */
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    width: 45%;
-    height: auto;
-    /* position: absolute; */
-    bottom: 20vh;
-    /* ממקם את הכפתורים 20px מהתחתית */
-    /* right: 0px; 
-    left:50; */
 }
 
 .home-link {
-    position: relative;
-    padding: 10px 20px;
+    position: absolute;
+    /* padding: 10px 20px; */
     font-size: 1rem;
-    color: white;
-    background-color: #E49928;
+    color: var(--text);
+    background-color: var(--orange);
     border-radius: 5px;
     text-decoration: none;
     transition: background-color 0.3s ease;
@@ -84,21 +45,22 @@
     justify-content: center;
     align-items: center;
     gap: 6px;
-    border-radius: 56px
+    border-radius: 56px;
+    width: 45%;
+    height: auto;
+    bottom: 48vh;
+    right: 40%;
 }
 
 .more_to_read {
-    padding: 19px 0px 22px 2px;
-    /* left:10vw; */
-    width: 130px;
+    padding: 17px 0px 19px 2px;
+    width: 120px;
     height: 26px;
-    left: 10vw;
-    bottom: 5.8vw;
 }
 
 .home-link:hover {
-    color: #E49928;
-    background-color: white;
+    color: var(--text);
+    background-color: var(--orangeDark);
 }
 
 
@@ -107,41 +69,50 @@
 }
 
 .sentence-on-astro {
-    /* position: absolute; */
+
     width: 550px;
     height: 314px;
-    /* left: 673px;
-top: 234px; */
     font-family: "Varela Round", serif;
     font-style: normal;
     font-weight: 600;
     font-size: 3.8rem;
     line-height: 123%;
-    /* or 157px */
     text-align: right;
-    margin-right: 0px;
-    margin-left: 50%;
+    margin-right: 5vw;
+    /* margin-left: 50vw; */
     color: #FFFFFF;
     /* right:12.5vw; */
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    margin-top: 100px;
+    margin-bottom: 10vw;
 }
 
 .sentence1 {
     color: var(--text);
 }
 
+/* 
 .sentence2 {
     color: var(--orange);
     justify-content: center;
+} */
+.sentence2 {
+    color: var(--orange);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 0 auto;
+    width: 100%;
+    padding: 0 20px;
+    word-wrap: break-word;
 }
 
 .info-homepage {
-    font-size: 1.1rem;
+    font-size: 1rem;
     line-height: 100%;
     line-height: 123%;
-font-weight: 400;
-width:35vw;
+    font-weight: 300;
+    width: 35vw;
 }
 
 .navbar-top-homepage {
@@ -170,20 +141,14 @@ width:35vw;
     font-size: 0.9rem;
 }
 
-/* .login-from-home:hover {
-    color: rgb(25, 197, 213);
-    background-color: transparent;
-} */
-
-
 .home-about-section {
     padding: 50px;
-    color: #FFFFFF;
+
     width: 100%;
     display: flex;
     flex-direction: column;
     /* width: 80vw; */
-    height: 110vh;
+    min-height: auto;
     background-color: #fff;
     color: #1d1e3d;
     justify-content: center;
@@ -275,3 +240,89 @@ width:35vw;
     padding: 0;
 }
 
+
+@media (max-width: 480px) {
+
+    .home-page-casing {
+        display: flex;
+        flex-direction: column;
+        height: auto;
+
+
+
+    }
+
+    .home-container {
+        display: flex;
+        flex-direction: column;
+        flex-direction: column;
+        height: auto;
+        overflow: visible
+    }
+
+    .info-homepage {
+        display: none;
+    }
+
+    .zwheel {
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        margin-top: 27vw;
+        margin-left: 5vw;
+    }
+
+    .home-link {
+        top: 38vh;
+        ;
+        right: 200px;
+    }
+
+    .more_to_read {
+        padding: 13px 0px 15px 1px;
+        width: 120px;
+    }
+
+    .sentence-on-astro {
+        width: 100%;
+        font-size: 3.2rem;
+        margin-top: 10vw;
+    }
+
+    .sentence2 {
+        white-space: nowrap;
+    }
+
+    .sentence1 {
+        text-align: center;
+    }
+
+    .horoscopes {
+        display: none;
+    }
+
+
+    .contact-section {
+        width: 100%;
+        background-color: #1d1e3d;
+        padding: 0;
+    }
+
+    .home-about-section p {
+        width: 100%;
+        min-height: 100vh;
+    }
+
+    .home-about-section {
+        height: auto;
+        width: 100%;
+        color: var(--orange);
+
+    }
+}
+
+@media screen and (max-width: 375px) {
+    body {
+        -webkit-font-smoothing: antialiased;
+    }
+}

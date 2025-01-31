@@ -15,7 +15,11 @@ app.use(cookieParser())
 app.use(express.json())
 app.use(express.static('public'));
 // app.use('/uploads', express.static('public/uploads'));
-
+// The "catchall" handler: for any request that doesn't
+// match one above, send back index.html so React Router can handle the routing.
+app.get('/*', (req, res) => {
+    res.sendFile(path.join(__dirname+'app/index.html'));
+  });
 app.get("/",(req,res)=>{
 res.send("HomePage")
 })

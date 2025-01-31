@@ -79,11 +79,11 @@ const ViewUsers = () => {
                 onMouseEnter={(e) => e.currentTarget.classList.add("hovered")}
                 onMouseLeave={(e) => e.currentTarget.classList.remove("hovered")}
               >
-                <td>
+                <td className="img-with-username-users-list">
                   <div className="users-details">
                     <img
                       className="users-list-image"
-                      src={user.image ?  `http://localhost:2024/uploads/${user.image}` : "/account-white.png"}
+                      src={user.image ? `http://localhost:2024/uploads/${user.image}` : "/account-white.png"}
                       alt=""
                       width={40}
                       height={40}
@@ -126,43 +126,36 @@ const ViewUsers = () => {
       {/* פופאפ לעדכון */}
       {isUpdatePopupOpen && selectedUser && (
         <Popup close={closePopup} width={"500px"}>
-          
+
           <img src="/xMark.png" alt="x" className="close-popup-view-users img-back" onClick={closePopup} />
-          <div  style={{ cursor: 'pointer' }}>
-        <div className="single-user-info">
-          <div className="single-user-img-container">
-            <img
-                src={selectedUser.image ? `http://localhost:2024/uploads/${selectedUser.image}` : "/account.png"}
-                alt="profile"
-                className="edit-profile-item image"
-                style={{
-                  cursor: "pointer",
-                  width: "100px",
-                  height: "100px",
-                  borderRadius: "50%",
-                  objectFit: "cover",
-                }}
-              />
-           
-          </div>
-          <div className="single-user-personal-details">
-          <p>שם: {selectedUser.firstname} {selectedUser.lastname || ""}</p>
-            <p>אימייל: {selectedUser.email}</p>
-            <p>טלפון: {selectedUser.phone || ""}</p>
-          </div>
-         
-        </div>
+          <div style={{ cursor: 'pointer' }}>
+            <div className="single-user-info">
+              <div className="single-user-img-container">
+                <img
+                  src={selectedUser.image ? `http://localhost:2024/uploads/${selectedUser.image}` : "/account.png"}
+                  alt="profile"
+                  className="edit-profile-item image"
+                />
+
+              </div>
+              <div className="single-user-personal-details">
+                <p>שם: {selectedUser.firstname} {selectedUser.lastname || ""}</p>
+                <p>אימייל: {selectedUser.email}</p>
+                <p>טלפון: {selectedUser.phone || ""}</p>
+              </div>
+
+            </div>
             <form onSubmit={formSubmit} className="single-user-form">
               <input name="id" defaultValue={selectedUser._id} type="hidden" />
               <input name="firstname" defaultValue={selectedUser.firstname} type="hidden" />
               <input name="email" defaultValue={selectedUser.email} type="hidden" />
-              <label>הרשאה</label>
+              <label className="edit-profile-item permission">הרשאה</label>
               <select name="permission" defaultValue={selectedUser.permission}>
                 <option value="User">משתמש</option>
                 <option value="Admin">מנהל</option>
                 <option value="Group">מנהל קבוצה</option>
               </select>
-              <label>פעיל</label>
+              <label className="edit-profile-item active">סטטוס</label>
               <select name="active" defaultValue={selectedUser.active}>
                 <option value={false}>לא פעיל</option>
                 <option value={true}>פעיל</option>
@@ -172,7 +165,7 @@ const ViewUsers = () => {
               </button>
             </form>
           </div>
-         
+
         </Popup>
       )}
     </div>

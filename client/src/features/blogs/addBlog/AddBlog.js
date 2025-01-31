@@ -3,7 +3,7 @@ import { useAddBlogMutation } from "../blogsApiSlice"
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 
-const AddBlog = ({closePopup}) => {
+const AddBlog = ({ closePopup }) => {
   const [addBlog, { data, isError, error, isSuccess, isLoading }] = useAddBlogMutation()
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [blogData, setBlogData] = useState({
@@ -18,12 +18,12 @@ const AddBlog = ({closePopup}) => {
       navigate("/dash/blogs"); // נווט לעמוד הבלוגים
     }
   }, [isSuccess, navigate]);
-  
+
 
   const formSubmit = async (e) => {
     e.preventDefault();
     try {
-      await addBlog({ ...blogData}).unwrap();
+      await addBlog({ ...blogData }).unwrap();
     } catch (err) {
       console.error("Failed to update the blog: ", err);
     }
@@ -39,7 +39,8 @@ const AddBlog = ({closePopup}) => {
           onClick={() => {
             closePopup()
 
-            navigate("/dash/blogs")}}
+            navigate("/dash/blogs")
+          }}
         />
         <h1>הוספת בלוג</h1>
         <form onSubmit={formSubmit} className="single-blog-form-update">

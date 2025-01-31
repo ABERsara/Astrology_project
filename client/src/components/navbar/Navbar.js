@@ -59,9 +59,27 @@ const Navbar = () => {
   // פונקציה שמחזירה className בהתאם לסטטוס של isActive
   const getNavLinkClass = (isActive) => isActive ? "active-navlink-nav" : "";
   const isHomePage = location.pathname === "/";
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const toggleMenu = () => {
+      setIsMenuOpen(!isMenuOpen);
+  };
+  
   return (
-    <div className="navbarBox">
+      <div className="navbarBox">
+          <img className="iphone-menu" src="/menu.svg" onClick={toggleMenu} />
+          
+          {isMenuOpen && (
+              <div className="navbar-under-homepage">
+                  <NavLink to="/dash/about" className={({ isActive }) => getNavLinkClass(isActive)}>אודות</NavLink>
+                  <NavLink to="/dash/astro" className={({ isActive }) => getNavLinkClass(isActive)}>אסטרולוגיה</NavLink>
+                  <NavLink to="/dash/diagnosis" className={({ isActive }) => getNavLinkClass(isActive)}>אבחונים</NavLink>
+                  <NavLink to="/dash/reviews" className={({ isActive }) => getNavLinkClass(isActive)}>מה אומרים עלינו?</NavLink>
+                  <NavLink to="/dash/courses" className={({ isActive }) => getNavLinkClass(isActive)}>קורסים</NavLink>
+                  <button onClick={() => scrollToSection("contact-section")}>יצירת קשר</button>
+                  {/* הוסף כאן אפשרויות נוספות אם צריך */}
+              </div>
+          )}
       <div className="navbar-top-homepage">
         {firstname ?
           <div className="nav-hello">

@@ -1,16 +1,17 @@
-
 .edit-profile-zone {
     width: 100%;
     /* height: auto; */
     padding: 3vw;
     /* margin-top: 15vw; */
-    background-color: radial-gradient(circle, #191923 0%, #1d1e3d 40%, #5b5d6e 100%);;
+    background-color: radial-gradient(circle, #191923 0%, #1d1e3d 40%, #5b5d6e 100%);
+    ;
     justify-content: center;
     align-items: center;
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
-    position: relative; /* חשוב: הופך את האלמנט להורה יחסי */
+    position: relative;
+    /* חשוב: הופך את האלמנט להורה יחסי */
 
     /* margin: 1rem; */
     /* overflow: hidden; */
@@ -18,11 +19,13 @@
 
 .edit-profile-zone h1 {
     color: var(--orange);
-    text-align: right; /* יישור לימין */
+    text-align: right;
+    /* יישור לימין */
     letter-spacing: 0.5px;
-    width: 35vw; /* נוודא שהכותרת תופסת את כל הרוחב */
+    width: 35vw;
+    /* נוודא שהכותרת תופסת את כל הרוחב */
 
-    
+
 }
 
 /*  */
@@ -81,21 +84,28 @@ button.edit-profile-item-submit {
     cursor: pointer;
     letter-spacing: 0.5px;
     font-family: "Varela Round", serif;
-justify-content: center;
-display: flex;
-
-margin-top: 1rem; /* מסיר מרווח */
-
-}
-.edit-profile-item-submit-button {
-    width: 100%; /* מוודא שהתיבה תופסת את כל הרוחב */
+    justify-content: center;
     display: flex;
-    justify-content: flex-end; /* ממקם את הכפתור בצד ימין */
-    margin: 0; /* אפס מרווחים */
-    padding: 0; /* אפס ריפוד */
+
+    margin-top: 1rem;
+    /* מסיר מרווח */
+
+}
+
+.edit-profile-item-submit-button {
+    width: 100%;
+    /* מוודא שהתיבה תופסת את כל הרוחב */
+    display: flex;
+    justify-content: flex-end;
+    /* ממקם את הכפתור בצד ימין */
+    margin: 0;
+    /* אפס מרווחים */
+    padding: 0;
+    /* אפס ריפוד */
 
 
 }
+
 .edit-profile-item-submit:hover {
     background-color: var(--text);
     color: var(--orange);
@@ -107,7 +117,9 @@ margin-top: 1rem; /* מסיר מרווח */
     height: 50px;
     border-radius: 10px;
     position: absolute;
-    top: 1vw; /* מיקום מהחלק העליון */
-    right: 1vw; /* צמוד לימין */
+    top: 1vw;
+    /* מיקום מהחלק העליון */
+    right: 1vw;
+    /* צמוד לימין */
     cursor: pointer;
 }

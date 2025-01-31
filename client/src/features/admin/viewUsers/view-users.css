@@ -5,6 +5,7 @@
     margin-top: 20px;
     color: var(--text);
 }
+
 .users-table {
     width: 100%;
     text-align: center;
@@ -16,7 +17,7 @@
     transition: all 0.3s ease-in-out;
 }
 .users-table, .users-table td {
-    border: none; /* הסרת גבולות לגמרי */
+    border: none; 
 }
 
 
@@ -26,7 +27,9 @@
     border-bottom: 1px solid #ddd;
   }
   
-  
+  .img-with-username-users-list{
+    width: 20px;
+  }
 .users-list-top{
     display: flex;
     align-items: center;
@@ -34,21 +37,10 @@
 
 }
 
-/* .users-table{
-    width: 100%;
-} */
-
-/* .users-table td{
-    padding: 10px;
-} */
 .users-list-createdAt{
     width:150px;
 }
-/* .users-list-company{
-    display: flex;
-    align-items: center;
-    gap: 10px;
-} */
+
 
 .users-list-image{
     border-radius: 50%;

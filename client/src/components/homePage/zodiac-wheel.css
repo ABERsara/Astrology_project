@@ -2,67 +2,75 @@
 
 
 .wheel-container {
-    position: absolute;
-    /* width: 500px; 
-    height: 700px; */
-    /* margin: 50px auto; */
-   /* padding: 5vw; */
-    /* margin-top: 0 !important; */
-    /* margin-bottom: 50px !important; */
-    font-family: "Varela Round", serif;
-        display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  .zodiac-container{
-    width: 400px;
-    height: 400px;
-    position: relative; /* Keep wheel positioned relative to its container */
-    overflow: hidden;
-  }
-  .button-container{
-    position: relative;
-    /* width: 400px; */
-    display: flex;
-    justify-content: center; /* Center the button horizontally */
-    /* margin-top: 10px; */
-  }
-  .zodiac-wheel {
-    /* position: absolute; */
-    width: 400px;
-    height: 400px;
-    background-image: url('../../../public/zwheel.png');
-    background-size: contain;
-    background-position: center; /* Center the background image */
-    padding: 10px; /* Add padding to ensure the entire image is visible within the container */
-    border: 0;
-    z-index: 1;
-    background-repeat: no-repeat;
+  position: absolute;
+  font-family: "Varela Round", serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-  
-  .spinning {
-    animation: spin 30s linear infinite;
+.zodiac-container {
+  width: 400px;
+  height: 400px;
+  position: relative;
+  /* Keep wheel positioned relative to its container */
+  overflow: hidden;
+}
+
+.button-container {
+  position: relative;
+  /* width: 400px; */
+  display: flex;
+  justify-content: center;
+  /* Center the button horizontally */
+  /* margin-top: 10px; */
+}
+
+.zodiac-wheel {
+  /* position: absolute; */
+  width: 400px;
+  height: 400px;
+  background-image: url('../../../public/zwheel.png');
+  background-size: contain;
+  background-position: center;
+  /* Center the background image */
+  padding: 10px;
+  /* Add padding to ensure the entire image is visible within the container */
+  border: 0;
+  z-index: 1;
+  background-repeat: no-repeat;
+}
+
+
+.spinning {
+  animation: spin 30s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
   }
-  
-   @keyframes spin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-  } 
-  
- 
-  .modal-overlay {
-    /* position: fixed; כדי שהמודאל יכסה את כל המסך */
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 200; /* וודא שזה גבוה יותר מהשכבות האחרות */
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+.modal-overlay {
+  /* position: fixed; כדי שהמודאל יכסה את כל המסך */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 200;
+  /* וודא שזה גבוה יותר מהשכבות האחרות */
 }
 
 .modal {
-  position: fixed; /* כדי לוודא שהמודל מיושר למסך כולו */
+  position: fixed;
+  /* כדי לוודא שהמודל מיושר למסך כולו */
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -71,11 +79,14 @@
   border-radius: 10px;
   max-width: 400px;
   width: 80%;
-  z-index: 300; /* לוודא שהוא מעל הכל */
+  z-index: 300;
+  /* לוודא שהוא מעל הכל */
   color: var(--orange);
-  display: flex; /* לאפשר יישור תוכן פנימי */
+  display: flex;
+  /* לאפשר יישור תוכן פנימי */
   flex-direction: column;
-  justify-content: center; /* מרכז התוכן הפנימי */
+  justify-content: center;
+  /* מרכז התוכן הפנימי */
   align-items: center;
   outline: none;
 
@@ -83,8 +94,10 @@
 
 .zodiac-sign {
   position: absolute;
-  width: 50%; /* חצי מרוחב הגלגל */
-  height: 50%; /* חצי מהגובה */
+  width: 50%;
+  /* חצי מרוחב הגלגל */
+  height: 50%;
+  /* חצי מהגובה */
   top: 0;
   left: 50%;
   transform-origin: 0% 100%;
@@ -95,35 +108,72 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  transform: rotate(0deg) skewY(-30deg); /* נעדכן לפי כל פלח */
+  transform: rotate(0deg) skewY(-30deg);
+  /* נעדכן לפי כל פלח */
 }
 
-.sign-0 { transform: rotate(0deg) skewY(-30deg); }
-.sign-1 { transform: rotate(30deg) skewY(-30deg);}
-.sign-2 { transform: rotate(60deg) skewY(-30deg); }
-.sign-3 { transform: rotate(90deg) skewY(-30deg); }
-.sign-4 { transform: rotate(120deg) skewY(-30deg);}
-.sign-5 { transform: rotate(150deg) skewY(-30deg); }
-.sign-6 { transform: rotate(180deg) skewY(-30deg);}
-.sign-7 { transform: rotate(210deg) skewY(-30deg); }
-.sign-8 { transform: rotate(240deg) skewY(-30deg); }
-.sign-9 { transform: rotate(270deg) skewY(-30deg); ;}
-.sign-10 { transform: rotate(300deg) skewY(-30deg); }
-.sign-11 { transform: rotate(330deg) skewY(-30deg); }
+.sign-0 {
+  transform: rotate(0deg) skewY(-30deg);
+}
+
+.sign-1 {
+  transform: rotate(30deg) skewY(-30deg);
+}
+
+.sign-2 {
+  transform: rotate(60deg) skewY(-30deg);
+}
+
+.sign-3 {
+  transform: rotate(90deg) skewY(-30deg);
+}
+
+.sign-4 {
+  transform: rotate(120deg) skewY(-30deg);
+}
+
+.sign-5 {
+  transform: rotate(150deg) skewY(-30deg);
+}
+
+.sign-6 {
+  transform: rotate(180deg) skewY(-30deg);
+}
+
+.sign-7 {
+  transform: rotate(210deg) skewY(-30deg);
+}
+
+.sign-8 {
+  transform: rotate(240deg) skewY(-30deg);
+}
+
+.sign-9 {
+  transform: rotate(270deg) skewY(-30deg);
+  ;
+}
+
+.sign-10 {
+  transform: rotate(300deg) skewY(-30deg);
+}
+
+.sign-11 {
+  transform: rotate(330deg) skewY(-30deg);
+}
 
 .spin-button {
   position: relative;
   padding: 0;
-  right: 250px;
-  bottom:10px;
+  right: 230px;
+  bottom: 10px;
   border-radius: 8px;
   cursor: pointer;
   display: flex;
- background-color: transparent;
- width: 40px;
- height: 40px;
- justify-content: center;
- align-items: center;
+  background-color: transparent;
+  width: 40px;
+  height: 40px;
+  justify-content: center;
+  align-items: center;
 }
 
 
@@ -133,12 +183,13 @@
 }
 
 
-
-.wheel, .button-below-wheel {
+.wheel,
+.button-below-wheel {
   margin: 0;
   padding: 0;
 }
-.zodiacInfo{
+
+.zodiacInfo {
   justify-content: center;
   align-items: center;
 }
@@ -146,9 +197,9 @@
 .circle-text-container {
   position: absolute;
   pointer-events: none;
-  top: -0.5cm;
-   left:-0.5cm;
-  width: 300px; /* התאמת רוחב המעגל */
+  /* top: 0.0001cm; */
+  left: -0.01cm;
+  width: 300px;
   z-index: 20;
 }
 
@@ -158,5 +209,44 @@
 }
 
 .circle-text {
-  transform: rotate(-130deg); /* לסיבוב הטקסט לכיוון הנכון */
+  transform: rotate(-130deg);
+}
+
+@media (max-width: 480px) {
+  .zodiac-container {
+    width: 350px;
+    height: 350px;
+  }
+
+  .zodiac-wheel {
+    width: 350px;
+    height: 350px;
+  }
+
+  .circle-text-container {
+    top:-8%;
+  left: 50%; 
+  transform: translate(-50%); /* מזיז את האלמנט כך שהנקודה האמצעית תתיישר למרכז */
+  width: 100%; /* מתאים לרוחב */
+  text-align: center; 
+    /* transform: translateX(-50%); 
+    width: 300px;
+    z-index: 20; */
+  }
+  
+
+  .circle-text svg {
+    width: 100%;
+    height: 100%;
+
+  }
+
+  .circle-text {
+    transform: rotate(-92deg);
+  }
+  .spin-button {
+   
+    right: 130px;
+   top: -10vw;
+  }
 }

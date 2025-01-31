@@ -10,19 +10,19 @@ const HomePage = () => {
     const [showWheel, setShowWheel] = useState(true);
 
     useEffect(() => {
-        const handleScroll = () => {
-            if (window.scrollY < 130) {
-                setShowWheel(true);
-            } else {
-                setShowWheel(false);
-            }
-        };
+        // const handleScroll = () => {
+        //     if (window.scrollY < 130) {
+        //         setShowWheel(true);
+        //     } else {
+        //         setShowWheel(false);
+        //     }
+        // };
 
-        window.addEventListener('scroll', handleScroll);
+        // window.addEventListener('scroll', handleScroll);
 
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
+        // return () => {
+        //     window.removeEventListener('scroll', handleScroll);
+        // };
     }, []);
 
 
@@ -31,24 +31,24 @@ const HomePage = () => {
         <div className="home-page-casing">
             <Navbar />
             <div className="home-container">
-                <div className="zwheel">
-                    {showWheel ? <ZodiacWheel /> : null}
-                    
-                </div>
                 <div className="sentence-on-astro">
                     <div className="sentence1">מפת הכוכבים כמסע</div>
                     <div className="sentence2">להבנה עצמית</div>
                     <div className="info-homepage">
                         היא כלי עזר בחיינו. שמה מראה ומשקפת את המציאות, משפרת תודעה ע"י ניתוח האישיות שלנו ושל הזולת, וחוזה מגמות עתידיות ומאפשרת להתכונן
                     </div>
+                    <div className="home-links more_to_read">
+                        <Link to={"/dash/astro"} className="home-link more_to_read">
+                            לקרוא עוד
+                        </Link>
+                    </div>
                 </div>
-                <div className="home-links more_to_read">
-                    <Link to={"/dash/astro"} className="home-link more_to_read">
-                        לקרוא עוד
-                    </Link>
+                <div className="zwheel">
+                    {/* {showWheel ?  */}
+                    <ZodiacWheel />
+                    {/* : null} */}
+
                 </div>
-
-
             </div>
 
             <div className="home-about-section">

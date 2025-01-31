@@ -178,18 +178,25 @@ const ZodiacWheel = () => {
         </button>
       </div>
       <div className="circle-text-container">
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" className="circle-text">
-          <path
-            id="circlePath"
-            d="M 50,50 m -40,0 a 30,40 0 1,1 70,0 a 30,40 0 1,1 -80,0"
-            fill="none"
-          />
-          <text fontSize="4.5" fill="white" textAnchor="middle">
-            <textPath href="#circlePath" startOffset="50%">
-              סקרן לגלות מה סימן המזל שלך חושף? נסה אותי
-            </textPath>
-          </text>
-        </svg>
+        
+         <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" className="circle-text">
+  <path
+  // M 50,50 m -40,0 a 30,40 0 1,1 70,0 a 30,40 0 1,1 -80,0
+    id="circlePath"
+    d="M 60,60 m -40,0 a 30,40 0 1,1 80,0 a 30,40 0 1,1 -80,0"
+    fill="none"
+  />
+  <text fontSize="4.5" fill="white" textAnchor="middle" letterSpacing="1">
+    <textPath 
+      href="#circlePath" 
+      startOffset="50%" 
+      textAnchor="middle" 
+      textLength="90%"
+    >
+      סקרן לגלות מה סימן המזל שלך חושף? נסה אותי
+    </textPath>
+  </text>
+</svg>
       </div>
     </div>
   );

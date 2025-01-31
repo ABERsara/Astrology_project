@@ -5,19 +5,24 @@
 
 }
 
+.iphone-menu {
+    display: none;
+}
+
 .navbar {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 60px;
-    z-index: 100; /* נשאר נמוך יותר מהפופאפ */
+    z-index: 100;
+    /* נשאר נמוך יותר מהפופאפ */
     background-color: black;
     border-bottom: 3px solid var(--text);
     display: flex;
     align-items: center;
     justify-content: space-between;
-  }
+}
 
 .nav-text {
     padding: 60px;
@@ -130,8 +135,8 @@
 }
 
 .heart-home,
-.shopping-cart-home ,
-.bell{
+.shopping-cart-home,
+.bell {
     position: relative;
     /* שינוי ל-relative כדי לאפשר מיקום טבעי בתוך ה-navbar */
     width: 30px;
@@ -154,7 +159,7 @@
     height: 40px;
     /* left: 0px; */
     top: 40px;
-    color:var(--orange);
+    color: var(--orange);
     direction: rtl;
     font-family: "Varela Round";
     font-style: normal;
@@ -203,7 +208,8 @@
     margin-top: 0px;
 }
 
-.shopping-cart-home,.bell {
+.shopping-cart-home,
+.bell {
 
     display: flex;
     flex-direction: row;
@@ -229,7 +235,7 @@
     position: relative;
     display: flex;
     margin-left: 5vw;
-    margin-right: auto; 
+    margin-right: auto;
 }
 
 .dropdown-toggle {
@@ -244,7 +250,8 @@
 .dropdown-menu {
     position: absolute;
     top: 100%;
-    right: 0; /* יישור התפריט לנקודת הכפתור */
+    right: 0;
+    /* יישור התפריט לנקודת הכפתור */
     background-color: white;
     border-radius: 5px;
     min-width: 150px;
@@ -263,5 +270,35 @@
 .dropdown-item:hover {
     background-color: var(--lightBlue);
     border-radius: 5px;
-    color:var(--text) !important;
+    color: var(--text) !important;
+}
+
+@media (max-width: 480px) {
+    .navbarBox {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        /* יישור התמונה בצד */
+    }
+
+    .iphone-menu {
+        display: block;
+        
+        cursor: pointer;
+        
+        position: absolute;
+        width: 32px;
+        height: 37px;
+        padding: 5px;
+        z-index:100;
+    }
+
+    .navbar-under-homepage {
+        display: none;
+        
+    }
+
+    .navbar-top-homepage {
+        display: none !important;
+    }
 }

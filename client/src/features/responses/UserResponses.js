@@ -137,7 +137,7 @@ const UserResponses = () => {
 
 
       {isPopupOpen && (
-          <PopUp width={'350px'} close={handleAddResponse}>
+        <PopUp width={'350px'} close={handleAddResponse}>
           <div className="popup-content-response">
             <  img
               className="img-back"
@@ -189,11 +189,11 @@ const UserResponses = () => {
           </div>
         </PopUp>
       )}
-      {isApprovalPopupOpen && selectedResponse &&(
+      {isApprovalPopupOpen && selectedResponse && (
 
-          <PopUp width={'350px'} close={handleCancelApproval}>
-          <div 
-          className="popup-content-response"
+        <PopUp width={'350px'} close={handleCancelApproval}>
+          <div
+            className="popup-content-response"
           >
             <img
               src="/xMark.png"
@@ -210,7 +210,7 @@ const UserResponses = () => {
             </div>
 
           </div>
-          </PopUp>
+        </PopUp>
       )}
 
     </div>

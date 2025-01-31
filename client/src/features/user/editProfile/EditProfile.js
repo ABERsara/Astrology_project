@@ -31,85 +31,20 @@ const EditProfile = () => {
   const handleImageClick = () => {
     fileInputRef.current.click();
   };
-
-  // טיפול בהעלאת קובץ חדש
-
-
-
-
-  // טיפול בהעלאת קובץ חדש
-  // const handleFileChange = (e) => {
-  //   const file = e.target.files[0];
-  //   if (file) {
-  //     const objectUrl = URL.createObjectURL(file); // יצירת URL מקומי
-  //     setMyImage(objectUrl); // הצגת תצוגה מקדימה
-  //   }
-  // };
-
-  //    const formSubmit = (e) => {
-  //  e.preventDefault();
-  //   const dataForm = new FormData(e.target);
-  //   // const imageFile = dataForm.get('image');
-  //   // if (!imageFile || imageFile.size === 0) {
-  //   //   console.log("image",imageFile)
-  //   // //  אם לא נבחרה תמונה חדשה, נוסיף את התמונה הקודמת
-  //   //   dataForm.set('image', user.image || ""); // נוודא שהתמונה הקודמת נשלחת
-  //   // }
-  //   const data = { ...user,
-  //     firstname:dataForm.get('firstname'),
-  //     lastname: dataForm.get('lastname'),
-  //   phone:dataForm.get('phone'),
-  //    email:dataForm.get('email'),
-  //   ...dataForm,
-  //     id: user._id };
-  //    console.log("זה הנתונים שהתקבלו: ", dataForm, data);
-  //    try {
-  //      updateUser(data);
-  //      console.log("המשתמש עודכן בהצלחה");
-  //     } catch (error) {
-  //    console.log(error);
-
-
-  //    };
-  //   }
+  
   const formSubmit = (e) => {
     e.preventDefault();
     const dataForm = new FormData(e.target);
-    const file = fileInputRef.current.files[0]; // קבלת הקובץ מה-input
-    console.log('file: ', file);
-
-    // אם נבחרה תמונה חדשה, נוסיף אותה ל-FormData
+    const file = fileInputRef.current.files[0]; 
     if (file) {
       dataForm.set("image", file);
     } else if (user.image) {
       dataForm.set("image", user.image); // הוספת התמונה הקיימת כברירת מחדל
     }
-    // const imageFile = dataForm.get('image');
-    // if (!imageFile || imageFile.size === 0) {
-    //   console.log("image",imageFile)
-    // //  אם לא נבחרה תמונה חדשה, נוסיף את התמונה הקודמת
-    //   dataForm.set('image', user.image || ""); // נוודא שהתמונה הקודמת נשלחת
-    // }
-    // הדפסת הנתונים לבדיקה
-    for (let pair of dataForm.entries()) {
-      console.log(pair[0] + ': ' + pair[1]);
-    }
-    // const data = {
-    //   ...dataForm, ...user,
-    //   firstname: dataForm.get('firstname'),
-    //   lastname: dataForm.get('lastname'),
-    //   phone: dataForm.get('phone'),
-    //   email: dataForm.get('email'),
-    //   // image:dataForm.get('image').filename||user.image.filename,
-    //   id: user._id
-    // };
-    // console.log("זה הנתונים שהתקבלו: ", dataForm);
     try {
       updateUser(dataForm);
     } catch (error) {
       console.log(error);
-
-
     };
   }
   const closeModal = () => {
@@ -131,13 +66,6 @@ const EditProfile = () => {
 
           <div className="edit-profile-page">
             <form className="edit-profile-form edit-profile" onSubmit={formSubmit}>
-              {/* <label className="edit-profile-item image"></label> */}
-              {/* <img
-                className="edit-profile-item image" alt=""
-                src={image ? `http://localhost:2024/uploads/${image}` : "/account-white.png"}
-
-              /><input type="file" name="image" /> */}
-              {/* תמונה ולחיצה לפתיחת ה-input */}
               <img
                 src={previewImage ? previewImage : image ? `http://localhost:2024/uploads/${image}` : "/account-white.png"}
                 alt="profile"

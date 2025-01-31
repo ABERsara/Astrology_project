@@ -9,7 +9,7 @@ const Footer = () => {
   const { firstname, lastname, email, phone } = useAuth();
   console.log(firstname, lastname);
   const [addContact, { isSuccess, isLoading }] = useAddContactMutation();
-  const [updateContact] = useUpdateContactMutation();
+  // const [updateContact] = useUpdateContactMutation();
   const [message, setMessage] = useState("תיצרו איתי קשר!");
 
   const isAboutPage = location.pathname === '/dash/about';

@@ -1,46 +1,55 @@
-
-   .user-responses-class {
-    position: relative;
-    padding: 50px;
-    width: 100%;
-  }
-  
-  .response-container {
-    padding: 20px;
-    position: relative;
-    width: 600px; 
-    height: 350px;
-  }
-  
-  .response-content {
-    
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex; /* מאפשר מרכוז באמצעות flexbox */
-    flex-direction: column;
-    gap: 10px;
-    align-items: center; /* מרכוז אנכי */
-    justify-content: center; /* מרכוז אופקי */
-    text-align: center;
-    /* padding: 10px; */
-    font-size: 16px;
-    color: #fff; /* צבע טקסט */
-    line-height: 1.4; /* מרווח בין השורות */
-    overflow: hidden; /* חותך טקסט שגולש */
-    text-overflow: ellipsis; /* מוסיף שלוש נקודות */
+.user-responses-class {
+  position: relative;
+  padding: 50px;
+  width: 100%;
 }
+
+.response-container {
+  padding: 20px;
+  position: relative;
+  width: 600px;
+  height: 350px;
+}
+
+.response-content {
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  /* מאפשר מרכוז באמצעות flexbox */
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  /* מרכוז אנכי */
+  justify-content: center;
+  /* מרכוז אופקי */
+  text-align: center;
+  /* padding: 10px; */
+  font-size: 16px;
+  color: #fff;
+  /* צבע טקסט */
+  line-height: 1.4;
+  /* מרווח בין השורות */
+  overflow: hidden;
+  /* חותך טקסט שגולש */
+  text-overflow: ellipsis;
+  /* מוסיף שלוש נקודות */
+}
+
 .response-container.left {
-    margin-left: auto; 
-    margin-right: 0;
+  margin-left: auto;
+  margin-right: 0;
 }
 
 .response-container.right {
-    margin-left: 0;
-    margin-right: auto; /* יישור לשמאל */
+  margin-left: 0;
+  margin-right: auto;
+  /* יישור לשמאל */
 }
+
 /* .response-container.left {
     margin-left: 0;
     margin-right: auto; 
@@ -52,195 +61,228 @@
 } */
 
 
-  .response-container p {
-    max-width: 60%; /* רוחב מקסימלי לטקסט */
-    white-space: normal; /* שבירת שורות רגילה */
-    word-wrap: break-word; /* חיתוך מילים ארוכות */
-    align-items: center;
-    justify-content: center;
-    margin: 0 0; /* מרכוז אופקי */
-  }
-  /* יישור פנימי לטקסט */
+.response-container p {
+  max-width: 60%;
+  /* רוחב מקסימלי לטקסט */
+  white-space: normal;
+  /* שבירת שורות רגילה */
+  word-wrap: break-word;
+  /* חיתוך מילים ארוכות */
+  align-items: center;
+  justify-content: center;
+  margin: 0 0;
+  /* מרכוז אופקי */
+}
+
+/* יישור פנימי לטקסט */
 .response-container.left .response-content {
-    text-align: left; /* כיוון טקסט שמאלה */
-    
+  text-align: left;
+  /* כיוון טקסט שמאלה */
+
 }
+
 .response-content.left {
-    text-align: left;
+  text-align: left;
 }
+
 .response-container.right .response-content {
-    text-align: right; /* כיוון טקסט ימינה */
-    /* margin-right: 10px;  */
+  text-align: right;
+  /* כיוון טקסט ימינה */
+  /* margin-right: 10px;  */
 }
-  .response-container.left {
-    justify-content: flex-start;
-   right: 0;
-  }
-  
-  .response-container.right {
-    justify-content: flex-end;
-    left:0;
-  }
-  
-  
-   
-  
-  .add-response-button {
-    position: fixed;
-    top: 7vw;
-   right: 20px;
-  }
-  
-  .add-response-button button {
-    padding: 10px 20px;
-    background-color:var(--orange);
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  .checkbox-group {
-    display: flex;
-    flex-direction: column; /* מסדר את האלמנטים בטור */
-    gap: 10px; /* מוסיף ריווח אנכי בין האלמנטים */
-    align-items: flex-start; /* מוודא יישור לימין */
-  }
-  
-  .checkbox-group label {
-    display: flex;
-    align-items: center;
-    gap: 5px; /* ריווח בין תיבת הסימון לטקסט */
-  }
-  
-  .checkbox-allowedUser, 
-  .checkbox-appearName {
-    margin: 0; /* ביטול רווחים חיצוניים */
-    padding: 0; /* ביטול רווחים פנימיים */
-  }
-  
-  .add-response-button button:hover {
-    background-color: var(--text);
-    color:var(--orange);
-  }
+
+.response-container.left {
+  justify-content: flex-start;
+  right: 0;
+}
+
+.response-container.right {
+  justify-content: flex-end;
+  left: 0;
+}
 
 
-  /* css popup */
-  .popup-overlay-response {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 100;
-  }
-  
-  .popup-content-response {
 
-    /* background-color: white; */
-    padding: 20px;
-    border-radius: 10px;
-    width: 300px;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    
-    flex-direction: column; 
-    gap: 10px; 
-    align-items: flex-start;
-   
-    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); */
-  }
-  
-  .popup-content-response h2 {
-    margin-top: 0;
-    align-items: center;
 
-  }
-  
-  .popup-content-response textarea {
-    width: 100%;
-    height: 100px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 5px;
-    	font-family: "Varela Round", serif;
+.add-response-button {
+  position: fixed;
+  top: 7vw;
+  right: 20px;
+}
 
-  }
-  
-  .popup-actions-response {
-    display: flex;
-    justify-content: space-between;
-    justify-content: center;
-    /* gap: 10px;  */
-    align-items: center;
-  }
-  
-  .popup-actions-response button {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .popup-actions-response button:first-child {
-    background-color: var(--lightBlue);
-    color: white;
-  }
-  
-  
-  
-  .response-container.left p {
-    margin: 0; /* ביטול רווחים חיצוניים */
-    padding: 0; /* ביטול רווחים פנימיים כלליים */
-    max-width: calc(100% - 20px); /* התחשבות בריווח מימין */
+.add-response-button button {
+  padding: 10px 20px;
+  background-color: var(--orange);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.checkbox-group {
+  display: flex;
+  flex-direction: column;
+  /* מסדר את האלמנטים בטור */
+  gap: 10px;
+  /* מוסיף ריווח אנכי בין האלמנטים */
+  align-items: flex-start;
+  /* מוודא יישור לימין */
+}
+
+.checkbox-group label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  /* ריווח בין תיבת הסימון לטקסט */
+}
+
+.checkbox-allowedUser,
+.checkbox-appearName {
+  margin: 0;
+  /* ביטול רווחים חיצוניים */
+  padding: 0;
+  /* ביטול רווחים פנימיים */
+}
+
+.add-response-button button:hover {
+  background-color: var(--text);
+  color: var(--orange);
+}
+
+
+/* css popup */
+.popup-overlay-response {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+}
+
+.popup-content-response {
+
+  /* background-color: white; */
+  padding: 20px;
+  border-radius: 10px;
+  width: 300px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start;
+
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); */
+}
+
+.popup-content-response h2 {
+  margin-top: 0;
+  align-items: center;
+
+}
+
+.popup-content-response textarea {
+  width: 100%;
+  height: 100px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 5px;
+  font-family: "Varela Round", serif;
+
+}
+
+.popup-actions-response {
+  display: flex;
+  justify-content: space-between;
+  justify-content: center;
+  /* gap: 10px;  */
+  align-items: center;
+}
+
+.popup-actions-response button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.popup-actions-response button:first-child {
+  background-color: var(--lightBlue);
+  color: white;
+}
+
+
+
+.response-container.left p {
+  margin: 0;
+  /* ביטול רווחים חיצוניים */
+  padding: 0;
+  /* ביטול רווחים פנימיים כלליים */
+  max-width: calc(100% - 20px);
+  /* התחשבות בריווח מימין */
 }
 
 .response-container.right p {
-    margin: 0; /* ביטול רווחים חיצוניים */
-    padding: 0; /* ביטול רווחים פנימיים כלליים */
-    max-width: calc(100% - 20px); /* התחשבות בריווח משמאל */
+  margin: 0;
+  /* ביטול רווחים חיצוניים */
+  padding: 0;
+  /* ביטול רווחים פנימיים כלליים */
+  max-width: calc(100% - 20px);
+  /* התחשבות בריווח משמאל */
 }
 
 .response-container.left .response-content {
-    text-align: right; /* יישור לימין */
-    padding-right: 15vw; /* ריווח פנימי מימין */
-    
-    margin-left: 20px; /* מגבלת גלישה מהצד השמאלי */
-    padding-left: 2vw; /* אין ריווח פנימי משמאל */
+  text-align: right;
+  /* יישור לימין */
+  padding-right: 15vw;
+  /* ריווח פנימי מימין */
+
+  margin-left: 20px;
+  /* מגבלת גלישה מהצד השמאלי */
+  padding-left: 2vw;
+  /* אין ריווח פנימי משמאל */
 }
 
 .response-container.right .response-content {
-    text-align: left; /* יישור לשמאל */
-    padding-left: 15vw; /* ריווח פנימי משמאל */
-    margin-right: 20px; /* מגבלת גלישה מהצד הימני */
-    padding-right: 2vw; /* אין ריווח פנימי מימין */
+  text-align: left;
+  /* יישור לשמאל */
+  padding-left: 15vw;
+  /* ריווח פנימי משמאל */
+  margin-right: 20px;
+  /* מגבלת גלישה מהצד הימני */
+  padding-right: 2vw;
+  /* אין ריווח פנימי מימין */
 }
 
-   
+
 
 .response-content p {
-    margin: 0;
-    padding: 0;
-    max-width: 90%; /* הגבלת רוחב לטקסט */
-    word-wrap: break-word;
+  margin: 0;
+  padding: 0;
+  max-width: 90%;
+  /* הגבלת רוחב לטקסט */
+  word-wrap: break-word;
 }
 
-.xMark-add-response,.xMark-change-response{
-   margin: 0 !important;
+.xMark-add-response,
+.xMark-change-response {
+  margin: 0 !important;
   padding: 0 !important;
   position: relative;
   right: 0;
-  top:0;
+  top: 0;
   cursor: pointer;
   width: 5em;
   height: 3em;
   border-radius: 50%;
-  object-fit: cover; 
+  object-fit: cover;
   /* background-color: red; 
   width: 40px;
     height: 40px;
@@ -252,9 +294,9 @@
 }
 
 .response-name {
-  position: absolute; 
-  bottom: 10px; 
-  font-size: 14px; 
+  position: absolute;
+  bottom: 10px;
+  font-size: 14px;
   color: var(--main);
   font-weight: bold;
   text-align: justify;
@@ -264,16 +306,18 @@
 
 
 
-.response-name.right{
+.response-name.right {
   text-align-last: right;
-  right: 5vw; 
+  right: 5vw;
 }
-.response-name.left{
+
+.response-name.left {
   text-align-last: left;
-  left: 5vw; 
+  left: 5vw;
 }
-.button-approval-response{
-  background-color:var(--text);
+
+.button-approval-response {
+  background-color: var(--text);
   padding: 5px 10px;
   border-radius: 5px;
   color: var(--main);
@@ -283,10 +327,10 @@
   cursor: pointer;
   font-size: 10px;
   font-family: "Varela Round", serif;
-font-weight: 400;
-font-style: normal;
-direction: rtl;
-text-align: right;
-box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-transition: all 0.3s ease;
+  font-weight: 400;
+  font-style: normal;
+  direction: rtl;
+  text-align: right;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
 }
