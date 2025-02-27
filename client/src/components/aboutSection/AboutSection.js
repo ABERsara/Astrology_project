@@ -28,16 +28,13 @@ const AboutSection = () => {
           אני מזמינה אתכם להצטרף אליי למסע הזה – מסע של גילוי עצמי, של חיבור עמוק, ושל אהבה עצמית.<br />
           באהבה, בחיוך ובאמונה בטוב שבכם – נוכל יחד לגלות עולמות מופלאים ולהיות הגרסה הכי טובה של עצמכם.<br />
         </p>
-        {/* <img alt="מאזניים" src="/3.png" className="horoscope Libra" />
-        <img alt="דלי" src="/9.png" className="horoscope Aquarius" />
-        <img alt="עקרב" src="/11.png" className="horoscope Scorpio" /> */}
       </div>
       <div className="about-question">
         <img alt="" src="/6white.png" className="horo Taurus-about" />
         <div className="p-about-question-div">
-        <p className="p-about-question">
-          ומאיפה הגעתי לזה?
-        </p>
+          <p className="p-about-question">
+            ומאיפה הגעתי לזה?
+          </p>
         </div>
         <img alt="" src="/7white.png" className="horo Aries-about" />
       </div>
@@ -51,10 +48,7 @@ const AboutSection = () => {
           וןטימ חיט וטט ןטטכה ליטטה ליוה
           ןט חעה יוכ חיכ יכב
         </p>
-
       </div>
-
-
     </div>
   );
 };

@@ -204,3 +204,9 @@ background: var(--text);
     min-height: 100vh;
     
 }
+@media (max-width: 480px) {
+    .astro-about{
+        overflow-x: hidden;
+        width: 100%;
+    }
+}

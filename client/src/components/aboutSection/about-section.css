@@ -1,15 +1,14 @@
 .about-container {
     background: radial-gradient(circle, hwb(240 10% 86%) 0%, #1d1e3d 40%, #5b5d6e 100%);
-    display: flex;
-    flex-direction: column;
-    font-family: "Varela Round";
-    width: 100%;   
+    /* display: flex; */
+    /* flex-direction: column; */
+    font-family: "Varela Round";   
 }
 
 .about-me-container {
-width: 100%;
-    display: flex;
-    flex-direction: column;
+
+    /* display: flex; */
+    /* flex-direction: column; */
     justify-content: flex-start;
     min-height: 70vh;
     /* padding: 20px; */
@@ -19,7 +18,7 @@ width: 100%;
     /* justify-content: space-between; */
     height: 100vh;
     /* background-color: #292a44; */
-    padding: 20px;
+    /* padding: 20px; */
     /* מעבר צבע משמיים כהים במרכז לשמיים בהירים בקצוות */
     position: relative;
 }
@@ -219,4 +218,10 @@ div.about-question{
     font-size: 1.5rem;
     line-height: 125px;
     text-align: center;
+}
+@media (max-width: 480px) {
+    .about-container{
+        overflow-x: hidden;
+        width: 100%;
+    }
 }

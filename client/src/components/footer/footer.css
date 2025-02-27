@@ -104,7 +104,7 @@
 @media (max-width: 480px) {
     .footer {
         position: relative;
-        overflow: hidden;
+        overflow: visible;
     }
     .footer::before {
         font-size: 5rem;

@@ -179,11 +179,9 @@
     transition: transform 0.5s ease;
     position: relative;
     padding: 15px;
-    /* z-index: 1; */
 }
 
 .Aquarius {
-
     top: 0px;
     left: 23px;
     width: 111px;
@@ -197,7 +195,6 @@
     width: 79px;
     height: 82px;
     transform: rotate(10.67deg);
-
 }
 
 .Gemini {
@@ -206,7 +203,6 @@
     width: 67.28px;
     height: 75.77px;
     transform: rotate(15.67deg);
-
 }
 
 .Cancer {
@@ -215,7 +211,6 @@
     width: 84.31px;
     height: 74.42px;
     transform: rotate(20.29deg);
-
 }
 
 .Aries {
@@ -247,9 +242,6 @@
         display: flex;
         flex-direction: column;
         height: auto;
-
-
-
     }
 
     .home-container {
@@ -257,7 +249,7 @@
         flex-direction: column;
         flex-direction: column;
         height: auto;
-        overflow: visible
+        /* overflow: visible */
     }
 
     .info-homepage {
