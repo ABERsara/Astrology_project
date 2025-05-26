@@ -1,7 +1,7 @@
 const express=require("express")
 const controller=require("../controllers/diagnosisController")
-const verifyAdmin = require("../middlware/verifyAdmin");
-const verifyJWT = require("../middlware/verifyJWT");
+const verifyAdmin = require("../middleware/verifyAdmin");
+const verifyJWT = require("../middleware/verifyJWT");
 const router=express.Router();
 
 router.use((req, res, next) => {

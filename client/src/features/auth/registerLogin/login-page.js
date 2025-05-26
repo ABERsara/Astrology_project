@@ -1,6 +1,6 @@
 import Swal from 'sweetalert2';
 import { useLoginMutation } from "../authApiSlice";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation, Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import { GoogleLogin, GoogleOAuthProvider } from '@react-oauth/google'; // הוספת ייבוא GoogleLogin
 import ReactDOM from 'react-dom'; // ייבוא ReactDOM לרינדור דינמי
@@ -148,6 +148,8 @@ const LoginPage = () => {
       <div className="login-item password">
         <label className="login-item password">סיסמא:</label>
         <input type="password" required name="password" id="password" />
+        <Link to="/forgot-password" >שכחתי סיסמה</Link>
+
       </div>
       <div className="login-item checkbox">
         <label>

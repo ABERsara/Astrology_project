@@ -2,10 +2,10 @@ const bcrypt = require("bcrypt")
 const jwt = require("jsonwebtoken")
 
 const User = require("../models/User")
-
-
+const generateResetToken = require("../utils/generateResetToken");
+const sendEmail = require("../utils/SendEmail")
 const register = async (req, res) => {
-    const image=req.file?.filename? req.file.filename:"";
+    const image = req.file?.filename ? req.file.filename : "";
     const { firstname, lastname, phone, email, password, active, diagnosis } = req.body
     if (!firstname || !email || !password) {
         return res.status(401).json({
@@ -152,7 +152,7 @@ const login = async (req, res) => {
 const refresh = async (req, res) => {
     const cookies = req.cookies
     // console.log('cookies: ',cookies);
-    
+
     if (!cookies?.jwt) {
         return res.status(401).json({
             error: true,
@@ -212,4 +212,62 @@ const logout = async (req, res) => {
         data: null
     })
 }
-module.exports = { register, login, refresh, logout }
+
+const forgotPassword = async (req, res) => {
+    const { email } = req.body;
+    const user = await User.findOne({ email });
+
+    if (!user) {
+        return res.status(404).json({ message: "User not found" });
+    }
+
+    const resetToken = generateResetToken(user._id);
+
+    const resetLink = `http://localhost:3000/reset-password/token=${resetToken}`
+
+
+    console.log("Reset link:", resetLink);
+
+    try {
+        await sendEmail({
+            to: email,
+            subject: "שחזור סיסמה",
+            html: `<p>לחץ <a href="${resetLink}">כאן</a> כדי לשחזר את סיסמתך. תוקף הקישור יפוג בעוד 15 דקות.</p>`
+        });
+        res.status(200).json({ message: "Reset link sent" });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: "Failed to send email" });
+    }
+
+
+};
+
+const resetPassword = async (req, res) => {
+    const token = req.query.token
+    const { password } = req.body;
+
+    try {
+        const decoded = jwt.verify(token, process.env.RESET_PASSWORD_SECRET);
+        const user = await User.findById(decoded._id);
+
+        if (!user) {
+            return res.status(404).json({ message: "User not found" });
+        }
+        //Validate the password
+        //for password encryption:
+        const hashPwd = await bcrypt.hash(password, 10)
+
+        user.password = hashPwd;
+        await user.save();
+
+        res.json({ message: "Password updated successfully" });
+
+
+
+    } catch (err) {
+        return res.status(400).json({ message: "Invalid or expired token" });
+    }
+};
+
+module.exports = { register, login, refresh, logout, forgotPassword, resetPassword }

@@ -1,7 +1,7 @@
 const express=require("express")
 const userController=require("../controllers/userController")
-const verifyAdmin = require("../middlware/verifyAdmin");
-const verifyJWT = require("../middlware/verifyJWT");
+const verifyAdmin = require("../middleware/verifyAdmin");
+const verifyJWT = require("../middleware/verifyJWT");
 const useMulterStorage = require("../hooks/useMulterStorage"); // ייבוא ה-hook
 const router=express.Router();
 

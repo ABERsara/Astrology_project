@@ -21,6 +21,8 @@ import AboutAstro from "./components/aboutAstro/AboutAstro";
 import PersistLogin from "./features/auth/PersistLogin"
 import Course from "./components/course/Course";
 import UserResponses from "./features/responses/UserResponses";
+import ResetPasswordForm from "./features/auth/registerLogin/ResetPasswordForm"
+import ForgotPasswordForm from "./features/auth/registerLogin/ForgotPasswordForm";
 function App() {
   return (
     <Router>
@@ -29,6 +31,8 @@ function App() {
         <Route path="/" element={<SiteLayout />}>
           {/* דף כניסה, דף ראשי */}
           <Route index element={<HomePage />} />
+          <Route path="/reset-password/:token" element={<ResetPasswordForm />} />
+          <Route path="/forgot-password" element={<ForgotPasswordForm />} />
 
           {/* <Route element={<CheckLoginNotRequired />}> */}
           {/* נתיב ראשי של אזור ה-Dashboard */}
@@ -36,13 +40,13 @@ function App() {
             <Route index element={<Outlet />} />
             <Route path="about" element={<AboutSection />} />
             <Route path="astro" element={<AboutAstro />} />
-            <Route path="diagnosis" element={<UploadDiagnosis/>}/>
-            <Route path="reviews" element={<UserResponses/>}/>
+            <Route path="diagnosis" element={<UploadDiagnosis />} />
+            <Route path="reviews" element={<UserResponses />} />
             <Route path="courses" element={<Outlet />}>
               <Route index element={<Course />} />
-              
+
             </Route>
-            
+
             <Route element={<PersistLogin />}>
               <Route element={<RequireAuth allowPermission={["Admin", "User"]} />}>
                 {/* בלוגים - מקוננים תחת dash */}
@@ -51,7 +55,7 @@ function App() {
                   <Route path="add" element={<AddBlog />} />
                   <Route path="edit" element={<EditBlog />} />
                   <Route path=":blogId" element={<ViewSingleBlog />} />
-                  
+
                 </Route>
 
                 {/* אזור אישי של המשתמש */}
@@ -61,7 +65,7 @@ function App() {
                   <Route path="chargeHistory" element={<ChargeHistory />} />
                   <Route path="accountOverview" element={<AccountOverview />} />
                   <Route path="changePassword" element={<ChangePassword />} />
-                  
+
                 </Route>
 
 

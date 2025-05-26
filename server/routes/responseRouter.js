@@ -1,7 +1,7 @@
 const express=require("express")
 const controller=require("../controllers/responsesController")
 const router=express.Router();
-const verifyJWT = require("../middlware/verifyJWT");
+const verifyJWT = require("../middleware/verifyJWT");
 
 router.get("/",controller.getResponses);
 

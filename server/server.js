@@ -29,7 +29,7 @@ app.use("/api/contacts",require("./routes/contactRouter"))
 app.use("/api/diagnosis", require("./routes/diagnosisRouter"));
 app.use("/api/responses",require("./routes/responseRouter"))
 app.use("/api/blogs",require("./routes/blogRouter"))
-app.use('api/loved-blogs', require("./routes/lovedBlogsRouter"));
+app.use('/loved-blogs', require("./routes/lovedBlogsRouter"));
 mongoose.connection.once("open",()=>{
     console.log("Connected to DB success")
     app.listen(PORT,()=>{

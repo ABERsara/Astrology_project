@@ -56,15 +56,15 @@ const authApiSlice = apiSlice.injectEndpoints({
 
         }),
         refresh: build.mutation({
-            query: () =>({
+            query: () => ({
                 url: "/api/auth/refresh",
                 method: "GET"
             }),
-            async onQueryStarted( arg,  { dispatch,   queryFulfilled }) {
+            async onQueryStarted(arg, { dispatch, queryFulfilled }) {
                 try {
-                    const { data } =  await queryFulfilled
-                    if(data.accessToken){
-                        dispatch(setCredentials({accessToken: data.accessToken}))
+                    const { data } = await queryFulfilled
+                    if (data.accessToken) {
+                        dispatch(setCredentials({ accessToken: data.accessToken }))
                     }
                 } catch (err) {
                     console.log(err)
@@ -72,9 +72,31 @@ const authApiSlice = apiSlice.injectEndpoints({
             },
 
         }),
-      
+        resetPasswordRequest: build.mutation({
+            query: (email) => ({
+                url: "/api/auth/forgot-password",
+                method: "POST",
+                body: { email }
+            })
+        }),
+        setNewPassword: build.mutation({
+            query: ({ token, password }) => ({
+                url: `/auth/reset-password/${token}`,
+                method: "POST",
+                body: { token, password }
+            })
+        }),
+
+
 
     })
 })
 
-export const {useRegisterMutation, useLoginMutation, useSendLogoutMutation, useRefreshMutation } = authApiSlice
+export const {
+    useRegisterMutation,
+    useLoginMutation,
+    useSendLogoutMutation,
+    useRefreshMutation,
+    useResetPasswordRequestMutation,
+    useSetNewPasswordMutation
+} = authApiSlice;
