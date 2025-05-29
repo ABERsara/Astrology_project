@@ -1,0 +1,143 @@
+
+
+/* container for all the questions */
+.questions-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  width: 80%;
+  margin: 20px auto;
+}
+
+/* individual question cards */
+.question-card {
+  background-color: #fff;
+  padding: 15px;
+  margin-bottom: 15px;
+  width: 100%;
+  max-width: 600px;
+  border-radius: 8px;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.question-card:hover {
+  transform: scale(1.03);
+}
+
+/* strong labels for question/answer */
+.question-card p strong {
+  color: #333;
+}
+
+/* question styling (yellow color for questions) */
+.question-card p:first-child {
+  font-size: 18px;
+  color: #ffcc00; /* Yellow for question */
+}
+
+/* answer styling (turquoise color for answers) */
+.question-card p:nth-child(2) {
+  font-size: 16px;
+  color: #00b0b9; /* Turquoise for answer */
+}
+
+/* buttons to update or delete */
+button {
+  padding: 8px 16px;
+  border: none;
+  background-color: #007bff;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-right: 10px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* popup overlay */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* popup content */
+.popup-content {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.popup-content h2 {
+  font-size: 20px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.popup-content input,
+.popup-content textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.popup-content textarea {
+  height: 100px;
+  resize: none;
+}
+
+.popup-content button {
+  width: 100%;
+  padding: 12px;
+  background-color: #28a745;
+  font-size: 16px;
+  border-radius: 4px;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.popup-content button:hover {
+  background-color: #218838;
+}
+
+button[onClick="setIsPopupOpen(false)"] {
+  background-color: #dc3545;
+}
+
+button[onClick="setIsPopupOpen(false)"]:hover {
+  background-color: #c82333;
+}
+
+h2 {
+  font-size: 28px;
+  text-align: center;
+  color: #333;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #888;
+}
